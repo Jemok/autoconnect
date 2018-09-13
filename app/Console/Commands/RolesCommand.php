@@ -42,6 +42,14 @@ class RolesCommand extends Command
             [
                 'name' => 'super-admin',
                 'guard' => 'web'
+            ],
+            [
+                'name' => 'dealer',
+                'guard' => 'web'
+            ],
+            [
+                'name' => 'buyer',
+                'guard' => 'web'
             ]
         ];
 
