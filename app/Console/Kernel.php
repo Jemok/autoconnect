@@ -2,6 +2,9 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AdminCommand;
+use App\Console\Commands\AppInitializer;
+use App\Console\Commands\RolesCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        AppInitializer::class,
+        RolesCommand::class,
+        AdminCommand::class
     ];
 
     /**

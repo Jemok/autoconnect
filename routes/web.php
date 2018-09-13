@@ -18,3 +18,8 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+Route::group(['middleware' => ['role:super-admin']], function () {
+    Route::get('/admin-home', 'AdminController@index')->name('adminHome')->middleware('verified');
+});
+
