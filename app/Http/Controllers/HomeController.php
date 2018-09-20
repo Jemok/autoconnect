@@ -18,6 +18,8 @@ class HomeController extends Controller
 
     /**
      * Show the application dashboard.
+     * Check if its for Admin, Dealer or Buyer, then
+     * return appropriate view.
      *
      * @return \Illuminate\Http\Response
      */

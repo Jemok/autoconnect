@@ -17,7 +17,7 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the admin dashboard.
      *
      * @return \Illuminate\Http\Response
      */

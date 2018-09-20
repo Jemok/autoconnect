@@ -17,7 +17,7 @@ class BuyerController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the Buyer dashboard.
      *
      * @return \Illuminate\Http\Response
      */
