@@ -2,13 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Repositories\CarMakeRepository;
+use App\Repositories\CarModelRepository;
 
 class VehicleController extends Controller
 {
-    public function create(){
+    /**
+     * @param CarMakeRepository $carMakeRepository
+     * @param CarModelRepository $carModelRepository
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create(CarMakeRepository $carMakeRepository,
+                           CarModelRepository $carModelRepository){
 
-        return view('vehicles.create');
+        $car_makes = $carMakeRepository->index();
+
+        $car_models = $carModelRepository->index();
+
+        return view('vehicles.create', compact('car_makes','car_models'));
     }
 
     public function createPictures(){

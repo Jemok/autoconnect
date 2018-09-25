@@ -22,14 +22,18 @@
                                     <label for="inputState">Make*</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($car_makes as $car_make)
+                                            <option name="car_make" value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
                                     <label for="inputState">Model*</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($car_models as $car_model)
+                                            <option name="car_model" value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
