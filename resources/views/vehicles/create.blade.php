@@ -76,7 +76,7 @@
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
                                         @foreach($transmission_types as $transmission_type)
-                                        <option name="transmission_type" value="{{ $transmission_type->slug }}">{{ $transmission_type->description }}</option>
+                                            <option name="transmission_type" value="{{ $transmission_type->slug }}">{{ $transmission_type->description }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -84,7 +84,9 @@
                                     <label for="inputState">Condition *</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($car_conditions as $car_condition)
+                                            <option name="car_condition" value="{{ $car_condition->slug }}">{{ $car_condition->description }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

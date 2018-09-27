@@ -48,5 +48,7 @@ class AppInitializer extends Command
         $this->info('Body Types Updated Successfully');
         Artisan::call('transmission-types:add');
         $this->info('Transmission Types Updated Successfully');
+        Artisan::call('car-conditions:add');
+        $this->info('Car Conditions Updated Successfully');
     }
 }

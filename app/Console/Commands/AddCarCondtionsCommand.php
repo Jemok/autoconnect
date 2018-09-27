@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Console\Commands;
+
+use App\CarCondition;
+use Illuminate\Console\Command;
+
+class AddCarCondtionsCommand extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'car-conditions:add';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Add Car Conditions';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $car_conditions = [
+            [
+                'name' => 'Duty Exempted',
+                'slug' => 'duty_exempted',
+                'description' => 'Duty Exempted'
+            ],
+            [
+                'name' => 'Duty Not Paid',
+                'slug' => 'duty_not_paid',
+                'description' => 'Duty Not Paid'
+            ],
+            [
+                'name' => 'Duty Paid',
+                'slug' => 'duty_paid',
+                'description' => 'Duty Paid'
+            ],
+            [
+                'name' => 'Not Specified',
+                'slug' => 'not_specified',
+                'description' => 'Not Specified'
+            ]
+        ];
+
+        foreach ($car_conditions as $car_condition){
+            if(CarCondition::where('slug', $car_condition['slug'])->exists() == false){
+                CarCondition::create([
+                    'name' => $car_condition['name'],
+                    'slug' => $car_condition['slug'],
+                    'description' => $car_condition['description']
+                ]);
+            }
+        }
+    }
+}

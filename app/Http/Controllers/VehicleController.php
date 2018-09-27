@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BodyType;
 use App\Repositories\BodyTypeRepository;
+use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\TransmissionTypeRepository;
@@ -14,12 +15,16 @@ class VehicleController extends Controller
     /**
      * @param CarMakeRepository $carMakeRepository
      * @param CarModelRepository $carModelRepository
+     * @param BodyTypeRepository $bodyTypeRepository
+     * @param TransmissionTypeRepository $transmissionTypeRepository
+     * @param CarConditionRepository $carConditionRepository
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(CarMakeRepository $carMakeRepository,
                            CarModelRepository $carModelRepository,
                            BodyTypeRepository $bodyTypeRepository,
-                           TransmissionTypeRepository $transmissionTypeRepository){
+                           TransmissionTypeRepository $transmissionTypeRepository,
+                           CarConditionRepository $carConditionRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -29,6 +34,8 @@ class VehicleController extends Controller
 
         $transmission_types = $transmissionTypeRepository->index();
 
+        $car_conditions = $carConditionRepository->index();
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -37,7 +44,8 @@ class VehicleController extends Controller
             'next_year',
             'start_year',
             'body_types',
-            'transmission_types'));
+            'transmission_types',
+            'car_conditions'));
     }
 
     public function createPictures(){
