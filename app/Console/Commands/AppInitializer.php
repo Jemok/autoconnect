@@ -54,5 +54,7 @@ class AppInitializer extends Command
         $this->info('Duties Updated Successfully');
         Artisan::call('fuel-types:add');
         $this->info('Fuel Types Updated Successfully');
+        Artisan::call('interior:add');
+        $this->info('Interiors Updated Successfully');
     }
 }

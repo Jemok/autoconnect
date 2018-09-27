@@ -139,7 +139,9 @@
                                     <label for="inputState">Interior</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($interiors as $interior)
+                                            <option name="interior" value="{{ $interior->slug }}">{{ $interior->description }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
