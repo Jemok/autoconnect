@@ -65,5 +65,16 @@ class AddCarCondtionsCommand extends Command
                 ]);
             }
         }
+
+        $deletes = [
+          'duty_exempted',
+            'duty_not_paid',
+            'duty_paid',
+            'not_specified'
+        ];
+
+        foreach ($deletes as $delete){
+            CarCondition::where('slug', $delete)->delete();
+        }
     }
 }
