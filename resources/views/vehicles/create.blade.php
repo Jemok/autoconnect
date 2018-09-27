@@ -123,7 +123,9 @@
                                     <label for="inputState">Fuel Type *</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($fuel_types as $fuel_type)
+                                            <option name="fuel_type" value="{{ $fuel_type->slug }}">{{ $fuel_type->description }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
