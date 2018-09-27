@@ -148,7 +148,11 @@
                                     <label for="inputState">Colour Type*</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($colour_types as $colour_type)
+                                            <option name="colour_type" value="{{ $colour_type->slug }}">
+                                                {{ $colour_type->description }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

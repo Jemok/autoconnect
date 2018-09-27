@@ -56,5 +56,7 @@ class AppInitializer extends Command
         $this->info('Fuel Types Updated Successfully');
         Artisan::call('interior:add');
         $this->info('Interiors Updated Successfully');
+        Artisan::call('colour-types:add');
+        $this->info('Colour Types Updated Successfully');
     }
 }
