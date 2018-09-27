@@ -64,7 +64,9 @@
                                     <label for="inputState">Body Type *</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($body_types as $body_type)
+                                        <option name="body_type" value="{{ $body_type->slug }}">{{ $body_type->description }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

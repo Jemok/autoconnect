@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\BodyType;
+use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use Carbon\Carbon;
@@ -14,16 +16,23 @@ class VehicleController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(CarMakeRepository $carMakeRepository,
-                           CarModelRepository $carModelRepository){
+                           CarModelRepository $carModelRepository,
+                           BodyTypeRepository $bodyTypeRepository){
 
         $car_makes = $carMakeRepository->index();
 
         $car_models = $carModelRepository->index();
 
+        $body_types = $bodyTypeRepository->index();
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
-        return view('vehicles.create', compact('car_makes','car_models', 'next_year', 'start_year'));
+        return view('vehicles.create', compact('car_makes',
+            'car_models',
+            'next_year',
+            'start_year',
+            'body_types'));
     }
 
     public function createPictures(){
