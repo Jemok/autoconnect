@@ -49,7 +49,9 @@
                                     <label for="inputState">Year*</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @for($next_year; $next_year >= $start_year; $next_year--)
+                                            <option name="year" value="{{ $next_year }}">{{ $next_year }}</option>
+                                        @endfor
                                     </select>
                                 </div>
                             </div>

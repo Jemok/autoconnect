@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
+use Carbon\Carbon;
 
 class VehicleController extends Controller
 {
@@ -19,7 +20,10 @@ class VehicleController extends Controller
 
         $car_models = $carModelRepository->index();
 
-        return view('vehicles.create', compact('car_makes','car_models'));
+        $start_year = 1900;
+        $next_year = Carbon::now()->year + 1;
+
+        return view('vehicles.create', compact('car_makes','car_models', 'next_year', 'start_year'));
     }
 
     public function createPictures(){
