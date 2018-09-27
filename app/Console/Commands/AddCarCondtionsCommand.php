@@ -40,24 +40,19 @@ class AddCarCondtionsCommand extends Command
     {
         $car_conditions = [
             [
-                'name' => 'Duty Exempted',
-                'slug' => 'duty_exempted',
-                'description' => 'Duty Exempted'
+                'name' => 'Brand New',
+                'slug' => 'brand_new',
+                'description' => 'Brand New'
             ],
             [
-                'name' => 'Duty Not Paid',
-                'slug' => 'duty_not_paid',
-                'description' => 'Duty Not Paid'
+                'name' => 'Foreign Used',
+                'slug' => 'foreign_used',
+                'description' => 'Foreign Used'
             ],
             [
-                'name' => 'Duty Paid',
-                'slug' => 'duty_paid',
-                'description' => 'Duty Paid'
-            ],
-            [
-                'name' => 'Not Specified',
-                'slug' => 'not_specified',
-                'description' => 'Not Specified'
+                'name' => 'Locally Used',
+                'slug' => 'locally_used',
+                'description' => 'Locally Used'
             ]
         ];
 

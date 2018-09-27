@@ -7,6 +7,7 @@ use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
+use App\Repositories\DutyRepository;
 use App\Repositories\TransmissionTypeRepository;
 use Carbon\Carbon;
 
@@ -24,7 +25,8 @@ class VehicleController extends Controller
                            CarModelRepository $carModelRepository,
                            BodyTypeRepository $bodyTypeRepository,
                            TransmissionTypeRepository $transmissionTypeRepository,
-                           CarConditionRepository $carConditionRepository){
+                           CarConditionRepository $carConditionRepository,
+                           DutyRepository $dutyRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -36,6 +38,8 @@ class VehicleController extends Controller
 
         $car_conditions = $carConditionRepository->index();
 
+        $duties = $dutyRepository->index();
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -45,7 +49,8 @@ class VehicleController extends Controller
             'start_year',
             'body_types',
             'transmission_types',
-            'car_conditions'));
+            'car_conditions',
+            'duties'));
     }
 
     public function createPictures(){

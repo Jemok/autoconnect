@@ -95,7 +95,9 @@
                                     <label for="inputState">Duty *</label>
                                     <select id="inputState" class="form-control">
                                         <option selected>Choose...</option>
-                                        <option></option>
+                                        @foreach($duties as $duty)
+                                            <option name="duty" value="{{ $duty->slug }}">{{ $duty->description }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col">
