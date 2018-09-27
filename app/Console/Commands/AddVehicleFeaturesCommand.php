@@ -200,7 +200,6 @@ class AddVehicleFeaturesCommand extends Command
                     'description' =>  $vehicle_feature['description']
                 ]);
             }
-
         }
     }
 }
