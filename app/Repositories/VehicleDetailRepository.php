@@ -37,7 +37,7 @@ class VehicleDetailRepository
         $duty = $data['duty'];
         $duty_model = $dutyRepository->showFromSlug($duty);
         $price = $data['price'];
-        $negotiable_price = $data['negotiable_price'];
+        $negotiable_price = array_key_exists('negotiable_price', $data) ? $data['negotiable_price'] : 'not_allowed';
         $fuel_type = $data['fuel_type'];
         $engine_size = $data['engine_size'];
         $interior = $data['interior'];

@@ -38,6 +38,8 @@ Route::get('/vehicles/publish-vehicle-ad', 'VehicleController@publishVehicleAd')
 
 Route::post('/vehicles', 'VehicleController@store')->name('storeVehicle');
 
+Route::get('/single-ads', 'SingleAdsController@index')->name('indexSingleAds');
+
 Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');
 });

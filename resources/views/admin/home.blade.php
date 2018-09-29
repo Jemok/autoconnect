@@ -14,7 +14,12 @@
                             </div>
                         @endif
 
-                        You are logged in as the Admin!
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Single Ads</h5>
+                                <a href="{{ route('indexSingleAds') }}" class="btn btn-primary">View All</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
