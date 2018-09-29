@@ -13,6 +13,10 @@ use App\CarCondition;
 
 class CarConditionRepository
 {
+    public function showFromSlug($condition){
+        return CarCondition::where('slug', $condition)->firstOrFail();
+    }
+
     public function index(){
 
         return CarCondition::all();

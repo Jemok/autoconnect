@@ -13,6 +13,11 @@ use App\ColourType;
 
 class ColourTypeRepository
 {
+
+    public function showFromSlug($colour_type){
+        return ColourType::where('slug', $colour_type)->firstOrFail();
+    }
+
     public function index(){
         return ColourType::all();
     }

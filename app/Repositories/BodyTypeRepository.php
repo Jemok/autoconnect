@@ -13,6 +13,10 @@ use App\BodyType;
 
 class BodyTypeRepository
 {
+    public function showFromSlug($body_type){
+        return BodyType::where('slug', $body_type)->firstOrFail();
+    }
+
     public function index(){
 
         return BodyType::all();

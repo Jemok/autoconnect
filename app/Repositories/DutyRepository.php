@@ -13,6 +13,11 @@ use App\Duty;
 
 class DutyRepository
 {
+
+    public function showFromSlug($duty){
+        return Duty::where('slug', $duty)->firstOrFail();
+    }
+
     public function index(){
         return Duty::all();
     }

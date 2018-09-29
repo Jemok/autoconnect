@@ -13,6 +13,10 @@ use App\CarModel;
 class CarModelRepository
 {
 
+    public function showFromSlug($car_model){
+        return CarModel::where('slug', $car_model)->firstOrFail();
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */

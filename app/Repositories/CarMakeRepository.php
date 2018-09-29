@@ -13,6 +13,11 @@ use App\CarMake;
 
 class CarMakeRepository
 {
+
+    public function showFromSlug($car_make){
+        return CarMake::where('slug', $car_make)->firstOrFail();
+    }
+
     public function index(){
 
         return CarMake::all();

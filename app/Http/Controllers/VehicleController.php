@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BodyType;
+use App\Http\Requests\CarDetailsRequest;
 use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
@@ -12,6 +13,7 @@ use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\InteriorRepository;
 use App\Repositories\TransmissionTypeRepository;
+use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use Carbon\Carbon;
 
@@ -73,7 +75,23 @@ class VehicleController extends Controller
             'vehicle_features'));
     }
 
-    public function createPictures(){
+    public function store(CarDetailsRequest $carDetailsRequest,
+                          VehicleDetailRepository $vehicleDetailRepository){
+
+        $vehicle_detail = $vehicleDetailRepository->store($carDetailsRequest->all(),
+            new CarMakeRepository(),
+            new CarModelRepository(),
+            new BodyTypeRepository(),
+            new TransmissionTypeRepository(),
+            new CarConditionRepository(),
+            new DutyRepository(),
+            new ColourTypeRepository());
+
+        return redirect()->route('createVehiclePictures',  $vehicle_detail->id);
+    }
+
+
+    public function createPictures($vehicleId){
 
         return view('vehicles.create-pictures');
     }
