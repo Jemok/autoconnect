@@ -21,21 +21,39 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="car_make">Make*</label>
-                                    <select name="car_make" id="car_make" class="form-control">
+                                    <select name="car_make" id="car_make" class="form-control {{ $errors->has('car_make') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($car_makes as $car_make)
-                                            <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                                            @if(old('car_make') == $car_make->slug)
+                                                <option selected value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                                            @else
+                                                <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('car_make'))
+                                        <small id="carMakeHelp" class="form-text text-danger">
+                                            {{ $errors->first('car_make') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="car_model">Model*</label>
-                                    <select name="car_model" id="car_model" class="form-control">
+                                    <select name="car_model" id="car_model" class="form-control {{ $errors->has('car_model') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($car_models as $car_model)
-                                            <option  value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                                            @if(old('car_model') == $car_model->slug)
+                                                <option selected value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                                            @else
+                                                <option value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('car_model'))
+                                        <small id="carModelHelp" class="form-text text-danger">
+                                            {{ $errors->first('car_model') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
@@ -48,71 +66,131 @@
                                 </div>
                                 <div class="col">
                                     <label for="year">Year*</label>
-                                    <select name="year"  id="year" class="form-control">
+                                    <select name="year"  id="year" class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" required>
                                         <option selected disabled>Choose...</option>
                                         @for($next_year; $next_year >= $start_year; $next_year--)
-                                            <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                            @if(old('year') == $next_year)
+                                                <option selected value="{{ $next_year }}">{{ $next_year }}</option>
+                                            @else
+                                                <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                            @endif
                                         @endfor
                                     </select>
+                                    @if($errors->has('year'))
+                                        <small id="yearHelp" class="form-text text-danger">
+                                            {{ $errors->first('year') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <label for="mileage">Mileage (km) *</label>
-                                    <input type="text" name="mileage" id="mileage" class="form-control" placeholder="">
+                                    <input type="number" name="mileage" id="mileage" class="form-control {{ $errors->has('mileage') ? 'is-invalid' : '' }}" value="{{ old('mileage') }}" placeholder="">
+                                    @if ($errors->has('mileage'))
+                                        <small id="mileage" class="form-text text-danger">
+                                            {{ $errors->first('mileage') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="body_type">Body Type *</label>
-                                    <select name="body_type" id="body_type" class="form-control">
+                                    <select name="body_type" id="body_type" class="form-control {{ $errors->has('body_type') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($body_types as $body_type)
-                                            <option value="{{ $body_type->slug }}">{{ $body_type->description }}</option>
+                                            @if(old('body_type') == $body_type->slug)
+                                                <option selected value="{{ $body_type->slug }}">{{ $body_type->description }}</option>
+                                            @else
+                                                <option value="{{ $body_type->slug }}">{{ $body_type->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('body_type'))
+                                        <small id="bodyTypeHelp" class="form-text text-danger">
+                                            {{ $errors->first('body_type') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <label for="transmission_type">Transmission Type *</label>
-                                    <select name="transmission_type" id="transmission_type" class="form-control">
-                                        <option selected>Choose...</option>
+                                    <select name="transmission_type" id="transmission_type" class="form-control {{ $errors->has('transmission_type') ? 'is-invalid' : '' }}">
+                                        <option selected disabled>Choose...</option>
                                         @foreach($transmission_types as $transmission_type)
-                                            <option  value="{{ $transmission_type->slug }}">{{ $transmission_type->description }}</option>
+                                            @if(old('transmission_type') == $transmission_type->slug)
+                                                <option selected value="{{ $transmission_type->slug }}">{{ $transmission_type->description }}</option>
+                                            @else
+                                                <option  value="{{ $transmission_type->slug }}">{{ $transmission_type->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('transmission_type'))
+                                        <small id="transmissionTypeHelp" class="form-text text-danger">
+                                            {{ $errors->first('transmission_type') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="condition">Condition *</label>
-                                    <select name="car_condition" id="condition" class="form-control">
+                                    <select name="car_condition" id="condition" class="form-control {{ $errors->has('car_condition') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($car_conditions as $car_condition)
-                                            <option value="{{ $car_condition->slug }}">{{ $car_condition->description }}</option>
+                                            @if(old('car_condition') == $car_condition->slug)
+                                                <option selected value="{{ $car_condition->slug }}">{{ $car_condition->description }}</option>
+                                            @else
+                                                <option value="{{ $car_condition->slug }}">{{ $car_condition->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('car_condition'))
+                                        <small id="carConditionHelp" class="form-text text-danger">
+                                            {{ $errors->first('car_condition') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col">
                                     <label for="duty">Duty *</label>
-                                    <select name="duty" id="duty" class="form-control">
+                                    <select name="duty" id="duty" class="form-control {{ $errors->has('duty') ? 'is-invalid' : '' }}">
                                         <option selected disabled="">Choose...</option>
                                         @foreach($duties as $duty)
-                                            <option value="{{ $duty->slug }}">{{ $duty->description }}</option>
+                                            @if(old('duty') == $duty->slug)
+                                                <option selected value="{{ $duty->slug }}">{{ $duty->description }}</option>
+                                            @else
+                                                <option value="{{ $duty->slug }}">{{ $duty->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('duty'))
+                                        <small id="dutyHelp" class="form-text text-danger">
+                                            {{ $errors->first('duty') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="price">Price (KSH) *</label>
-                                    <input type="text" name="price" id="price" class="form-control" placeholder="">
+                                    <input type="number" name="price" id="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}" placeholder="">
+                                    @if($errors->has('duty'))
+                                        <small id="priceHelp" class="form-text text-danger">
+                                            {{ $errors->first('price') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
                                     <div class="form-check">
-                                        <input class="form-check-input" name="negotiable_price" type="checkbox" value="allowed" id="negotiable_price">
+                                        <input class="form-check-input {{ $errors->has('negotiable_price') ? 'is-invalid' : '' }}" name="negotiable_price" type="checkbox" value="allowed" id="negotiable_price">
                                         <label class="form-check-label" for="negotiable_price">
                                             Price is negotiable
                                         </label>
+                                        @if($errors->has('negotiable_price'))
+                                            <small id="negotiablePriceHelp" class="form-text text-danger">
+                                                {{ $errors->first('negotiable_price') }}
+                                            </small>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -121,47 +199,86 @@
 
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="fuel_type">Fuel Type *</label>
-                                    <select name="fuel_type" id="fuel_type" class="form-control">
+                                    <label for="fuel_type">Fuel Type</label>
+                                    <select name="fuel_type" id="fuel_type" class="form-control {{ $errors->has('fuel_type') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($fuel_types as $fuel_type)
-                                            <option  value="{{ $fuel_type->slug }}">{{ $fuel_type->description }}</option>
+                                            @if(old('fuel_type') == $duty->slug)
+                                                <option selected value="{{ $fuel_type->slug }}">{{ $fuel_type->description }}</option>
+                                            @else
+                                                <option value="{{ $fuel_type->slug }}">{{ $fuel_type->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('fuel_type'))
+                                        <small id="fuelTypeHelp" class="form-text text-danger">
+                                            {{ $errors->first('fuel_type') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="engine_size">Engine size (cc)</label>
-                                    <input type="text" id="engine_size" name="engine_size" class="form-control" placeholder="">
+                                    <input type="text" id="engine_size" name="engine_size" class="form-control {{ $errors->has('engine_size') ? 'is-invalid' : '' }}" value="{{ old('engine_size') }}" placeholder="">
+                                    @if($errors->has('engine_size'))
+                                        <small id="engineSizeHelp" class="form-text text-danger">
+                                            {{ $errors->first('engine_size') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
                                     <label for="interior">Interior</label>
-                                    <select name="interior" id="interior" class="form-control">
+                                    <select name="interior" id="interior" class="form-control {{ $errors->has('interior') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($interiors as $interior)
-                                            <option value="{{ $interior->slug }}">{{ $interior->description }}</option>
+                                            @if(old('interior') == $duty->slug)
+                                                <option selected value="{{ $interior->slug }}">{{ $interior->description }}</option>
+                                            @else
+                                                <option value="{{ $interior->slug }}">{{ $interior->description }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('interior'))
+                                        <small id="interiorHelp" class="form-text text-danger">
+                                            {{ $errors->first('interior') }}
+                                        </small>
+                                    @endif
                                 </div>
                                 <div class="col">
                                     <label for="colour_type">Colour Type*</label>
-                                    <select name="colour_type" id="colour_type" class="form-control">
+                                    <select name="colour_type" id="colour_type" class="form-control {{ $errors->has('colour_type') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($colour_types as $colour_type)
-                                            <option  value="{{ $colour_type->slug }}">
-                                                {{ $colour_type->description }}
-                                            </option>
+                                            @if(old('colour_type') == $duty->slug)
+                                                <option selected  value="{{ $colour_type->slug }}">
+                                                    {{ $colour_type->description }}
+                                                </option>
+                                            @else
+                                                <option value="{{ $colour_type->slug }}">
+                                                    {{ $colour_type->description }}
+                                                </option>
+                                            @endif
                                         @endforeach
                                     </select>
+                                    @if($errors->has('colour_type'))
+                                        <small id="colourTypeHelp" class="form-text text-danger">
+                                            {{ $errors->first('colour_type') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col">
                                     <label for="description">Description </label>
-                                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                                    <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="3">{{ old('description') }}</textarea>
+                                    @if($errors->has('description'))
+                                        <small id="descriptionHelp" class="form-text text-danger">
+                                            {{ $errors->first('description') }}
+                                        </small>
+                                    @endif
                                 </div>
                             </div>
 

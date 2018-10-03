@@ -28,7 +28,7 @@ class CarDetailsRequest extends FormRequest
             'car_model' => 'required',
             'car_series' => 'nullable',
             'year'  => 'required',
-            'mileage' => 'required',
+            'mileage' => 'required|numeric',
             'body_type' => 'required',
             'transmission_type' => 'required',
             'car_condition' => 'required',
