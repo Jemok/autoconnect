@@ -60,5 +60,8 @@ class AppInitializer extends Command
         $this->info('Colour Types Updated Successfully');
         Artisan::call('vehicle-features:add');
         $this->info('Vehicle Features Updated');
+        Artisan::call('areas:add');
+        $this->info('Areas Updated');
+
     }
 }
