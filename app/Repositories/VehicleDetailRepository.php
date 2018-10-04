@@ -13,6 +13,11 @@ use App\VehicleDetail;
 
 class VehicleDetailRepository
 {
+    public function show($vehicleId){
+
+        return VehicleDetail::where('id', $vehicleId)->firstOrFail();
+    }
+
     public function store(array $data,
                           CarMakeRepository $carMakeRepository,
                           CarModelRepository $carModelRepository,
@@ -101,4 +106,6 @@ class VehicleDetailRepository
 
         return $vehicle_detail;
     }
+
+
 }

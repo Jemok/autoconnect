@@ -36,4 +36,14 @@ class VehicleDetail extends Model
 
         return $this->belongsTo(Duty::class);
     }
+
+    public function vehicle_images(){
+
+        return $this->hasMany(VehicleImage::class);
+    }
+
+    public function vehicle_contact(){
+
+        return $this->hasOne(VehicleContact::class);
+    }
 }

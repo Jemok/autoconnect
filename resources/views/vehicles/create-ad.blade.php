@@ -41,9 +41,9 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('createVehicleContacts') }}" class="btn btn-danger float-left">Previous</a>
+                        <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="btn btn-danger float-left">Previous</a>
 
-                        <a href="{{ route('publishVehicleAd') }}" class="btn btn-success float-right">Publish Ad</a>
+                        <a href="{{ route('publishVehicleAd') }}" class="btn btn-success float-right">Finish</a>
                     </div>
                 </div>
             </div>

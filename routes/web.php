@@ -30,15 +30,17 @@ Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle'
 
 Route::get('/vehicles/create-pictures/{vehicleId}', 'VehicleController@createPictures')->name('createVehiclePictures');
 
-Route::get('/vehicles/create-vehicle-ad', 'VehicleController@createAd')->name('createAd');
+Route::get('/vehicles/create-vehicle-ad/{vehicleId}', 'VehicleController@createAd')->name('createAd');
 
-Route::get('/vehicles/create-vehicle-contacts', 'VehicleController@createContacts')->name('createVehicleContacts');
+Route::get('/vehicles/create-vehicle-contacts/{vehicleId}', 'VehicleController@createContacts')->name('createVehicleContacts');
 
 Route::get('/vehicles/publish-vehicle-ad', 'VehicleController@publishVehicleAd')->name('publishVehicleAd');
 
 Route::post('/vehicles', 'VehicleController@store')->name('storeVehicle');
 
 Route::get('/single-ads', 'SingleAdsController@index')->name('indexSingleAds');
+
+Route::post('/vehicles/store-vehicle-contacts/{vehicleId}', 'VehicleController@storeVehicleContacts')->name('storeVehicleContacts');
 
 Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');

@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\AddAreasCommand;
 use App\Console\Commands\AdminCommand;
 use App\Console\Commands\AppInitializer;
 use App\Console\Commands\RolesCommand;
@@ -18,7 +19,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         AppInitializer::class,
         RolesCommand::class,
-        AdminCommand::class
+        AdminCommand::class,
+        AddAreasCommand::class
     ];
 
     /**

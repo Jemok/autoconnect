@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BodyType;
 use App\Http\Requests\CarDetailsRequest;
+use App\Repositories\AreasRepository;
 use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
@@ -13,9 +14,11 @@ use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\InteriorRepository;
 use App\Repositories\TransmissionTypeRepository;
+use App\Repositories\VehicleContactRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
@@ -93,21 +96,39 @@ class VehicleController extends Controller
 
     public function createPictures($vehicleId){
 
-        return view('vehicles.create-pictures');
+        return view('vehicles.create-pictures', compact('vehicleId'));
     }
 
-    public function createContacts(){
+    public function createContacts($vehicleId,
+                                   AreasRepository $areasRepository){
 
-        return view('vehicles.create-contacts');
+        $areas = $areasRepository->index();
+
+        return view('vehicles.create-contacts', compact('vehicleId', 'areas'));
     }
 
-    public function createAd(){
+    public function createAd($vehicleId){
 
-        return view('vehicles.create-ad');
+        return view('vehicles.create-ad', compact('vehicleId'));
     }
 
     public function publishVehicleAd(){
 
         return view('vehicles.publish-ad');
     }
+
+    public function storeVehicleContacts(Request $request,
+                                         VehicleContactRepository $vehicleContactRepository,
+                                         VehicleDetailRepository $vehicleDetailRepository,
+                                         $vehicleId
+    ){
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
+
+        $vehicleContactRepository->store($request->all(), $vehicle_detail, $vehicleId);
+
+        return redirect()->route('createAd', $vehicleId);
+
+    }
+
 }

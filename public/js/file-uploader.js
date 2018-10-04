@@ -1,4 +1,4 @@
-function readURL(input, identifier) {
+function readURL(input, identifier, imageSelector, advertId) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -9,4 +9,24 @@ function readURL(input, identifier) {
 
         reader.readAsDataURL(input.files[0]);
     }
+
+    var fileInput = document.getElementById(imageSelector);
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append(identifier, file);
+    formData.append('imageArea', imageSelector);
+    formData.append('vehicleId', advertId);
+    formData.append('keyIdentifier', identifier);
+
+    console.log(formData);
+
+    $.ajax({
+       url: '/api/images/upload',
+        type: 'POST',
+        cache: false,
+        contentType:false,
+        processData:false,
+        data: formData,
+        enctype: 'multipart/form-data',
+    });
 }

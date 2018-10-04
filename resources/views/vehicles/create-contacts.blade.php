@@ -16,44 +16,51 @@
                             </div>
                         @endif
 
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="inputState">Name*</label>
-                                <input type="text" class="form-control" placeholder="Name">
-                            </div>
-                            <div class="col">
-                                <label for="inputState">Email*</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
+                        <form method="POST" action="{{ route('storeVehicleContacts', $vehicleId) }}">
 
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="inputState">Country Code*</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option></option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <label for="inputState">Phone Number*</label>
-                                <input type="text" class="form-control" placeholder="Name">
-                            </div>
-                        </div>
+                            {{ csrf_field() }}
 
-                        <div class="form-row">
-                            <div class="col">
-                                <label for="inputState">Area/City*</label>
-                                <select id="inputState" class="form-control">
-                                    <option selected>Choose...</option>
-                                    <option></option>
-                                </select>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="inputState">Name*</label>
+                                    <input type="text" name="name" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col">
+                                    <label for="inputState">Email*</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                </div>
                             </div>
-                        </div>
 
-                        <a href="{{ route('createVehiclePictures') }}" class="btn btn-danger float-left">Previous</a>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="inputState">Country Code*</label>
+                                    <select name="country_code" id="inputState" class="form-control">
+                                        <option selected disabled>Choose...</option>
+                                        <option value="254">+254</option>
+                                    </select>
+                                </div>
+                                <div class="col">
+                                    <label for="inputState">Phone Number*</label>
+                                    <input type="text" name="phone_number" class="form-control" placeholder="Name">
+                                </div>
+                            </div>
 
-                        <a href="{{ route('createAd') }}" class="btn btn-success float-right">Next</a>
+                            <div class="form-row">
+                                <div class="col">
+                                    <label for="inputState">Area/City*</label>
+                                    <select name="area" id="inputState" class="form-control">
+                                        <option selected disabled>Choose...</option>
+                                        @foreach($areas as $area)
+                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <a href="{{ route('createVehiclePictures', $vehicleId) }}" class="btn btn-danger float-left">Previous</a>
+
+                            <button type="submit" class="btn btn-success float-right">Next</button>
+                        </form>
                     </div>
                 </div>
             </div>
