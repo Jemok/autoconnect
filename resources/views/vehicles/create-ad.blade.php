@@ -41,7 +41,7 @@
                                             <p class="card-text">Ksh 2900</p>
                                             <p class="card-text">Standard Ad</p>
                                             <p class="card-text">Valid for 30 days</p>
-                                            <a href="#" class="btn btn-primary">Make Payment</a>
+                                            <button type="submit" class="btn btn-primary">Make Payment</button>
                                         </form>
                                     </div>
                                 </div>
