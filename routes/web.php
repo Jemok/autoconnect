@@ -42,6 +42,8 @@ Route::get('/single-ads', 'SingleAdsController@index')->name('indexSingleAds');
 
 Route::post('/vehicles/store-vehicle-contacts/{vehicleId}', 'VehicleController@storeVehicleContacts')->name('storeVehicleContacts');
 
+Route::post('/vehicles/make-payment/{vehicleId}/{paymentType}', 'PaymentController@makePayment')->name('makePayment');
+
 Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');
 });

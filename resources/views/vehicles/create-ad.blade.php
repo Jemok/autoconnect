@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container">
+        @include('flash::message')
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -20,22 +21,28 @@
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Gold Package</h5>
-                                        <p class="card-text">Ksh 5000</p>
-                                        <p class="card-text">Priority Ad
-                                        <p class="card-text">Valid for 30 days</p>
-                                        <a href="#" class="btn btn-primary">Make Payment</a>
+                                        <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
+                                            {{ csrf_field() }}
+                                            <h5 class="card-title">Premium Package</h5>
+                                            <p class="card-text">Ksh 5000</p>
+                                            <p class="card-text">Priority Ad
+                                            <p class="card-text">Valid for 30 days</p>
+                                            <button type="submit" class="btn btn-primary">Make Payment</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">Standard Package</h5>
-                                        <p class="card-text">Ksh 2900</p>
-                                        <p class="card-text">Standard Ad</p>
-                                        <p class="card-text">Valid for 30 days</p>
-                                        <a href="#" class="btn btn-primary">Make Payment</a>
+                                        <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
+                                            {{ csrf_field() }}
+                                            <h5 class="card-title">Standard Package</h5>
+                                            <p class="card-text">Ksh 2900</p>
+                                            <p class="card-text">Standard Ad</p>
+                                            <p class="card-text">Valid for 30 days</p>
+                                            <a href="#" class="btn btn-primary">Make Payment</a>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -49,4 +56,9 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
+    @endpush
 @endsection

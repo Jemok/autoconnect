@@ -46,4 +46,9 @@ class VehicleDetail extends Model
 
         return $this->hasOne(VehicleContact::class);
     }
+
+    public function vehicle_payment(){
+
+        return $this->hasOne(VehiclePayment::class);
+    }
 }

@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Your Ad has been published</div>
+                    <div class="card-header">Your Ad has been created successfully</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -13,14 +13,13 @@
                             </div>
                         @endif
 
-                        Process below
-
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h5 class="card-title">View Live Add Now</h5>
-                                        <a href="#" class="btn btn-primary">Proceed</a>
+                                        <p class="text-center">
+                                            You will receive an email when your ad has been published
+                                        </p>
                                     </div>
                                 </div>
                             </div>

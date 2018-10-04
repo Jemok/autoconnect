@@ -128,7 +128,6 @@ class VehicleController extends Controller
         $vehicleContactRepository->store($request->all(), $vehicle_detail, $vehicleId);
 
         return redirect()->route('createAd', $vehicleId);
-
     }
 
 }
