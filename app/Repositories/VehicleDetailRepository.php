@@ -43,10 +43,10 @@ class VehicleDetailRepository
         $duty_model = $dutyRepository->showFromSlug($duty);
         $price = $data['price'];
         $negotiable_price = array_key_exists('negotiable_price', $data) ? $data['negotiable_price'] : 'not_allowed';
-        $fuel_type = $data['fuel_type'];
-        $engine_size = $data['engine_size'];
-        $interior = $data['interior'];
-        $colour_type = $data['colour_type'];
+        $fuel_type = array_key_exists('fuel_type', $data) ? $data['fuel_type'] : null;
+        $engine_size = array_key_exists('engine_size', $data) ? $data['engine_size'] : null;
+        $interior = array_key_exists('interior', $data) ? $data['interior'] : null;
+        $colour_type = array_key_exists('colour_type', $data) ? $data['colour_type'] : 'other';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = $data['description'];
 
