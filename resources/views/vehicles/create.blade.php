@@ -309,4 +309,23 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+        <script>
+            jQuery(document).ready(function($){
+                $('#car_make').change(function(){
+                    $.get("{{ url('/api/dropdown')}}",
+                        { option: $(this).val() },
+                        function(data) {
+                            var model = $('#car_model');
+                            model.empty();
+
+                            $.each(data, function(index, element) {
+                                model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
+                            });
+                        }
+                        );
+                });
+            });
+        </script>
+    @endpush
 @endsection

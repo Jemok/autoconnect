@@ -20,7 +20,7 @@ class CarMake extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    protected function car_model(){
+    protected function car_models(){
 
         return $this->hasMany(CarModel::class);
     }

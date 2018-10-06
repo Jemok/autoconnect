@@ -21,3 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/images/upload', 'VehicleImagesController@upload');
 
 Route::post('/images/upload/others/{vehicleId}', 'VehicleImagesController@uploadOthers');
+
+Route::get('/dropdown', function(Request $request){
+
+    $car_make = $request->get('option');
+
+    $make = \App\CarMake::where('slug', $car_make)->firstOrFail();
+
+    return \App\CarModel::where('car_make_id', $make->id)->get(['id','name', 'description', 'slug']);
+});
