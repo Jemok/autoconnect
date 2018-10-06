@@ -17,6 +17,7 @@ use App\Repositories\TransmissionTypeRepository;
 use App\Repositories\VehicleContactRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleFeaturesRepository;
+use App\Repositories\VehicleImagesRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -100,9 +101,19 @@ class VehicleController extends Controller
     }
 
     public function createContacts($vehicleId,
-                                   AreasRepository $areasRepository){
+                                   AreasRepository $areasRepository,
+                                   VehicleImagesRepository $vehicleImagesRepository){
 
         $areas = $areasRepository->index();
+
+        $result = $vehicleImagesRepository->checkIfImagesExist($vehicleId);
+
+        if($result == false){
+
+            flash()->overlay('Please Upload all the required images to continue', 'Warning: Upload IMages');
+
+            return redirect()->back();
+        }
 
         return view('vehicles.create-contacts', compact('vehicleId', 'areas'));
     }

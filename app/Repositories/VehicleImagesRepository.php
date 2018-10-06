@@ -38,4 +38,47 @@ class VehicleImagesRepository
 
         return $vehicleDetail->vehicle_images()->save($vehicleImage);
     }
+
+    public function checkIfImagesExist($vehicleId){
+
+        if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+            ->where('image_area', 'frontImage')
+            ->exists()){
+            if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+                ->where('image_area', 'backImage')
+                ->exists()){
+                if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+                    ->where('image_area', 'leftImage')
+                    ->exists()){
+                    if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+                        ->where('image_area', 'rightImage')
+                        ->exists()){
+                        if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+                            ->where('image_area', 'interiorImage')
+                            ->exists()){
+                            if(VehicleImage::where('vehicle_detail_id', $vehicleId)
+                                ->where('image_area', 'dashboardImage')
+                                ->exists()){
+                                return true;
+                            }else{
+                                return false;
+                            }
+                        }else{
+                            return false;
+                        }
+                    }else{
+                        return false;
+                    }
+
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+
+    }
 }

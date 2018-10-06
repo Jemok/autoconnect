@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="container">
+        @include('flash::message')
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
@@ -109,5 +110,8 @@
     @push('scripts')
     <script src="{{ asset('js/dropzone.js') }}"></script>
     <script src="{{ asset('js/file-uploader.js') }}"></script>
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
     @endpush
 @endsection
