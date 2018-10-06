@@ -319,6 +319,8 @@
                             var model = $('#car_model');
                             model.empty();
 
+                            model.append("<option selected disabled>Choose...</option>");
+
                             $.each(data, function(index, element) {
                                 model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
                             });
