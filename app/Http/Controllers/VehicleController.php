@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\BodyType;
 use App\Http\Requests\CarDetailsRequest;
+use App\Http\Requests\CreateVehicleContactRequest;
 use App\Repositories\AreasRepository;
 use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarConditionRepository;
@@ -128,7 +129,7 @@ class VehicleController extends Controller
         return view('vehicles.publish-ad');
     }
 
-    public function storeVehicleContacts(Request $request,
+    public function storeVehicleContacts(CreateVehicleContactRequest $request,
                                          VehicleContactRepository $vehicleContactRepository,
                                          VehicleDetailRepository $vehicleDetailRepository,
                                          $vehicleId
