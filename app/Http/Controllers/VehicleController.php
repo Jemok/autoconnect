@@ -103,9 +103,12 @@ class VehicleController extends Controller
 
     public function createContacts($vehicleId,
                                    AreasRepository $areasRepository,
-                                   VehicleImagesRepository $vehicleImagesRepository){
+                                   VehicleImagesRepository $vehicleImagesRepository,
+                                   VehicleDetailRepository $vehicleDetailRepository){
 
         $areas = $areasRepository->index();
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
         $result = $vehicleImagesRepository->checkIfImagesExist($vehicleId);
 
@@ -116,12 +119,15 @@ class VehicleController extends Controller
             return redirect()->back();
         }
 
-        return view('vehicles.create-contacts', compact('vehicleId', 'areas'));
+        return view('vehicles.create-contacts', compact('vehicleId', 'areas', 'vehicle_detail'));
     }
 
-    public function createAd($vehicleId){
+    public function createAd($vehicleId,
+                             VehicleDetailRepository $vehicleDetailRepository){
 
-        return view('vehicles.create-ad', compact('vehicleId'));
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
+
+        return view('vehicles.create-ad', compact('vehicleId', 'vehicle_detail'));
     }
 
     public function publishVehicleAd(){
