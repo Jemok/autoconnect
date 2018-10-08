@@ -25,12 +25,15 @@
                                             {{ csrf_field() }}
                                             <h5 class="card-title">Premium Package</h5>
                                             <p class="card-text">Ksh 5000</p>
-                                            <p class="card-text">Priority Ad
+                                            <p class="card-text">Priority Ad</p>
                                             <p class="card-text">Valid for 30 days</p>
                                             <div class="alert alert-primary" role="alert">
                                                 Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                 click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
                                             </div>
+                                            <p class="card-text">
+                                                <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
+                                            </p>
                                             <button type="submit" class="btn btn-primary">Make Payment</button>
                                         </form>
                                     </div>
@@ -49,6 +52,9 @@
                                                 Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                 click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
                                             </div>
+                                            <p class="card-text">
+                                                <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
+                                            </p>
                                             <button type="submit" class="btn btn-primary">Make Payment</button>
                                         </form>
                                     </div>

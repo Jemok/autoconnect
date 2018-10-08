@@ -20,6 +20,9 @@
                                         <p class="text-center">
                                             You will receive an email when your ad has been published
                                         </p>
+                                        <p class="text-center">
+                                            Thank you
+                                        </p>
                                     </div>
                                 </div>
                             </div>

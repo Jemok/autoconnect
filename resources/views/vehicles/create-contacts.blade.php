@@ -23,7 +23,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="name">Name*</label>
-                                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" placeholder="Name" id="name">
+                                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') != null ? old('name') : $vehicle_detail->vehicle_contact->name }}" placeholder="Name" id="name">
                                     @if($errors->has('name'))
                                         <small id="nameHelp" class="form-text text-danger">
                                             {{ $errors->first('name') }}
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col">
                                     <label for="inputState">Email*</label>
-                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" placeholder="Email">
+                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') != null ? old('email') : $vehicle_detail->vehicle_contact->email }}" placeholder="Email">
                                     @if($errors->has('email'))
                                         <small id="emailHelp" class="form-text text-danger">
                                             {{ $errors->first('email') }}
@@ -45,8 +45,7 @@
                                 <div class="col">
                                     <label for="inputState">Country Code*</label>
                                     <select name="country_code" id="inputState" class="form-control {{ $errors->has('country_code') ? 'is-invalid' : '' }}">
-                                        <option selected disabled>Choose...</option>
-                                        <option value="254">+254</option>
+                                        <option value="254" selected>+254</option>
                                     </select>
                                     @if($errors->has('country_code'))
                                         <small id="countryCodeHelp" class="form-text text-danger">
@@ -55,8 +54,11 @@
                                     @endif
                                 </div>
                                 <div class="col">
-                                    <label for="inputState">Phone Number*</label>
-                                    <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" placeholder="E.g 0712675071">
+                                    <label for="inputState">Phone Number*
+                                    </label>
+                                    <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') != null ? old('phone_number') : $vehicle_detail->vehicle_contact->phone_number }}" placeholder="E.g 0712675071">
+                                    <small id="emailHelp" class="form-text text-muted">Use your Mpesa number, will be used to make payment in the next step</small>
+
                                     @if($errors->has('phone_number'))
                                         <small id="phoneNumberHelp" class="form-text text-danger">
                                             {{ $errors->first('phone_number') }}
@@ -71,7 +73,17 @@
                                     <select name="area" id="inputState" class="form-control {{ $errors->has('area') ? 'is-invalid' : '' }}">
                                         <option selected disabled>Choose...</option>
                                         @foreach($areas as $area)
-                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                            @if(old('area') == $area->id)
+                                                <option selected="selected" value="{{ $area->id }}">{{ $area->name }}</option>
+                                            @elseif(!empty($vehicle_detail->vehicle_contact->area_id))
+                                                @if($vehicle_detail->vehicle_contact->area_id == $area->id)
+                                                    <option selected value="{{ $vehicle_detail->vehicle_contact->area_id }}">{{ $area->name  }}</option>
+                                                @else
+                                                    <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                                @endif
+                                            @else
+                                                <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                     @if($errors->has('area'))
