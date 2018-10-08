@@ -34,7 +34,7 @@
                                             <p class="card-text">
                                                 <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
                                             </p>
-                                            <button type="submit" class="btn btn-primary">Make Payment</button>
+                                            <button type="submit" class="btn btn-success">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
                                         </form>
                                     </div>
                                 </div>
@@ -55,7 +55,7 @@
                                             <p class="card-text">
                                                 <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
                                             </p>
-                                            <button type="submit" class="btn btn-primary">Make Payment</button>
+                                            <button type="submit" class="btn btn-success">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
                                         </form>
                                     </div>
                                 </div>
