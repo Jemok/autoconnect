@@ -23,7 +23,13 @@
                             <div class="form-row">
                                 <div class="col">
                                     <label for="name">Name*</label>
-                                    <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') != null ? old('name') : $vehicle_detail->vehicle_contact->name }}" placeholder="Name" id="name">
+                                    @if(old('name') != null)
+                                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Name" id="name">
+                                    @elseif(old('name') == null && isset($vehicle_detail->vehicle_contact->name))
+                                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ $vehicle_detail->vehicle_contact->name }}" placeholder="Name" id="name">
+                                    @else
+                                        <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Name" id="name">
+                                    @endif
                                     @if($errors->has('name'))
                                         <small id="nameHelp" class="form-text text-danger">
                                             {{ $errors->first('name') }}
@@ -32,7 +38,14 @@
                                 </div>
                                 <div class="col">
                                     <label for="inputState">Email*</label>
-                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') != null ? old('email') : $vehicle_detail->vehicle_contact->email }}" placeholder="Email">
+                                    @if(old('email') != null)
+                                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" id="email_old">
+                                    @elseif(old('name') == null && isset($vehicle_detail->vehicle_contact->email))
+                                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ $vehicle_detail->vehicle_contact->email }}" placeholder="Email" id="email">
+                                    @else
+                                        <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Email" id="email_real">
+                                    @endif
+
                                     @if($errors->has('email'))
                                         <small id="emailHelp" class="form-text text-danger">
                                             {{ $errors->first('email') }}
@@ -54,16 +67,20 @@
                                     @endif
                                 </div>
                                 <div class="col">
-                                    <label for="inputState">Phone Number*
-                                    </label>
-                                    <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') != null ? old('phone_number') : $vehicle_detail->vehicle_contact->phone_number }}" placeholder="E.g 0712675071">
-                                    <small id="emailHelp" class="form-text text-muted">Use your Mpesa number, will be used to make payment in the next step</small>
-
+                                    <label for="inputState">Phone Number*</label>
+                                    @if(old('phone_number') != null)
+                                        <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') }}" placeholder="Phone Number" id="phone_number_old">
+                                    @elseif(old('phone_number') == null && isset($vehicle_detail->vehicle_contact->phone_number))
+                                        <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ $vehicle_detail->vehicle_contact->phone_number }}" placeholder="Phone Number" id="phone_number">
+                                    @else
+                                        <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') }}" placeholder="Phone Number" id="phone_number_real">
+                                    @endif
                                     @if($errors->has('phone_number'))
                                         <small id="phoneNumberHelp" class="form-text text-danger">
                                             {{ $errors->first('phone_number') }}
                                         </small>
                                     @endif
+                                    <small id="emailHelp" class="form-text text-muted">Use your Mpesa number, will be used to make payment in the next step</small>
                                 </div>
                             </div>
 
