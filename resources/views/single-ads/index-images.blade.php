@@ -34,13 +34,15 @@
                                 </div>
                                 <div class="row">
                                     @foreach($vehicle_images as $vehicle_image)
-                                        <div class="col-md-6 col-lg-4 item" style="height: 150px; width: 210px; overflow: hidden; margin-bottom: 2%;">
-                                            <a class="lightbox" href="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}">
-                                                <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}">
-                                            </a>
-                                            <p>
-                                                {{ $vehicle_image->image_area }}
-                                            </p>
+                                        <div class="col-md-6 col-lg-4 item" style="height: 150px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid black 1px;">
+                                            <div class="row">
+                                                <a class="lightbox" href="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}">
+                                                    <p style="color: black;">
+                                                        {{ $vehicle_image->image_area }}
+                                                    </p>
+                                                    <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}">
+                                                </a>
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
