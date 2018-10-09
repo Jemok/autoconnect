@@ -20,7 +20,13 @@
                         @endif
                         - Images</div>
 
-                    <div class="row">
+                    <p>
+                    <h3 style="margin-left: 2%;" class="heading">
+                        Car Details
+                    </h3>
+                    </p>
+
+                    <div class="row" style="padding-left: 2%;">
                         <div class="col-md-3">
                             <p style="padding: 0; margin: 0;">
                                 Car Make : {{ $vehicle_detail->car_make->name }}
@@ -79,8 +85,6 @@
                         </div>
                         <div class="col-md-3">
 
-
-
                         </div>
                     </div>
 
@@ -95,7 +99,7 @@
                         <section class="gallery-block grid-gallery">
                             <div class="container">
                                 <div class="heading">
-                                    <h2>Image Gallery</h2>
+                                    <h2>Vehicle Gallery</h2>
                                 </div>
                                 <div class="row">
                                     @foreach($vehicle_images as $vehicle_image)
