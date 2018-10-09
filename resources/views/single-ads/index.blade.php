@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         @if (session('status'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-success" role="alert">indexImages
                                 {{ session('status') }}
                             </div>
                         @endif
@@ -28,6 +28,7 @@
                                 <th scope="col">Duty</th>
                                 <th scope="col">Price (KES)</th>
                                 <th scope="col">Negotiable Price</th>
+                                <th scope="col">Images</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,6 +50,11 @@
                                         @else
                                             Not Negotiable
                                         @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('indexSingleAdsImages', $single_ad->id) }}">
+                                            View Images
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

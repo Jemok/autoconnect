@@ -18,6 +18,7 @@ class VehicleImagesRepository
 
         if(VehicleImage::where('image_area', $imageArea)
             ->where('vehicle_detail_id', $vehicleId)
+            ->where('image_area', '!=', 'other')
             ->exists()){
 
             $vehicleImage = VehicleImage::where('image_area', $imageArea)
@@ -80,5 +81,10 @@ class VehicleImagesRepository
             return false;
         }
 
+    }
+
+    public function indexForVehicle($vehicleId){
+
+        return VehicleImage::where('vehicle_detail_id', $vehicleId)->get();
     }
 }

@@ -18,7 +18,7 @@ class VehicleImagesController extends Controller
 
         $imageName = $request->imageArea.time().'-'.$request->vehicleId.'.'.$extension;
 
-        $request->file((string) $request->keyIdentifier)->storeAs('images', $imageName);
+        $request->file((string) $request->keyIdentifier)->storeAs('images/cars', $imageName, 'public');
 
         $vehicleImagesRepository->store($vehicleDetail, $imageName, $request->imageArea, $request->vehicleId);
     }
@@ -33,9 +33,9 @@ class VehicleImagesController extends Controller
 
         $extension = $request->file('file')->extension();
 
-        $imageName = 'other'.time().'-'.$request->vehicleId.'.'.$extension;
+        $imageName = 'other'.time().rand(10, 100).'-'.$request->vehicleId.'.'.$extension;
 
-        $request->file('file')->storeAs('images', $imageName);
+        $request->file('file')->storeAs('images/cars', $imageName, 'public');
 
         $vehicleImagesRepository->store($vehicleDetail, $imageName, 'other', $vehicleId);
 
