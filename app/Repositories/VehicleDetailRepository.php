@@ -50,38 +50,38 @@ class VehicleDetailRepository
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = $data['description'];
 
-        $other_fearues = [
-            array_key_exists('air_conditioning', $data) ? $data['air_conditioning'] : null,
-            array_key_exists('air_bags', $data) ?  $data['air_bags'] : null,
-            array_key_exists('alloy_wheels', $data) ? $data['alloy_wheels'] : null,
-            array_key_exists('am_fm_radio', $data) ? $data['am_fm_radio'] : null,
-            array_key_exists('anti_lock_brakes', $data) ?  $data['anti_lock_brakes'] : null,
-            array_key_exists('armrests', $data) ? $data['armrests'] : null,
-            array_key_exists('bullbar', $data) ?  $data['bullbar'] : null,
-            array_key_exists('bulletproof', $data) ? $data['bulletproof'] : null,
-            array_key_exists('cd_player', $data) ? $data['cd_player'] : null,
-            array_key_exists('cup_holders', $data) ? $data['cup_holders'] :  null,
-            array_key_exists('electric_mirrors', $data) ? $data['electric_mirrors'] : null,
-            array_key_exists('electric_windows', $data) ? $data['electric_windows'] :  null,
-            array_key_exists('external_winch', $data) ? $data['external_winch'] :  null,
-            array_key_exists('fog_lights', $data) ? $data['fog_lights'] :  null,
-            array_key_exists('front_fog_lamps', $data) ? $data['front_fog_lamps'] : null,
-            array_key_exists('keyless_entry', $data) ? $data['keyless_entry'] :  null,
-            array_key_exists('power_steering', $data) ? $data['power_steering'] : null,
-            array_key_exists('rear_camera', $data) ? $data['rear_camera'] : null,
-            array_key_exists('roof_rack', $data) ? $data['roof_rack'] :  null,
-            array_key_exists('sidesteps', $data) ? $data['sidesteps'] :  null,
-            array_key_exists('spoilers', $data) ? $data['spoilers'] :  null,
-            array_key_exists('spotlight', $data) ? $data['spotlight'] :  null,
-            array_key_exists('sunroof', $data) ? $data['sunroof'] : null,
-            array_key_exists('thumbstart_ignition', $data) ? $data['thumbstart_ignition'] : null,
-            array_key_exists('tinted_windows', $data) ? $data['tinted_windows'] : null,
-            array_key_exists('traction_control', $data) ? $data['traction_control'] : null,
-            array_key_exists('turbo_charged', $data) ? $data['turbo_charged'] : null,
-            array_key_exists('wheel_locks', $data) ? $data['wheel_locks'] : null,
-            array_key_exists('winch', $data) ? $data['winch'] : null,
-            array_key_exists('xenon_lights', $data) ? $data['xenon_lights'] : null
-        ];
+        $other_features = json_encode([
+            'Air Conditioning' => array_key_exists('air_conditioning', $data) ? $data['air_conditioning'] : null,
+            'Air Bags' => array_key_exists('air_bags', $data) ?  $data['air_bags'] : null,
+            'Alloy Wheels' => array_key_exists('alloy_wheels', $data) ? $data['alloy_wheels'] : null,
+            'AM and FM Radio' => array_key_exists('am_fm_radio', $data) ? $data['am_fm_radio'] : null,
+            'Anti Lock Brakes' => array_key_exists('anti_lock_brakes', $data) ?  $data['anti_lock_brakes'] : null,
+            'Armrests' => array_key_exists('armrests', $data) ? $data['armrests'] : null,
+            'Bullbar' => array_key_exists('bullbar', $data) ?  $data['bullbar'] : null,
+            'Bulletproof' => array_key_exists('bulletproof', $data) ? $data['bulletproof'] : null,
+            'CD Player' => array_key_exists('cd_player', $data) ? $data['cd_player'] : null,
+            'Cup Holders' => array_key_exists('cup_holders', $data) ? $data['cup_holders'] :  null,
+            'Electric Mirrors' => array_key_exists('electric_mirrors', $data) ? $data['electric_mirrors'] : null,
+            'Electric Windows' => array_key_exists('electric_windows', $data) ? $data['electric_windows'] :  null,
+            'External Winch' => array_key_exists('external_winch', $data) ? $data['external_winch'] :  null,
+            'Fog Lights' => array_key_exists('fog_lights', $data) ? $data['fog_lights'] :  null,
+            'Front Fog Lamps' => array_key_exists('front_fog_lamps', $data) ? $data['front_fog_lamps'] : null,
+            'Keyless Entry' => array_key_exists('keyless_entry', $data) ? $data['keyless_entry'] :  null,
+            'Power Steering' => array_key_exists('power_steering', $data) ? $data['power_steering'] : null,
+            'Rear Camera' => array_key_exists('rear_camera', $data) ? $data['rear_camera'] : null,
+            'Roof Rack' => array_key_exists('roof_rack', $data) ? $data['roof_rack'] :  null,
+            'Side Steps' => array_key_exists('sidesteps', $data) ? $data['sidesteps'] :  null,
+            'Spoilers' => array_key_exists('spoilers', $data) ? $data['spoilers'] :  null,
+            'Spotlight' => array_key_exists('spotlight', $data) ? $data['spotlight'] :  null,
+            'Sunroof' => array_key_exists('sunroof', $data) ? $data['sunroof'] : null,
+            'Thubstart Ignition' => array_key_exists('thumbstart_ignition', $data) ? $data['thumbstart_ignition'] : null,
+            'Tinted Windows' => array_key_exists('tinted_windows', $data) ? $data['tinted_windows'] : null,
+            'Traction Control' => array_key_exists('traction_control', $data) ? $data['traction_control'] : null,
+            'Turbo Charged' => array_key_exists('turbo_charged', $data) ? $data['turbo_charged'] : null,
+            'Wheel Locks' => array_key_exists('wheel_locks', $data) ? $data['wheel_locks'] : null,
+            'Winch' => array_key_exists('winch', $data) ? $data['winch'] : null,
+            'Xenon Lights' => array_key_exists('xenon_lights', $data) ? $data['xenon_lights'] : null
+        ]);
 
         $vehicle_detail = new VehicleDetail();
 
@@ -100,7 +100,7 @@ class VehicleDetailRepository
         $vehicle_detail->interior = $interior;
         $vehicle_detail->colour_type_id = $colour_type_model->id;
         $vehicle_detail->description = $description;
-        $vehicle_detail->other_features = json_encode($other_fearues);
+        $vehicle_detail->other_features = $other_features;
 
         $vehicle_detail->save();
 

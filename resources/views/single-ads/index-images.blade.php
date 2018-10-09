@@ -27,7 +27,7 @@
                     </p>
 
                     <div class="row" style="padding-left: 2%;">
-                        <div class="col-md-3">
+                        <div class="col-md-3" style="padding-left: 2%;">
                             <p style="padding: 0; margin: 0;">
                                 Car Make : {{ $vehicle_detail->car_make->name }}
                             </p>
@@ -84,7 +84,32 @@
                             </p>
                         </div>
                         <div class="col-md-3">
+                            <p style="padding-left: 3%;">
+                                <a class="btn btn-outline-secondary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Other Features
+                                </a>
+                            </p>
+                        </div>
+                    </div>
 
+
+
+                    <div class="collapse" id="collapseExample">
+                        <div class="row col-md-12">
+                            @foreach($other_features as $key => $value)
+                                <div class="card col-md-3">
+                                    <div class="card-body">
+                                         <span class="alert alert-default" style="font-size: 12px;">
+                                             {{ $key }}
+                                             @if($value != null)
+                                                 <i class="fa fa-check text-success"></i>
+                                             @else
+                                                 <i class="fa fa-times text-danger"></i>
+                                             @endif
+                                         </span>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 

@@ -23,9 +23,12 @@ class SingleAdsController extends Controller
 
         $vehicle_images = $vehicleImagesRepository->indexForVehicle($vehicleId);
 
+        $other_features = json_decode($vehicle_detail->other_features, true);
+
         return view('single-ads.index-images', compact('vehicleId',
             'vehicle_detail',
-            'vehicle_images'));
+            'vehicle_images',
+            'other_features'));
 
     }
 }
