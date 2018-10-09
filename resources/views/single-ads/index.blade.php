@@ -52,8 +52,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('indexSingleAdsImages', $single_ad->id) }}">
-                                            View Images
+                                        <a class="btn btn-success btn-sm" href="{{ route('indexSingleAdsImages', $single_ad->id) }}">
+                                            All Details & Images
                                         </a>
                                     </td>
                                 </tr>
