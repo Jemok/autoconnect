@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="row">
                                     @foreach($vehicle_images as $vehicle_image)
-                                        <div class="col-md-6 col-lg-4 item" style="height: 150px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid black 1px;">
+                                        <div class="col-md-6 col-lg-4 item" style="height: 210px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid black 1px;">
                                             <div class="row">
                                                 <a class="lightbox" href="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}">
                                                     <p style="color: black;">
