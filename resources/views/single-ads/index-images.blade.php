@@ -20,6 +20,71 @@
                         @endif
                         - Images</div>
 
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p style="padding: 0; margin: 0;">
+                                Car Make : {{ $vehicle_detail->car_make->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Car Model : {{ $vehicle_detail->car_model->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Year : {{ $vehicle_detail->year }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Mileage : {{ $vehicle_detail->mileage }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Body Type : {{ $vehicle_detail->body_type->name }}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="padding: 0; margin: 0;">
+                                Transmission Type : {{ $vehicle_detail->transmission_type->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Car Condition : {{ $vehicle_detail->car_condition->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Duty : {{ $vehicle_detail->duty->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Price : KES {{ $vehicle_detail->price }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Negotiable Price :
+                                @if($vehicle_detail->negotiable_price == 'allowed')
+                                    Negotiable
+                                @else
+                                    Not Negotiable
+                                @endif
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p style="padding: 0; margin: 0;">
+                                Fuel Type: {{ $vehicle_detail->fuel_type }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Engine Size: {{ $vehicle_detail->engine_size }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Interior: {{ $vehicle_detail->interior }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Colour Type: {{ $vehicle_detail->colour_type->name }}
+                            </p>
+                            <p style="padding: 0; margin: 0;">
+                                Description : {{ $vehicle_detail->description }}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+
+
+
+                        </div>
+                    </div>
+
+
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">indexImages
