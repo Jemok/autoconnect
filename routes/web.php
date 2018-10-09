@@ -40,7 +40,7 @@ Route::post('/vehicles', 'VehicleController@store')->name('storeVehicle');
 
 Route::get('/single-ads', 'SingleAdsController@index')->name('indexSingleAds');
 
-Route::get('/single-ads/index/images/{vehicleId}', 'SingleAdsController@indexImages')->name('indexSingleAdsImages');
+Route::get('/single-ads/index/car-details/{vehicleId}', 'SingleAdsController@indexImages')->name('indexSingleAdsImages');
 
 Route::post('/vehicles/store-vehicle-contacts/{vehicleId}', 'VehicleController@storeVehicleContacts')->name('storeVehicleContacts');
 
