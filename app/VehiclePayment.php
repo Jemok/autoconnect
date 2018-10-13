@@ -11,4 +11,12 @@ class VehiclePayment extends Model
     public function vehicle_detail(){
         return $this->belongsTo(VehicleDetail::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function ad_status(){
+
+        return $this->hasOne(AdStatus::class);
+    }
 }

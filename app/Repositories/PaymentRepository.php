@@ -37,6 +37,10 @@ class PaymentRepository
         $vehiclePayment->package = $package;
 
         return $vehicleDetail->vehicle_payment()->save($vehiclePayment);
+    }
 
+    public function indexForVehicle($vehicleId){
+
+        return VehiclePayment::where('vehicle_detail_id', $vehicleId)->latest()->get();
     }
 }

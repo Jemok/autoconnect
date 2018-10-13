@@ -50,6 +50,8 @@ Route::post('/vehicles/set-as-verified/{vehicleId}', 'VehicleVerificationControl
 
 Route::post('/vehicles/set-as-not-verified/{vehicleId}', 'VehicleVerificationController@setAsNotVerified')->name('setVehicleAsNotVerified');
 
+Route::get('/vehicles/manage-ad/{vehicleId}', 'AdsManagementController@manageVehicleAd')->name('manageVehicleAd');
+
 
 Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');

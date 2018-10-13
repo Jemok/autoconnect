@@ -19,7 +19,6 @@
                         @if(isset($vehicle_detail->vehicle_contact->phone_number))
                             - {{ $vehicle_detail->vehicle_contact->phone_number }} )
                         @endif
-                        - Images
 
                         @if(isset($vehicle_detail->vehicle_verification->status))
                             @if($vehicle_detail->vehicle_verification->status == 'not_verified')
@@ -48,9 +47,9 @@
                             </form>
                         @endif
 
-                        <button class="btn btn-sm btn-success float-right">
-                            Ad Payments
-                        </button>
+                        <a href="{{ route('manageVehicleAd', $vehicle_detail->id) }}" class="btn btn-sm btn-success float-right">
+                            Ad Management
+                        </a>
 
                     </div>
 

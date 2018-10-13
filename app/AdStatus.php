@@ -1,0 +1,20 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class AdStatus extends Model
+{
+    protected $table = 'ad_statuses';
+
+    public function vehicle_payment(){
+
+        return $this->belongsTo(VehiclePayment::class);
+    }
+
+    public function vehicle_detail(){
+
+        return $this->belongsTo(VehicleDetail::class);
+    }
+}

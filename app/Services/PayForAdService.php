@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\VehicleDetail;
+use App\VehiclePayment;
 use GuzzleHttp\Client;
 
 /**
@@ -26,6 +27,7 @@ class PayForAdService
      * @return array
      */
     public function handle(VehicleDetail $vehicleDetail,
+                           VehiclePayment $vehiclePayment,
                            $phone_number,
                            $amount,
                            $name)
@@ -53,7 +55,7 @@ class PayForAdService
             'body' => json_encode([
                 "organizationId" => env('APP_ORGANIZATION_ID'),
                 "collectionId" => env('APP_COLLECTION_ID'),
-                "externalIdentifier" => $vehicleDetail->id,
+                "externalIdentifier" => $vehiclePayment->id,
                 "phoneNumber"  => $phone_number,
                 "sms" => "off",
                 "name" => $name,
@@ -74,7 +76,7 @@ class PayForAdService
                 //Fill in the request parameters with valid values
                 'organizationId' => env('APP_ORGANIZATION_ID'),
                 'resourceIdentifier' => $linked['accountNumber'],
-                'externalIdentifier' => $vehicleDetail->id,
+                'externalIdentifier' => $vehiclePayment->id,
                 'phoneNumber' => $phone_number,
                 'amount'      => $amount,
                 'callBackUrl' => env('APP_URL').'api/payment/results'
