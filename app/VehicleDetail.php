@@ -55,4 +55,9 @@ class VehicleDetail extends Model
     public function colour_type(){
         return $this->belongsTo(ColourType::class);
     }
+
+    public function vehicle_verification(){
+
+        return $this->hasOne(VehicleVerification::class);
+    }
 }

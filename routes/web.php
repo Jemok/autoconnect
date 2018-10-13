@@ -46,6 +46,11 @@ Route::post('/vehicles/store-vehicle-contacts/{vehicleId}', 'VehicleController@s
 
 Route::post('/vehicles/make-payment/{vehicleId}/{paymentType}', 'PaymentController@makePayment')->name('makePayment');
 
+Route::post('/vehicles/set-as-verified/{vehicleId}', 'VehicleVerificationController@setAsVerified')->name('setVehicleAsVerified');
+
+Route::post('/vehicles/set-as-not-verified/{vehicleId}', 'VehicleVerificationController@setAsNotVerified')->name('setVehicleAsNotVerified');
+
+
 Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');
 });

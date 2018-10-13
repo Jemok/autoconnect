@@ -19,6 +19,7 @@ use App\Repositories\VehicleContactRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleImagesRepository;
+use App\Repositories\VehicleVerificationsRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -81,7 +82,8 @@ class VehicleController extends Controller
     }
 
     public function store(CarDetailsRequest $carDetailsRequest,
-                          VehicleDetailRepository $vehicleDetailRepository){
+                          VehicleDetailRepository $vehicleDetailRepository,
+                          VehicleVerificationsRepository $vehicleVerificationsRepository){
 
         $vehicle_detail = $vehicleDetailRepository->store($carDetailsRequest->all(),
             new CarMakeRepository(),
@@ -91,6 +93,9 @@ class VehicleController extends Controller
             new CarConditionRepository(),
             new DutyRepository(),
             new ColourTypeRepository());
+
+
+        $vehicleVerificationsRepository->store($vehicle_detail, 'not_verified');
 
         return redirect()->route('createVehiclePictures',  $vehicle_detail->id);
     }

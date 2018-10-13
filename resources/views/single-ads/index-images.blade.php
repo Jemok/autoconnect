@@ -5,6 +5,7 @@
 @endsection
 @section('content')
     <div class="container">
+        @include('flash::message')
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -18,7 +19,40 @@
                         @if(isset($vehicle_detail->vehicle_contact->phone_number))
                             - {{ $vehicle_detail->vehicle_contact->phone_number }} )
                         @endif
-                        - Images</div>
+                        - Images
+
+                        @if(isset($vehicle_detail->vehicle_verification->status))
+                            @if($vehicle_detail->vehicle_verification->status == 'not_verified')
+                                <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
+                                    {{ csrf_field() }}
+
+                                    <button type="submit" class="btn btn-sm btn-success float-right">
+                                        Set as Verified
+                                    </button>
+                                </form>
+                            @elseif($vehicle_detail->vehicle_verification->status == 'verified')
+                                <form action="{{ route('setVehicleAsNotVerified', $vehicle_detail->id) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    <button class="btn btn-sm btn-danger float-right">
+                                        Set as Not Verified
+                                    </button>
+                                </form>
+                            @endif
+                        @else
+                            <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
+                                {{ csrf_field() }}
+
+                                <button type="submit" class="btn btn-sm btn-success float-right">
+                                    Set as Verified
+                                </button>
+                            </form>
+                        @endif
+
+                        <button class="btn btn-sm btn-success float-right">
+                            Ad Payments
+                        </button>
+
+                    </div>
 
                     <p>
                     <h3 style="margin-left: 2%;" class="heading">
@@ -151,6 +185,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script>
         baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
+        $('#flash-overlay-modal').modal();
     </script>
     @endpush
 @endsection
