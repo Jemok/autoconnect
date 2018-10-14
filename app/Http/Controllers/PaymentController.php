@@ -7,6 +7,7 @@ use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Services\PayForAdService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -39,7 +40,6 @@ class PaymentController extends Controller
     public function processPayment(Request $request,
                                    PaymentRepository $paymentRepository,
                                    VehicleDetailRepository $vehicleDetailRepository){
-
         $vehiclePaymentId = $request->externalIdentifier;
         $paymentStatus = $request->status;
         $amount = $request->transactedAmount;
@@ -54,7 +54,7 @@ class PaymentController extends Controller
 
         $vehicle = $vehicle_detail->car_make->name.' '.$vehicle_detail->car_model->name;
 
-        if($paymentStatus == 'Completed'){
+        if($paymentStatus == 'success'){
 
             $paymentRepository->setAsPaid($vehicle_payment);
 
