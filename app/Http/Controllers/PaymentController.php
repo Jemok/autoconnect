@@ -24,9 +24,9 @@ class PaymentController extends Controller
         );
 
         if($paymentType == 'standard'){
-            $amount = 2900;
+            $amount = 5;
         }elseif ($paymentType == 'premium'){
-            $amount = 5000;
+            $amount = 5;
         }
 
         $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
