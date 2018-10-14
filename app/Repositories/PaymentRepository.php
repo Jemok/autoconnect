@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\MpesaPaymentResult;
 use App\VehicleDetail;
 use App\VehiclePayment;
 
@@ -80,5 +81,28 @@ class PaymentRepository
         }
 
         return false;
+    }
+
+    public function storePaymentResult(array $data,
+                                       $vehicleDetailId,
+                                       $vehiclePaymentId){
+
+        $mpesaPaymentResult = new MpesaPaymentResult();
+
+        $mpesaPaymentResult->vehicle_detail_id = $vehicleDetailId;
+        $mpesaPaymentResult->vehicle_payment_id = $vehiclePaymentId;
+        $mpesaPaymentResult->transacted_amount = $data['transactedAmount'];
+        $mpesaPaymentResult->transaction_cost = $data['transactionCost'];
+        $mpesaPaymentResult->actual_amount = $data['actualAmount'];
+        $mpesaPaymentResult->payment_status = $data['status'];
+        $mpesaPaymentResult->receipt_number = $data['receiptNumber'];
+        $mpesaPaymentResult->transaction_date = $data['transactionDate'];
+        $mpesaPaymentResult->phone_number = $data['phoneNumber'];
+        $mpesaPaymentResult->account_number = $data['accountNumber'];
+        $mpesaPaymentResult->payment_id = $data['paymentId'];
+
+        $mpesaPaymentResult->save();
+
+        return $mpesaPaymentResult;
     }
 }

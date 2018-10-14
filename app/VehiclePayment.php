@@ -19,4 +19,12 @@ class VehiclePayment extends Model
 
         return $this->hasOne(AdStatus::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mpesa_payment_result(){
+
+        return $this->hasOne(MpesaPaymentResult::class);
+    }
 }

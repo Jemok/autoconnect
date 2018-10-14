@@ -60,4 +60,12 @@ class VehicleDetail extends Model
 
         return $this->hasOne(VehicleVerification::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function mpesa_payment_result(){
+
+        return $this->hasOne(MpesaPaymentResult::class);
+    }
 }

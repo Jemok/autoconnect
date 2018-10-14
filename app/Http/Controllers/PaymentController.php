@@ -40,13 +40,15 @@ class PaymentController extends Controller
                                    PaymentRepository $paymentRepository,
                                    VehicleDetailRepository $vehicleDetailRepository){
 
-        $vehiclePaymentId = $request->thirdPartyIdentifier;
-        $paymentStatus = $request->paymentStatus;
+        $vehiclePaymentId = $request->externalIdentifier;
+        $paymentStatus = $request->status;
         $amount = $request->transactedAmount;
 
         $vehicle_payment = $paymentRepository->show($vehiclePaymentId);
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicle_payment->vehicle_detail_id);
+
+        $paymentRepository->storePaymentResult($request->all(), $vehicle_detail->id, $vehicle_payment->id);
 
         $vehicle_contact = $vehicle_detail->vehicle_contact;
 
