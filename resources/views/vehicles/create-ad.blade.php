@@ -24,7 +24,7 @@
                                         <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
                                             {{ csrf_field() }}
                                             <h5 class="card-title">Premium Package</h5>
-                                            <p class="card-text">Ksh 5000</p>
+                                            <p class="card-text">Ksh 5</p>
                                             <p class="card-text">Priority Ad</p>
                                             <p class="card-text">Valid for 30 days</p>
                                             <div class="alert alert-primary" role="alert">
@@ -45,7 +45,7 @@
                                         <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
                                             {{ csrf_field() }}
                                             <h5 class="card-title">Standard Package</h5>
-                                            <p class="card-text">Ksh 2900</p>
+                                            <p class="card-text">Ksh 5</p>
                                             <p class="card-text">Standard Ad</p>
                                             <p class="card-text">Valid for 30 days</p>
                                             <div class="alert alert-primary" role="alert">
