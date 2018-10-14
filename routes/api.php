@@ -30,3 +30,5 @@ Route::get('/dropdown', function(Request $request){
 
     return \App\CarModel::where('car_make_id', $make->id)->get(['id','name', 'description', 'slug']);
 });
+
+Route::post('/payment/results', 'PaymentController@processPayment')->name('processPayment');

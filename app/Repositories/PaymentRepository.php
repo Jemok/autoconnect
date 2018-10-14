@@ -43,4 +43,42 @@ class PaymentRepository
 
         return VehiclePayment::where('vehicle_detail_id', $vehicleId)->latest()->get();
     }
+
+    /**
+     * @param $vehiclePaymentId
+     * @return mixed
+     */
+    public function show($vehiclePaymentId){
+
+        return VehiclePayment::where('id', $vehiclePaymentId)->firstOrFail();
+    }
+
+    /**
+     * @param VehiclePayment $vehiclePayment
+     * @return VehiclePayment
+     */
+    public function setAsPaid(VehiclePayment $vehiclePayment){
+
+        $vehiclePayment->status = 'paid';
+
+        $vehiclePayment->save();
+
+        return $vehiclePayment;
+    }
+
+    /**
+     * @param $vehicleDetailId
+     * @return bool
+     */
+    public function checkAtLeastOnePayment($vehicleDetailId){
+
+        if(VehiclePayment::where('vehicle_detail_id', $vehicleDetailId)
+            ->where('status', 'paid')
+            ->exists()){
+
+            return true;
+        }
+
+        return false;
+    }
 }

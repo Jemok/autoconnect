@@ -47,7 +47,7 @@
                             </form>
                         @endif
 
-                        <a href="{{ route('manageVehicleAd', $vehicle_detail->id) }}" class="btn btn-sm btn-success float-right">
+                        <a href="{{ route('indexSingleAdsImages', $vehicle_detail->id) }}" class="btn btn-sm btn-success float-right">
                             Vehicle Management
                         </a>
 
@@ -69,52 +69,61 @@
                             <th scope="col">Ad Status</th>
                             <th scope="col">Start</th>
                             <th scope="col">Stop</th>
+                            <th scope="col">Manage</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($vehicle_payments as $vehicle_payment)
-                        <tr>
-                            <th scope="row">{{ $vehicle_payment->id }}</th>
-                            <td>
-                                @if($vehicle_payment->package == 'standard')
-                                    Standard
-                                @elseif($vehicle_payment->package == 'premium')
-                                    Premium
-                                @endif
-                            </td>
-                            <td>
-                                @if($vehicle_payment->status == 'paid')
-                                    Paid
-                                @elseif($vehicle_payment->status == 'not_paid')
-                                    Not Paid
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($vehicle_payment->ad_status->status))
-                                    @if($vehicle_payment->ad_status->status == 'active')
-                                        Active
-                                    @elseif($vehicle_payment->ad_status->status == 'inactive')
-                                        Inactive
+                            <tr>
+                                <th scope="row">{{ $vehicle_payment->id }}</th>
+                                <td>
+                                    @if($vehicle_payment->package == 'standard')
+                                        Standard
+                                    @elseif($vehicle_payment->package == 'premium')
+                                        Premium
                                     @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($vehicle_payment->ad_status->start))
-                                    {{ $vehicle_payment->ad_status->start }}
-                                @else
-                                   N/A
-                                @endif
-                            </td>
-                            <td>
-                                @if(isset($vehicle_payment->ad_status->stop))
-                                    {{ $vehicle_payment->ad_status->stop }}
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    @if($vehicle_payment->status == 'paid')
+                                        Paid
+                                    @elseif($vehicle_payment->status == 'not_paid')
+                                        Not Paid
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(isset($vehicle_payment->ad_status->status))
+                                        @if($vehicle_payment->ad_status->status == 'active')
+                                            Active
+                                        @elseif($vehicle_payment->ad_status->status == 'inactive')
+                                            Inactive
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(isset($vehicle_payment->ad_status->start))
+                                        {{ $vehicle_payment->ad_status->start }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(isset($vehicle_payment->ad_status->stop))
+                                        {{ $vehicle_payment->ad_status->stop }}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(!isset($vehicle_payment->ad_status->status) && $vehicle_detail->vehicle_verification->status == 'verified')
+                                        <form action="{{ route('activateAd', [$vehicle_detail->id, $vehicle_payment->id]) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <button type="submit" class="btn btn-sm btn-success">Activate</button>
+                                        </form>
+                                    @endif
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

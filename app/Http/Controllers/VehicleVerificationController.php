@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Notifications\SetAsNotVerifiedNotification;
 use App\Notifications\SetAsVerifiedNotification;
+use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleVerificationsRepository;
 use Illuminate\Http\Request;
@@ -12,24 +13,33 @@ class VehicleVerificationController extends Controller
 {
     public function setAsVerified($vehicleId,
                                   VehicleDetailRepository $vehicleDetailRepository,
-                                  VehicleVerificationsRepository $vehicleVerificationsRepository){
+                                  VehicleVerificationsRepository $vehicleVerificationsRepository,
+                                  PaymentRepository $paymentRepository){
 
         $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
 
-        $vehicleVerificationsRepository->store($vehicleDetail, 'verified');
+        $checkPayment = $paymentRepository->checkAtLeastOnePayment($vehicleId);
 
-        $contact = $vehicleDetail->vehicle_contact;
+        if($checkPayment){
+            $vehicleVerificationsRepository->store($vehicleDetail, 'verified');
 
-        $contact->notify(new SetAsVerifiedNotification($vehicleDetail, $contact));
+            $contact = $vehicleDetail->vehicle_contact;
 
-        flash()->overlay('The Vehicle Ad has been Verified', 'Success');
+            $contact->notify(new SetAsVerifiedNotification($vehicleDetail, $contact));
+
+            flash()->overlay('The Vehicle Ad has been Verified', 'Success');
+
+            return redirect()->back();
+        }
+
+        flash()->overlay('A payment has not been made for this Ad', 'Payment Not Made');
 
         return redirect()->back();
     }
 
     public function setAsNotVerified($vehicleId,
-                                  VehicleDetailRepository $vehicleDetailRepository,
-                                  VehicleVerificationsRepository $vehicleVerificationsRepository){
+                                     VehicleDetailRepository $vehicleDetailRepository,
+                                     VehicleVerificationsRepository $vehicleVerificationsRepository){
 
         $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
 
