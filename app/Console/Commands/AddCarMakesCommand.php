@@ -1806,6 +1806,61 @@ class AddCarMakesCommand extends Command
                 'slug' => 'peugeot',
                 'description' => 'PEUGEOT',
                 'models' => [
+                    [
+                        'name' => '206',
+                        'slug' => '206',
+                        'description' => '206'
+                    ],
+                    [
+                        'name' => '207',
+                        'slug' => '207',
+                        'description' => '207'
+                    ],
+                    [
+                        'name' => '208',
+                        'slug' => '208',
+                        'description' => '208'
+                    ],
+                    [
+                        'name' => '3008',
+                        'slug' => '3008',
+                        'description' => '3008'
+                    ],
+                    [
+                        'name' => '3008 Crossover',
+                        'slug' => '3008_crossover',
+                        'description' => '3008 Crossover'
+                    ],
+                    [
+                        'name' => '306',
+                        'slug' => '306',
+                        'description' => '306'
+                    ],
+                    [
+                        'name' => '307',
+                        'slug' => '307',
+                        'description' => '307'
+                    ],
+                    [
+                        'name' => '308',
+                        'slug' => '308',
+                        'description' => '308'
+                    ],
+                    [
+                        'name' => '406',
+                        'slug' => '406',
+                        'description' => '406'
+                    ],
+                    [
+                        'name' => '504',
+                        'slug' => '504',
+                        'description' => '504'
+                    ],
+                    [
+                        'name' => 'Boxer',
+                        'slug' => 'boxer',
+                        'description' => 'Boxer'
+                    ]
 
                 ]
             ],
@@ -1814,7 +1869,21 @@ class AddCarMakesCommand extends Command
                 'slug' => 'porsche',
                 'description' => 'PORSCHE',
                 'models' => [
-
+                    [
+                        'name' => 'Cayenne',
+                        'slug' => 'cayenne',
+                        'description' => 'Cayenne'
+                    ],
+                    [
+                        'name' => 'Macan',
+                        'slug' => 'macan',
+                        'description' => 'Macan'
+                    ],
+                    [
+                        'name' => 'Panamira',
+                        'slug' => 'panamira',
+                        'description' => 'Panamira'
+                    ]
                 ]
             ],
             [
@@ -1822,7 +1891,16 @@ class AddCarMakesCommand extends Command
                 'slug' => 'renault',
                 'description' => 'RENAULT',
                 'models' => [
-
+                    [
+                        'name' => 'Magane',
+                        'slug' => 'magane',
+                        'description' => 'Magane'
+                    ],
+                    [
+                        'name' => 'Premium',
+                        'slug' => 'premium',
+                        'description' => 'Premium'
+                    ]
                 ]
             ],
             [
@@ -1830,7 +1908,11 @@ class AddCarMakesCommand extends Command
                 'slug' => 'rolls_royce',
                 'description' => 'ROLLS ROYCE',
                 'models' => [
-
+                    [
+                        'name' => 'Phantom',
+                        'slug' => 'phantom',
+                        'description' => 'Phantom'
+                    ]
                 ]
             ],
             [
@@ -1838,7 +1920,11 @@ class AddCarMakesCommand extends Command
                 'slug' => 'royal',
                 'description' => 'ROYAL',
                 'models' => [
-
+                    [
+                        'name' => 'Enfield',
+                        'slug' => 'enfield',
+                        'description' => 'Enfield'
+                    ]
                 ]
             ],
             [
@@ -1846,7 +1932,76 @@ class AddCarMakesCommand extends Command
                 'slug' => 'subaru',
                 'description' => 'SUBARU',
                 'models' => [
-
+                    [
+                        'name' => '1.8',
+                        'slug' => '1.8',
+                        'description' => '1.8'
+                    ],
+                    [
+                        'name' => 'Dex',
+                        'slug' => 'dex',
+                        'description' => 'Dex'
+                    ],
+                    [
+                        'name' => 'Exiga',
+                        'slug' => 'exiga',
+                        'description' => 'Exiga'
+                    ],
+                    [
+                        'name' => 'Forester',
+                        'slug' => 'forester',
+                        'description' => 'Forester'
+                    ],
+                    [
+                        'name' => 'Impreza',
+                        'slug' => 'impreza',
+                        'description' => 'Impreza'
+                    ],
+                    [
+                        'name' => 'Legacy',
+                        'slug' => 'legacy',
+                        'description' => 'Legacy'
+                    ],
+                    [
+                        'name' => 'Leon',
+                        'slug' => 'leon',
+                        'description' => 'Leon'
+                    ],
+                    [
+                        'name' => 'Levory',
+                        'slug' => 'levory',
+                        'description' => 'Levory'
+                    ],
+                    [
+                        'name' => 'Outback',
+                        'slug' => 'outback',
+                        'description' => 'Outback',
+                    ],
+                    [
+                        'name' => 'Pleo',
+                        'slug' => 'pleo',
+                        'description' => 'Pleo'
+                    ],
+                    [
+                        'name' => 'Stella',
+                        'slug' => 'stella',
+                        'description' => 'Stella'
+                    ],
+                    [
+                        'name' => 'Trezia',
+                        'slug' => 'trezia',
+                        'description' => 'Trezia'
+                    ],
+                    [
+                        'name' => 'WRX STI',
+                        'slug' => 'wrx_sti',
+                        'description' => 'WRX STI'
+                    ],
+                    [
+                        'name' => 'UX',
+                        'slug' => 'ux',
+                        'description' => 'UX'
+                    ]
                 ]
             ],
             [
@@ -1854,7 +2009,96 @@ class AddCarMakesCommand extends Command
                 'slug' => 'suzuki',
                 'description' => 'SUZUKI',
                 'models' => [
-
+                    [
+                        'name' => 'Alto',
+                        'slug' => 'alto',
+                        'description' => 'Alto'
+                    ],
+                    [
+                        'name' => 'Carry',
+                        'slug' => 'carry',
+                        'description' => 'Carry'
+                    ],
+                    [
+                        'name' => 'Escudo',
+                        'slug' => 'escudo',
+                        'description' => 'Escudo'
+                    ],
+                    [
+                        'name' => 'Every',
+                        'slug' => 'every',
+                        'description' => 'EVery'
+                    ],
+                    [
+                        'name' => 'Grand',
+                        'slug' => 'grand',
+                        'description' => 'Grand'
+                    ],
+                    [
+                        'name' => 'Grand Uitara',
+                        'slug' => 'grand_uitara',
+                        'description' => 'Grand Uitara'
+                    ],
+                    [
+                        'name' => 'Landy',
+                        'slug' => 'landy',
+                        'description' => 'Landy'
+                    ],
+                    [
+                        'name' => 'Lapin',
+                        'slug' => 'lapin',
+                        'description' => 'Lapin'
+                    ],
+                    [
+                        'name' => 'Maruti',
+                        'slug' => 'maruti',
+                        'description' => 'Maruti'
+                    ],
+                    [
+                        'name' => 'Maruti Omni',
+                        'slug' => 'maruti_omni',
+                        'description' => 'Maruti Omni'
+                    ],
+                    [
+                        'name' => 'Sierra',
+                        'slug' => 'sierra',
+                        'description' => 'Sierra'
+                    ],
+                    [
+                        'name' => 'Solio',
+                        'slug' => 'solio',
+                        'description' => 'Solio'
+                    ],
+                    [
+                        'name' => 'SP',
+                        'slug' => 'sp',
+                        'description' => 'SP'
+                    ],
+                    [
+                        'name' => 'Splash',
+                        'slug' => 'splash',
+                        'description' => 'Splash'
+                    ],
+                    [
+                        'name' => 'Swift',
+                        'slug' => 'swift',
+                        'description' => 'Swift'
+                    ],
+                    [
+                        'name' => 'SX',
+                        'slug' => 'sx',
+                        'description' => 'SX'
+                    ],
+                    [
+                        'name' => 'VITARA',
+                        'slug' => 'vitara',
+                        'description' => 'VITARA'
+                    ],
+                    [
+                        'name' => 'Wagon',
+                        'slug' => 'wagon',
+                        'description' => 'Wagon'
+                    ]
                 ]
             ],
             [
@@ -1862,7 +2106,11 @@ class AddCarMakesCommand extends Command
                 'slug' => 'saab',
                 'description' => 'SAAB',
                 'models' => [
-
+                    [
+                        'name' => '93',
+                        'slug' => '93',
+                        'description' => '93'
+                    ]
                 ]
             ],
             [
@@ -1870,7 +2118,16 @@ class AddCarMakesCommand extends Command
                 'slug' => 'scania',
                 'description' => 'SCANIA',
                 'models' => [
-
+                    [
+                        'name' => '114C',
+                        'slug' => '114c',
+                        'description' => '114C'
+                    ],
+                    [
+                        'name' => '94cP260',
+                        'slug' => '94cp260',
+                        'description' => '94cP260'
+                    ]
                 ]
             ],
             [
@@ -1878,7 +2135,11 @@ class AddCarMakesCommand extends Command
                 'slug' => 'smart',
                 'description' => 'SMART',
                 'models' => [
-
+                    [
+                        'name' => 'For Two',
+                        'slug' => 'for_two',
+                        'description' => 'For Two'
+                    ]
                 ]
             ],
             [
@@ -1886,7 +2147,11 @@ class AddCarMakesCommand extends Command
                 'slug' => 'sonalika',
                 'description' => 'SONALIKA',
                 'models' => [
-
+                    [
+                        'name' => 'DI 90',
+                        'slug' => 'di_90',
+                        'description' => 'DI 90'
+                    ]
                 ]
             ],
             [
@@ -1894,7 +2159,26 @@ class AddCarMakesCommand extends Command
                 'slug' => 'tata',
                 'description' => 'TATA',
                 'models' => [
-
+                    [
+                        'name' => '407',
+                        'slug' => '407',
+                        'description' => '407'
+                    ],
+                    [
+                        'name' => 'Ace',
+                        'slug' => 'ace',
+                        'description' => 'Ace'
+                    ],
+                    [
+                        'name' => 'Safari',
+                        'slug' => 'safari',
+                        'description' => 'Safari'
+                    ],
+                    [
+                        'name' => 'Xeon',
+                        'slug' => 'xeon',
+                        'description' => 'Xeon'
+                    ]
                 ]
             ],
             [
@@ -1902,7 +2186,386 @@ class AddCarMakesCommand extends Command
                 'slug' => 'toyota',
                 'description' => 'TOYOTA',
                 'models' => [
-
+                    [
+                        'name' => '1000',
+                        'slug' => '1000',
+                        'description' => '1000'
+                    ],
+                    [
+                        'name' => '4-Runner',
+                        'slug' => '4_runner',
+                        'description' => '4-Runner'
+                    ],
+                    [
+                        'name' => 'Aliex',
+                        'slug' => 'aliex',
+                        'description' => 'Aliex'
+                    ],
+                    [
+                        'name' => 'Allion',
+                        'slug' => 'allion',
+                        'description' => 'Allion'
+                    ],
+                    [
+                        'name' => 'Alphard',
+                        'slug' => 'alphard',
+                        'description' => 'Alphard'
+                    ],
+                    [
+                        'name' => 'Aqua',
+                        'slug' => 'aqua',
+                        'description' => 'Aqua'
+                    ],
+                    [
+                        'name' => 'Aurion',
+                        'slug' => 'aurion',
+                        'description' => 'aurion'
+                    ],
+                    [
+                        'name' => 'Auris',
+                        'slug' => 'auris',
+                        'description' => 'Auris'
+                    ],
+                    [
+                        'name' => 'Avensis',
+                        'slug' => 'avensis',
+                        'description' => 'Avensis'
+                    ],
+                    [
+                        'name' => 'Axio',
+                        'slug' => 'axio',
+                        'description' => 'Axio'
+                    ],
+                    [
+                        'name' => 'Bb',
+                        'slug' => 'bb',
+                        'description' => 'Bb'
+                    ],
+                    [
+                        'name' => 'Belta',
+                        'slug' => 'belta',
+                        'description' => 'Belta'
+                    ],
+                    [
+                        'name' => 'C-HR',
+                        'slug' => 'chr',
+                        'description' => 'CHR'
+                    ],
+                    [
+                        'name' => 'Caldina',
+                        'slug' => 'caldina',
+                        'description' => 'Caldina'
+                    ],
+                    [
+                        'name' => 'Cami',
+                        'slug' => 'cami',
+                        'description' => 'Cami'
+                    ],
+                    [
+                        'name' => 'Camry',
+                        'slug' => 'camry',
+                        'description' => 'Camry'
+                    ],
+                    [
+                        'name' => 'Carib',
+                        'slug' => 'carib',
+                        'description' => 'Carib'
+                    ],
+                    [
+                        'name' => 'Carina',
+                        'slug' => 'carina',
+                        'description' => 'Carina'
+                    ],
+                    [
+                        'name' => 'Claser',
+                        'slug' => 'claser',
+                        'description' => 'Claser',
+                    ],
+                    [
+                        'name' => 'Coaster',
+                        'slug' => 'coaster',
+                        'description' => 'Coaster'
+                    ],
+                    [
+                        'name' => 'Corola',
+                        'slug' => 'corola',
+                        'description' => 'Corola'
+                    ],
+                    [
+                        'name' => 'Corona',
+                        'slug' => 'corona',
+                        'description' => 'Corona'
+                    ],
+                    [
+                        'name' => 'Corsa',
+                        'slug' => 'corsa',
+                        'description' => 'Corsa'
+                    ],
+                    [
+                        'name' => 'Crown',
+                        'slug' => 'crown',
+                        'description' => 'Crown'
+                    ],
+                    [
+                        'name' => 'Dyna',
+                        'slug' => 'dyna',
+                        'description' => 'Dyna'
+                    ],
+                    [
+                        'name' => 'Estima',
+                        'slug' => 'estima',
+                        'description' => 'Estima'
+                    ],
+                    [
+                        'name' => 'Fielder',
+                        'slug' => 'fielder',
+                        'description' => 'Fielder'
+                    ],
+                    [
+                        'name' => 'FJ Cruiser',
+                        'slug' => 'fj_cruiser',
+                        'description' => 'FJ Cruiser'
+                    ],
+                    [
+                        'name' => 'Fortuner',
+                        'slug' => 'fortuner',
+                        'description' => 'Fortuner'
+                    ],
+                    [
+                        'name' => 'Fun Cargo',
+                        'slug' => 'fun_cargo',
+                        'description' => 'Fun Cargo'
+                    ],
+                    [
+                        'name' => 'Gaia',
+                        'slug' => 'gaia',
+                        'description' => 'Gaia'
+                    ],
+                    [
+                        'name' => 'Grand Hiace',
+                        'slug' => 'grand_hiace',
+                        'description' => 'Grand Hiace'
+                    ],
+                    [
+                        'name' => 'Harrier',
+                        'slug' => 'harrier',
+                        'description' => 'Harrier'
+                    ],
+                    [
+                        'name' => 'Hi Ace',
+                        'slug' => 'hi_ace',
+                        'description' => 'Hi Ace'
+                    ],
+                    [
+                        'name' => 'Highlander',
+                        'slug' => 'highlander',
+                        'description' => 'highlander'
+                    ],
+                    [
+                        'name' => 'Hilux',
+                        'slug' => 'hilux',
+                        'description' => 'Hilux'
+                    ],
+                    [
+                        'name' => 'Ipsum',
+                        'slug' => 'ipsum',
+                        'description' => 'Ipsum'
+                    ],
+                    [
+                        'name' => 'Iq',
+                        'slug' => 'iq',
+                        'description' => 'Iq'
+                    ],
+                    [
+                        'name' => 'Isis',
+                        'slug' => 'isis',
+                        'description' => 'Isis'
+                    ],
+                    [
+                        'name' => 'IST',
+                        'slug' => 'ist',
+                        'description' => 'IST'
+                    ],
+                    [
+                        'name' => 'Kruger',
+                        'slug' => 'kruger',
+                        'description' => 'Kruger'
+                    ],
+                    [
+                        'name' => 'Landcruiser',
+                        'slug' => 'lundcruiser',
+                        'description' => 'Landcruiser'
+                    ],
+                    [
+                        'name' => 'Landcruiser Prado',
+                        'slug' => 'landcruiser_prado',
+                        'description' => 'Landcruiser Prado'
+                    ],
+                    [
+                        'name' => 'Lexcen',
+                        'slug' => 'lexcen',
+                        'description' => 'Lexcen'
+                    ],
+                    [
+                        'name' => 'Lite-Ace',
+                        'slug' => 'lite_ace',
+                        'description' => 'Lite-Ace'
+                    ],
+                    [
+                        'name' => 'Mark ii',
+                        'slug' => 'mark_ii',
+                        'description' => 'Mark ii'
+                    ],
+                    [
+                        'name' => 'Mark x',
+                        'slug' => 'mark_x',
+                        'description' => 'Mark x'
+                    ],
+                    [
+                        'name' => 'Noah',
+                        'slug' => 'noah',
+                        'description' => 'Noah'
+                    ],
+                    [
+                        'name' => 'Passo',
+                        'slug' => 'passo',
+                        'description' => 'Passo'
+                    ],
+                    [
+                        'name' => 'Picnic',
+                        'slug' => 'picnic',
+                        'description' => 'Picnic'
+                    ],
+                    [
+                        'name' => 'Platz',
+                        'slug' => 'platz',
+                        'description' => 'Platz'
+                    ],
+                    [
+                        'name' => 'Porte',
+                        'slug' => 'porte',
+                        'description' => 'Porte'
+                    ],
+                    [
+                        'name' => 'Premio',
+                        'slug' => 'premio',
+                        'description' => 'Premio'
+                    ],
+                    [
+                        'name' => 'Rumion',
+                        'slug' => 'rumion',
+                        'description' => 'Rumion'
+                    ],
+                    [
+                        'name' => 'Prius',
+                        'slug' => 'prius',
+                        'description' => 'Prius'
+                    ],
+                    [
+                        'name' => 'Probox',
+                        'slug' => 'probox',
+                        'description' => 'Probox'
+                    ],
+                    [
+                        'name' => 'Ractis',
+                        'slug' => 'ractis',
+                        'description' => 'Ractis'
+                    ],
+                    [
+                        'name' => 'Raum',
+                        'slug' => 'raum',
+                        'description' => 'Raum'
+                    ],
+                    [
+                        'name' => 'RAV4',
+                        'slug' => 'rav4',
+                        'description' => 'rav4'
+                    ],
+                    [
+                        'name' => 'Regius van',
+                        'slug' => 'regius_van',
+                        'description' => 'Regius van'
+                    ],
+                    [
+                        'name' => 'Run-X',
+                        'slug' => 'run_x',
+                        'description' => 'Run-X'
+                    ],
+                    [
+                        'name' => 'Rush',
+                        'slug' => 'rush',
+                        'description' => 'Rush'
+                    ],
+                    [
+                        'name' => 'Sai',
+                        'slug' => 'sai',
+                        'description' => 'Sai'
+                    ],
+                    [
+                        'name' => 'Sienta',
+                        'slug' => 'sienta',
+                        'description' => 'Sienta'
+                    ],
+                    [
+                        'name' => 'Spacio',
+                        'slug' => 'spacio',
+                        'description' => 'Spacio'
+                    ],
+                    [
+                        'name' => 'Spade',
+                        'slug' => 'spade',
+                        'description' => 'Spade'
+                    ],
+                    [
+                        'name' => 'Starlet',
+                        'slug' => 'starlet',
+                        'description' => 'Starlet'
+                    ],
+                    [
+                        'name' => 'Succed',
+                        'slug' => 'succed',
+                        'description' => 'Succed'
+                    ],
+                    [
+                        'name' => 'Surf',
+                        'slug' => 'surf',
+                        'description' => 'Surf'
+                    ],
+                    [
+                        'name' => 'Townace',
+                        'slug' => 'townace',
+                        'description' => 'Townace'
+                    ],
+                    [
+                        'name' => 'Toyoace',
+                        'slug' => 'toyoace',
+                        'description' => 'Toyoace'
+                    ],
+                    [
+                        'name' => 'Vanguard',
+                        'slug' => 'vanguard',
+                        'description' => 'Vanguard'
+                    ],
+                    [
+                        'name' => 'Vellfire',
+                        'slug' => 'velfire',
+                        'description' => 'Vellfire'
+                    ],
+                    [
+                        'name' => 'Vits',
+                        'slug' => 'vits',
+                        'description' => 'Vits'
+                    ],
+                    [
+                        'name' => 'Voxy',
+                        'slug' => 'voxy',
+                        'description' => 'Voxy'
+                    ],
+                    [
+                        'name' => 'Wish',
+                        'slug' => 'wish',
+                        'description' => 'Wish'
+                    ]
                 ]
             ],
             [
@@ -1910,7 +2573,81 @@ class AddCarMakesCommand extends Command
                 'slug' => 'volkswagen',
                 'description' => 'VOLKSWAGEN',
                 'models' => [
-
+                    [
+                        'name' => 'Amarok',
+                        'slug' => 'amarok',
+                        'description' => 'Amarok'
+                    ],
+                    [
+                        'name' => 'Beetle',
+                        'slug' => 'beetle',
+                        'description' => 'Beetle'
+                    ],
+                    [
+                        'name' => 'CC',
+                        'slug' => 'cc',
+                        'description' => 'CC'
+                    ],
+                    [
+                        'name' => 'Citi',
+                        'slug' => 'citi',
+                        'description' => 'Citi'
+                    ],
+                    [
+                        'name' => 'Cross Polo',
+                        'slug' => 'cross_polo',
+                        'description' => 'Cross Polo'
+                    ],
+                    [
+                        'name' => 'Cross Golf',
+                        'slug' => 'cross_golf',
+                        'description' => 'Cross Golf'
+                    ],
+                    [
+                        'name' => 'Golf',
+                        'slug' => 'golf',
+                        'description' => 'Golf'
+                    ],
+                    [
+                        'name' => 'Jetta',
+                        'slug' => 'jetta',
+                        'description' => 'Jetta'
+                    ],
+                    [
+                        'name' => 'Passsat',
+                        'slug' => 'passat',
+                        'description' => 'Passat'
+                    ],
+                    [
+                        'name' => 'Polo',
+                        'slug' => 'polo',
+                        'description' => 'Polo'
+                    ],
+                    [
+                        'name' => 'Polo Hathback',
+                        'slug' => 'polo_hathback',
+                        'description' => 'Polo Hathback'
+                    ],
+                    [
+                        'name' => 'Scirocco',
+                        'slug' => 'scirocco',
+                        'description' => 'Scirocco'
+                    ],
+                    [
+                        'name' => 'Tiguan',
+                        'slug' => 'tiguan',
+                        'description' => 'Tiguan'
+                    ],
+                    [
+                        'name' => 'Toureg',
+                        'slug' => 'toureg',
+                        'description' => 'Toureg'
+                    ],
+                    [
+                        'name' => 'Touran',
+                        'slug' => 'touran',
+                        'description' => 'Touran'
+                    ]
                 ]
             ],
             [
@@ -1918,7 +2655,56 @@ class AddCarMakesCommand extends Command
                 'slug' => 'volvo',
                 'description' => 'VOLVO',
                 'models' => [
-
+                    [
+                        'name' => '120',
+                        'slug' => '120',
+                        'description' => '120'
+                    ],
+                    [
+                        'name' => '260',
+                        'slug' => '260',
+                        'description' => '260'
+                    ],
+                    [
+                        'name' => '460',
+                        'slug' => '460',
+                        'description' => '460'
+                    ],
+                    [
+                        'name' => 'S40',
+                        'slug' => 's40',
+                        'description' => 'S40'
+                    ],
+                    [
+                        'name' => 'S60',
+                        'slug' => 's60',
+                        'description' => 'S60'
+                    ],
+                    [
+                        'name' => 'S80',
+                        'slug' => 's80',
+                        'description' => 'S80'
+                    ],
+                    [
+                        'name' => 'V49',
+                        'slug' => 'v49',
+                        'description' => 'V49'
+                    ],
+                    [
+                        'name' => 'V50',
+                        'slug' => 'v50',
+                        'description' => 'V50'
+                    ],
+                    [
+                        'name' => 'XC60',
+                        'slug' => 'xc60',
+                        'description' => 'XC60'
+                    ],
+                    [
+                        'name' => 'XC90',
+                        'slug' => 'xc90',
+                        'description' => 'XC90'
+                    ]
                 ]
             ]
         ];
