@@ -59,3 +59,24 @@ Route::group(['middleware' => ['role:buyer']], function () {
     Route::get('/buyer-home', 'BuyerController@index')->name('buyerHome')->middleware('verified');
 });
 
+Route::get('start-bulk-uploads', 'BulkUploadController@startBulkUpload')
+    ->name('startBulkUpload');
+
+Route::get('save-bulk-uploads', 'BulkUploadController@saveBulkUpload')
+    ->name('saveBulkUpload');
+
+Route::get('/download-excel-template',  'BulkUploadController@downloadExcelTemplate')
+    ->name('downloadExcelTemplate');
+
+Route::post('/import-vehicles', 'BulkUploadController@importVehicles')
+    ->name('importVehicles');
+
+Route::get('/confirm-bulk-imports/{bulkImportId}', 'BulkUploadController@confirmBulkImports')
+    ->name('confirmBulkImports');
+
+Route::get('/pay-for-bulk-imports/{bulkImportId}', 'PaymentController@showBulkPaymentsPage')
+    ->name('showBulkPaymentsPage');
+
+Route::post('/pay-for-bulk-imports/{bulkImportId}', 'PaymentController@payForBulkUploads')
+    ->name('payForBulkUploads');
+

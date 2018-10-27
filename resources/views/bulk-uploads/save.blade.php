@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dealer Dashboard</div>
+                    <div class="card-header">
+                        Import Vehicles
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -17,12 +19,17 @@
                         <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Upload Bulk</h5>
-                                    <p class="card-text">
-                                        You can upload bulk cars here
-                                    </p>
-                                    <a href="{{ route('startBulkUpload') }}" class="btn btn-primary">Start Uploading</a>
-                                </div>
+                                    <h5 class="card-title">Upload Excel File</h5>
+
+                                    <form  method="POST" action="{{ route('importVehicles') }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+
+                                        <input type="file" name="vehicle_file">
+
+                                        <button type="submit" class="btn btn-success float-right">Import</button>
+                                    </form>
+
+                                    </div>
                             </div>
                         </div>
                     </div>

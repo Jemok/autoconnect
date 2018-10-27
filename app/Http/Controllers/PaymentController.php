@@ -65,5 +65,10 @@ class PaymentController extends Controller
 
         return response()->json(['message' => 'success']);
     }
+
+    public function showBulkPaymentsPage($bulkImportId){
+
+        return view('bulk-uploads.pay', compact('bulkImportId'));
+    }
 }
 

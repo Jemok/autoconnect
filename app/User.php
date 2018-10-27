@@ -29,4 +29,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bulk_import(){
+
+        return $this->hasOne(BulkImport::class);
+    }
 }

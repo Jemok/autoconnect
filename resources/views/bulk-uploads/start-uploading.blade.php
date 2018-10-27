@@ -5,7 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dealer Dashboard</div>
+                    <div class="card-header">Download Bulk Upload Template (.xls)
+
+                        <a href="{{ route('saveBulkUpload') }}" class="btn btn-primary btn-sm float-right">Next</a>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -17,11 +20,12 @@
                         <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title">Upload Bulk</h5>
+                                    <h5 class="card-title">Download Excel Template</h5>
                                     <p class="card-text">
-                                        You can upload bulk cars here
+                                        Download and fill in the .xls template below
                                     </p>
-                                    <a href="{{ route('startBulkUpload') }}" class="btn btn-primary">Start Uploading</a>
+                                    <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
+                                    <a href="{{ route('downloadExcelTemplate') }}" class="btn btn-primary">Download</a>
                                 </div>
                             </div>
                         </div>
