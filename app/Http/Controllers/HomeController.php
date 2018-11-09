@@ -43,6 +43,6 @@ class HomeController extends Controller
             return view('buyer.home', compact( 'count_invitations'));
         }
 
-        return view('home');
+        return view('home', compact( 'count_invitations'));
     }
 }

@@ -9,7 +9,7 @@
 
                     <div class="card-body">
                         <h1 class="text-center">
-                            Your Invitation was not found, please contact the super admin
+                            The resource was not found, please contact the super admin
                         </h1>
                     </div>
                 </div>
