@@ -57,6 +57,7 @@ class InvitationRepository
 
         return Invitation::where('id', $invitationId)
             ->where('status', 'invited')
+            ->orWhere('status', 'revoked')
             ->firstOrFail();
     }
 
