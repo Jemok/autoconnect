@@ -20,6 +20,13 @@
                                 <a href="{{ route('indexSingleAds') }}" class="btn btn-primary">View All</a>
                             </div>
                         </div>
+
+                        <div class="card" style="margin-top: 1%;">
+                            <div class="card-body">
+                                <h5 class="card-title">Administrators</h5>
+                                <a href="{{ route('createAdministrator') }}" class="btn btn-primary">Manage Administrators</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -25,6 +25,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Roles ( {{ $count_invitations }} )</h5>
+                                    <a href="{{ route('indexUserInvitations') }}" class="btn btn-primary">Your Role Invitations</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

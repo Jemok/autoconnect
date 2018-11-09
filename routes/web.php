@@ -23,7 +23,26 @@ Route::post('register-buyer', 'Auth\RegisterController@register')->name('registe
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::group(['middleware' => ['role:super-admin']], function () {
-    Route::get('/admin-home', 'AdminController@index')->name('adminHome')->middleware('verified');
+    Route::get('/admin-home', 'AdminController@index')
+        ->name('adminHome')
+        ->middleware('verified');
+
+    Route::get('/administrators/create', 'AdminController@createAdministrator')
+        ->name('createAdministrator')
+        ->middleware('verified');
+
+    Route::post('/administrator/invite', 'AdminController@inviteAdministrator')
+        ->name('inviteAdministrator')
+        ->middleware('verified');
+
+    Route::post('/administrator/resend/invite/{invitationId}', 'AdminController@resendInvitation')
+        ->name('resendInvitation')
+        ->middleware('verified');
+
+    Route::post('/administrator/revoke/invite/{invitationId}', 'AdminController@revokeInvitation')
+        ->name('revokeInvitation')
+        ->middleware('verified');
+
 });
 
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');
@@ -79,4 +98,18 @@ Route::get('/pay-for-bulk-imports/{bulkImportId}', 'PaymentController@showBulkPa
 
 Route::post('/pay-for-bulk-imports/{bulkImportId}', 'PaymentController@payForBulkUploads')
     ->name('payForBulkUploads');
+
+Route::get('/invitation/accept/{invitationId}', 'InvitationController@acceptInvitation')
+    ->name('acceptInvitation');
+
+Route::get('/invitations', 'InvitationController@indexUserInvitations')
+    ->name('indexUserInvitations')
+    ->middleware('auth')
+    ->middleware('verified');
+
+Route::post('/invitations/process/{invitationId}', 'InvitationController@processUserInvitations')
+    ->name('processUserInvitations')
+    ->middleware('auth')
+    ->middleware('verified');
+
 

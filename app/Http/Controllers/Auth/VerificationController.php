@@ -6,6 +6,7 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Support\Facades\Auth;
 
 class VerificationController extends Controller
 {
@@ -49,9 +50,21 @@ class VerificationController extends Controller
      */
     public function verify(Request $request)
     {
+
+
         if ($request->route('id') == $request->user()->getKey() &&
             $request->user()->markEmailAsVerified()) {
             event(new Verified($request->user()));
+        }
+
+        if(Auth::check()){
+
+            flash('Verification successful, proceed by login in')->success();
+
+            Auth::logout();
+
+
+            return redirect('login');
         }
 
         if($request->user()->hasRole('dealer')){

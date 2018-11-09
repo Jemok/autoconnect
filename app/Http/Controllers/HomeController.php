@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\InvitationRepository;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -23,18 +24,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(InvitationRepository $invitationRepository)
     {
+        $count_invitations = $invitationRepository->countUnacceptedInvitations(Auth::user()->email);
+
         if(Auth::user()->hasRole('dealer')){
-            return view('home');
+
+            return view('home', compact( 'count_invitations'));
         }
 
         if(Auth::user()->hasRole('super-admin')){
+
             return view('admin.home');
         }
 
         if(Auth::user()->hasRole('buyer')){
-            return view('buyer.home');
+
+            return view('buyer.home', compact( 'count_invitations'));
         }
 
         return view('home');
