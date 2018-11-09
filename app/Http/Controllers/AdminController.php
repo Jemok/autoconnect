@@ -66,6 +66,8 @@ class AdminController extends Controller
 
         $invitation = $invitationRepository->showInvitationFromId($invitationId);
 
+        $invitationRepository->store($invitation->role, 'invited', ['email' => $invitation->email]);
+
         $invitation->notify(new InvitationNotification($invitation->role));
 
         flash()->overlay('Invitation was resent successfully, an email was sent to them', 'Success');
@@ -74,8 +76,8 @@ class AdminController extends Controller
     }
 
     public function revokeInvitation($invitationId,
-                                      InvitationRepository $invitationRepository,
-                                      UserRepository $userRepository){
+                                     InvitationRepository $invitationRepository,
+                                     UserRepository $userRepository){
 
         $invitation = $invitationRepository->show($invitationId);
 
