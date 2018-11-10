@@ -19,17 +19,22 @@
                             <div class="col-sm-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form method="POST" action="{{ route('makePayment', [$bulkImportId, 'bulk']) }}">
-                                            {{ csrf_field() }}
-                                            <p class="card-text text-center">Ksh 10,000</p>
-                                            <p class="card-text text-center">Bulk Ads</p>
-                                            <p class="card-text text-center">Valid for 30 days</p>
-                                            <div class="alert alert-primary" role="alert">
-                                                Payment will be made using  Mpesa number 0712675071 ,
-                                                click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
-                                            </div>
-                                            <button type="submit" class="btn btn-success float-right">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
-                                        </form>
+                                        <p class="card-text">
+                                            Thank you for uploading your cars, we will send you an email with
+                                            your payment information.
+                                        </p>
+
+                                        {{--<form method="POST" action="{{ route('makePayment', [$bulkImportId, 'bulk']) }}">--}}
+                                            {{--{{ csrf_field() }}--}}
+                                            {{--<p class="card-text text-center">Ksh 10,000</p>--}}
+                                            {{--<p class="card-text text-center">Bulk Ads</p>--}}
+                                            {{--<p class="card-text text-center">Valid for 30 days</p>--}}
+                                            {{--<div class="alert alert-primary" role="alert">--}}
+                                                {{--Payment will be made using  Mpesa number 0712675071 ,--}}
+                                                {{--click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.--}}
+                                            {{--</div>--}}
+                                            {{--<button type="submit" class="btn btn-success float-right">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>--}}
+                                        {{--</form>--}}
                                     </div>
                                 </div>
                             </div>

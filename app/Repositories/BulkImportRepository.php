@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\BulkImport;
+use App\BulkImportStatus;
 use App\User;
 use App\UserBulkImport;
 
@@ -18,6 +19,39 @@ class BulkImportRepository
     public function store(User $user){
 
         return $user->bulk_import()->save(new BulkImport());
+    }
+
+    /**
+     * @param $bulkImportId
+     * @return mixed
+     */
+    public function showBulkImport($bulkImportId){
+
+        return BulkImport::where('id', $bulkImportId)->firstOrFail();
+    }
+
+    public function storeBulkImportStatus($bulk_import, $status){
+
+        if(BulkImportStatus::where('bulk_import_id', $bulk_import->id)->exists()){
+
+            $bulk_import_status = BulkImportStatus::where('bulk_import_id', $bulk_import->id)->firstOrFail();
+
+            $bulk_import_status->status = $status;
+            $bulk_import_status->bulk_import_id = $bulk_import->id;
+
+            $bulk_import_status->save();
+
+            return $bulk_import_status;
+        }
+
+        $bulk_import_status = new BulkImportStatus();
+
+        $bulk_import_status->status = $status;
+        $bulk_import_status->bulk_import_id = $bulk_import->id;
+
+        $bulk_import_status->save();
+
+        return $bulk_import_status;
     }
 
     public function storeBulkImports(array $data,
@@ -30,28 +64,28 @@ class BulkImportRepository
                                      DutyRepository $dutyRepository,
                                      ColourTypeRepository $colourTypeRepository){
 
-        $car_make = $data['car_make'];
+        $car_make = array_key_exists('car_make', $data) ? $data['car_make'] : null;
         $car_make_model = $carMakeRepository->showFromSlug($car_make);
-        $car_model = $data['car_model'];
+        $car_model = array_key_exists('car_model', $data) ? $data['car_model'] : null;
         $car_model_model = $carModelRepository->showFromSlug($car_model);
-        $year = $data['year'];
-        $mileage = $data['mileage'];
-        $body_type = $data['body_type'];
-        $body_type_model = $bodyTypeRepository->showFromSlug($body_type);
-        $transmission_type = $data['transmission_type'];
+        $year = array_key_exists('year', $data)? $data['year'] : null;
+        $mileage = array_key_exists('mileage', $data) ? $data['mileage'] : null;
+        $body_type = array_key_exists('body_type', $data) ? $data['body_type'] : null;
+        $body_type_model =  $bodyTypeRepository->showFromSlug($body_type);
+        $transmission_type = array_key_exists('transmission_type', $data) ? $data['transmission_type'] : null;
         $transmission_type_model = $transmissionTypeRepository->showFromSlug($transmission_type);
-        $condition = $data['car_condition'];
+        $condition = array_key_exists('car_condition', $data) ? $data['car_condition'] : null;
         $condition_model = $carConditionRepository->showFromSlug($condition);
-        $duty = $data['duty'];
+        $duty = array_key_exists('duty', $data) ? $data['duty'] : null;
         $duty_model = $dutyRepository->showFromSlug($duty);
-        $price = $data['price'];
+        $price = array_key_exists('price', $data) ? $data['price'] : null;
         $negotiable_price = array_key_exists('negotiable_price', $data) ? $data['negotiable_price'] : 'not_allowed';
         $fuel_type = array_key_exists('fuel_type', $data) ? $data['fuel_type'] : null;
         $engine_size = array_key_exists('engine_size', $data) ? $data['engine_size'] : null;
         $interior = array_key_exists('interior', $data) ? $data['interior'] : null;
         $colour_type = array_key_exists('colour_type', $data) ? $data['colour_type'] : 'other';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
-        $description = $data['description'];
+        $description = array_key_exists('description', $data) ? $data['description'] : null;
 
         $other_features = json_encode([
             'Air Conditioning' => array_key_exists('air_conditioning', $data) ? $data['air_conditioning'] : null,
@@ -114,6 +148,32 @@ class BulkImportRepository
     public function indexFroBulkImport($bulkImportId){
 
         return UserBulkImport::where('bulk_import_id', $bulkImportId)->get();
+    }
+
+    public function showSingleBulkImport($singleBulkImportId,
+                                         $bulkImportId){
+
+        return UserBulkImport::where('id', $singleBulkImportId)
+            ->where('bulk_import_id', $bulkImportId)
+            ->firstOrFail();
+
+    }
+
+    public function show($singleBulkImportId){
+
+        return UserBulkImport::where('id', $singleBulkImportId)
+            ->firstOrFail();
+    }
+
+    public function indexForPayments(){
+
+        return BulkImportStatus::where('status', 'payment')->latest()->get();
+    }
+
+    public function indexForUser($userId){
+
+        return BulkImport::where('user_id', $userId)->latest()->get();
+
     }
 
 }

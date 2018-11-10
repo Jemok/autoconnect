@@ -43,11 +43,24 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('revokeInvitation')
         ->middleware('verified');
 
+    Route::get('/bulk-for-payments/index', 'BulkUploadController@indexForPayments')
+        ->name('indexForPayments')
+        ->middleware('verified');
+
+    Route::get('/bulk-for-admin/index/{bulkImportId}', 'BulkUploadController@indexBulkImportsForAdmin')
+        ->name('indexForAdmin')
+        ->middleware('verified');
+
+    Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
+
+
 });
 
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');
 
 Route::get('/vehicles/create-pictures/{vehicleId}', 'VehicleController@createPictures')->name('createVehiclePictures');
+
+Route::get('/vehicles/create-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@createBulkImages')->name('createBulkImages');
 
 Route::get('/vehicles/create-vehicle-ad/{vehicleId}', 'VehicleController@createAd')->name('createAd');
 
@@ -110,6 +123,10 @@ Route::get('/invitations', 'InvitationController@indexUserInvitations')
 Route::post('/invitations/process/{invitationId}', 'InvitationController@processUserInvitations')
     ->name('processUserInvitations')
     ->middleware('auth')
+    ->middleware('verified');
+
+Route::get('/bulk-for-user/index', 'BulkUploadController@indexBulkUploadsForUser')
+    ->name('indexBulkUploadsForUser')
     ->middleware('verified');
 
 

@@ -35,7 +35,6 @@
                                 <th scope="col">Negotiable Price</th>
                                 <th scope="col">Images Uploaded</th>
                                 <th scope="col">Images</th>
-                                <th scope="col">Approval Status</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,12 +66,9 @@
 
                                     </td>
                                     <td>
-                                        <a class="btn btn-success btn-sm" href="{{ route('createBulkImages', [$bulkImportId, $single_ad->id]) }}">
-                                            Upload Images
+                                        <a class="btn btn-success btn-sm" href="{{ route('adminManageBulkImages', [$bulkImportId, $single_ad->id]) }}">
+                                            Images
                                         </a>
-                                    </td>
-                                    <td>
-                                        Not Approved
                                     </td>
                                 </tr>
                             @endforeach

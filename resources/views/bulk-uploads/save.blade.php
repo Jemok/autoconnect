@@ -9,6 +9,9 @@
                         Import Vehicles
                     </div>
 
+                    @include('flash::message')
+
+
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -24,7 +27,13 @@
                                     <form  method="POST" action="{{ route('importVehicles') }}" enctype="multipart/form-data">
                                         {{ csrf_field() }}
 
-                                        <input type="file" name="vehicle_file">
+                                        <input type="file" name="vehicle_file" class="{{ $errors->has('vehicle_file') ? 'is-invalid' : '' }}">
+
+                                        @if ($errors->has('vehicle_file'))
+                                            <div class="text-danger">
+                                                {{ $errors->first('vehicle_file') }}
+                                            </div>
+                                        @endif
 
                                         <button type="submit" class="btn btn-success float-right">Import</button>
                                     </form>

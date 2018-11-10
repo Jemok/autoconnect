@@ -27,6 +27,13 @@
                                 <a href="{{ route('createAdministrator') }}" class="btn btn-primary">Manage Administrators</a>
                             </div>
                         </div>
+
+                        <div class="card" style="margin-top: 1%;">
+                            <div class="card-body">
+                                <h5 class="card-title">Bulk Uploads</h5>
+                                <a href="{{ route('indexForPayments') }}" class="btn btn-primary">Manage Bulk Uploads</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

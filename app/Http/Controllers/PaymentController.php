@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Notifications\PaymentReceivedNotification;
+use App\Repositories\BulkImportRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Services\PayForAdService;
@@ -66,7 +67,12 @@ class PaymentController extends Controller
         return response()->json(['message' => 'success']);
     }
 
-    public function showBulkPaymentsPage($bulkImportId){
+    public function showBulkPaymentsPage($bulkImportId,
+                                         BulkImportRepository $bulkImportRepository){
+
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        $bulkImportRepository->storeBulkImportStatus($bulk_import, 'payment');
 
         return view('bulk-uploads.pay', compact('bulkImportId'));
     }

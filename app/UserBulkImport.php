@@ -37,9 +37,9 @@ class UserBulkImport extends Model
         return $this->belongsTo(Duty::class);
     }
 
-    public function vehicle_images(){
+    public function bulk_import_images(){
 
-        return $this->hasMany(VehicleImage::class);
+        return $this->hasMany(BulkImportImage::class);
     }
 
     public function colour_type(){
