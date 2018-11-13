@@ -20,6 +20,8 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Payment Status</th>
+                                <th scope="col">Approval Status</th>
                                 <th scope="col">View All Cars</th>
                             </tr>
                             </thead>
@@ -30,7 +32,29 @@
                                     <th scope="row">{{ $bulk_import->bulk_import->user->name }}</th>
                                     <td>{{  $bulk_import->bulk_import->user->email }}</td>
                                     <td>
-                                        <a href="{{ route('indexForAdmin', $bulk_import->id) }}">
+                                        @if(isset($bulk_import->bulk_import_approval->payment_status))
+                                            @if($bulk_import->bulk_import_approval->payment_status == 'paid')
+                                                Paid
+                                            @else
+                                                Not Paid
+                                            @endif
+                                        @else
+                                            Not Paid
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if(isset($bulk_import->bulk_import_approval->approval_status))
+                                            @if($bulk_import->bulk_import_approval->approval_status == 'approved')
+                                                Approved
+                                            @else
+                                                Not Approved
+                                            @endif
+                                        @else
+                                            Not Approved
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('indexForAdmin', $bulk_import->bulk_import_id) }}">
                                             View
                                         </a>
                                     </td>

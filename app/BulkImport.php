@@ -20,4 +20,12 @@ class BulkImport extends Model
 
         return $this->hasOne(BulkImportStatus::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function bulk_import_approval(){
+
+        return $this->hasOne(BulkImportApproval::class);
+    }
 }

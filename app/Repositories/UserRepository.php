@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\User;
+use App\UserVerification;
 
 class UserRepository
 {
@@ -31,5 +32,29 @@ class UserRepository
     public function showFromEmail($email){
 
         return User::where('email', $email)->firstOrFail();
+    }
+
+    public function updateVerificationStatus($userId,
+                                             $status){
+
+        if(UserVerification::where('user_id', $userId)->exists()){
+
+            $user_verification = UserVerification::where('user_id', $userId)->firstOrFail();
+
+            $user_verification->verification_status = $status;
+
+            $user_verification->save();
+
+            return $user_verification;
+        }
+
+        $user_verification = new UserVerification();
+
+        $user_verification->verification_status = $status;
+        $user_verification->user_id = $userId;
+
+        $user_verification->save();
+
+        return $user_verification;
     }
 }

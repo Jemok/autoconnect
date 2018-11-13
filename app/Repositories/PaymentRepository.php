@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\BulkMpesaResult;
 use App\MpesaPaymentResult;
 use App\VehicleDetail;
 use App\VehiclePayment;
@@ -104,5 +105,31 @@ class PaymentRepository
         $mpesaPaymentResult->save();
 
         return $mpesaPaymentResult;
+    }
+
+    public function storeBulkPaymentResult(array $data,
+                                           $bulkApprovalId){
+
+        $mpesaPaymentResult = new BulkMpesaResult();
+
+        $mpesaPaymentResult->bulk_import_approval_id = $bulkApprovalId;
+        $mpesaPaymentResult->transacted_amount = $data['transactedAmount'];
+        $mpesaPaymentResult->transaction_cost = $data['transactionCost'];
+        $mpesaPaymentResult->actual_amount = $data['actualAmount'];
+        $mpesaPaymentResult->payment_status = $data['status'];
+        $mpesaPaymentResult->receipt_number = $data['receiptNumber'];
+        $mpesaPaymentResult->transaction_date = $data['transactionDate'];
+        $mpesaPaymentResult->phone_number = $data['phoneNumber'];
+        $mpesaPaymentResult->account_number = $data['accountNumber'];
+        $mpesaPaymentResult->payment_id = $data['paymentId'];
+
+        $mpesaPaymentResult->save();
+
+        return $mpesaPaymentResult;
+    }
+
+    public function indexVehiclePaymentsForYear($year){
+
+        return VehiclePayment::whereYear('created_at', $year);
     }
 }

@@ -64,63 +64,35 @@
                         <thead class="thead-dark">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Package</th>
-                            <th scope="col">Payment Status</th>
                             <th scope="col">Ad Status</th>
                             <th scope="col">Start</th>
                             <th scope="col">Stop</th>
-                            <th scope="col">Manage</th>
+                            {{--<th scope="col">Manage</th>--}}
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($vehicle_payments as $vehicle_payment)
+                        @foreach($ads as $ad)
                             <tr>
-                                <th scope="row">{{ $vehicle_payment->id }}</th>
+                                <th scope="row">{{ $ad->id }}</th>
                                 <td>
-                                    @if($vehicle_payment->package == 'standard')
-                                        Standard
-                                    @elseif($vehicle_payment->package == 'premium')
-                                        Premium
+                                    @if($ad->status == 'active')
+                                        Active
+                                    @elseif($ad->status == 'inactive')
+                                        Inactive
                                     @endif
                                 </td>
                                 <td>
-                                    @if($vehicle_payment->status == 'paid')
-                                        Paid
-                                    @elseif($vehicle_payment->status == 'not_paid')
-                                        Not Paid
-                                    @endif
-                                </td>
-                                <td>
-                                    @if(isset($vehicle_payment->ad_status->status))
-                                        @if($vehicle_payment->ad_status->status == 'active')
-                                            Active
-                                        @elseif($vehicle_payment->ad_status->status == 'inactive')
-                                            Inactive
-                                        @endif
+                                    @if(isset($ad->start))
+                                        {{ $ad->start }}
                                     @else
                                         N/A
                                     @endif
                                 </td>
                                 <td>
-                                    @if(isset($vehicle_payment->ad_status->start))
-                                        {{ $vehicle_payment->ad_status->start }}
+                                    @if(isset($ad->stop))
+                                        {{ $ad->stop }}
                                     @else
                                         N/A
-                                    @endif
-                                </td>
-                                <td>
-                                    @if(isset($vehicle_payment->ad_status->stop))
-                                        {{ $vehicle_payment->ad_status->stop }}
-                                    @else
-                                        N/A
-                                    @endif
-                                </td>
-                                <td>
-                                    @if(!isset($vehicle_payment->ad_status->status) && $vehicle_detail->vehicle_verification->status == 'verified')
-                                        <form action="{{ route('activateAd', [$vehicle_detail->id, $vehicle_payment->id]) }}" method="POST">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-sm btn-success">Activate</button>
-                                        </form>
                                     @endif
                                 </td>
                             </tr>

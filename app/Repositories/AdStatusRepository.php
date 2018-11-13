@@ -16,7 +16,6 @@ use App\VehiclePayment;
 class AdStatusRepository
 {
     public function storeAdStatus(VehicleDetail $vehicleDetail,
-                                  VehiclePayment $vehiclePayment,
                                   $status,
                                   $start,
                                   $stop){
@@ -24,17 +23,14 @@ class AdStatusRepository
         $this->deActivateOthers($vehicleDetail->id);
 
         if(AdStatus::where('vehicle_detail_id', $vehicleDetail->id)
-            ->where('vehicle_payment_id', $vehiclePayment->id)
             ->exists()){
 
             $adStatus = AdStatus::where('vehicle_detail_id', $vehicleDetail->id)
-                ->where('vehicle_payment_id', $vehiclePayment->id)
                 ->firstOrFail();
 
             $adStatus->status = $status;
             $adStatus->start = $start;
             $adStatus->stop = $stop;
-            $adStatus->vehicle_payment_id = $vehiclePayment->id;
             $adStatus->vehicle_detail_id = $vehicleDetail->id;
 
             $adStatus->save();
@@ -47,7 +43,6 @@ class AdStatusRepository
         $adStatus->status = $status;
         $adStatus->start = $start;
         $adStatus->stop = $stop;
-        $adStatus->vehicle_payment_id = $vehiclePayment->id;
         $adStatus->vehicle_detail_id = $vehicleDetail->id;
 
         $adStatus->save();
@@ -66,5 +61,11 @@ class AdStatusRepository
 
             $adstatus->save();
         }
+    }
+
+    public function indexForVehicle($vehicleDetailId){
+
+        return AdStatus::where('vehicle_detail_id', $vehicleDetailId)->latest()->get();
+
     }
 }

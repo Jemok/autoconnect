@@ -53,6 +53,46 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
 
+    Route::post('/set-bulk-as-approved/{userBulkImportId}/{status}', 'BulkUploadController@setBulkVehicleAsApproved')
+        ->name('setBulkImportAsApproved')
+        ->middleware('verified');
+
+    Route::get('/show-bulk-disapproval/{userBulkImportId}', 'BulkUploadController@showBulkDisapprovalPage')
+        ->name('showBulkDisapprovalPage')
+        ->middleware('verified');
+
+    Route::post('/set-bulk-as-not-approved/{userBulkImportId}/{status}', 'BulkUploadController@setBulkVehicleAsNotApproved')
+        ->name('setBulkImportAsNotApproved')
+        ->middleware('verified');
+
+    Route::get('/vehicles/corrected-submissions/index', 'BulkUploadController@indexCorrectedSubmissions')->name('indexCorrectedSubmissions');
+
+    Route::get('/set-approval-for-bulk/{bulkImportId}', 'BulkUploadController@setApprovalForBulk')->name('setApprovalForBulk');
+
+    Route::post('/fix-disapproval-correction/{userBulkImportId}/{disapprovalReasonId}/{status}', 'BulkUploadController@fixBulkCorrection')
+        ->name('fixBulkCorrection')
+        ->middleware('verified');
+
+
+    Route::post('/set-approval-for-bulk/{bulkImportId}', 'BulkUploadController@storeBulkApproval')
+        ->name('storeBulkApproval')
+        ->middleware('verified');
+
+    Route::get('/dealers/index', 'UsersController@indexDealers')
+        ->name('indexDealers')
+        ->middleware('verified');
+
+    Route::post('/verify-user/{userId}/{status}', 'UsersController@verifyUser')
+        ->name('verifyUser')
+        ->middleware('verified');
+
+    Route::get('/payment-reports/years', 'PaymentReportsController@indexAnnualReports')
+        ->name('indexAnnualReports')
+        ->middleware('verified');
+
+    Route::get('/payment-reports/years/{year}', 'PaymentReportsController@indexReportForYear')
+        ->name('indexReportForYear')
+        ->middleware('verified');
 
 });
 
@@ -128,5 +168,15 @@ Route::post('/invitations/process/{invitationId}', 'InvitationController@process
 Route::get('/bulk-for-user/index', 'BulkUploadController@indexBulkUploadsForUser')
     ->name('indexBulkUploadsForUser')
     ->middleware('verified');
+
+Route::post('/submit-disapproval-correction/{userBulkImportId}/{disapprovalReasonId}/{status}', 'BulkUploadController@submitBulkCorrection')
+    ->name('submitBulkCorrection')
+    ->middleware('verified');
+
+Route::get('/pay-for-bulk/{bulkImportId}', 'PaymentController@payForBulk')
+    ->name('payForBulk');
+
+Route::post('/make-bulk-payment/{bulkImportId}', 'PaymentController@makeBulkPayment')
+    ->name('makeBulkPayment');
 
 

@@ -37,4 +37,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $this->hasOne(BulkImport::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     *
+     */
+    public function user_verification(){
+
+        return $this->hasOne(UserVerification::class);
+    }
 }

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Exports\VehicleDetailExport;
+use App\Http\Requests\BulkApprovalRequest;
 use App\Http\Requests\BulkUpladFileRequest;
+use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Imports\VehicleDetailsImport;
+use App\Notifications\AdDisapprovedNotification;
+use App\Notifications\BulkPaymentNotification;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\VehicleImagesRepository;
@@ -92,7 +96,9 @@ class BulkUploadController extends Controller
 
         $single_bulk_upload = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
-        return view('bulk-uploads.bulk-pictures', compact('vehicleId', 'single_bulk_upload'));
+        $disapproval_reasons = $bulkImportRepository->getDisapprovalReasonsNotResolved($singleBulkUploadId);
+
+        return view('bulk-uploads.bulk-pictures', compact('vehicleId', 'single_bulk_upload', 'disapproval_reasons'));
     }
 
     public function indexForPayments(BulkImportRepository $bulkImportRepository){
@@ -104,7 +110,7 @@ class BulkUploadController extends Controller
 
     public function indexBulkImportsForAdmin($bulkImportId,
                                              BulkImportRepository $bulkImportRepository,
-                                            VehicleImagesRepository $vehicleImagesRepository){
+                                             VehicleImagesRepository $vehicleImagesRepository){
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
@@ -136,11 +142,117 @@ class BulkUploadController extends Controller
 
         $single_bulk_upload = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
+        $disapproval_reasons = $bulkImportRepository->getDisapprovalReasonsNotResolvedOrCorrected($singleBulkUploadId);
+
         return view('bulk-uploads.admin-bulk-images', compact('vehicleId',
             'single_bulk_upload',
+            'disapproval_reasons',
             'vehicle_detail',
             'vehicle_images',
             'other_features'));
+    }
 
+    public function setBulkVehicleAsApproved($userBulkImportId,
+                                             $status,
+                                             BulkImportRepository $bulkImportRepository){
+
+        $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
+
+        $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
+
+        flash()->overlay('The vehicle Ad was verified successfully');
+
+        return redirect()->back();
+    }
+
+    public function showBulkDisapprovalPage($userBulkImportId,
+                                            BulkImportRepository $bulkImportRepository){
+
+        $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
+
+        return view('bulk-uploads.set-as-not-approved', compact('userBulkImportId', 'user_bulk_import'));
+    }
+
+    public function setBulkVehicleAsNotApproved($userBulkImportId,
+                                                $status,
+                                                SetBulkVehicleAsNotApprovedRequest $setBulkVehicleAsNotApprovedRequest,
+                                                BulkImportRepository $bulkImportRepository){
+
+        $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
+
+        $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
+
+        $bulkImportRepository->saveDisapprovalReason($user_bulk_import, $setBulkVehicleAsNotApprovedRequest->reason, 'not_resolved');
+
+        $user = $user_bulk_import->user;
+
+        $user->notify(new AdDisapprovedNotification($user_bulk_import, $setBulkVehicleAsNotApprovedRequest->reason));
+
+        flash()->overlay('The car Ad was rejected and the reason was sent to the user successfully', 'Effected');
+
+        return redirect()->route('adminManageBulkImages', [$user_bulk_import->bulk_import_id, $user_bulk_import->id]);
+    }
+
+    public function submitBulkCorrection($userBulkImportId,
+                                         $disapprovalReasonId,
+                                         $status,
+                                         BulkImportRepository $bulkImportRepository){
+
+        $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
+
+        $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
+
+        $bulkImportRepository->updateDisapprovalReason($userBulkImportId, $disapprovalReasonId, 'correction_submitted');
+
+        flash()->overlay('Your correction was submitted successfully, please wait as we review it');
+
+        return redirect()->back();
+    }
+
+    public function fixBulkCorrection($userBulkImportId,
+                                      $disapprovalReasonId,
+                                      $status,
+                                      BulkImportRepository $bulkImportRepository){
+
+        $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
+
+        $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
+
+        $bulkImportRepository->updateDisapprovalReason($userBulkImportId, $disapprovalReasonId, $status);
+
+        flash()->overlay('Your correction was set as resolved successfully', 'Resolved');
+
+        return redirect()->back();
+    }
+
+    public function indexCorrectedSubmissions(BulkImportRepository $bulkImportRepository){
+
+        $disapproval_reasons = $bulkImportRepository->getAllSubmittedCorrections();
+
+        return view('bulk-uploads.index-corrected-submissions', compact('disapproval_reasons'));
+    }
+
+    public function setApprovalForBulk($bulkImportId,
+                                       BulkImportRepository $bulkImportRepository){
+
+
+        return view('bulk-uploads.approval-and-payment', compact('bulkImportId'));
+    }
+
+    public function storeBulkApproval($bulkImportId,
+                                      BulkApprovalRequest $bulkApprovalRequest,
+                                      BulkImportRepository $bulkImportRepository){
+
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        $bulk_import_approval = $bulkImportRepository->storeBulkApproval($bulkImportId, $bulkApprovalRequest->all());
+
+        $user = $bulk_import->user;
+
+        $user->notify(new BulkPaymentNotification($bulk_import, $bulk_import_approval));
+
+        flash()->overlay('The Payment instructions were sent successfully', 'Sent');
+
+        return redirect()->back();
     }
 }

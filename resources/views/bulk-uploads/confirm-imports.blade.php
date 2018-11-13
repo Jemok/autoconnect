@@ -35,7 +35,7 @@
                                 <th scope="col">Negotiable Price</th>
                                 <th scope="col">Images Uploaded</th>
                                 <th scope="col">Images</th>
-                                <th scope="col">Approval Status</th>
+                                <th scope="col">Verified</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -72,7 +72,11 @@
                                         </a>
                                     </td>
                                     <td>
-                                        Not Approved
+                                        @if($single_ad->approval_status == 'not_approved')
+                                            <i class="fa fa-times text-danger"></i>
+                                        @elseif($single_ad->approval_status == 'approved')
+                                            <i class="fa fa-check text-success"></i>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

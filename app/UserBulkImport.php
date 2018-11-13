@@ -50,4 +50,10 @@ class UserBulkImport extends Model
 
         return $this->belongsTo(User::class);
     }
+
+    public function reasons(){
+
+        return $this->hasMany(DisapprovalReason::class);
+
+    }
 }

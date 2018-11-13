@@ -10,9 +10,14 @@ namespace App\Repositories;
 
 
 use App\BulkImport;
+use App\BulkImportApproval;
+use App\BulkImportImage;
 use App\BulkImportStatus;
+use App\DisapprovalReason;
 use App\User;
 use App\UserBulkImport;
+use App\VehicleDetail;
+use Carbon\Carbon;
 
 class BulkImportRepository
 {
@@ -173,6 +178,179 @@ class BulkImportRepository
     public function indexForUser($userId){
 
         return BulkImport::where('user_id', $userId)->latest()->get();
+    }
+
+    public function updateApprovalStatus($userBulkImport, $status){
+
+        $userBulkImport->approval_status = $status;
+
+        $userBulkImport->save();
+
+        return $userBulkImport;
+    }
+
+    public function saveDisapprovalReason($user_bulk_import, $reason, $status){
+
+        $disapproval_reason = new DisapprovalReason();
+
+        $disapproval_reason->reason = $reason;
+
+        $disapproval_reason->user_bulk_import_id = $user_bulk_import->id;
+
+        $disapproval_reason->status = $status;
+
+        $disapproval_reason->save();
+
+        return $disapproval_reason;
+    }
+
+    public function updateDisapprovalReason($user_bulk_import_id, $disapproval_reason_id, $status){
+
+        $disapproval_reason = DisapprovalReason::where('user_bulk_import_id', $user_bulk_import_id)
+            ->where('id', $disapproval_reason_id)
+            ->firstOrFail();
+        $disapproval_reason->status = $status;
+
+        $disapproval_reason->save();
+
+        return $disapproval_reason;
+    }
+
+    public function getDisapprovalReasonsNotResolved($userBulkImportId){
+
+        return DisapprovalReason::where('user_bulk_import_id', $userBulkImportId)
+            ->where('status', 'not_resolved')
+            ->latest()
+            ->get();
+    }
+
+    public function getDisapprovalReasonsNotResolvedOrCorrected($userBulkImportId){
+
+        return DisapprovalReason::where('user_bulk_import_id', $userBulkImportId)
+            ->where('status', 'not_resolved')
+            ->orWhere('status', 'correction_submitted')
+            ->latest()
+            ->get();
+    }
+
+    public function getAllSubmittedCorrections(){
+
+        return DisapprovalReason::latest()->get();
+
+    }
+
+    /**
+     * @param $bulkImportId
+     * @param array $data
+     * @return BulkImportApproval
+     */
+    public function storeBulkApproval($bulkImportId, array  $data){
+
+        if(BulkImportApproval::where('bulk_import_id', $bulkImportId)->exists()){
+
+            $bulk_import_approval = BulkImportApproval::where('bulk_import_id', $bulkImportId)->firstOrFail();
+
+            $bulk_import_approval->amount = $data['amount'];
+            $bulk_import_approval->period = $data['period'];
+            $bulk_import_approval->bulk_import_id = $bulkImportId;
+
+            $bulk_import_approval->save();
+
+            return $bulk_import_approval;
+        }
+
+        $bulk_import_approval = new BulkImportApproval();
+
+        $bulk_import_approval->amount = $data['amount'];
+        $bulk_import_approval->period = $data['period'];
+        $bulk_import_approval->bulk_import_id = $bulkImportId;
+
+        $bulk_import_approval->save();
+
+        return $bulk_import_approval;
+    }
+
+    public function showApproval($bulkImportId){
+
+        return BulkImportApproval::where('bulk_import_id', $bulkImportId)->firstOrFail();
+    }
+
+    public function showApprovalUsingId($bulkApprovalId){
+
+        return BulkImportApproval::where('id', $bulkApprovalId)->firstOrFail();
+    }
+
+    public function setApprovalAsApproved($bulk_approval){
+
+        $bulk_approval->approval_status = 'approved';
+        $bulk_approval->payment_status = 'paid';
+
+        $bulk_approval->save();
+
+        return $bulk_approval;
+    }
+
+    public function getBulkImages($userBulkImportId){
+
+        return BulkImportImage::where('user_bulk_import_id', $userBulkImportId)->get();
+
+    }
+
+    public function moveAdsToLive($bulkImportId){
+
+        $single_ads = UserBulkImport::where('bulk_import_id', $bulkImportId)->get();
+
+        foreach ($single_ads as $single_ad){
+
+            $vehicle_detail = new VehicleDetail();
+
+            $vehicle_detail->car_make_id = $single_ad->car_make_id;
+            $vehicle_detail->car_model_id = $single_ad->car_model_id;
+            $vehicle_detail->year = $single_ad->year;
+            $vehicle_detail->mileage = $single_ad->mileage;
+            $vehicle_detail->body_type_id = $single_ad->body_type_id;
+            $vehicle_detail->transmission_type_id = $single_ad->transmission_type_id;
+            $vehicle_detail->car_condition_id = $single_ad->car_condition_id;
+            $vehicle_detail->duty_id = $single_ad->duty_id;
+            $vehicle_detail->price = $single_ad->price;
+            $vehicle_detail->negotiable_price = $single_ad->negotiable_price;
+            $vehicle_detail->fuel_type = $single_ad->fuel_type;
+            $vehicle_detail->engine_size = $single_ad->engine_size;
+            $vehicle_detail->interior = $single_ad->interior;
+            $vehicle_detail->colour_type_id = $single_ad->colour_type_id;
+            $vehicle_detail->description = $single_ad->description;
+            $vehicle_detail->other_features = $single_ad->other_features;
+
+            $vehicle_detail->save();
+
+            $adStatusRepository = new AdStatusRepository();
+
+            $start = Carbon::now();
+
+            $stop = Carbon::now()->addDays(30);
+
+            $adStatusRepository->storeAdStatus($vehicle_detail,
+                'active',
+                $start,
+                $stop);
+
+            $vehicleImagesRepository = new  VehicleImagesRepository();
+
+            $images = $this->getBulkImages($single_ad->id);
+
+            foreach ($images as $image){
+
+                $vehicleImagesRepository->store($vehicle_detail,
+                    $image->image_name,
+                    $image->image_area,
+                    $vehicle_detail->id);
+            }
+
+            $vehicleVerificationsRepository = new VehicleVerificationsRepository();
+
+            $vehicleVerificationsRepository->store($vehicle_detail, 'verified');
+
+        }
 
     }
 

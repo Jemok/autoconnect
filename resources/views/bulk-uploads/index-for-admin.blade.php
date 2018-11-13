@@ -7,8 +7,8 @@
                 <div class="card">
                     <div class="card-header">Confirm Uploads ( {{ $single_ads->count() }} )
 
-                        <a href="{{ route('showBulkPaymentsPage', $bulkImportId) }}" class="btn btn-primary pull-right">
-                            Proceed To Pay
+                        <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-primary pull-right">
+                            Approve and Send Payment Instructions
                         </a>
                     </div>
 
@@ -35,6 +35,7 @@
                                 <th scope="col">Negotiable Price</th>
                                 <th scope="col">Images Uploaded</th>
                                 <th scope="col">Images</th>
+                                <th scope="col">Verified</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -69,6 +70,13 @@
                                         <a class="btn btn-success btn-sm" href="{{ route('adminManageBulkImages', [$bulkImportId, $single_ad->id]) }}">
                                             Images
                                         </a>
+                                    </td>
+                                    <td>
+                                        @if($single_ad->approval_status == 'not_approved')
+                                            <i class="fa fa-times text-danger"></i>
+                                        @elseif($single_ad->approval_status == 'approved')
+                                            <i class="fa fa-check text-success"></i>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\ModelHasRole;
 use Spatie\Permission\Models\Role;
 
 class RolesRepository
@@ -29,5 +30,12 @@ class RolesRepository
     public function showFromName($name){
 
         return Role::where('name', $name)->firstOrFail();
+    }
+
+    public function showAllUsersForRole($roleId){
+
+        return ModelHasRole::where('role_id', $roleId)
+            ->with('user')
+            ->get();
     }
 }

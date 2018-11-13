@@ -15,7 +15,6 @@ class CreateAdStatusesTable extends Migration
     {
         Schema::create('ad_statuses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('vehicle_payment_id')->index()->unsigned();
             $table->integer('vehicle_detail_id')->index()->unsigned();
             $table->string('status')->default('inactive');
             $table->dateTime('start');

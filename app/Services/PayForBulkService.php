@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
  * Date: 10/4/18
  * Time: 11:25 AM
  */
-class PayForAdService
+class PayForBulkService
 {
     /**
      * Create a new job instance.
@@ -79,7 +79,7 @@ class PayForAdService
                 'externalIdentifier' => $vehiclePayment->id,
                 'phoneNumber' => $phone_number,
                 'amount'      => $amount,
-                'callBackUrl' => env('APP_URL').'/api/payment/results'
+                'callBackUrl' => env('APP_URL').'/api/payment/bulk-results'
             ])
         ]);
 

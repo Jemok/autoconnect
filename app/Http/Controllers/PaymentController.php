@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PayForBulkRequest;
+use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Services\PayForAdService;
+use App\Services\PayForBulkService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -75,6 +78,62 @@ class PaymentController extends Controller
         $bulkImportRepository->storeBulkImportStatus($bulk_import, 'payment');
 
         return view('bulk-uploads.pay', compact('bulkImportId'));
+    }
+
+    public function payForBulk($bulkImportId,
+                               BulkImportRepository $bulkImportRepository){
+
+        $bulk_approval = $bulkImportRepository->showApproval($bulkImportId);
+
+        return view('bulk-uploads.bulk-payment', compact('bulk_approval', 'bulkImportId'));
+    }
+
+    public function makeBulkPayment($bulkImportId,
+                                    PayForBulkRequest $payForBulkRequest,
+                                    BulkImportRepository $bulkImportRepository,
+                                    PayForBulkService $payForAdService
+    ){
+
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        $bulk_approval = $bulkImportRepository->showApproval($bulkImportId);
+
+        $payForAdService->handle($bulk_approval, $bulk_approval, $payForBulkRequest->phone_number, $bulk_approval->amount, $bulk_import->user->name);
+
+        flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
+
+        return redirect()->back();
+    }
+
+    public function processBulkPayment(Request $request,
+                                       BulkImportRepository $bulkImportRepository,
+                                       PaymentRepository $paymentRepository){
+
+        $bulkApprovalId = $request->externalIdentifier;
+        $paymentStatus = $request->status;
+        $amount = $request->transactedAmount;
+
+        $bulkApproval = $bulkImportRepository->showApprovalUsingId($bulkApprovalId);
+
+        $user = $bulkApproval->bulk_import->user;
+
+        $paymentRepository->storeBulkPaymentResult($request->all(), $bulkApprovalId);
+
+        if($paymentStatus == 'success'){
+
+            $bulkImportRepository->setApprovalAsApproved($bulkApproval);
+
+            $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id);
+
+            $user->notify(new PaymentReceivedNotification($amount,
+                $user->name,
+                ' Bilk Import Batch '.$bulkApproval->bulk_import->id));
+
+            $user->notify(new BulkImportAdNotification($bulkApproval->bulk_import, $user));
+        }
+
+        return response()->json(['message' => 'success']);
+
     }
 }
 

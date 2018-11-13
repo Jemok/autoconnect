@@ -61,7 +61,6 @@ class SingleAdsController extends Controller
         }
 
         $adStatusRepository->storeAdStatus($vehicle_detail,
-            $vehicle_payment,
             'active',
             $start,
             $stop);

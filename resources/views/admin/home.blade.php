@@ -34,6 +34,27 @@
                                 <a href="{{ route('indexForPayments') }}" class="btn btn-primary">Manage Bulk Uploads</a>
                             </div>
                         </div>
+
+                        <div class="card" style="margin-top: 1%;">
+                            <div class="card-body">
+                                <h5 class="card-title">Bulk Uploads Corrected</h5>
+                                <a href="{{ route('indexCorrectedSubmissions') }}" class="btn btn-primary">Manage Bulk Uploads</a>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 1%;">
+                            <div class="card-body">
+                                <h5 class="card-title">Dealers</h5>
+                                <a href="{{ route('indexDealers') }}" class="btn btn-primary">List all dealers</a>
+                            </div>
+                        </div>
+
+                        <div class="card" style="margin-top: 1%;">
+                            <div class="card-body">
+                                <h5 class="card-title">Payment Reports</h5>
+                                <a href="{{ route('indexAnnualReports') }}" class="btn btn-primary">Payment Reports</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

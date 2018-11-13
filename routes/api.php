@@ -36,3 +36,6 @@ Route::get('/dropdown', function(Request $request){
 });
 
 Route::post('/payment/results', 'PaymentController@processPayment')->name('processPayment');
+
+Route::post('/payment/bulk-results', 'PaymentController@processBulkPayment')->name('processBulkPayment');
+

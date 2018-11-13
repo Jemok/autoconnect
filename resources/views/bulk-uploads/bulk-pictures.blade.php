@@ -17,6 +17,28 @@
                             </div>
                         @endif
 
+                        @if($disapproval_reasons->count())
+                            <div class="alert alert-danger">
+                                <p class="card-text">
+                                    Please fix the issues below in your Ad
+                                </p>
+                                @foreach($disapproval_reasons as $disapproval_reason)
+                                    <p class="card-text text-danger">
+                                        {{ $disapproval_reason->reason }}
+                                    </p>
+
+                                    <form action="{{ route('submitBulkCorrection', [$single_bulk_upload->id, $disapproval_reason->id, 'correction_submitted']) }}" method="post">
+
+                                        {{ csrf_field() }}
+
+                                        <button type="submit" class="btn btn-primary">
+                                            Submit Corrections
+                                        </button>
+                                    </form>
+                                @endforeach
+                            </div>
+                        @endif
+
                         <h4>
                             {{  $single_bulk_upload->car_make->name }} - {{ $single_bulk_upload->car_model->name  }} - {{  $single_bulk_upload->year }} - {{  $single_bulk_upload->colour_type->name }}
                         </h4>
@@ -104,9 +126,9 @@
                               class="dropzone"
                               id="my-awesome-dropzone"></form>
 
-                        <a href="{{ route('createVehicle') }}" class="btn btn-danger float-left">Previous</a>
+                        {{--<a href="{{ route('createVehicle') }}" class="btn btn-danger float-left">Previous</a>--}}
 
-                        <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="btn btn-success float-right">Next</a>
+                        <a href="{{ route('confirmBulkImports', $single_bulk_upload->bulk_import_id) }}" class="btn btn-success float-right">Next</a>
                     </div>
                 </div>
             </div>
