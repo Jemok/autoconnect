@@ -36,7 +36,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('createVehicle') }}">SELL A CAR</a>
+                        <a class="nav-link" href="{{ route('createVehicle') }}" style="color:  black;">Sell A Car</a>
                     </li>
                 </ul>
 
@@ -45,12 +45,12 @@
                     <!-- Authentication Links -->
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">LOGIN</a>
+                        <a class="nav-link" href="{{ route('login') }}" style="color:  black;">Sign In</a>
                     </li>
 
                     @if(url()->current() != env('APP_URL').'/register')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">DEALER SIGN UP</a>
+                            <a class="nav-link" href="{{ route('register') }}" style="color:  black;">Get a dealer account</a>
                         </li>
                     @endif
 
@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="">
         @yield('content')
     </main>
 </div>
