@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4">
             <div class="collapse" id="collapseExample">
                 <div class="card card-body">
                     <h1 class="card-title">
@@ -350,15 +350,15 @@
                     </li>
                     <li class="list-group-item">
                         <i class="fa fa-map-marker"></i>
-                        Rest of Kenya
+                        Nyeri
                     </li>
                     <li class="list-group-item">
                         <i class="fa fa-map-marker"></i>
-                        Imported from Japan
+                        Ruiru
                     </li>
                     <li class="list-group-item">
                         <i class="fa fa-map-marker"></i>
-                        Imported from UK
+                        Westlands
                     </li>
                 </ul>
             </div>
