@@ -180,6 +180,9 @@ Route::post('/make-bulk-payment/{bulkImportId}', 'PaymentController@makeBulkPaym
     ->name('makeBulkPayment');
 
 Route::get('/single-car-view', 'SingleCarViewController@show')
-          ->name('singleCarView');
+    ->name('singleCarView');
+
+Route::get('car-search-results', 'CarSearchController@showSearchResults')
+    ->name('carSearchResults');
 
 

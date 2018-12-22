@@ -60,7 +60,7 @@
                             </p>
                         </div>
 
-                        <a href="#" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
+                        <a href="{{ route('carSearchResults') }}" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
                     </div>
                 </form>
             </div>
@@ -144,7 +144,7 @@
                             </div>
                         </div>
 
-                        <a href="#" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
+                        <a href="{{ route('carSearchResults') }}" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
 
                     </form>
 
@@ -160,72 +160,84 @@
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner row w-100 mx-auto">
                 <div class="carousel-item col-md-4 active">
-                    <div class="card" style="overflow-y: hidden;">
-                        <div style="overflow: hidden; height: 180px;">
-                            <a href="{{ route('singleCarView') }}">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/car-1.jpeg') }}" alt="Card image cap">
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a  href="{{ route('singleCarView') }}">
+                    <a href="{{ route('singleCarView') }}">
+                        <div class="card" style="overflow-y: hidden;">
+                            <div style="overflow: hidden; height: 180px;">
+                                <a href="{{ route('singleCarView') }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/car-1.jpeg') }}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body">
                                 <h4 class="card-title">
                                     Chevrolet Captiva
                                 </h4>
-                            </a>
-                            <p class="card-text">KES 2,400,000</p>
-                            <p class="card-text">
-                                <i class="fa fa-map-marker"></i>
-                                <small class="text-muted">
-                                    Nairobi
-                                </small>
-                            </p>
+                                <p class="card-text">KES 2,400,000</p>
+                                <p class="card-text">
+                                    <i class="fa fa-map-marker"></i>
+                                    <small class="text-muted">
+                                        Nairobi
+                                    </small>
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="carousel-item col-md-4">
-                    <div class="card" style="overflow-y: hidden;">
-                        <div style="overflow: hidden; height: 180px;">
-                            <img class="card-img-top img-fluid" src="{{ asset('images/car-2.jpeg') }}" alt="Card image cap">
+                    <a href="{{ route('singleCarView') }}">
+                        <div class="card" style="overflow-y: hidden;">
+                            <div style="overflow: hidden; height: 180px;">
+                                <a href="{{ route('singleCarView') }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/car-2.jpeg') }}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Volkswagen Tiguan</h4>
+                                <p class="card-text">KES 1,900,000</p>
+                                <p class="card-text">
+                                    <i class="fa fa-map-marker"></i>
+                                    <small class="text-muted">Nairobi</small>
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Volkswagen Tiguan</h4>
-                            <p class="card-text">KES 1,900,000</p>
-                            <p class="card-text">
-                                <i class="fa fa-map-marker"></i>
-                                <small class="text-muted">Nairobi</small>
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="carousel-item col-md-4">
-                    <div class="card" style="overflow-y: hidden;">
-                        <div style="overflow: hidden; height: 180px;">
-                            <img class="card-img-top img-fluid" src="{{ asset('images/car-3.jpeg') }}" alt="Card image cap">
+                    <a href="{{ route('singleCarView') }}">
+                        <div class="card" style="overflow-y: hidden;">
+                            <div style="overflow: hidden; height: 180px;">
+                                <a href="{{ route('singleCarView') }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/car-3.jpeg') }}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Jeep</h4>
+                                <p class="card-text">KES 4,500,000</p>
+                                <p class="card-text">
+                                    <i class="fa fa-map-marker"></i>
+                                    <small class="text-muted">Nairobi</small>
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Jeep</h4>
-                            <p class="card-text">KES 4,500,000</p>
-                            <p class="card-text">
-                                <i class="fa fa-map-marker"></i>
-                                <small class="text-muted">Nairobi</small>
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="carousel-item col-md-4">
-                    <div class="card">
-                        <div style="overflow: hidden; height: 180px;">
-                            <img class="card-img-top img-fluid" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
+                    <a href="{{ route('singleCarView') }}">
+                        <div class="card">
+                            <div style="overflow: hidden; height: 180px;">
+                                <a href="{{ route('singleCarView') }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Mitsubishi Lancer</h4>
+                                <p class="card-text">KES 2,500,000</p>
+                                <p class="card-text">
+                                    <i class="fa fa-map-marker"></i>
+                                    <small class="text-muted">Nairobi</small>
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Mitsubishi Lancer</h4>
-                            <p class="card-text">KES 2,500,000</p>
-                            <p class="card-text">
-                                <i class="fa fa-map-marker"></i>
-                                <small class="text-muted">Nairobi</small>
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
