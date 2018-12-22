@@ -179,4 +179,7 @@ Route::get('/pay-for-bulk/{bulkImportId}', 'PaymentController@payForBulk')
 Route::post('/make-bulk-payment/{bulkImportId}', 'PaymentController@makeBulkPayment')
     ->name('makeBulkPayment');
 
+Route::get('/single-car-view', 'SingleCarViewController@show')
+          ->name('singleCarView');
+
 

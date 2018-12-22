@@ -162,10 +162,16 @@
                 <div class="carousel-item col-md-4 active">
                     <div class="card" style="overflow-y: hidden;">
                         <div style="overflow: hidden; height: 180px;">
-                            <img class="card-img-top img-fluid" src="{{ asset('images/car-1.jpeg') }}" alt="Card image cap">
+                            <a href="{{ route('singleCarView') }}">
+                                <img class="card-img-top img-fluid" src="{{ asset('images/car-1.jpeg') }}" alt="Card image cap">
+                            </a>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Chevrolet Captiva</h4>
+                            <a  href="{{ route('singleCarView') }}">
+                                <h4 class="card-title">
+                                    Chevrolet Captiva
+                                </h4>
+                            </a>
                             <p class="card-text">KES 2,400,000</p>
                             <p class="card-text">
                                 <i class="fa fa-map-marker"></i>
