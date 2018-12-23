@@ -11,44 +11,40 @@
                 </h1>
                 <form>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Make</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label for="carMake">Make</label>
+                        <select class="form-control" id="carMake">
+                            @foreach($car_makes as $car_make)
+                                <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Model</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                        <label for="carModel">Model</label>
+                        <select class="form-control" id="carModel">
+                            @foreach($car_models as $car_model)
+                                <option value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="inputEmail4">Year</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <label for="yearFrom">Year</label>
+                            <select name="yearFrom" class="form-control" id="yearFrom">
+                                @for($next_year; $next_year >= $start_year; $next_year--)
+                                    <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                @endfor
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="inputPassword4">To</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <label for="yearTo">To</label>
+                            <?php
+                            $start_year = 2004;
+                            $next_year = 2019;
+                            ?>
+                            <select name="yearTo" class="form-control" id="yearTo">
+                                @for($next_year; $next_year >= $start_year; $next_year--)
+                                    <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                @endfor
                             </select>
                         </div>
 
@@ -74,72 +70,100 @@
                     </h1>
 
                     <form>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="yearFrom">Min Price</label>
+                                <select name="minPrice" class="form-control" id="minPrice">
+                                    <option value="100000" selected>KES 100,000</option>
+                                    <option value="500000">KES 500,000</option>
+                                    <option value="700000">KES 700,000</option>
+                                    <option value="1000000">KES 1,000,000</option>
+                                    <option value="1500000">KES 1,500,000</option>
+                                    <option value="2000000">KES 2,000,000</option>
+                                    <option value="2500000">KES 2,500,000</option>
+                                    <option value="3000000">KES 3,000,000</option>
+                                    <option value="3500000">KES 3,500,000</option>
+                                    <option value="4000000">KES 4,000,000</option>
+                                    <option value="4500000">KES 4,500,000</option>
+                                    <option value="5000000">KES 5,000,000</option>
+                                    <option value="10000000">KES 10,000,000</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="maxPrice">Max Price</label>
+                                <select name="maxPrice" class="form-control" id="maxPrice">
+                                    <option value="100000">KES 100,000</option>
+                                    <option value="500000">KES 500,000</option>
+                                    <option value="700000">KES 700,000</option>
+                                    <option value="1000000">KES 1,000,000</option>
+                                    <option value="1500000">KES 1,500,000</option>
+                                    <option value="2000000">KES 2,000,000</option>
+                                    <option value="2500000">KES 2,500,000</option>
+                                    <option value="3000000">KES 3,000,000</option>
+                                    <option value="3500000">KES 3,500,000</option>
+                                    <option value="4000000">KES 4,000,000</option>
+                                    <option value="4500000">KES 4,500,000</option>
+                                    <option value="5000000">KES 5,000,000</option>
+                                    <option value="10000000" selected>KES 10,000,000</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="exampleInputEmail1">Keyword</label>
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a key word">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputEmail4">Locations</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="area">Locations</label>
+                                <select name="area" class="form-control" id="area">
+                                    @foreach($areas as $area)
+                                        <option value="{{ $area->code }}">{{ $area->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputPassword4">Body Types</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="bodyType">Body Types</label>
+                                <select name="bodyType" class="form-control" id="bodyType">
+                                    @foreach($body_types as $body_type)
+                                        <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputPassword4">Colours</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="colourType">Colours</label>
+                                <select name="colourType" class="form-control" id="colourType">
+                                    @foreach($colour_types as $colour_type)
+                                        <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="inputEmail4">Transmission</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="transmission_type">Transmission</label>
+                                <select name="transmission_type" class="form-control" id="transmission_type">
+                                    @foreach($transmission_types as $transmission_type)
+                                        <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputPassword4">Conditions</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="carCondition">Conditions</label>
+                                <select name="carCondition" class="form-control" id="carCondition">
+                                    @foreach($car_conditions as $car_condition)
+                                        <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="inputPassword4">Fuel Types</label>
-                                <select class="form-control" id="exampleFormControlSelect1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <label for="fuelType">Fuel Types</label>
+                                <select name="fuelType" class="form-control" id="fuelType">
+                                    @foreach($fuel_types as $fuel_type)
+                                        <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -147,7 +171,6 @@
                         <a href="{{ route('carSearchResults') }}" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
 
                     </form>
-
 
                 </div>
             </div>
