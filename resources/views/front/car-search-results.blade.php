@@ -62,7 +62,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <?php
-                                             $vehicle_front_image = getVehicleFrontImage($vehicle->id)
+                                            $vehicle_front_image = getVehicleFrontImage($vehicle->id)
                                             ?>
                                             <img class="card-img-top" src="{{ asset('images/'.$vehicle_front_image) }}" alt="Card image cap">
                                         </div>
