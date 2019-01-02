@@ -484,7 +484,6 @@
         </p>
     </footer>
 
-
     @push('scripts')
     <script src="{{ asset('js/carousel.js') }}"></script>
     <script>

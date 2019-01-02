@@ -72,8 +72,10 @@ class CarSearchRepository
                 $fuel_type_id = null;
             }
 
-            $vehicles = VehicleDetail::where('car_make_id', $car_make_id)
-                ->where('car_model_id', $car_model_id)->orWhereBetween('year', [$year_from, $year_to])
+            $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
+                ->where('car_model_id', $car_model_id);
+
+            $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
                 ->orWhereBetween('price', [$min_price, $max_price])
                 ->orWhere('body_type_id', $body_type_id)
                 ->orWhere('transmission_type_id', $transmission_type_id)

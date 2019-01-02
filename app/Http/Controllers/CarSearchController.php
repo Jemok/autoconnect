@@ -9,7 +9,6 @@ class CarSearchController extends Controller
 {
     public function showSearchResults(Request $request,
                                       CarSearchRepository $carSearchRepository){
-
         $car_make = $request->carMake;
         $car_model = $request->carModel;
         $year_from = $request->yearFrom;
@@ -38,6 +37,6 @@ class CarSearchController extends Controller
                                         $car_condition,
                                         $fuel_type);
 
-        return view('front.car-search-results', compact('vehicles'));
+        return view('front.car-search-results', compact('vehicles', 'car_make', 'car_model'));
     }
 }

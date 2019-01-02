@@ -6,16 +6,25 @@
     <div class="container-fluid">
 
         <div class="col-md-10" style="margin-top: 1%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%;">
-            <h4>
+
+            @if($car_make != 'any_make')
+                <h4>
                  <span style="color: black;">
-              2010 Mercedes-benz E250 Cars for Sale in Kenya
+              {{ strtoupper($car_make) }} {{ strtoupper($car_model) }} for Sale in Kenya
             </span>
-            </h4>
+                </h4>
+            @else
+                <h4>
+                 <span style="color: black;">
+              Latest Vehicles for Sale in Kenya
+            </span>
+                </h4>
+            @endif
 
             <hr>
 
             <div>
-                1 Result
+                {{ $vehicles->count() }} Results
                 <div class="dropdown float-right">
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Filter By
