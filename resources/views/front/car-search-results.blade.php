@@ -65,7 +65,7 @@
 
                 <div class="col-md-9">
                     @foreach($vehicles as $vehicle)
-                        <a href="{{ route('singleCarView') }}">
+                        <a href="{{ route('singleCarView') }}" style="text-decoration: none;">
                             <div class="card" style="margin-bottom: 1%;">
                                 <div class="card-body">
                                     <div class="row">
@@ -76,11 +76,20 @@
                                             <img class="card-img-top" src="{{ asset('images/'.$vehicle_front_image) }}" alt="Card image cap">
                                         </div>
                                         <div class="col-md-4">
-                                            <h4>
+                                            <h4 style="color: black;">
                                                 {{ $vehicle->car_make->name }} - {{ $vehicle->car_model->name }}
                                             </h4>
                                             <p style="color: darkgray; margin-top: 0; padding-top: 0;">
                                                 {{ $vehicle->year }} - {{ $vehicle->fuel_type }} - {{ $vehicle->transmission_type->name }}
+                                            </p>
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4 style="color: black;">
+                                                KSH {{ number_format($vehicle->price, 2) }}
+                                            </h4>
+                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
+                                                {{ strtoupper($vehicle->negotiable_price) }}
                                             </p>
 
                                             <div class="row col-md-12" style="margin-top: 10%;">
@@ -94,14 +103,6 @@
                                                     <i class="fa fa-whatsapp"></i>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h4>
-                                                KSH {{ number_format($vehicle->price, 2) }}
-                                            </h4>
-                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                                {{ strtoupper($vehicle->negotiable_price) }}
-                                            </p>
                                         </div>
                                     </div>
                                 </div>
