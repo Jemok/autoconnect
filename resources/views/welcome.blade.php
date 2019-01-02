@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('assets')
-    <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/carousel.css') }}" xmlns="http://www.w3.org/1999/html">
 @endsection
 @section('content')
-    <div class="col-md-12 row" style="background-image: url({{ asset('images/auto-range.jpg') }}); height: 550px; margin-top: 0; padding-top: 5%;">
-        <div class="card col-md-4" style="height: 90%; margin-left: 2.5%;">
-            <div class="card-body">
-                <h1 class="card-title">
-                    Find a car on sale
-                </h1>
-                <form>
+    <form method="get" action="{{ route('carSearchResults') }}">
+        <div class="col-md-12 row" style="background-image: url({{ asset('images/auto-range.jpg') }}); height: 550px; margin-top: 0; padding-top: 5%;">
+            <div class="card col-md-4" style="height: 90%; margin-left: 2.5%;">
+                <div class="card-body">
+                    <h1 class="card-title">
+                        Find a car on sale
+                    </h1>
                     <div class="form-group">
                         <label for="carMake">Make</label>
-                        <select class="form-control" id="carMake">
+                        <select name="carMake" class="form-control" id="car_make">
+                            <option value="any_make" selected>Any Make</option>
                             @foreach($car_makes as $car_make)
                                 <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
                             @endforeach
@@ -20,7 +21,8 @@
                     </div>
                     <div class="form-group">
                         <label for="carModel">Model</label>
-                        <select class="form-control" id="carModel">
+                        <select name="carModel" class="form-control" id="car_model">
+                            <option value="any_model" selected>Any Model</option>
                             @foreach($car_models as $car_model)
                                 <option value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
                             @endforeach
@@ -30,6 +32,7 @@
                         <div class="form-group col-md-6">
                             <label for="yearFrom">Year</label>
                             <select name="yearFrom" class="form-control" id="yearFrom">
+                                <option value="year_from">From</option>
                                 @for($next_year; $next_year >= $start_year; $next_year--)
                                     <option value="{{ $next_year }}">{{ $next_year }}</option>
                                 @endfor
@@ -42,6 +45,7 @@
                             $next_year = 2019;
                             ?>
                             <select name="yearTo" class="form-control" id="yearTo">
+                                <option value="year_to">To</option>
                                 @for($next_year; $next_year >= $start_year; $next_year--)
                                     <option value="{{ $next_year }}">{{ $next_year }}</option>
                                 @endfor
@@ -56,26 +60,22 @@
                             </p>
                         </div>
 
-                        <a href="{{ route('carSearchResults') }}" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
+                        <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
                     </div>
-                </form>
+                </div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    <h1 class="card-title">
-                        More Search Options
-                    </h1>
-
-                    <form>
-
+            <div class="col-md-4">
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        <h1 class="card-title">
+                            More Search Options
+                        </h1>
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="yearFrom">Min Price</label>
+                                <label for="minPrice">Min Price</label>
                                 <select name="minPrice" class="form-control" id="minPrice">
-                                    <option value="100000" selected>KES 100,000</option>
+                                    <option value="min_price">Min Price</option>
+                                    <option value="100000">KES 100,000</option>
                                     <option value="500000">KES 500,000</option>
                                     <option value="700000">KES 700,000</option>
                                     <option value="1000000">KES 1,000,000</option>
@@ -93,6 +93,7 @@
                             <div class="form-group col-md-6">
                                 <label for="maxPrice">Max Price</label>
                                 <select name="maxPrice" class="form-control" id="maxPrice">
+                                    <option value="max_price" selected>Max Price</option>
                                     <option value="100000">KES 100,000</option>
                                     <option value="500000">KES 500,000</option>
                                     <option value="700000">KES 700,000</option>
@@ -105,19 +106,20 @@
                                     <option value="4000000">KES 4,000,000</option>
                                     <option value="4500000">KES 4,500,000</option>
                                     <option value="5000000">KES 5,000,000</option>
-                                    <option value="10000000" selected>KES 10,000,000</option>
+                                    <option value="10000000">KES 10,000,000</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Keyword</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter a key word">
+                            <label for="keyword">Keyword</label>
+                            <input type="text" name="keyword" class="form-control" id="keyWord" aria-describedby="keyWordHelp" placeholder="Enter a key word">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="area">Locations</label>
-                                <select name="area" class="form-control" id="area">
+                                <select name="location" class="form-control" id="location">
+                                    <option value="any_location">Any Location</option>
                                     @foreach($areas as $area)
                                         <option value="{{ $area->code }}">{{ $area->name }}</option>
                                     @endforeach
@@ -126,6 +128,7 @@
                             <div class="form-group col-md-4">
                                 <label for="bodyType">Body Types</label>
                                 <select name="bodyType" class="form-control" id="bodyType">
+                                    <option value="any_body_type">Any Body Type</option>
                                     @foreach($body_types as $body_type)
                                         <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>
                                     @endforeach
@@ -134,6 +137,7 @@
                             <div class="form-group col-md-4">
                                 <label for="colourType">Colours</label>
                                 <select name="colourType" class="form-control" id="colourType">
+                                    <option value="any_colour_type">Any Colour</option>
                                     @foreach($colour_types as $colour_type)
                                         <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>
                                     @endforeach
@@ -145,6 +149,7 @@
                             <div class="form-group col-md-4">
                                 <label for="transmission_type">Transmission</label>
                                 <select name="transmission_type" class="form-control" id="transmission_type">
+                                    <option value="any_transmission">Any Transmission</option>
                                     @foreach($transmission_types as $transmission_type)
                                         <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>
                                     @endforeach
@@ -153,6 +158,7 @@
                             <div class="form-group col-md-4">
                                 <label for="carCondition">Conditions</label>
                                 <select name="carCondition" class="form-control" id="carCondition">
+                                    <option value="any_condition">Any Condition</option>
                                     @foreach($car_conditions as $car_condition)
                                         <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>
                                     @endforeach
@@ -161,6 +167,7 @@
                             <div class="form-group col-md-4">
                                 <label for="fuelType">Fuel Types</label>
                                 <select name="fuelType" class="form-control" id="fuelType">
+                                    <option value="any_fuel_type">Any Fuel Type</option>
                                     @foreach($fuel_types as $fuel_type)
                                         <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>
                                     @endforeach
@@ -168,14 +175,13 @@
                             </div>
                         </div>
 
-                        <a href="{{ route('carSearchResults') }}" class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;">Search Now</a>
-
-                    </form>
-
+                        <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
+
     <div class="container-fluid">
         <div style="padding: 2%;">
             <h1 class="text-center mb-3">Featured Cars</h1>
@@ -308,7 +314,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div style="padding: 2%;">
@@ -482,5 +487,24 @@
 
     @push('scripts')
     <script src="{{ asset('js/carousel.js') }}"></script>
+    <script>
+        jQuery(document).ready(function($){
+            $('#car_make').change(function(){
+                $.get("{{ url('/api/dropdown')}}",
+                    { option: $(this).val() },
+                    function(data) {
+                        var model = $('#car_model');
+                        model.empty();
+
+                        model.append("<option selected disabled>Choose...</option>");
+
+                        $.each(data, function(index, element) {
+                            model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
+                        });
+                    }
+                );
+            });
+        });
+    </script>
     @endpush
 @endsection

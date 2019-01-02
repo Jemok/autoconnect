@@ -302,8 +302,6 @@
 
                             <button type="submit" class="btn btn-success float-right">Next</button>
                         </form>
-
-
                     </div>
                 </div>
             </div>

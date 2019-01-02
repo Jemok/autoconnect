@@ -55,165 +55,50 @@
                 </div>
 
                 <div class="col-md-9">
-                    <a href="{{ route('singleCarView') }}">
-                        <div class="card" style="margin-bottom: 1%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            Mercedes-Benz E250
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            2011 - Petro - Automatic
-                                        </p>
+                    @foreach($vehicles as $vehicle)
+                        <a href="{{ route('singleCarView') }}">
+                            <div class="card" style="margin-bottom: 1%;">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <?php
+                                             $vehicle_front_image = getVehicleFrontImage($vehicle->id)
+                                            ?>
+                                            <img class="card-img-top" src="{{ asset('images/'.$vehicle_front_image) }}" alt="Card image cap">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h4>
+                                                {{ $vehicle->car_make->name }} - {{ $vehicle->car_model->name }}
+                                            </h4>
+                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
+                                                {{ $vehicle->year }} - {{ $vehicle->fuel_type }} - {{ $vehicle->transmission_type->name }}
+                                            </p>
 
-                                        <div class="row col-md-12" style="margin-top: 10%;">
-                                            <div class="col-md-4">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-comment"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-whatsapp"></i>
+                                            <div class="row col-md-12" style="margin-top: 10%;">
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-phone"></i>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-comment"></i>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <i class="fa fa-whatsapp"></i>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            KSH 3,200,000
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            NEGOTIABLE
-                                        </p>
+                                        <div class="col-md-4">
+                                            <h4>
+                                                KSH {{ number_format($vehicle->price, 2) }}
+                                            </h4>
+                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
+                                                {{ strtoupper($vehicle->negotiable_price) }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('singleCarView') }}">
-                        <div class="card" style="margin-bottom: 1%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            Mercedes-Benz E250
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            2011 - Petro - Automatic
-                                        </p>
-
-                                        <div class="row col-md-12" style="margin-top: 10%;">
-                                            <div class="col-md-4">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-comment"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-whatsapp"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            KSH 3,200,000
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            NEGOTIABLE
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('singleCarView') }}">
-                        <div class="card" style="margin-bottom: 1%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            Mercedes-Benz E250
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            2011 - Petro - Automatic
-                                        </p>
-
-                                        <div class="row col-md-12" style="margin-top: 10%;">
-                                            <div class="col-md-4">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-comment"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-whatsapp"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            KSH 3,200,000
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            NEGOTIABLE
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a href="{{ route('singleCarView') }}">
-                        <div class="card" style="margin-bottom: 1%;">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            Mercedes-Benz E250
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            2011 - Petro - Automatic
-                                        </p>
-
-                                        <div class="row col-md-12" style="margin-top: 10%;">
-                                            <div class="col-md-4">
-                                                <i class="fa fa-phone"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-comment"></i>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <i class="fa fa-whatsapp"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <h4>
-                                            KSH 3,200,000
-                                        </h4>
-                                        <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                            NEGOTIABLE
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    @endforeach
                 </div>
 
             </div>
