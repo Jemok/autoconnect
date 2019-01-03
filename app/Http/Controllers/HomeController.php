@@ -39,7 +39,7 @@ class HomeController extends Controller
 
 //            return view('admin.home');
 
-            return view('dashboards.main-admin');
+            return redirect('adminHome');
         }
 
         if(Auth::user()->hasRole('buyer')){
