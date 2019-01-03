@@ -39,7 +39,7 @@ class HomeController extends Controller
 
 //            return view('admin.home');
 
-            return redirect('adminHome');
+            return redirect()->route('adminHome');
         }
 
         if(Auth::user()->hasRole('buyer')){
