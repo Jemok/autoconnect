@@ -30,12 +30,16 @@ class HomeController extends Controller
 
         if(Auth::user()->hasRole('dealer')){
 
-            return view('home', compact( 'count_invitations'));
+//            return view('home', compact( 'count_invitations'));
+
+            return view('dashboards.dealer', compact( 'count_invitations'));
         }
 
         if(Auth::user()->hasRole('super-admin')){
 
-            return view('admin.home');
+//            return view('admin.home');
+
+            return view('dashboards.main-admin');
         }
 
         if(Auth::user()->hasRole('buyer')){
@@ -43,6 +47,8 @@ class HomeController extends Controller
             return view('buyer.home', compact( 'count_invitations'));
         }
 
-        return view('home', compact( 'count_invitations'));
+//        return view('home', compact( 'count_invitations'));
+
+        return view('dashboards.dealer', compact( 'count_invitations'));
     }
 }
