@@ -66,6 +66,15 @@ class AdStatusRepository
     public function indexForVehicle($vehicleDetailId){
 
         return AdStatus::where('vehicle_detail_id', $vehicleDetailId)->latest()->get();
+    }
 
+    public function countActiveAds(){
+
+        return AdStatus::where('status', 'active')->count();
+    }
+
+    public function countExpiredAds(){
+
+        return AdStatus::where('status', 'inactive')->count();
     }
 }

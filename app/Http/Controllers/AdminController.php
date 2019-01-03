@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InvitationRequest;
 use App\Notifications\InvitationNotification;
+use App\Repositories\AdStatusRepository;
+use App\Repositories\BulkImportRepository;
 use App\Repositories\InvitationRepository;
 use App\Repositories\RolesRepository;
 use App\Repositories\UserRepository;
@@ -28,7 +30,9 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(RolesRepository $rolesRepository,
-                          InvitationRepository $invitationRepository)
+                          InvitationRepository $invitationRepository,
+                          AdStatusRepository $adStatusRepository,
+                          BulkImportRepository $bulkImportRepository)
     {
         $dealer_role = $rolesRepository->showFromName('dealer');
 
@@ -38,10 +42,19 @@ class AdminController extends Controller
 
         $invitations = $invitationRepository->indexInvitations();
 
+        $online_ads_count = $adStatusRepository->countActiveAds();
+
+        $expired_ads_count = $adStatusRepository->countExpiredAds();
+
+        $bulk_pending_verification_count = $bulkImportRepository->countBulkPendingAds();
+
         return view('dashboards.main-admin', compact(
             'dealer_roles',
             'roles',
-            'invitations' ));
+            'invitations',
+            'online_ads_count',
+            'expired_ads_count',
+            'bulk_pending_verification_count'));
     }
 
     public function indexAdministrators(){

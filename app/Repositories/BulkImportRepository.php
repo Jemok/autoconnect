@@ -351,6 +351,11 @@ class BulkImportRepository
             $vehicleVerificationsRepository->store($vehicle_detail, 'verified');
 
         }
+    }
+
+    public function countBulkPendingAds(){
+
+        return UserBulkImport::where('approval_status', 'not_approved')->count();
 
     }
 

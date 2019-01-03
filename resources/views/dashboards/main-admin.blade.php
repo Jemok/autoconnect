@@ -179,7 +179,7 @@
                                             <div class="card bg-c-blue order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Online Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-check f-left"></i><span>486</span></h2>
+                                                    <h2 class="text-right"><i class="ti-check f-left"></i><span>{{ $online_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="" style="color: white; font-weight: bold;">
                                                             View Online Ads
@@ -192,7 +192,7 @@
                                             <div class="card bg-c-green order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Ads Pending Verification</h6>
-                                                    <h2 class="text-right"><i class="ti-star  f-left"></i><span>200</span></h2>
+                                                    <h2 class="text-right"><i class="ti-star  f-left"></i><span>{{ $bulk_pending_verification_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="" style="color: white; font-weight: bold;">
                                                             View Pending Ads
@@ -218,7 +218,7 @@
                                             <div class="card bg-c-pink order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Expired Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-close f-left"></i><span>54</span></h2>
+                                                    <h2 class="text-right"><i class="ti-close f-left"></i><span>{{ $expired_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="" style="color: white; font-weight: bold;">
                                                             View Expired Ads
