@@ -22,14 +22,26 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the admin dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     *  Show the admin dashboard.
+     * @param RolesRepository $rolesRepository
+     * @param InvitationRepository $invitationRepository
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(RolesRepository $rolesRepository,
+                          InvitationRepository $invitationRepository)
     {
-//        return view('admin.home');
-        return view('dashboards.main-admin');
+        $dealer_role = $rolesRepository->showFromName('dealer');
+
+        $dealer_roles = $rolesRepository->showAllUsersForRole($dealer_role->id);
+
+        $roles = $rolesRepository->index();
+
+        $invitations = $invitationRepository->indexInvitations();
+
+        return view('dashboards.main-admin', compact(
+            'dealer_roles',
+            'roles',
+            'invitations' ));
     }
 
     public function indexAdministrators(){

@@ -96,7 +96,7 @@
 
                                 <li>
                                     <a href="#!">
-                                        <i class="ti-settings"></i> Settings
+                                        <i class="ti-settings"></i> Account Settings
                                     </a>
                                 </li>
 
@@ -128,6 +128,38 @@
                                 <a href="index.html">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-clipboard"></i><b>R</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Reports</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="fa fa-money"></i><b>P</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Payments</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Account Settings</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-dashboard"></i><b>S</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System Settings</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -226,6 +258,61 @@
                                                                         <th>Verification Status</th>
                                                                         <th>Action</th>
                                                                     </tr>
+                                                                    @foreach($dealer_roles as $dealer_role)
+                                                                        @if(isset($dealer_role->user->name))
+                                                                            <tr>
+                                                                                <th>{{ $dealer_role->model_id }}</th>
+                                                                                <th scope="row">{{ $dealer_role->user->name }}</th>
+                                                                                <td>{{  $dealer_role->user->email }}</td>
+                                                                                <td>{{ $dealer_role->user->phone_number }}</td>
+                                                                                <td>
+                                                                                    @if(isset($dealer_role->user->user_verification->verification_status))
+
+                                                                                        @if($dealer_role->user->user_verification->verification_status == 'not_verified')
+                                                                                            Not Verified
+                                                                                        @else
+                                                                                            Verified
+                                                                                        @endif
+                                                                                    @else
+                                                                                        Not Verified
+                                                                                    @endif
+                                                                                </td>
+                                                                                <td>
+                                                                                    @if(isset($dealer_role->user->user_verification->verification_status))
+
+                                                                                        @if($dealer_role->user->user_verification->verification_status == 'not_verified')
+                                                                                            <form action="{{ route('verifyUser', [$dealer_role->user->id, 'verified']) }}" method="post">
+
+                                                                                                {{ csrf_field() }}
+
+                                                                                                <button class="btn btn-sm btn-success">
+                                                                                                    Verify
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        @else
+                                                                                            <form action="{{ route('verifyUser', [$dealer_role->user->id, 'not_verified']) }}" method="post">
+
+                                                                                                {{ csrf_field() }}
+
+                                                                                                <button class="btn btn-sm btn-danger">
+                                                                                                    Un Verify
+                                                                                                </button>
+                                                                                            </form>
+                                                                                        @endif
+                                                                                    @else
+                                                                                        <form action="{{ route('verifyUser', [$dealer_role->user->id, 'verified']) }}" method="post">
+
+                                                                                            {{ csrf_field() }}
+
+                                                                                            <button class="btn btn-sm btn-success">
+                                                                                                Verify
+                                                                                            </button>
+                                                                                        </form>
+                                                                                    @endif
+                                                                                </td>
+                                                                            </tr>
+                                                                        @endif
+                                                                    @endforeach
                                                                 </table>
                                                             </div>
                                                             <div class="text-center">
@@ -243,6 +330,57 @@
                                                                         <th>Invited At</th>
                                                                         <th>Resend</th>
                                                                     </tr>
+                                                                    @foreach($invitations as $invitation)
+                                                                        <tr>
+                                                                            <td>
+                                                                                {{ $invitation->email }}
+                                                                            </td>
+
+                                                                            <td>
+                                                                                {{ $invitation->role->name }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ $invitation->status }}
+                                                                            </td>
+                                                                            <td>
+                                                                                {{ $invitation->created_at->toDateTimeString() }}
+                                                                            </td>
+                                                                            <td>
+                                                                                @if($invitation->status == 'invited')
+
+                                                                                    <form method="post" action="{{ route('resendInvitation', $invitation->id) }}">
+
+                                                                                        {{ csrf_field() }}
+
+                                                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                                                            Resend
+                                                                                        </button>
+                                                                                    </form>
+
+                                                                                @elseif($invitation->status == 'accepted')
+
+                                                                                    <form method="post" action="{{ route('revokeInvitation', $invitation->id) }}">
+
+                                                                                        {{ csrf_field() }}
+
+                                                                                        <button type="submit" class="btn btn-danger btn-sm">
+                                                                                            Revoke Role
+                                                                                        </button>
+                                                                                    </form>
+                                                                                @elseif($invitation->status == 'revoked')
+
+                                                                                    <form method="post" action="{{ route('resendInvitation', $invitation->id) }}">
+
+                                                                                        {{ csrf_field() }}
+
+                                                                                        <button type="submit" class="btn btn-success btn-sm">
+                                                                                            Resend
+                                                                                        </button>
+                                                                                    </form>
+                                                                                @endif
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                 </table>
                                                             </div>
                                                             <div class="text-center">
