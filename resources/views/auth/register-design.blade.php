@@ -10,12 +10,23 @@
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Register as Dealer</h5>
-                        <form class="form-signin" action="{{ route('login') }}" method="post">
+                        <form class="form-signin" action="{{ route('register') }}" method="post">
                             @csrf
 
                             <div class="form-label-group">
-                                <input type="email" name="email" id="inputEmail" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email address" required autofocus>
-                                <label for="inputEmail">Email address</label>
+                                <input type="text" name="name" id="inputName" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}" placeholder="E.g John Doe" required autofocus>
+                                <label for="inputName">Name</label>
+                                @if ($errors->has('name'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+
+                            <div class="form-label-group">
+                                <input type="email" name="email" id="inputEmail" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="E.g example@gmail.com" required autofocus>
+                                <label for="inputEmail">Email</label>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -33,13 +44,20 @@
                                 @endif
                             </div>
 
-                            <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" name="remember" id="customCheck1" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                            <div class="form-label-group">
+                                <input type="password" id="inputPasswordConfirmation" name="password_confirmation" class="form-control" placeholder="Password" required>
+                                <label for="inputPasswordConfirmation">Repeat Password</label>
                             </div>
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" name="termsAndConditions" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">
+                                    Accept terms and conditions
+                                </label>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
                             <hr class="my-4">
-                            <a href="{{ route('password.request') }}" class="">Forgot password ?</a>
+                            <a href="{{ route('login') }}" class="">Sign In</a>
                         </form>
                     </div>
                 </div>
