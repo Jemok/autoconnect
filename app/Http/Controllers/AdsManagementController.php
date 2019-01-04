@@ -24,4 +24,24 @@ class AdsManagementController extends Controller
             'vehicle_payments',
             'ads'));
     }
+
+    public function indexOnlineAds(){
+
+        return view('ads.admin.index-online');
+    }
+
+    public function indexPendingVerificationAds(){
+
+        return view('ads.admin.index-pending-verification');
+    }
+
+    public function indexDeclinedAds(){
+
+        return view('ads.admin.index-declined');
+    }
+
+    public function indexExpiredAds(){
+
+        return view('ads.admin.index-expired');
+    }
 }

@@ -92,6 +92,21 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('indexReportForYear')
         ->middleware('verified');
 
+    Route::get('/online-ads', 'AdsManagementController@indexOnlineAds')
+        ->name('indexOnlineAds')
+        ->middleware('verified');
+
+    Route::get('/pending-verification-ads', 'AdsManagementController@indexPendingVerificationAds')
+        ->name('indexPendingVerificationAds')
+        ->middleware('verified');
+
+    Route::get('/declined-ads', 'AdsManagementController@indexDeclinedAds')
+        ->name('indexDeclinedAds')
+        ->middleware('verified');
+
+    Route::get('/expired-ads', 'AdsManagementController@indexExpiredAds')
+        ->name('indexExpiredAds')
+        ->middleware('verified');
 });
 
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');

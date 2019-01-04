@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('assets')
-    <link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login-design.css') }}">
 @endsection
 @section('content')
     <div class="container">
