@@ -205,7 +205,7 @@
                                             <div class="card bg-c-yellow order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Declined Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-reload f-left"></i><span>24</span></h2>
+                                                    <h2 class="text-right"><i class="ti-reload f-left"></i><span>{{ $declined_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="{{ route('indexDeclinedAds') }}" style="color: white; font-weight: bold;">
                                                             View Declined Ads

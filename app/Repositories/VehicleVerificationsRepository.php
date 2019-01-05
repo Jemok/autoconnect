@@ -33,4 +33,14 @@ class VehicleVerificationsRepository
         return $vehicleDetail->vehicle_verification()->save($vehicle_verification);
     }
 
+    public function countDeclinedAds(){
+
+        return VehicleVerification::where('status', 'not_verified')->count();
+    }
+
+    public function indexDeclinedAds(){
+
+        return VehicleVerification::where('status', 'not_verified')->get();
+    }
+
 }
