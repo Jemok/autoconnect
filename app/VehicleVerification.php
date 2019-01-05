@@ -14,7 +14,7 @@ class VehicleVerification extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    protected function vehicle_details(){
+    protected function vehicle_detail(){
 
         return $this->belongsTo(VehicleDetail::class);
     }

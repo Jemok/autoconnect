@@ -30,6 +30,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
 <div class="fixed-button">
@@ -125,7 +126,7 @@
                     <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
-                                <a href="index.html">
+                                <a href="{{ route('adminHome') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -170,7 +171,41 @@
                     <div class="pcoded-inner-content">
                         <div class="main-body">
                             <div class="page-wrapper">
-                                // ONLINE ADS
+                                <!-- Page-header start -->
+                                <div class="page-header card">
+                                    <div class="card-block">
+                                        <h5 class="m-b-10">Online Ads</h5>
+                                        <p class="text-muted m-b-10">Manage all online Ads here</p>
+                                        <ul class="breadcrumb-title b-t-default p-t-10">
+                                            <li class="breadcrumb-item">
+                                                <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>
+                                            </li>
+                                            <li class="breadcrumb-item"><a href="{{ route('indexOnlineAds') }}">Online Ads</a>
+                                            </li>
+                                        </ul>
+
+                                        <div class="table-responsive" style="padding-top: 20px;">
+                                            <table class="table table-bordered" id="users-table">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">Id</th>
+                                                    <th scope="col">Make</th>
+                                                    <th scope="col">Model</th>
+                                                    <th scope="col">Year</th>
+                                                    <th scope="col">Mileage</th>
+                                                    <th scope="col">Body Type</th>
+                                                    <th scope="col">Transmission Type</th>
+                                                    <th scope="col">Car Condition</th>
+                                                    <th scope="col">Duty</th>
+                                                    <th scope="col">Price (KES)</th>
+                                                    <th scope="col">Negotiable Price</th>
+                                                </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Page-header end -->
                             </div>
                         </div>
                     </div>
@@ -246,6 +281,29 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('indexOnlineAdsData') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'car_make', name: 'car_make'},
+                    { data: 'car_model', name: 'car_model'},
+                    { data: 'year', name: 'year' },
+                    { data: 'mileage', name: 'mileage'},
+                    { data: 'body_type', name: 'body_type'},
+                    { data: 'transmission_type', name: 'transmission_type'},
+                    { data: 'car_condition', name: 'car_condition'},
+                    { data: 'duty', name: 'duty' },
+                    { data: 'price', name: 'price' },
+                    { data: 'negotiable', name : 'negotiable'},
+                ]
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

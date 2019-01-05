@@ -356,7 +356,11 @@ class BulkImportRepository
     public function countBulkPendingAds(){
 
         return UserBulkImport::where('approval_status', 'not_approved')->count();
+    }
 
+    public function indexBulkPendingAds(){
+
+        return UserBulkImport::where('approval_status', 'not_approved')->get();
     }
 
 }

@@ -9,6 +9,7 @@ use App\Repositories\BulkImportRepository;
 use App\Repositories\InvitationRepository;
 use App\Repositories\RolesRepository;
 use App\Repositories\UserRepository;
+use App\Repositories\VehicleVerificationsRepository;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -32,7 +33,8 @@ class AdminController extends Controller
     public function index(RolesRepository $rolesRepository,
                           InvitationRepository $invitationRepository,
                           AdStatusRepository $adStatusRepository,
-                          BulkImportRepository $bulkImportRepository)
+                          BulkImportRepository $bulkImportRepository,
+                          VehicleVerificationsRepository $vehicleVerificationsRepository)
     {
         $dealer_role = $rolesRepository->showFromName('dealer');
 
@@ -48,13 +50,19 @@ class AdminController extends Controller
 
         $bulk_pending_verification_count = $bulkImportRepository->countBulkPendingAds();
 
+        $declined_ads_count = $vehicleVerificationsRepository->countDeclinedAds();
+
+//        return view('admin.home');
+
+
         return view('dashboards.main-admin', compact(
             'dealer_roles',
             'roles',
             'invitations',
             'online_ads_count',
             'expired_ads_count',
-            'bulk_pending_verification_count'));
+            'bulk_pending_verification_count',
+            'declined_ads_count'));
     }
 
     public function indexAdministrators(){

@@ -107,6 +107,16 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('/expired-ads', 'AdsManagementController@indexExpiredAds')
         ->name('indexExpiredAds')
         ->middleware('verified');
+
+    Route::get('online-ads-data', 'DatatablesController@indexOnlineAds')->name('indexOnlineAdsData');
+
+    Route::get('pending-verification-ads-data', 'DatatablesController@indexPendingVerificationAds')->name('indexPendingVerificationAdsData');
+
+    Route::get('declined-ads-data', 'DatatablesController@indexDeclinedAds')->name('indexDeclinedAdsData');
+
+    Route::get('expired-ads-data', 'DatatablesController@indexExpiredAds')->name('indexExpiredAdsData');
+
+
 });
 
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');

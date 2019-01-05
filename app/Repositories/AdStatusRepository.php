@@ -77,4 +77,9 @@ class AdStatusRepository
 
         return AdStatus::where('status', 'inactive')->count();
     }
+
+    public function indexExpiredAds(){
+
+        return AdStatus::where('status', 'inactive')->get();
+    }
 }
