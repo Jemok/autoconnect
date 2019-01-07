@@ -48,7 +48,10 @@ class BulkUploadController extends Controller
 
     public function saveBulkUpload(){
 
-        return view('bulk-uploads.save');
+//        return view('bulk-uploads.save');
+
+        return view('bulk-uploads.admin.save');
+
     }
 
     public function importVehicles(BulkUpladFileRequest $request, BulkImportRepository $bulkImportRepository){
@@ -85,9 +88,11 @@ class BulkUploadController extends Controller
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
-        return view('bulk-uploads.confirm-imports', compact('bulkImportId',
-            'single_ads',
-            'vehicleImagesRepository'));
+//        return view('bulk-uploads.confirm-imports', compact('bulkImportId',
+//            'single_ads',
+//            'vehicleImagesRepository'));
+
+        return view('bulk-uploads.admin.confirmation-and-payment', compact('bulkImportId'));
     }
 
     public function createBulkImages(

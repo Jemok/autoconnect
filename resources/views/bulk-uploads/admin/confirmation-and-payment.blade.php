@@ -173,7 +173,7 @@
                         <div class="main-body">
                             <div class="page-wrapper">
                                 <div class="row bs-wizard wizard-second-div">
-                                    <div class="col bs-wizard-step">
+                                    <div class="col bs-wizard-step disabled">
                                         <div class="text-center bs-wizard-stepnum">
                              <span class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none wizard-small-font">
                                 Download Excel Template
@@ -185,7 +185,7 @@
                             </span>
                                         </div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
                                     </div>
 
                                     <div class="col bs-wizard-step disabled"><!-- complete -->
@@ -199,11 +199,11 @@
                             </strong>
                             </span>
                                         </div>
-                                        <div class="progress" ><div class="progress-bar" style="background-color: black;"></div></div>
+                                        <div class="progress" ><div class="progress-bar"></div></div>
                                         <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
                                     </div>
 
-                                    <div class="col bs-wizard-step disabled"><!-- complete -->
+                                    <div class="col bs-wizard-step"><!-- complete -->
                                         <div class="text-center bs-wizard-stepnum">
                             <span class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none wizard-small-font">
                                 Confirmation and Payment
@@ -215,7 +215,7 @@
                             </span>
                                         </div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                     </div>
 
                                     <div class="col bs-wizard-step disabled"><!-- active -->
@@ -234,22 +234,45 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="card">
-                                        <div class="card-block text-center">
-                                            <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
-                                            <p class="m-b-20" style="margin-top: 4%;">
-                                                Download and fill in the .xls template
-                                            </p>
-                                            <a href="{{ route('downloadExcelTemplate') }}"  class="btn btn-primary btn-lg btn-round">Download</a>
-                                        </div>
+                            </div>
+
+                            <!-- Page-header start -->
+                            <div class="page-header card">
+                                <div class="card-block">
+                                    <h5 class="m-b-10">Online Ads</h5>
+                                    <p class="text-muted m-b-10">Manage all online Ads here</p>
+                                    <ul class="breadcrumb-title b-t-default p-t-10">
+                                        <li class="breadcrumb-item">
+                                            <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="{{ route('indexOnlineAds') }}">Online Ads</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="table-responsive" style="padding-top: 20px;">
+                                        <table class="table table-bordered" id="users-table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Make</th>
+                                                <th scope="col">Model</th>
+                                                <th scope="col">Year</th>
+                                                <th scope="col">Mileage</th>
+                                                <th scope="col">Body Type</th>
+                                                <th scope="col">Transmission Type</th>
+                                                <th scope="col">Car Condition</th>
+                                                <th scope="col">Duty</th>
+                                                <th scope="col">Price (KES)</th>
+                                                <th scope="col">Negotiable Price</th>
+                                                <th scope="col">Images Uploaded</th>
+                                                <th scope="col">Verified</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
                                     </div>
                                 </div>
-
-                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-left">Continue</a>
-
-                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-right">Continue</a>
                             </div>
+                            <!-- Page-header end -->
                         </div>
                     </div>
                 </div>
@@ -324,6 +347,31 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('indexBulkUploadImportsData', [$bulkImportId]) !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'car_make', name: 'car_make'},
+                    { data: 'car_model', name: 'car_model'},
+                    { data: 'year', name: 'year' },
+                    { data: 'mileage', name: 'mileage'},
+                    { data: 'body_type', name: 'body_type'},
+                    { data: 'transmission_type', name: 'transmission_type'},
+                    { data: 'car_condition', name: 'car_condition'},
+                    { data: 'duty', name: 'duty' },
+                    { data: 'price', name: 'price' },
+                    { data: 'negotiable', name : 'negotiable'},
+                    { data: 'images_uploaded', name : 'images_uploaded'},
+                    { data: 'verified', name : 'verified'}
+                ]
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

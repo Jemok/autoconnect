@@ -173,7 +173,7 @@
                         <div class="main-body">
                             <div class="page-wrapper">
                                 <div class="row bs-wizard wizard-second-div">
-                                    <div class="col bs-wizard-step">
+                                    <div class="col bs-wizard-step disabled">
                                         <div class="text-center bs-wizard-stepnum">
                              <span class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none wizard-small-font">
                                 Download Excel Template
@@ -185,10 +185,10 @@
                             </span>
                                         </div>
                                         <div class="progress"><div class="progress-bar"></div></div>
-                                        <a href="#" class="bs-wizard-dot"></a>
+                                        <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
                                     </div>
 
-                                    <div class="col bs-wizard-step disabled"><!-- complete -->
+                                    <div class="col bs-wizard-step"><!-- complete -->
                                         <div class="text-center bs-wizard-stepnum">
                             <span class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none wizard-small-font">
                                 Import Bulk Ads File
@@ -200,7 +200,7 @@
                             </span>
                                         </div>
                                         <div class="progress" ><div class="progress-bar" style="background-color: black;"></div></div>
-                                        <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
+                                        <a href="#" class="bs-wizard-dot"></a>
                                     </div>
 
                                     <div class="col bs-wizard-step disabled"><!-- complete -->
@@ -235,20 +235,28 @@
                                 </div>
 
                                 <div class="col-md-12 col-lg-4">
-                                    <div class="card">
-                                        <div class="card-block text-center">
-                                            <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
-                                            <p class="m-b-20" style="margin-top: 4%;">
-                                                Download and fill in the .xls template
-                                            </p>
-                                            <a href="{{ route('downloadExcelTemplate') }}"  class="btn btn-primary btn-lg btn-round">Download</a>
+                                    <form  method="POST" action="{{ route('importVehicles') }}" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <div class="card">
+                                            <div class="card-block text-center">
+
+                                                <p class="m-b-20" style="margin-top: 4%;">
+                                                    Upload Excel File
+                                                </p>
+
+                                                <input type="file" name="vehicle_file" class="{{ $errors->has('vehicle_file') ? 'is-invalid' : '' }}">
+
+                                                @if ($errors->has('vehicle_file'))
+                                                    <div class="text-danger">
+                                                        {{ $errors->first('vehicle_file') }}
+                                                    </div>
+                                                @endif
+
+                                                <button type="submit" class="btn btn-primary btn-lg btn-round" style="margin-top: 8%;">Import and Continue</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
-
-                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-left">Continue</a>
-
-                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-right">Continue</a>
                             </div>
                         </div>
                     </div>

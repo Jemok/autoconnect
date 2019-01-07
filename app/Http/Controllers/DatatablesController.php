@@ -235,4 +235,70 @@ class DatatablesController extends Controller
             })
             ->make(true);
     }
+
+    public function indexBulkUploadImportsData(BulkImportRepository $bulkImportRepository,
+                                               $bulkImportId){
+
+        $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
+
+        return Datatables::of($single_ads)
+            ->addColumn('id', function ($single_ad){
+
+                return $single_ad->id;
+            })
+            ->addColumn('car_make', function ($single_ad){
+
+                return $single_ad->car_make->name;
+            })
+            ->addColumn('car_model', function ($single_ad){
+
+                return $single_ad->car_model->name;
+            })
+            ->addColumn('year', function ($single_ad){
+
+                return $single_ad->year;
+            })
+            ->addColumn('mileage', function ($single_ad){
+
+                return $single_ad->mileage;
+            })
+            ->addColumn('body_type', function ($single_ad){
+
+                return $single_ad->body_type->name;
+            })
+            ->addColumn('transmission_type', function ($single_ad){
+
+                return $single_ad->transmission_type->name;
+            })
+            ->addColumn('car_condition', function ($single_ad){
+
+                return $single_ad->car_condition->name;
+            })
+            ->addColumn('duty', function ($single_ad){
+
+                return $single_ad->duty->name;
+            })
+            ->addColumn('price', function ($single_ad){
+
+                return $single_ad->price;
+            })
+            ->addColumn('negotiable', function ($single_ad){
+
+                if($single_ad->negotiable_price == 'allowed'){
+                    return 'Negotiable';
+                }else{
+                    return 'Not Negotiable';
+                }
+            })
+            ->addColumn('images_uploaded', function ($single_ad){
+
+                return 'Uploaded';
+            })
+            ->addColumn('verified', function ($single_ad){
+
+                return 'Verified';
+            })
+            ->make(true);
+
+    }
 }
