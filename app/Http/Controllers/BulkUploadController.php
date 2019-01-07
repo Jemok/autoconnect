@@ -33,8 +33,11 @@ class BulkUploadController extends Controller
 
     public function startBulkUpload(){
 
-        return view('bulk-uploads.start-uploading');
+//        return view('bulk-uploads.start-uploading');
+
+        return view('bulk-uploads.admin.start');
     }
+
 
     public function downloadExcelTemplate(){
 
