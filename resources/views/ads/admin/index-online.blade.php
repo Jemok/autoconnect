@@ -66,7 +66,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="index.html">
+                    <a href="{{ route('adminHome') }}">
                         <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
