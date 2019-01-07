@@ -233,6 +233,22 @@
                                         <a href="#" class="bs-wizard-dot" style="background-color: lightgrey;"></a>
                                     </div>
                                 </div>
+
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="card">
+                                        <div class="card-block text-center">
+                                            <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
+                                            <p class="m-b-20" style="margin-top: 4%;">
+                                                Download and fill in the .xls template
+                                            </p>
+                                            <a href="{{ route('downloadExcelTemplate') }}"  class="btn btn-primary btn-sm btn-round">Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-left">Continue</a>
+
+                                <a href="{{ route('saveBulkUpload') }}" class="btn btn-lg btn-success float-right">Continue</a>
                             </div>
                         </div>
                     </div>
