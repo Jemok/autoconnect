@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/wizard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dropzone.min.css') }}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
@@ -494,6 +495,11 @@
         <script src="{{ asset('js/pcoded.min.js') }}"></script>
         <script src="{{ asset('js/vartical-demo.js') }}"></script>
         <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+        <script src="{{ asset('js/dropzone.js') }}"></script>
+        <script src="{{ asset('js/bulk-uploader.js') }}"></script>
+        <script>
+            $('#flash-overlay-modal').modal();
+        </script>
     </div>
 </body>
 </html>
