@@ -254,6 +254,9 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
+                                                <th scope="col">Images Uploaded</th>
+                                                <th scope="col">Upload Images</th>
+                                                <th scope="col">Verified</th>
                                                 <th scope="col">Make</th>
                                                 <th scope="col">Model</th>
                                                 <th scope="col">Year</th>
@@ -264,8 +267,6 @@
                                                 <th scope="col">Duty</th>
                                                 <th scope="col">Price (KES)</th>
                                                 <th scope="col">Negotiable Price</th>
-                                                <th scope="col">Images Uploaded</th>
-                                                <th scope="col">Verified</th>
                                             </tr>
                                             </thead>
                                         </table>
@@ -356,6 +357,9 @@
                 ajax: '{!! route('indexBulkUploadImportsData', [$bulkImportId]) !!}',
                 columns: [
                     { data: 'id', name: 'id' },
+                    { data: 'images_uploaded', name : 'images_uploaded'},
+                    { data: 'upload_images', name : 'upload_images'},
+                    { data: 'verified', name : 'verified'},
                     { data: 'car_make', name: 'car_make'},
                     { data: 'car_model', name: 'car_model'},
                     { data: 'year', name: 'year' },
@@ -366,8 +370,7 @@
                     { data: 'duty', name: 'duty' },
                     { data: 'price', name: 'price' },
                     { data: 'negotiable', name : 'negotiable'},
-                    { data: 'images_uploaded', name : 'images_uploaded'},
-                    { data: 'verified', name : 'verified'}
+
                 ]
             });
         });

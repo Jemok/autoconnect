@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\SingleAdsRepository;
+use App\Repositories\VehicleImagesRepository;
 use App\Repositories\VehicleVerificationsRepository;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -237,12 +238,13 @@ class DatatablesController extends Controller
     }
 
     public function indexBulkUploadImportsData(BulkImportRepository $bulkImportRepository,
+                                               VehicleImagesRepository $vehicleImagesRepository,
                                                $bulkImportId){
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
         return Datatables::of($single_ads)
-            ->addColumn('id', function ($single_ad){
+            ->addColumn('id', function ($single_ad) use ($vehicleImagesRepository){
 
                 return $single_ad->unique_identifier;
             })
@@ -294,14 +296,34 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
-            ->addColumn('images_uploaded', function ($single_ad){
+            ->addColumn('images_uploaded', function ($single_ad)use ($vehicleImagesRepository){
 
-                return 'Uploaded';
+                if($vehicleImagesRepository->checkIfImagesExistForBulk($single_ad->id)){
+
+                    return '<i class="fa fa-check text-success"></i>'. ' Uploaded';
+
+                }else{
+                    return '<i class="fa fa-times text-danger"></i>'. ' Not Uploaded';
+                }
+            })
+            ->editColumn('upload_images', function ($single_ad) use ($bulkImportId) {
+
+                $url = route('createBulkImages', [$bulkImportId, $single_ad->id]);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>Upload Images</a>';
             })
             ->addColumn('verified', function ($single_ad){
 
+                if($single_ad->approval_status == 'not_approved'){
+
+                    return '<i class="fa fa-times text-danger"></i>'.'Not Verified';
+                }elseif($single_ad->approval_status == 'approved'){
+                    return '<i class="fa fa-check text-success"></i>'.' Verified';
+                }
+
                 return 'Verified';
             })
+            ->rawColumns(['images_uploaded', 'upload_images', 'verified'])
             ->make(true);
 
     }
