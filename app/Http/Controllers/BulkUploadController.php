@@ -151,13 +151,22 @@ class BulkUploadController extends Controller
         $single_bulk_upload = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
         $disapproval_reasons = $bulkImportRepository->getDisapprovalReasonsNotResolvedOrCorrected($singleBulkUploadId);
+//
+//        return view('bulk-uploads.admin-bulk-images', compact('vehicleId',
+//            'single_bulk_upload',
+//            'disapproval_reasons',
+//            'vehicle_detail',
+//            'vehicle_images',
+//            'other_features'));
 
-        return view('bulk-uploads.admin-bulk-images', compact('vehicleId',
-            'single_bulk_upload',
-            'disapproval_reasons',
-            'vehicle_detail',
-            'vehicle_images',
-            'other_features'));
+        return view('bulk-uploads.admin.manage-pending',
+            compact('vehicleId',
+                'single_bulk_upload',
+                'disapproval_reasons',
+                'vehicle_detail',
+                'vehicle_images',
+                'other_features')
+        );
     }
 
     public function setBulkVehicleAsApproved($userBulkImportId,

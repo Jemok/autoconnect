@@ -68,8 +68,7 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
-    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository,
-                                                VehicleImagesRepository $vehicleImagesRepository){
+    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository){
 
         $single_ads = $bulkImportRepository->indexBulkPendingAds();
 
