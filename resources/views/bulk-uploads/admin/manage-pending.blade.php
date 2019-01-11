@@ -200,13 +200,25 @@
                                             <li class="breadcrumb-item"><a href="#!">Notification</a>
                                             </li>
                                         </ul>
+
+
+                                        <form action="{{ route('setBulkImportAsApproved', [$vehicle_detail->id, 'approved']) }}" method="POST">
+                                            {{ csrf_field() }}
+
+                                            <button type="submit" class="btn btn-sm btn-success float-right">
+                                                Set as Verified
+                                            </button>
+                                        </form>
+
+                                        <a href="{{ route('showBulkDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
+                                            Add Disapproval Reason
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- Page-header end -->
                                 <div class="page-body button-page">
                                     <div class="card">
                                         <div class="card-block">
-
                                             <h5 class="m-b-10">Car Details</h5>
 
                                             <div class="row" style="padding-left: 2%;">
