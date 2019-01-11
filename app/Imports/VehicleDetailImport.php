@@ -114,6 +114,7 @@ class VehicleDetailsImport implements ToCollection, WithHeadingRow
             $vehicle_detail->other_features = $other_features;
             $vehicle_detail->bulk_import_id = $this->bulkImportId;
             $vehicle_detail->user_id = $this->userId;
+            $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
 
             $vehicle_detail->save();
         }

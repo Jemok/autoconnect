@@ -244,8 +244,12 @@ class DatatablesController extends Controller
         return Datatables::of($single_ads)
             ->addColumn('id', function ($single_ad){
 
-                return $single_ad->id;
+                return $single_ad->unique_identifier;
             })
+//            ->addColumn('id', function ($single_ad){
+//
+//                return $single_ad->id;
+//            })
             ->addColumn('car_make', function ($single_ad){
 
                 return $single_ad->car_make->name;
