@@ -33,11 +33,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
-<div class="fixed-button">
-    <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-    </a>
-</div>
 <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="loader-track">
@@ -187,6 +182,8 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
+                                                <th scope="col">Manage Ad</th>
+                                                <th scope="col">Verified</th>
                                                 <th scope="col">Make</th>
                                                 <th scope="col">Model</th>
                                                 <th scope="col">Year</th>
@@ -287,6 +284,8 @@
                 ajax: '{!! route('indexPendingVerificationAdsData') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
+                    { data: 'manage_ad', name : 'manage_ad'},
+                    { data: 'verified', name : 'verified'},
                     { data: 'car_make', name: 'car_make'},
                     { data: 'car_model', name: 'car_model'},
                     { data: 'year', name: 'year' },

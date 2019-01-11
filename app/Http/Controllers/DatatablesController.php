@@ -68,14 +68,32 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
-    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository){
+    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository,
+                                                VehicleImagesRepository $vehicleImagesRepository){
 
         $single_ads = $bulkImportRepository->indexBulkPendingAds();
 
         return Datatables::of($single_ads)
             ->addColumn('id', function ($single_ad){
 
-                return $single_ad->id;
+                return $single_ad->unique_identifier;
+            })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('adminManageBulkImages', [$single_ad->bulk_import_id, $single_ad->id]);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })
+            ->addColumn('verified', function ($single_ad){
+
+                if($single_ad->approval_status == 'not_approved'){
+
+                    return '<i class="fa fa-times text-danger"></i>'.'Not Verified';
+                }elseif($single_ad->approval_status == 'approved'){
+                    return '<i class="fa fa-check text-success"></i>'.' Verified';
+                }
+
+                return 'Verified';
             })
             ->addColumn('car_make', function ($single_ad){
 
@@ -121,6 +139,7 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
+            ->rawColumns(['manage_ad', 'verified'])
             ->make(true);
     }
 
