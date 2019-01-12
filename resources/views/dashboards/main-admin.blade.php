@@ -237,11 +237,11 @@
                                                     <!-- Nav tabs -->
                                                     <ul class="nav nav-tabs md-tabs" role="tablist">
                                                         <li class="nav-item">
-                                                            <a class="nav-link active" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-database"></i>Upload Bulk Ads</a>
+                                                            <a class="nav-link" data-toggle="tab" href="#settings3" role="tab"><i class="fa fa-database"></i>Upload Bulk Ads</a>
                                                             <div class="slide"></div>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" data-toggle="tab" href="#settings_manage_bulk_ads" role="tab"><i class="fa fa-database"></i>Manage Bulk Ads</a>
+                                                            <a class="nav-link active" data-toggle="tab" href="#settings_manage_bulk_ads" role="tab"><i class="fa fa-database"></i>Manage Bulk Ads</a>
                                                             <div class="slide"></div>
                                                         </li>
                                                         <li class="nav-item">
@@ -255,14 +255,14 @@
                                                     </ul>
                                                     <!-- Tab panes -->
                                                     <div class="tab-content card-block">
-                                                        <div class="tab-pane active" id="settings3" role="tabpanel">
+                                                        <div class="tab-pane" id="settings3" role="tabpanel">
                                                             <div class="table-responsive">
                                                                 <div class="center-block text-center mx-auto">
                                                                     <a href="{{ route('startBulkUpload') }}" class="btn btn-primary btn-lg btn-round">Start Uploading Bulk Ads</a>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="tab-pane" id="settings_manage_bulk_ads" role="tabpanel">
+                                                        <div class="tab-pane active" id="settings_manage_bulk_ads" role="tabpanel">
                                                             <div class="table-responsive" style="padding-top: 20px;">
                                                                 <table class="table table-bordered" id="users-table">
                                                                     <thead>
