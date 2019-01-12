@@ -240,6 +240,11 @@
                             <div class="page-header card">
                                 <div class="card-block">
                                     <h5 class="m-b-10">Online Ads</h5>
+
+                                    <a href="{{ route('showBulkPaymentsPage', $bulkImportId) }}" class="btn btn-primary pull-right">
+                                        Proceed To Pay
+                                    </a>
+
                                     <p class="text-muted m-b-10">Manage all online Ads here</p>
                                     <ul class="breadcrumb-title b-t-default p-t-10">
                                         <li class="breadcrumb-item">

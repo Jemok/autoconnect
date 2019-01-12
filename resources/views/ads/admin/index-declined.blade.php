@@ -187,16 +187,9 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
-                                                <th scope="col">Make</th>
-                                                <th scope="col">Model</th>
-                                                <th scope="col">Year</th>
-                                                <th scope="col">Mileage</th>
-                                                <th scope="col">Body Type</th>
-                                                <th scope="col">Transmission Type</th>
-                                                <th scope="col">Car Condition</th>
-                                                <th scope="col">Duty</th>
-                                                <th scope="col">Price (KES)</th>
-                                                <th scope="col">Negotiable Price</th>
+                                                <th scope="col">Reason</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col">View</th>
                                             </tr>
                                             </thead>
                                         </table>
@@ -286,16 +279,9 @@
                 ajax: '{!! route('indexDeclinedAdsData') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'car_make', name: 'car_make'},
-                    { data: 'car_model', name: 'car_model'},
-                    { data: 'year', name: 'year' },
-                    { data: 'mileage', name: 'mileage'},
-                    { data: 'body_type', name: 'body_type'},
-                    { data: 'transmission_type', name: 'transmission_type'},
-                    { data: 'car_condition', name: 'car_condition'},
-                    { data: 'duty', name: 'duty' },
-                    { data: 'price', name: 'price' },
-                    { data: 'negotiable', name : 'negotiable'},
+                    { data: 'reason', name: 'reason'},
+                    { data: 'status', name: 'status'},
+                    { data: 'view', name: 'view' }
                 ]
             });
         });

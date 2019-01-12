@@ -30,6 +30,7 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
 <div class="fixed-button">
@@ -240,6 +241,10 @@
                                                             <div class="slide"></div>
                                                         </li>
                                                         <li class="nav-item">
+                                                            <a class="nav-link" data-toggle="tab" href="#settings_manage_bulk_ads" role="tab"><i class="fa fa-database"></i>Manage Bulk Ads</a>
+                                                            <div class="slide"></div>
+                                                        </li>
+                                                        <li class="nav-item">
                                                             <a class="nav-link" data-toggle="tab" href="#home3" role="tab"><i class="ti-user"></i>Dealers</a>
                                                             <div class="slide"></div>
                                                         </li>
@@ -251,15 +256,29 @@
                                                     <!-- Tab panes -->
                                                     <div class="tab-content card-block">
                                                         <div class="tab-pane active" id="settings3" role="tabpanel">
-
                                                             <div class="table-responsive">
                                                                 <div class="center-block text-center mx-auto">
                                                                     <a href="{{ route('startBulkUpload') }}" class="btn btn-primary btn-lg btn-round">Start Uploading Bulk Ads</a>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="tab-pane" id="settings_manage_bulk_ads" role="tabpanel">
+                                                            <div class="table-responsive" style="padding-top: 20px;">
+                                                                <table class="table table-bordered" id="users-table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th scope="col">Id</th>
+                                                                        <th scope="col">Name</th>
+                                                                        <th scope="col">Email</th>
+                                                                        <th scope="col">Payment Status</th>
+                                                                        <th scope="col">Approval Status</th>
+                                                                        <th scope="col">View</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                </table>
+                                                            </div>
+                                                        </div>
                                                         <div class="tab-pane" id="home3" role="tabpanel">
-
                                                             <div class="table-responsive">
                                                                 <table class="table">
                                                                     <tr>
@@ -403,13 +422,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- tabs card end -->
                                     </div>
+                                    <!-- tabs card end -->
                                 </div>
+                            </div>
 
-                                <div id="styleSelector">
+                            <div id="styleSelector">
 
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -417,74 +436,94 @@
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 9]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
+<!-- Warning Section Starts -->
+<!-- Older IE warning message -->
+<!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
     </div>
-    <![endif]-->
-    <!-- Warning Section Ends -->
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="{{ asset('js/jquery/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery-ui/jquery-ui.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/popper.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="{{ asset('js/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
-    <!-- modernizr js -->
-    <script type="text/javascript" src="{{ asset('js/modernizr/modernizr.js') }}"></script>
-    <!-- am chart -->
-    <script src="{{ asset('js/amchart/amcharts.min.js') }}"></script>
-    <script src="{{ asset('js/amchart/serial.min.js') }}"></script>
-    <!-- Chart js -->
-    <script type="text/javascript" src="{{ asset('js/Chart.js') }}"></script>
-    <!-- Todo js -->
-    <script type="text/javascript " src="{{ asset('js/todo.js') }}"></script>
-    <!-- Custom js -->
-    <script type="text/javascript" src="{{ asset('js/custom-dashboard.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
-    <script type="text/javascript " src="{{ asset('js/SmoothScroll.js') }}"></script>
-    <script src="{{ asset('js/pcoded.min.js') }}"></script>
-    <script src="{{ asset('js/vartical-demo.js') }}"></script>
-    <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+<!-- Warning Section Ends -->
+<!-- Required Jquery -->
+<script type="text/javascript" src="{{ asset('js/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/popper.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!-- jquery slimscroll js -->
+<script type="text/javascript" src="{{ asset('js/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+<!-- modernizr js -->
+<script type="text/javascript" src="{{ asset('js/modernizr/modernizr.js') }}"></script>
+<!-- am chart -->
+<script src="{{ asset('js/amchart/amcharts.min.js') }}"></script>
+<script src="{{ asset('js/amchart/serial.min.js') }}"></script>
+<!-- Chart js -->
+<script type="text/javascript" src="{{ asset('js/Chart.js') }}"></script>
+<!-- Todo js -->
+<script type="text/javascript " src="{{ asset('js/todo.js') }}"></script>
+<!-- Custom js -->
+<script type="text/javascript" src="{{ asset('js/custom-dashboard.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+<script type="text/javascript " src="{{ asset('js/SmoothScroll.js') }}"></script>
+<script src="{{ asset('js/pcoded.min.js') }}"></script>
+<script src="{{ asset('js/vartical-demo.js') }}"></script>
+<script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(function() {
+        $('#users-table').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{!! route('indexBulkAdsDataForAdmin') !!}',
+            columns: [
+                { data: 'id', name: 'id' },
+                { data: 'name', name: 'name'},
+                { data: 'email', name: 'email'},
+                { data: 'payment_status', name: 'payment_status'},
+                { data: 'approval_status', name: 'approval_status' },
+                { data: 'view', name: 'view'},
+            ]
+        });
+    });
+</script>
 </div>
 </body>
 </html>

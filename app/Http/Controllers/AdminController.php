@@ -54,7 +54,6 @@ class AdminController extends Controller
 
 //        return view('admin.home');
 
-
         return view('dashboards.main-admin', compact(
             'dealer_roles',
             'roles',

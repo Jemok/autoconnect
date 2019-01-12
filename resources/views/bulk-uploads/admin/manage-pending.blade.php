@@ -219,8 +219,28 @@
                                 <div class="page-body button-page">
                                     <div class="card">
                                         <div class="card-block">
-                                            <h5 class="m-b-10">Car Details</h5>
+                                            @if($disapproval_reasons->count())
+                                                <div class="alert alert-danger">
+                                                    <p class="card-text">
+                                                        The following issues need to be fixed for this Ad
+                                                    </p>
+                                                    @foreach($disapproval_reasons as $disapproval_reason)
+                                                        <p class="card-text text-danger">
+                                                            {{ $disapproval_reason->reason }}
+                                                        </p>
 
+                                                        <form action="{{ route('fixBulkCorrection', [$single_bulk_upload->id, $disapproval_reason->id, 'resolved']) }}" method="post">
+
+                                                            {{ csrf_field() }}
+
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Fix Corrections
+                                                            </button>
+                                                        </form>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                            <h5 class="m-b-10">Car Details</h5>
                                             <div class="row" style="padding-left: 2%;">
                                                 <div class="col-md-3" style="padding-left: 2%;">
                                                     <p style="padding: 0; margin: 0;">

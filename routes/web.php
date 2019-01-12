@@ -118,7 +118,7 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::get('index-bulk-import-ads-data/{bulkImportId}', 'DatatablesController@indexBulkUploadImportsData')->name('indexBulkUploadImportsData');
 
-
+    Route::get('bulk-ads', 'DatatablesController@indexBulkAdsDataForAdmin')->name('indexBulkAdsDataForAdmin');
 
 });
 

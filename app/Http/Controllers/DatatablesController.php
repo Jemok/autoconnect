@@ -21,6 +21,12 @@ class DatatablesController extends Controller
 
                 return $single_ad->id;
             })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('indexSingleAdsImages', $single_ad->id);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })
             ->addColumn('car_make', function ($single_ad){
 
                 return $single_ad->car_make->name;
@@ -65,6 +71,7 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
+            ->rawColumns(['manage_ad'])
             ->make(true);
     }
 
@@ -142,61 +149,40 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
-    public function indexDeclinedAds(VehicleVerificationsRepository $vehicleVerificationsRepository){
+    public function indexDeclinedAds(BulkImportRepository $bulkImportRepository){
 
-        $declined_ads = $vehicleVerificationsRepository->indexDeclinedAds();
+        $disapproval_reasons = $bulkImportRepository->getAllSubmittedCorrections();
 
-        return Datatables::of($declined_ads)
-            ->addColumn('id', function ($declined_ads){
 
-                return $declined_ads->vehicle_detail->id;
+        return Datatables::of($disapproval_reasons)
+            ->addColumn('id', function ($disapproval_reason){
+
+                return $disapproval_reason->id;
             })
-            ->addColumn('car_make', function ($declined_ads){
+            ->addColumn('reason', function ($disapproval_reason){
 
-                return $declined_ads->vehicle_detail->car_make->name;
+                return $disapproval_reason->reason;
             })
-            ->addColumn('car_model', function ($declined_ads){
+            ->addColumn('status', function ($disapproval_reason){
 
-                return $declined_ads->vehicle_detail->car_model->name;
-            })
-            ->addColumn('year', function ($declined_ads){
+                if($disapproval_reason->status == 'resolved'){
 
-                return $declined_ads->vehicle_detail->year;
-            })
-            ->addColumn('mileage', function ($declined_ads){
+                    return 'Resolved';
+                }
 
-                return $declined_ads->vehicle_detail->mileage;
-            })
-            ->addColumn('body_type', function ($declined_ads){
+                if($disapproval_reason->status == 'not_resolved'){
 
-                return $declined_ads->vehicle_detail->body_type->name;
-            })
-            ->addColumn('transmission_type', function ($declined_ads){
-
-                return $declined_ads->vehicle_detail->transmission_type->name;
-            })
-            ->addColumn('car_condition', function ($declined_ads){
-
-                return $declined_ads->vehicle_detail->car_condition->name;
-            })
-            ->addColumn('duty', function ($declined_ads){
-
-                return $declined_ads->vehicle_detail->duty->name;
-            })
-            ->addColumn('price', function ($declined_ads){
-
-                return $declined_ads->vehicle_detail->price;
-            })
-            ->addColumn('negotiable', function ($declined_ads){
-
-                if($declined_ads->vehicle_detail->negotiable_price == 'allowed'){
-                    return 'Negotiable';
-                }else{
-                    return 'Not Negotiable';
+                    return 'Not Resolved';
                 }
             })
-            ->make(true);
+            ->addColumn('view', function ($disapproval_reason){
 
+                $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+            })
+            ->rawColumns(['view'])
+            ->make(true);
     }
 
     public function indexExpiredAds(AdStatusRepository $adStatusRepository){
@@ -207,6 +193,12 @@ class DatatablesController extends Controller
             ->addColumn('id', function ($expired_ad){
 
                 return $expired_ad->vehicle_detail->id;
+            })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('indexSingleAdsImages', $single_ad->id);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
             })
             ->addColumn('car_make', function ($expired_ad){
 
@@ -252,6 +244,7 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
+            ->rawColumns(['manage_ad'])
             ->make(true);
     }
 
@@ -343,6 +336,57 @@ class DatatablesController extends Controller
             })
             ->rawColumns(['images_uploaded', 'upload_images', 'verified'])
             ->make(true);
+    }
 
+
+    public function indexBulkAdsDataForAdmin(BulkImportRepository $bulkImportRepository){
+
+        $bulk_imports = $bulkImportRepository->indexForPayments();
+
+        return Datatables::of($bulk_imports)
+
+            ->addColumn('id', function ($bulk_import){
+
+                return $bulk_import->bulk_import->id;
+            })
+            ->addColumn('name', function ($bulk_import){
+
+                return $bulk_import->bulk_import->user->name;
+            })
+            ->addColumn('email', function ($bulk_import){
+
+                return $bulk_import->bulk_import->user->email;
+            })
+            ->addColumn('payment_status', function ($bulk_import){
+
+                if(isset($bulk_import->bulk_import_approval->payment_status)){
+                    if($bulk_import->bulk_import_approval->payment_status == 'paid'){
+                        return 'Paid';
+                    }else{
+                        return 'Not Paid';
+                    }
+                }else{
+                    return 'Not Paid';
+                }
+            })
+            ->addColumn('approval_status', function ($bulk_import){
+                if(isset($bulk_import->bulk_import_approval->approval_status)){
+                    if($bulk_import->bulk_import_approval->approval_status == 'approved'){
+                        return 'Approved';
+                    }else{
+                        return 'Not Approved';
+                    }
+                }else{
+                    return 'Not Approved';
+                }
+            })
+            ->addColumn('view', function ($bulk_import){
+
+                $url = route('indexForAdmin', $bulk_import->bulk_import_id);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+            })
+            ->rawColumns(['view'])
+            ->make(true);
     }
 }
