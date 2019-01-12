@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="index.html">
+                    <a href="{{ route('adminHome') }}">
                         <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
@@ -76,11 +76,10 @@
                         </li>
                     </ul>
                     <ul class="nav-right">
-
                         <li class="user-profile header-notification">
                             <a href="#!">
                                 <img src="assets/images/avatar-4.jpg" class="img-radius">
-                                <span>Logged in as : John Doe - Dealer Account</span>
+                                <span>Logged in as : Super Admin - Admin Account</span>
                                 <i class="ti-angle-down"></i>
                             </a>
                             <ul class="show-notification profile-notification">
@@ -93,7 +92,7 @@
 
                                 <li>
                                     <a href="#!">
-                                        <i class="ti-settings"></i> Settings
+                                        <i class="ti-settings"></i> Account Settings
                                     </a>
                                 </li>
 
@@ -119,10 +118,10 @@
             <div class="pcoded-wrapper">
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                    <div class="pcoded-inner-navbar main-menu" style="margin-top: 5%;">
+                    <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
-                            <li class="active">
-                                <a href="index.html">
+                            <li>
+                                <a href="{{ route('adminHome') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -131,16 +130,8 @@
 
                             <li class="">
                                 <a href="index.html">
-                                    <span class="pcoded-micon"><i class="ti-user"></i><b>P</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Profile</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="index.html">
-                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Settings</span>
+                                    <span class="pcoded-micon"><i class="ti-clipboard"></i><b>R</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Reports</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -152,6 +143,22 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Account Settings</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-dashboard"></i><b>S</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System Settings</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -159,122 +166,40 @@
                     <div class="pcoded-inner-content">
                         <div class="main-body">
                             <div class="page-wrapper">
+                                <div class="card-block">
+                                    <h5 class="m-b-10">Pending Verification Ads</h5>
+                                    <p class="text-muted m-b-10">Manage Ads pending verification here</p>
+                                    <ul class="breadcrumb-title b-t-default p-t-10">
+                                        <li class="breadcrumb-item">
+                                            <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>
+                                        </li>
+                                        <li class="breadcrumb-item"><a href="{{ route('indexPendingVerificationAds') }}">Pending Verification Ads</a>
+                                        </li>
+                                    </ul>
 
-                                <div class="page-body">
-                                    <div class="row">
-
-                                        <!-- order-card start -->
-                                        <div class="col-md-6 col-xl-3">
-                                            <div class="card bg-c-blue order-card">
-                                                <div class="card-block">
-                                                    <h6 class="m-b-20">Online Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-check f-left"></i><span>120</span></h2>
-                                                    <p class="m-b-0 float-right" style="color: white;">
-                                                        <a href="{{ route('indexDealerOnlineAds') }}" style="color: white; font-weight: bold;">
-                                                            My Online Ads
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xl-3">
-                                            <div class="card bg-c-green order-card">
-                                                <div class="card-block">
-                                                    <h6 class="m-b-20">Pending Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-star f-left"></i><span>100</span></h2>
-                                                    <p class="m-b-0 float-right" style="color: white;">
-                                                        <a href="{{ route('indexDealerPendingVerificationAds') }}" style="color: white; font-weight: bold;">
-                                                            My Pending Ads
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xl-3">
-                                            <div class="card bg-c-yellow order-card">
-                                                <div class="card-block">
-                                                    <h6 class="m-b-20">Declined Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-reload f-left"></i><span>23</span></h2>
-                                                    <p class="m-b-0 float-right" style="color: white;">
-                                                        <a href="{{ route('indexDeclinedAdsForDealer') }}" style="color: white; font-weight: bold;">
-                                                            My Declined Ads
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-xl-3">
-                                            <div class="card bg-c-pink order-card">
-                                                <div class="card-block">
-                                                    <h6 class="m-b-20">Expired Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-close f-left"></i><span>10</span></h2>
-                                                    <p class="m-b-0 float-right" style="color: white;">
-                                                        <a href="{{ route('indexExpiredAdsForDealer') }}" style="color: white; font-weight: bold;">
-                                                            My Expired Ads
-                                                        </a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- order-card end -->
-
-                                        <!-- social statustic start -->
-                                        <div class="col-md-12 col-lg-6">
-                                            <div class="card">
-                                                <div class="card-block text-center">
-                                                    <i class="ti-layers text-c-blue d-block f-40"></i>
-                                                    <h4 class="m-t-20">Upload Bulk Ads</h4>
-                                                    <p class="m-b-20">Upload bulk vehicle Ads here</p>
-                                                    <a href="{{ route('startBulkUpload') }}" class="btn btn-primary btn-sm btn-round">Start Uploading</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-lg-6">
-                                            <div class="card">
-                                                <div class="card-block text-center">
-                                                    <i class="ti-car text-c-green d-block f-40"></i>
-                                                    <h4 class="m-t-20">Upload Single Ad</h4>
-                                                    <p class="m-b-20">Upload a single vehicle Ad here</p>
-                                                    <button class="btn btn-success btn-sm btn-round">Start Uploading</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- social statustic end -->
+                                    <div class="table-responsive" style="padding-top: 20px;">
+                                        <table class="table table-bordered" id="users-table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Manage Ad</th>
+                                                <th scope="col">Verified</th>
+                                                <th scope="col">Make</th>
+                                                <th scope="col">Model</th>
+                                                <th scope="col">Year</th>
+                                                <th scope="col">Mileage</th>
+                                                <th scope="col">Body Type</th>
+                                                <th scope="col">Transmission Type</th>
+                                                <th scope="col">Car Condition</th>
+                                                <th scope="col">Duty</th>
+                                                <th scope="col">Price (KES)</th>
+                                                <th scope="col">Negotiable Price</th>
+                                            </tr>
+                                            </thead>
+                                        </table>
                                     </div>
 
-                                    <!-- tabs card start -->
-                                    <div class="col-sm-12">
-                                        <div class="card tabs-card">
-                                            <div class="card-block p-0">
-                                                <!-- Nav tabs -->
-                                                <ul class="nav nav-tabs md-tabs" role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active" data-toggle="tab" href="#settings_manage_bulk_ads" role="tab"><i class="fa fa-database"></i>Manage Bulk Ads</a>
-                                                        <div class="slide"></div>
-                                                    </li>
-                                                </ul>
-                                                <!-- Tab panes -->
-                                                <div class="tab-content card-block">
-                                                    <div class="tab-pane active" id="settings_manage_bulk_ads" role="tabpanel">
-                                                        <div class="table-responsive" style="padding-top: 20px;">
-                                                            <table class="table table-bordered" id="users-table">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th scope="col">Batch #</th>
-                                                                    <th scope="col">Uploaded On</th>
-                                                                    <th scope="col">Approval Status</th>
-                                                                    <th scope="col">View</th>
-                                                                </tr>
-                                                                </thead>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -356,17 +281,25 @@
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('indexBulkAdsDataForDealer') !!}',
+                ajax: '{!! route('indexPendingVerificationAdsForDealer') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'created_at', name: 'created_at'},
-                    { data: 'approval_status', name: 'approval_status'},
-                    { data: 'view', name: 'view'},
+                    { data: 'manage_ad', name : 'manage_ad'},
+                    { data: 'verified', name : 'verified'},
+                    { data: 'car_make', name: 'car_make'},
+                    { data: 'car_model', name: 'car_model'},
+                    { data: 'year', name: 'year' },
+                    { data: 'mileage', name: 'mileage'},
+                    { data: 'body_type', name: 'body_type'},
+                    { data: 'transmission_type', name: 'transmission_type'},
+                    { data: 'car_condition', name: 'car_condition'},
+                    { data: 'duty', name: 'duty' },
+                    { data: 'price', name: 'price' },
+                    { data: 'negotiable', name : 'negotiable'},
                 ]
             });
         });
     </script>
 </div>
 </body>
-
 </html>

@@ -76,7 +76,144 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
+    public function indexOnlineAdsDataForDealer(SingleAdsRepository $singleAdsRepository){
+
+        $single_ads = $singleAdsRepository->index();
+
+        return Datatables::of($single_ads)
+            ->addColumn('id', function ($single_ad){
+
+                return $single_ad->id;
+            })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('indexSingleAdsImages', $single_ad->id);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })
+            ->addColumn('car_make', function ($single_ad){
+
+                return $single_ad->car_make->name;
+            })
+            ->addColumn('car_model', function ($single_ad){
+
+                return $single_ad->car_model->name;
+            })
+            ->addColumn('year', function ($single_ad){
+
+                return $single_ad->year;
+            })
+            ->addColumn('mileage', function ($single_ad){
+
+                return $single_ad->mileage;
+            })
+            ->addColumn('body_type', function ($single_ad){
+
+                return $single_ad->body_type->name;
+            })
+            ->addColumn('transmission_type', function ($single_ad){
+
+                return $single_ad->transmission_type->name;
+            })
+            ->addColumn('car_condition', function ($single_ad){
+
+                return $single_ad->car_condition->name;
+            })
+            ->addColumn('duty', function ($single_ad){
+
+                return $single_ad->duty->name;
+            })
+            ->addColumn('price', function ($single_ad){
+
+                return $single_ad->price;
+            })
+            ->addColumn('negotiable', function ($single_ad){
+
+                if($single_ad->negotiable_price == 'allowed'){
+                    return 'Negotiable';
+                }else{
+                    return 'Not Negotiable';
+                }
+            })
+            ->rawColumns(['manage_ad'])
+            ->make(true);
+    }
+
     public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository){
+
+        $single_ads = $bulkImportRepository->indexBulkPendingAds();
+
+        return Datatables::of($single_ads)
+            ->addColumn('id', function ($single_ad){
+
+                return $single_ad->unique_identifier;
+            })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('adminManageBulkImages', [$single_ad->bulk_import_id, $single_ad->id]);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })
+            ->addColumn('verified', function ($single_ad){
+
+                if($single_ad->approval_status == 'not_approved'){
+
+                    return '<i class="fa fa-times text-danger"></i>'.'Not Verified';
+                }elseif($single_ad->approval_status == 'approved'){
+                    return '<i class="fa fa-check text-success"></i>'.' Verified';
+                }
+
+                return 'Verified';
+            })
+            ->addColumn('car_make', function ($single_ad){
+
+                return $single_ad->car_make->name;
+            })
+            ->addColumn('car_model', function ($single_ad){
+
+                return $single_ad->car_model->name;
+            })
+            ->addColumn('year', function ($single_ad){
+
+                return $single_ad->year;
+            })
+            ->addColumn('mileage', function ($single_ad){
+
+                return $single_ad->mileage;
+            })
+            ->addColumn('body_type', function ($single_ad){
+
+                return $single_ad->body_type->name;
+            })
+            ->addColumn('transmission_type', function ($single_ad){
+
+                return $single_ad->transmission_type->name;
+            })
+            ->addColumn('car_condition', function ($single_ad){
+
+                return $single_ad->car_condition->name;
+            })
+            ->addColumn('duty', function ($single_ad){
+
+                return $single_ad->duty->name;
+            })
+            ->addColumn('price', function ($single_ad){
+
+                return $single_ad->price;
+            })
+            ->addColumn('negotiable', function ($single_ad){
+
+                if($single_ad->negotiable_price == 'allowed'){
+                    return 'Negotiable';
+                }else{
+                    return 'Not Negotiable';
+                }
+            })
+            ->rawColumns(['manage_ad', 'verified'])
+            ->make(true);
+    }
+
+    public function indexPendingVerificationAdsForDealer(BulkImportRepository $bulkImportRepository){
 
         $single_ads = $bulkImportRepository->indexBulkPendingAds();
 
@@ -186,7 +323,106 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
+    public function indexDeclinedAdsDataForDealer(BulkImportRepository $bulkImportRepository){
+
+        $disapproval_reasons = $bulkImportRepository->getAllSubmittedCorrections();
+
+
+        return Datatables::of($disapproval_reasons)
+            ->addColumn('id', function ($disapproval_reason){
+
+                return $disapproval_reason->id;
+            })
+            ->addColumn('reason', function ($disapproval_reason){
+
+                return $disapproval_reason->reason;
+            })
+            ->addColumn('status', function ($disapproval_reason){
+
+                if($disapproval_reason->status == 'resolved'){
+
+                    return 'Resolved';
+                }
+
+                if($disapproval_reason->status == 'not_resolved'){
+
+                    return 'Not Resolved';
+                }
+            })
+            ->addColumn('view', function ($disapproval_reason){
+
+                $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+            })
+            ->rawColumns(['view'])
+            ->make(true);
+    }
+
     public function indexExpiredAds(AdStatusRepository $adStatusRepository){
+
+        $expired_ads = $adStatusRepository->indexExpiredAds();
+
+        return Datatables::of($expired_ads)
+            ->addColumn('id', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->id;
+            })
+            ->addColumn('manage_ad', function ($single_ad){
+
+                $url = route('indexSingleAdsImages', $single_ad->id);
+
+                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })
+            ->addColumn('car_make', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->car_make->name;
+            })
+            ->addColumn('car_model', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->car_model->name;
+            })
+            ->addColumn('year', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->year;
+            })
+            ->addColumn('mileage', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->mileage;
+            })
+            ->addColumn('body_type', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->body_type->name;
+            })
+            ->addColumn('transmission_type', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->transmission_type->name;
+            })
+            ->addColumn('car_condition', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->car_condition->name;
+            })
+            ->addColumn('duty', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->duty->name;
+            })
+            ->addColumn('price', function ($expired_ad){
+
+                return $expired_ad->vehicle_detail->price;
+            })
+            ->addColumn('negotiable', function ($expired_ad){
+
+                if($expired_ad->vehicle_detail->negotiable_price == 'allowed'){
+                    return 'Negotiable';
+                }else{
+                    return 'Not Negotiable';
+                }
+            })
+            ->rawColumns(['manage_ad'])
+            ->make(true);
+    }
+
+    public function indexExpiredAdsDataForDealer(AdStatusRepository $adStatusRepository){
 
         $expired_ads = $adStatusRepository->indexExpiredAds();
 

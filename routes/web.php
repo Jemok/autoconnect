@@ -124,6 +124,31 @@ Route::get('index-bulk-import-ads-data/{bulkImportId}', 'DatatablesController@in
 
 Route::get('bulk-dealer-ads', 'DatatablesController@indexBulkAdsDataForDealer')->name('indexBulkAdsDataForDealer');
 
+Route::get('dealer-online-ads-data', 'DatatablesController@indexOnlineAdsDataForDealer')->name('indexOnlineAdsDataForDealer');
+
+Route::get('dealer-pending-verification-ads-data', 'DatatablesController@indexPendingVerificationAdsForDealer')->name('indexPendingVerificationAdsForDealer');
+
+Route::get('dealer-declined-ads-data', 'DatatablesController@indexDeclinedAdsDataForDealer')->name('indexDeclinedAdsDataForDealer');
+
+Route::get('dealer-expired-ads-data', 'DatatablesController@indexExpiredAdsDataForDealer')->name('indexExpiredAdsDataForDealer');
+
+
+Route::get('/dealer-online-ads', 'AdsManagementController@indexDealerOnlineAds')
+    ->name('indexDealerOnlineAds')
+    ->middleware('verified');
+
+Route::get('/dealer-pending-verification-ads', 'AdsManagementController@indexDealerPendingVerificationAds')
+    ->name('indexDealerPendingVerificationAds')
+    ->middleware('verified');
+
+Route::get('/dealer-declined-ads', 'AdsManagementController@indexDealerDeclinedAds')
+    ->name('indexDeclinedAdsForDealer')
+    ->middleware('verified');
+
+Route::get('/dealer-expired-ads', 'AdsManagementController@indexExpiredAdsForDealer')
+    ->name('indexExpiredAdsForDealer')
+    ->middleware('verified');
+
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');
 
 Route::get('/vehicles/create-pictures/{vehicleId}', 'VehicleController@createPictures')->name('createVehiclePictures');

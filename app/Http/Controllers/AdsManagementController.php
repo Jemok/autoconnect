@@ -30,9 +30,19 @@ class AdsManagementController extends Controller
         return view('ads.admin.index-online');
     }
 
+    public function indexDealerOnlineAds(){
+
+        return view('ads.dealer.index-online');
+    }
+
     public function indexPendingVerificationAds(){
 
         return view('ads.admin.index-pending-verification');
+    }
+
+    public function indexDealerPendingVerificationAds(){
+
+        return view('ads.dealer.index-pending-verification');
     }
 
     public function indexDeclinedAds(){
@@ -40,8 +50,18 @@ class AdsManagementController extends Controller
         return view('ads.admin.index-declined');
     }
 
+    public function indexDealerDeclinedAds(){
+
+        return view('ads.dealer.index-declined');
+    }
+
     public function indexExpiredAds(){
 
         return view('ads.admin.index-expired');
+    }
+
+    public function indexExpiredAdsForDealer(){
+
+        return view('ads.dealer.index-expired');
     }
 }
