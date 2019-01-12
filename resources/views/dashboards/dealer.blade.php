@@ -30,13 +30,9 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.css') }}">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
-<div class="fixed-button">
-    <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-    </a>
-</div>
 <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="loader-track">
@@ -173,6 +169,11 @@
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Online Ads</h6>
                                                     <h2 class="text-right"><i class="ti-check f-left"></i><span>120</span></h2>
+                                                    <p class="m-b-0 float-right" style="color: white;">
+                                                        <a href="{{ route('indexOnlineAds') }}" style="color: white; font-weight: bold;">
+                                                            My Online Ads
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -181,6 +182,11 @@
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Pending Ads</h6>
                                                     <h2 class="text-right"><i class="ti-star f-left"></i><span>100</span></h2>
+                                                    <p class="m-b-0 float-right" style="color: white;">
+                                                        <a href="{{ route('indexPendingVerificationAds') }}" style="color: white; font-weight: bold;">
+                                                            My Pending Ads
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -189,6 +195,11 @@
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Declined Ads</h6>
                                                     <h2 class="text-right"><i class="ti-reload f-left"></i><span>23</span></h2>
+                                                    <p class="m-b-0 float-right" style="color: white;">
+                                                        <a href="{{ route('indexDeclinedAds') }}" style="color: white; font-weight: bold;">
+                                                            My Declined Ads
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -197,23 +208,28 @@
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Expired Ads</h6>
                                                     <h2 class="text-right"><i class="ti-close f-left"></i><span>10</span></h2>
+                                                    <p class="m-b-0 float-right" style="color: white;">
+                                                        <a href="{{ route('indexExpiredAds') }}" style="color: white; font-weight: bold;">
+                                                            My Expired Ads
+                                                        </a>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- order-card end -->
 
                                         <!-- social statustic start -->
-                                        <div class="col-md-12 col-lg-4">
+                                        <div class="col-md-12 col-lg-6">
                                             <div class="card">
                                                 <div class="card-block text-center">
                                                     <i class="ti-layers text-c-blue d-block f-40"></i>
                                                     <h4 class="m-t-20">Upload Bulk Ads</h4>
                                                     <p class="m-b-20">Upload bulk vehicle Ads here</p>
-                                                    <button class="btn btn-primary btn-sm btn-round">Start Uploading</button>
+                                                    <a href="{{ route('startBulkUpload') }}" class="btn btn-primary btn-sm btn-round">Start Uploading</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-4">
+                                        <div class="col-md-6 col-lg-6">
                                             <div class="card">
                                                 <div class="card-block text-center">
                                                     <i class="ti-car text-c-green d-block f-40"></i>
@@ -223,23 +239,42 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-lg-4">
-                                            <div class="card">
-                                                <div class="card-block text-center">
-                                                    <i class="ti-layout-grid3-alt text-c-pink d-block f-40"></i>
-                                                    <h4 class="m-t-20">Manage Ads</h4>
-                                                    <p class="m-b-20">Manage all your Ads from here</p>
-                                                    <button class="btn btn-danger btn-sm btn-round">Manage Ads</button>
+                                        <!-- social statustic end -->
+                                    </div>
+
+                                    <!-- tabs card start -->
+                                    <div class="col-sm-12">
+                                        <div class="card tabs-card">
+                                            <div class="card-block p-0">
+                                                <!-- Nav tabs -->
+                                                <ul class="nav nav-tabs md-tabs" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="tab" href="#settings_manage_bulk_ads" role="tab"><i class="fa fa-database"></i>Manage Bulk Ads</a>
+                                                        <div class="slide"></div>
+                                                    </li>
+                                                </ul>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content card-block">
+                                                    <div class="tab-pane active" id="settings_manage_bulk_ads" role="tabpanel">
+                                                        <div class="table-responsive" style="padding-top: 20px;">
+                                                            <table class="table table-bordered" id="users-table">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th scope="col">Batch #</th>
+                                                                    <th scope="col">Uploaded On</th>
+                                                                    <th scope="col">Approval Status</th>
+                                                                    <th scope="col">View</th>
+                                                                </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- social statustic end -->
                                     </div>
                                 </div>
 
-                                <div id="styleSelector">
-
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -315,6 +350,22 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{!! route('indexBulkAdsDataForDealer') !!}',
+                columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'created_at', name: 'created_at'},
+                    { data: 'approval_status', name: 'approval_status'},
+                    { data: 'view', name: 'view'},
+                ]
+            });
+        });
+    </script>
 </div>
 </body>
 

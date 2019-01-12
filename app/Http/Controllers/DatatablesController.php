@@ -7,6 +7,7 @@ use App\Repositories\BulkImportRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\Repositories\VehicleVerificationsRepository;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -385,6 +386,44 @@ class DatatablesController extends Controller
                 $url = route('indexForAdmin', $bulk_import->bulk_import_id);
 
                 return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+            })
+            ->rawColumns(['view'])
+            ->make(true);
+    }
+
+    public function indexBulkAdsDataForDealer(BulkImportRepository $bulkImportRepository){
+
+        $bulk_imports = $bulkImportRepository->indexForUser(Auth::user()->id);
+
+        return Datatables::of($bulk_imports)
+
+            ->addColumn('id', function ($bulk_import){
+
+                return $bulk_import->id;
+            })
+            ->addColumn('created_at', function ($bulk_import){
+
+                return $bulk_import->created_at->diffForHumans();
+            })
+            ->addColumn('approval_status', function ($bulk_import){
+
+//                if($bulk_import->bulk_import_approval->approval_status == 'approved'){
+//
+//                    return 'Approved';
+//                }elseif ($bulk_import->bulk_import_approval->approval_status == 'not_approved'){
+//
+//                    return 'Not Approved';
+//                }
+
+                return 'Not Approved';
+
+            })
+            ->addColumn('view', function ($bulk_import){
+
+                $url = route('confirmBulkImports', $bulk_import->id);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+
             })
             ->rawColumns(['view'])
             ->make(true);

@@ -116,11 +116,13 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::get('expired-ads-data', 'DatatablesController@indexExpiredAds')->name('indexExpiredAdsData');
 
-    Route::get('index-bulk-import-ads-data/{bulkImportId}', 'DatatablesController@indexBulkUploadImportsData')->name('indexBulkUploadImportsData');
-
     Route::get('bulk-ads', 'DatatablesController@indexBulkAdsDataForAdmin')->name('indexBulkAdsDataForAdmin');
 
 });
+
+Route::get('index-bulk-import-ads-data/{bulkImportId}', 'DatatablesController@indexBulkUploadImportsData')->name('indexBulkUploadImportsData');
+
+Route::get('bulk-dealer-ads', 'DatatablesController@indexBulkAdsDataForDealer')->name('indexBulkAdsDataForDealer');
 
 Route::get('/vehicles/create', 'VehicleController@create')->name('createVehicle');
 

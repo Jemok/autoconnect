@@ -33,11 +33,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
-<div class="fixed-button">
-    <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-    </a>
-</div>
 <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="loader-track">
@@ -426,10 +421,6 @@
                                     <!-- tabs card end -->
                                 </div>
                             </div>
-
-                            <div id="styleSelector">
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -506,7 +497,6 @@
 <script src="{{ asset('js/vartical-demo.js') }}"></script>
 <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
-
 <script>
     $(function() {
         $('#users-table').DataTable({
