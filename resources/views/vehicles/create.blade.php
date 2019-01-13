@@ -79,7 +79,7 @@
                                 </div>
                             @endif
 
-                            Provide your car details
+                            Provide your car details below :
 
                             <form method="POST" action="{{ route('storeVehicle') }}">
                                 {{ csrf_field() }}
@@ -87,7 +87,7 @@
                                     <div class="col">
                                         <label for="car_make">Make*</label>
                                         <select name="car_make" id="car_make" class="form-control {{ $errors->has('car_make') ? 'is-invalid' : '' }}">
-                                            <option selected disabled>Choose...</option>
+                                            <option selected disabled>Choose a Make</option>
                                             @foreach($car_makes as $car_make)
                                                 @if(old('car_make') == $car_make->slug)
                                                     <option selected value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
@@ -105,7 +105,7 @@
                                     <div class="col">
                                         <label for="car_model">Model*</label>
                                         <select name="car_model" id="car_model" class="form-control {{ $errors->has('car_model') ? 'is-invalid' : '' }}">
-                                            <option selected disabled>Choose...</option>
+                                            <option selected disabled>Choose a Model</option>
                                             @foreach($car_models as $car_model)
                                                 @if(old('car_model') == $car_model->slug)
                                                     <option selected value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
@@ -370,7 +370,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -384,7 +383,7 @@
                         var model = $('#car_model');
                         model.empty();
 
-                        model.append("<option selected disabled>Choose...</option>");
+                        model.append("<option selected disabled>Choose a Model</option>");
 
                         $.each(data, function(index, element) {
                             model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");

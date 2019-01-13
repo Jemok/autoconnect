@@ -88,6 +88,292 @@ class AddCarMakesCommand extends Command
                 ]
             ],
             [
+                'name' => 'Acmat',
+                'slug' => 'acmat',
+                'description' => 'Acmat',
+                'models' => [
+                    [
+                        'name' => 'TPK 25.SH',
+                        'slug' => 'tpk_25sh',
+                        'description' => 'TPK 25.SH'
+                    ]
+                ]
+            ],
+            [
+                'name' => 'Acura',
+                'slug' => 'acura',
+                'description' => 'Acura',
+                'models'    => [
+                    [
+                        'name' => 'CL',
+                        'slug' => 'cl',
+                        'description' => 'CL'
+                    ],
+                    [
+                        'name' => 'CSX',
+                        'slug' => 'csx',
+                        'description' => 'CSX'
+                    ],
+                    [
+                        'name' => 'ILX',
+                        'slug' => 'ilx',
+                        'description' => 'ILX'
+                    ],
+                    [
+                        'name' => 'MDX',
+                        'slug' => 'mdx',
+                        'description' => 'MDX',
+                        'series' => [
+                            [
+                                'name' => 'AWD',
+                                'slug' => 'awd',
+                                'description' => 'AWD'
+                            ],
+                            [
+                                'name' => 'Base',
+                                'slug' => 'base',
+                                'description' => 'Base'
+                            ],
+                            [
+                                'name' => 'Sport',
+                                'slug' => 'sport',
+                                'description' => 'Sport'
+                            ],
+                            [
+                                'name' => 'Sport Package',
+                                'slug' => 'sport_package',
+                                'description' => 'Sport Package'
+                            ],
+                            [
+                                'name' => 'Tech',
+                                'slug' => 'tech',
+                                'description' => 'Tech'
+                            ],
+                            [
+                                'name' => 'Tech Package',
+                                'slug' => 'tech_package',
+                                'description' => 'Tech Package'
+                            ],
+                            [
+                                'name' => 'V20',
+                                'slug' => 'v20',
+                                'description' => 'V20'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'RDX',
+                        'slug' => 'rdx',
+                        'description' => 'RDX',
+                        'series' => [
+                            [
+                                'name' => 'Automatic Tech Package',
+                                'slug' => 'automatic_tech_package',
+                                'description' => 'Automatic Tech Package'
+                            ],
+                            [
+                                'name' => 'SH-AWD',
+                                'slug' => 'sh_awd',
+                                'description' => 'SH-AWD'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'RL',
+                        'slug' => 'rl',
+                        'description' => 'RL',
+                        'series' => [
+                            [
+                                'name' => 'Sedan',
+                                'slug' => 'sedan',
+                                'description' => 'Sedan'
+                            ],
+                            [
+                                'name' => 'Tech Package',
+                                'slug' => 'tech_package',
+                                'description' => 'Tech Package'
+                            ],
+                            [
+                                'name' => 'Technology Package',
+                                'slug' => 'technology_package',
+                                'description' => 'Technology Package'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'RSX',
+                        'slug' => 'rsx',
+                        'description' => 'RSX',
+                        'series' => [
+                            [
+                                'name' => '2.0',
+                                'slug' => '2_0',
+                                'description' => '2.0'
+                            ],
+                            [
+                                'name' => 'Automatic',
+                                'slug' => 'automatic',
+                                'description' => 'Automatic'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'TL',
+                        'slug' => 'tl',
+                        'description' => 'TL',
+                        'series' => [
+                            [
+                                'name' => '2.5',
+                                'slug' => '2_5',
+                                'description' => '2.5'
+                            ],
+                            [
+                                'name' => '3.2',
+                                'slug' => '3_2',
+                                'description' => '3.2'
+                            ],
+                            [
+                                'name' => 'Automatic',
+                                'slug' => 'automatic',
+                                'description' => 'Automatic'
+                            ],
+                            [
+                                'name' => 'Automatic SH-AWD',
+                                'slug' => 'automatic_sh_awd',
+                                'description' => 'Automatic SH-AWD'
+                            ],
+                            [
+                                'name' => 'Automatic SH-AWD Technology Package',
+                                'slug' => 'automatic_sh_awd_technology_package',
+                                'description' => 'Automatic SH-AWD Technology Package'
+                            ],
+                            [
+                                'name' => 'Automatic Tech Package',
+                                'slug' => 'automatic_tech_package',
+                                'description' => 'Automatic Tech Package'
+                            ],
+                            [
+                                'name' => 'Base',
+                                'slug' => 'base',
+                                'description' => 'Base'
+                            ],
+                            [
+                                'name' => 'S',
+                                'slug' => 's',
+                                'description' => 'S'
+                            ],
+                            [
+                                'name' => 'S Automatic',
+                                'slug' => 's_automatic',
+                                'description' => 'S Automatic'
+                            ],
+                            [
+                                'name' => 'SH-AWD',
+                                'slug' => 'sh_awd',
+                                'description' => 'SH-AWD'
+                            ],
+                            [
+                                'name' => 'SH-AWD AT',
+                                'slug' => 'sh_awd_at',
+                                'description' => 'SH-AWD AT'
+                            ],
+                            [
+                                'name' => 'SH-AWD Automatic',
+                                'slug' => 'sh_awd_automatic',
+                                'description' => 'SH-AWD Automatic'
+                            ],
+                            [
+                                'name' => 'SH-AWD Automatic Tech Package',
+                                'slug' => 'sh_awd_automatic_tech_package',
+                                'description' => 'SH-AWD Automatic Tech Package'
+                            ],
+                            [
+                                'name' => 'SH-AWD Manual Tech Package',
+                                'slug' => 'sh_awd_manual_tech_package',
+                                'description' => 'SH-AWD Manual Tech Package'
+                            ],
+                            [
+                                'name' => 'SH-AWD MT',
+                                'slug' => 'sh_awd_mt',
+                                'description' => 'SH-AWD MT'
+                            ],
+                            [
+                                'name' => 'Type S',
+                                'slug' => 'type_s',
+                                'description' => 'Type S'
+                            ],
+                            [
+                                'name' => 'Type S Automatic',
+                                'slug' => 'type_s_automatic',
+                                'description' => 'Type S Automatic'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'TSX',
+                        'slug' => 'tsx',
+                        'description' => 'TXS',
+                        'series' => [
+                            [
+                                'name' => 'Automatic',
+                                'slug' => 'automatic',
+                                'description' => 'Automatic'
+                            ],
+                            [
+                                'name' => 'Automatic Tech Package',
+                                'slug' => 'automatic_tech_package',
+                                'description' => 'Automatic Tech Package'
+                            ],
+                            [
+                                'name' => 'Sedan',
+                                'slug' => 'sedan',
+                                'description' => 'Sedan'
+                            ],
+                            [
+                                'name' => 'Sedan Special Edition',
+                                'slug' => 'sedan_special_edition',
+                                'description' => 'Sedan Special Edition'
+                            ],
+                            [
+                                'name' => 'Sedan Special Edition Automatic',
+                                'slug' => 'sedan_special_edition_automatic',
+                                'description' => 'Sedan Special Edition Automatic'
+                            ],
+                            [
+                                'name' => 'Sport Sedan',
+                                'slug' => 'sport_sedan',
+                                'description' => 'Sport Sedan'
+                            ],
+                            [
+                                'name' => 'Sport Sedan AT',
+                                'slug' => 'sport_sedan_at',
+                                'description' => 'Sport Sedan AT'
+                            ],
+                            [
+                                'name' => 'Sport Sedan MT',
+                                'slug' => 'sport_sedan_mt',
+                                'description' => 'Sport Sedan MT'
+                            ],
+                            [
+                                'name' => 'Sport Sedan V6',
+                                'slug' => 'sport_sedan_v6',
+                                'description' => 'Sport Sedan V6'
+                            ],
+                            [
+                                'name' => 'Sport Wagon',
+                                'slug' => 'sport_wagon',
+                                'description' => 'Sport Wagon'
+                            ],
+                            [
+                                'name' => 'Tech Package',
+                                'slug' => 'tech_package',
+                                'description' => 'Tech Package'
+                            ]
+                        ]
+                    ]
+                ]
+            ],
+            [
                 'name' => 'ALFA ROMEO',
                 'slug' => 'alfa_romeo',
                 'description' => 'ALFA ROMEO',
