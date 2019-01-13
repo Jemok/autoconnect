@@ -76,7 +76,9 @@ class AdminController extends Controller
 
         $invitations = $invitationRepository->indexInvitations();
 
-        return view('admin.create-administrator', compact('roles', 'invitations'));
+//        return view('admin.create-administrator', compact('roles', 'invitations'));
+
+        return view('admin.index-administrators', compact('roles', 'invitations'));
     }
 
     public function inviteAdministrator(InvitationRequest $invitationRequest,
