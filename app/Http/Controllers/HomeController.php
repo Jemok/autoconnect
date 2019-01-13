@@ -47,6 +47,11 @@ class HomeController extends Controller
             return view('buyer.home', compact( 'count_invitations'));
         }
 
+        if(Auth::user()->hasRole('administrator')){
+
+            return redirect()->route('adminHome');
+        }
+
 //        return view('home', compact( 'count_invitations'));
 
         return view('dashboards.dealer', compact( 'count_invitations'));

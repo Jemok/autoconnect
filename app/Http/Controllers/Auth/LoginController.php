@@ -105,7 +105,11 @@ class LoginController extends Controller
             $this->redirectTo = '/home';
         }elseif($user->hasRole('buyer')) {
             $this->redirectTo = '/buyer-home';
-        }else{
+        }elseif ($user->hasRole('administrator')){
+
+            $this->redirectTo = '/admin-home';
+        }
+        else{
             $this->redirectTo = '/home';
         }
     }
