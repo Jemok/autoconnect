@@ -235,7 +235,7 @@
                                                     <i class="ti-car text-c-green d-block f-40"></i>
                                                     <h4 class="m-t-20">Upload Single Ad</h4>
                                                     <p class="m-b-20">Upload a single vehicle Ad here</p>
-                                                    <button class="btn btn-success btn-sm btn-round">Start Uploading</button>
+                                                    <a href="{{ route('createVehicle') }}" class="btn btn-success btn-sm btn-round">Start Uploading</a>
                                                 </div>
                                             </div>
                                         </div>
