@@ -347,7 +347,11 @@
                                                         </div>
                                                         <div class="tab-pane" id="profile3" role="tabpanel">
 
-                                                            <div class="table-responsive">
+                                                            <div class="center-block text-center mx-auto">
+                                                                <a href="{{ route('createAdministrator') }}" class="btn btn-primary btn-lg btn-round">Add a New Administrator</a>
+                                                            </div>
+
+                                                            <div class="table-responsive" style="margin-top: 2%;">
                                                                 <table class="table">
                                                                     <tr>
                                                                         <th>Email</th>
@@ -410,7 +414,7 @@
                                                                 </table>
                                                             </div>
                                                             <div class="text-center">
-                                                                <button class="btn btn-outline-primary btn-round btn-sm">View All</button>
+                                                                <a href="{{ route('createAdministrator') }}" class="btn btn-outline-primary btn-round btn-sm">View All</a>
                                                             </div>
                                                         </div>
                                                     </div>
