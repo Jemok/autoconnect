@@ -35,6 +35,15 @@ Route::get('/dropdown', function(Request $request){
     return \App\CarModel::where('car_make_id', $make->id)->get(['id','name', 'description', 'slug']);
 });
 
+Route::get('/dropdown-series', function(Request $request){
+
+    $car_model = $request->get('option');
+
+    $model = \App\CarModel::where('slug', $car_model)->firstOrFail();
+
+    return \App\CarSeries::where('car_model_id', $model->id)->get(['id','name', 'description', 'slug']);
+});
+
 Route::post('/payment/results', 'PaymentController@processPayment')->name('processPayment');
 
 Route::post('/payment/bulk-results', 'PaymentController@processBulkPayment')->name('processBulkPayment');

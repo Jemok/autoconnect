@@ -10,6 +10,7 @@ use App\Repositories\BodyTypeRepository;
 use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
+use App\Repositories\CarSeriesRepository;
 use App\Repositories\ColourTypeRepository;
 use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
@@ -88,6 +89,7 @@ class VehicleController extends Controller
         $vehicle_detail = $vehicleDetailRepository->store($carDetailsRequest->all(),
             new CarMakeRepository(),
             new CarModelRepository(),
+            new CarSeriesRepository(),
             new BodyTypeRepository(),
             new TransmissionTypeRepository(),
             new CarConditionRepository(),

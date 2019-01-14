@@ -123,9 +123,9 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="inputState">Series</label>
-                                        <select name="car_series" id="inputState" class="form-control">
-                                            <option selected disabled>Choose...</option>
+                                        <label for="car_series">Series</label>
+                                        <select name="car_series" id="car_series" class="form-control">
+                                            <option selected disabled>Choose a Series</option>
                                             <option></option>
                                         </select>
                                     </div>
@@ -384,6 +384,23 @@
                         model.empty();
 
                         model.append("<option selected disabled>Choose a Model</option>");
+
+                        $.each(data, function(index, element) {
+                            model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
+                        });
+                    }
+                );
+            });
+
+
+            $('#car_model').change(function(){
+                $.get("{{ url('/api/dropdown-series')}}",
+                    { option: $(this).val() },
+                    function(data) {
+                        var model = $('#car_series');
+                        model.empty();
+
+                        model.append("<option selected disabled>Choose a Series</option>");
 
                         $.each(data, function(index, element) {
                             model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");

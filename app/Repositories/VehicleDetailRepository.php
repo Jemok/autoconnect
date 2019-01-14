@@ -21,6 +21,7 @@ class VehicleDetailRepository
     public function store(array $data,
                           CarMakeRepository $carMakeRepository,
                           CarModelRepository $carModelRepository,
+                          CarSeriesRepository $carSeriesRepository,
                           BodyTypeRepository $bodyTypeRepository,
                           TransmissionTypeRepository $transmissionTypeRepository,
                           CarConditionRepository $carConditionRepository,
@@ -31,6 +32,10 @@ class VehicleDetailRepository
         $car_make_model = $carMakeRepository->showFromSlug($car_make);
         $car_model = $data['car_model'];
         $car_model_model = $carModelRepository->showFromSlug($car_model);
+        $car_series = $data['car_series'];
+        if($car_series != null){
+         $car_series_model = $carSeriesRepository->showFromSlug($car_series);
+        }
         $year = $data['year'];
         $mileage = $data['mileage'];
         $body_type = $data['body_type'];
@@ -87,6 +92,14 @@ class VehicleDetailRepository
 
         $vehicle_detail->car_make_id = $car_make_model->id;
         $vehicle_detail->car_model_id = $car_model_model->id;
+
+        if($car_series != null){
+            $vehicle_detail->car_series = $car_series_model->id;
+        }else{
+
+            $vehicle_detail->car_series = $car_series;
+        }
+
         $vehicle_detail->year = $year;
         $vehicle_detail->mileage = $mileage;
         $vehicle_detail->body_type_id = $body_type_model->id;
