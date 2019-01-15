@@ -183,7 +183,8 @@
                                             <tr>
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Manage Ad</th>
-                                                <th scope="col">Verified</th>
+                                                <th scope="col">Approval</th>
+                                                <th scope="col">Ad Type</th>
                                                 <th scope="col">Make</th>
                                                 <th scope="col">Model</th>
                                                 <th scope="col">Year</th>
@@ -286,6 +287,7 @@
                     { data: 'id', name: 'id' },
                     { data: 'manage_ad', name : 'manage_ad'},
                     { data: 'verified', name : 'verified'},
+                    { data: 'ad_type', name : 'ad_type'},
                     { data: 'car_make', name: 'car_make'},
                     { data: 'car_model', name: 'car_model'},
                     { data: 'year', name: 'year' },

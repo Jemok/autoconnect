@@ -48,7 +48,7 @@ class AdminController extends Controller
 
         $expired_ads_count = $adStatusRepository->countExpiredAds();
 
-        $bulk_pending_verification_count = $bulkImportRepository->countBulkPendingAds();
+        $bulk_pending_verification_count = $adStatusRepository->countPendingVerificationAds();
 
         $declined_ads_count = $vehicleVerificationsRepository->countDeclinedAds();
 

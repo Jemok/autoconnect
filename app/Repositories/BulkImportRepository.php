@@ -282,7 +282,7 @@ class BulkImportRepository
 
     public function setApprovalAsApproved($bulk_approval){
 
-        $bulk_approval->approval_status = 'approved';
+        $bulk_approval->approval_status = 'pending_verification';
         $bulk_approval->payment_status = 'paid';
 
         $bulk_approval->save();
@@ -296,7 +296,8 @@ class BulkImportRepository
 
     }
 
-    public function moveAdsToLive($bulkImportId){
+    public function moveAdsToLive($bulkImportId,
+                                  BulkAdsRepository $bulkAdsRepository){
 
         $single_ads = UserBulkImport::where('bulk_import_id', $bulkImportId)->get();
 
@@ -319,6 +320,7 @@ class BulkImportRepository
             $vehicle_detail->interior = $single_ad->interior;
             $vehicle_detail->colour_type_id = $single_ad->colour_type_id;
             $vehicle_detail->description = $single_ad->description;
+            $vehicle_detail->unique_identifier = $single_ad->unique_identifier;
             $vehicle_detail->other_features = $single_ad->other_features;
 
             $vehicle_detail->save();
@@ -329,10 +331,17 @@ class BulkImportRepository
 
             $stop = Carbon::now()->addDays(30);
 
-            $adStatusRepository->storeAdStatus($vehicle_detail,
-                'active',
+            $adStatus = $adStatusRepository->storeAdStatus($vehicle_detail,
+                'pending_verification',
                 $start,
-                $stop);
+                $stop,
+                'bulk');
+
+            $bulkAdsRepository->store($vehicle_detail->id,
+                $adStatus->id,
+                $bulkImportId,
+                $single_ad->id
+            );
 
             $vehicleImagesRepository = new  VehicleImagesRepository();
 
@@ -348,7 +357,7 @@ class BulkImportRepository
 
             $vehicleVerificationsRepository = new VehicleVerificationsRepository();
 
-            $vehicleVerificationsRepository->store($vehicle_detail, 'verified');
+            $vehicleVerificationsRepository->store($vehicle_detail, 'pending_verification');
 
         }
     }

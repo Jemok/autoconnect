@@ -139,77 +139,93 @@ class DatatablesController extends Controller
             ->make(true);
     }
 
-    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository){
+    public function indexPendingVerificationAds(BulkImportRepository $bulkImportRepository,
+                                                AdStatusRepository $adStatusRepository){
 
-        $single_ads = $bulkImportRepository->indexBulkPendingAds();
+//        $single_ads = $bulkImportRepository->indexBulkPendingAds();
+
+        $single_ads = $adStatusRepository->indexPendingVerificationAds();
 
         return Datatables::of($single_ads)
             ->addColumn('id', function ($single_ad){
 
-                return $single_ad->unique_identifier;
+                return $single_ad->vehicle_detail->unique_identifier;
             })
             ->addColumn('manage_ad', function ($single_ad){
 
-                $url = route('adminManageBulkImages', [$single_ad->bulk_import_id, $single_ad->id]);
+                $url = route('adminManageBulkImages', [$single_ad->bulk_ad->bulk_import_id, $single_ad->bulk_ad->user_bulk_import_id]);
 
                 return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+
             })
             ->addColumn('verified', function ($single_ad){
 
-                if($single_ad->approval_status == 'not_approved'){
+                if($single_ad->bulk_ad->user_bulk_import->approval_status == 'not_approved'){
 
-                    return '<i class="fa fa-times text-danger"></i>'.'Not Verified';
-                }elseif($single_ad->approval_status == 'approved'){
-                    return '<i class="fa fa-check text-success"></i>'.' Verified';
+                    return '<i class="fa fa-times text-danger"></i>'.'Not Approved';
+                }elseif($single_ad->bulk_ad->user_bulk_import->approval_status == 'approved'){
+                    return '<i class="fa fa-check text-success"></i>'.' Approved';
                 }
 
-                return 'Verified';
+                return 'Approved';
+            })
+            ->addColumn('ad_type', function ($single_ad){
+
+                if($single_ad->type == 'bulk'){
+
+                    $url = route('confirmBulkImports', $single_ad->bulk_ad->bulk_import_id);
+
+                    return '<a class="" href="'.$url.'">Bulk</a>';
+                }elseif ($single_ad->type == 'single'){
+
+                    return 'Single';
+                }
             })
             ->addColumn('car_make', function ($single_ad){
 
-                return $single_ad->car_make->name;
+                return $single_ad->vehicle_detail->car_make->name;
             })
             ->addColumn('car_model', function ($single_ad){
 
-                return $single_ad->car_model->name;
+                return $single_ad->vehicle_detail->car_model->name;
             })
             ->addColumn('year', function ($single_ad){
 
-                return $single_ad->year;
+                return $single_ad->vehicle_detail->year;
             })
             ->addColumn('mileage', function ($single_ad){
 
-                return $single_ad->mileage;
+                return $single_ad->vehicle_detail->mileage;
             })
             ->addColumn('body_type', function ($single_ad){
 
-                return $single_ad->body_type->name;
+                return $single_ad->vehicle_detail->body_type->name;
             })
             ->addColumn('transmission_type', function ($single_ad){
 
-                return $single_ad->transmission_type->name;
+                return $single_ad->vehicle_detail->transmission_type->name;
             })
             ->addColumn('car_condition', function ($single_ad){
 
-                return $single_ad->car_condition->name;
+                return $single_ad->vehicle_detail->car_condition->name;
             })
             ->addColumn('duty', function ($single_ad){
 
-                return $single_ad->duty->name;
+                return $single_ad->vehicle_detail->duty->name;
             })
             ->addColumn('price', function ($single_ad){
 
-                return $single_ad->price;
+                return $single_ad->vehicle_detail->price;
             })
             ->addColumn('negotiable', function ($single_ad){
 
-                if($single_ad->negotiable_price == 'allowed'){
+                if($single_ad->vehicle_detail->negotiable_price == 'allowed'){
                     return 'Negotiable';
                 }else{
                     return 'Not Negotiable';
                 }
             })
-            ->rawColumns(['manage_ad', 'verified'])
+            ->rawColumns(['manage_ad', 'verified', 'ad_type'])
             ->make(true);
     }
 

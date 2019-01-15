@@ -17,4 +17,8 @@ class AdStatus extends Model
 
         return $this->belongsTo(VehicleDetail::class);
     }
+
+    public function bulk_ad(){
+        return $this->hasOne(BulkAd::class);
+    }
 }

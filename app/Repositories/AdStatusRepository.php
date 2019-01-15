@@ -18,7 +18,8 @@ class AdStatusRepository
     public function storeAdStatus(VehicleDetail $vehicleDetail,
                                   $status,
                                   $start,
-                                  $stop){
+                                  $stop,
+                                  $type){
 
         $this->deActivateOthers($vehicleDetail->id);
 
@@ -31,6 +32,7 @@ class AdStatusRepository
             $adStatus->status = $status;
             $adStatus->start = $start;
             $adStatus->stop = $stop;
+            $adStatus->type = $type;
             $adStatus->vehicle_detail_id = $vehicleDetail->id;
 
             $adStatus->save();
@@ -43,6 +45,7 @@ class AdStatusRepository
         $adStatus->status = $status;
         $adStatus->start = $start;
         $adStatus->stop = $stop;
+        $adStatus->type = $type;
         $adStatus->vehicle_detail_id = $vehicleDetail->id;
 
         $adStatus->save();
@@ -53,8 +56,8 @@ class AdStatusRepository
     public function deActivateOthers($vehicleId){
 
         $adstatuses = AdStatus::where('vehicle_detail_id', $vehicleId)
-                 ->where('status', 'active')
-                 ->get();
+            ->where('status', 'active')
+            ->get();
 
         foreach ($adstatuses as $adstatus){
             $adstatus->status = 'inactive';
@@ -81,5 +84,22 @@ class AdStatusRepository
     public function indexExpiredAds(){
 
         return AdStatus::where('status', 'inactive')->get();
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function indexPendingVerificationAds(){
+
+        return AdStatus::where('status', 'pending_verification')->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function countPendingVerificationAds(){
+
+        return AdStatus::where('status', 'pending_verification')->count();
     }
 }

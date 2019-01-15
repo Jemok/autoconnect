@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PayForBulkRequest;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
+use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
@@ -123,7 +124,8 @@ class PaymentController extends Controller
 
             $bulkImportRepository->setApprovalAsApproved($bulkApproval);
 
-            $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id);
+            $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id,
+                                                 new BulkAdsRepository());
 
             $user->notify(new PaymentReceivedNotification($amount,
                 $user->name,

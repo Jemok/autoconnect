@@ -206,12 +206,12 @@
                                             {{ csrf_field() }}
 
                                             <button type="submit" class="btn btn-sm btn-success float-right">
-                                                Set as Verified
+                                                Approve Ad For Online
                                             </button>
                                         </form>
 
                                         <a href="{{ route('showBulkDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
-                                            Add Disapproval Reason
+                                            Decline Ad
                                         </a>
                                     </div>
                                 </div>
