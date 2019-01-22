@@ -9,6 +9,7 @@ use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Imports\VehicleDetailsImport;
 use App\Notifications\AdDisapprovedNotification;
 use App\Notifications\BulkPaymentNotification;
+use App\Repositories\BulkImportApprovalRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\VehicleImagesRepository;
@@ -118,13 +119,20 @@ class BulkUploadController extends Controller
 
     public function indexBulkImportsForAdmin($bulkImportId,
                                              BulkImportRepository $bulkImportRepository,
-                                             VehicleImagesRepository $vehicleImagesRepository){
+                                             VehicleImagesRepository $vehicleImagesRepository,
+                                             BulkImportApprovalRepository $bulkImportApprovalRepository){
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
+        $bulk_payment_status = $bulkImportApprovalRepository->checkBulkPaymentStatus($bulkImportId);
+
+        $bulk_approval_status = $bulkImportApprovalRepository->checkBulkApprovalStatus($bulkImportId);
+
         return view('bulk-uploads.index-for-admin', compact('bulkImportId',
             'single_ads',
-            'vehicleImagesRepository'));
+            'vehicleImagesRepository',
+            'bulk_payment_status',
+            'bulk_approval_status'));
     }
 
     public function indexBulkUploadsForUser(BulkImportRepository $bulkImportRepository){

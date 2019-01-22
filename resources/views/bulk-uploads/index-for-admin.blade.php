@@ -5,7 +5,24 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Confirm Uploads ( {{ $single_ads->count() }} )
+                    <div class="card-header">
+                        Confirm Uploads ( {{ $single_ads->count() }} )
+
+                        @if($bulk_payment_status)
+                            Payment Status : Paid
+                        @else
+                            Payment Status : Not Paid
+                        @endif
+
+                        @if($bulk_payment_status && $bulk_approval_status)
+                            <button class="btn btn-disabled pull-right" disabled>
+                                Approved
+                            </button>
+                        @else
+                            <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-success pull-right">
+                                Approve Now
+                            </a>
+                        @endif
 
                         <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-primary pull-right">
                             Approve and Send Payment Instructions

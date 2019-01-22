@@ -132,4 +132,5 @@ class PaymentRepository
 
         return VehiclePayment::whereYear('created_at', $year);
     }
+
 }
