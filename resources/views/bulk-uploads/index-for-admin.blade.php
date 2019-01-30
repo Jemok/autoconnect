@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
+        @include('flash::message')
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
@@ -19,13 +20,16 @@
                                 Approved
                             </button>
                         @else
-                            <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-success pull-right">
-                                Approve Now
-                            </a>
+                            <form action="{{ route('moveBulkAdsOnline', $bulkImportId) }}" method="post">
+                                {{ csrf_field() }}
+                                <button type="submit" class="btn btn-success pull-right">
+                                    Approve Now
+                                </button>
+                            </form>
                         @endif
 
                         <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-primary pull-right">
-                            Approve and Send Payment Instructions
+                            Send Payment Instructions
                         </a>
                     </div>
 

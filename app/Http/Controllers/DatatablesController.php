@@ -13,56 +13,71 @@ use Yajra\DataTables\Facades\DataTables;
 
 class DatatablesController extends Controller
 {
-    public function indexOnlineAds(SingleAdsRepository $singleAdsRepository){
+    public function indexOnlineAds(SingleAdsRepository $singleAdsRepository,
+                                   AdStatusRepository $adStatusRepository){
 
-        $single_ads = $singleAdsRepository->index();
+//        $single_ads = $singleAdsRepository->index();
+
+        $single_ads = $adStatusRepository->indexOnlineAds();
 
         return Datatables::of($single_ads)
             ->addColumn('id', function ($single_ad){
 
-                return $single_ad->id;
+                return $single_ad->vehicle_detail->unique_identifier;
             })
             ->addColumn('manage_ad', function ($single_ad){
 
-                $url = route('indexSingleAdsImages', $single_ad->id);
+                $url = route('adminManageBulkImages', [$single_ad->bulk_ad->bulk_import_id, $single_ad->bulk_ad->user_bulk_import_id]);
 
                 return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
             })
+            ->addColumn('ad_type', function ($single_ad){
+
+                if($single_ad->type == 'bulk'){
+
+                    $url = route('confirmBulkImports', $single_ad->bulk_ad->bulk_import_id);
+
+                    return '<a class="" href="'.$url.'">Bulk</a>';
+                }elseif ($single_ad->type == 'single'){
+
+                    return 'Single';
+                }
+            })
             ->addColumn('car_make', function ($single_ad){
 
-                return $single_ad->car_make->name;
+                return $single_ad->vehicle_detail->car_make->name;
             })
             ->addColumn('car_model', function ($single_ad){
 
-                return $single_ad->car_model->name;
+                return $single_ad->vehicle_detail->car_model->name;
             })
             ->addColumn('year', function ($single_ad){
 
-                return $single_ad->year;
+                return $single_ad->vehicle_detail->year;
             })
             ->addColumn('mileage', function ($single_ad){
 
-                return $single_ad->mileage;
+                return $single_ad->vehicle_detail->mileage;
             })
             ->addColumn('body_type', function ($single_ad){
 
-                return $single_ad->body_type->name;
+                return $single_ad->vehicle_detail->body_type->name;
             })
             ->addColumn('transmission_type', function ($single_ad){
 
-                return $single_ad->transmission_type->name;
+                return $single_ad->vehicle_detail->transmission_type->name;
             })
             ->addColumn('car_condition', function ($single_ad){
 
-                return $single_ad->car_condition->name;
+                return $single_ad->vehicle_detail->car_condition->name;
             })
             ->addColumn('duty', function ($single_ad){
 
-                return $single_ad->duty->name;
+                return $single_ad->vehicle_detail->duty->name;
             })
             ->addColumn('price', function ($single_ad){
 
-                return $single_ad->price;
+                return $single_ad->vehicle_detail->price;
             })
             ->addColumn('negotiable', function ($single_ad){
 
@@ -72,7 +87,7 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
-            ->rawColumns(['manage_ad'])
+            ->rawColumns(['manage_ad', 'ad_type'])
             ->make(true);
     }
 

@@ -50,7 +50,7 @@ class AdminController extends Controller
 
         $bulk_pending_verification_count = $adStatusRepository->countPendingVerificationAds();
 
-        $declined_ads_count = $vehicleVerificationsRepository->countDeclinedAds();
+        $declined_ads_count = $adStatusRepository->countDeclinedAds();
 
 //        return view('admin.home');
 

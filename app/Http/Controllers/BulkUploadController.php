@@ -9,6 +9,8 @@ use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Imports\VehicleDetailsImport;
 use App\Notifications\AdDisapprovedNotification;
 use App\Notifications\BulkPaymentNotification;
+use App\Repositories\AdStatusRepository;
+use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportApprovalRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\SingleAdsRepository;
@@ -35,6 +37,12 @@ class BulkUploadController extends Controller
     public function startBulkUpload(){
 
 //        return view('bulk-uploads.start-uploading');
+
+        if (Auth::user()->hasRole('dealer')){
+
+            return view('bulk-uploads.dealer.start');
+
+        }
 
         return view('bulk-uploads.admin.start');
     }
@@ -201,13 +209,16 @@ class BulkUploadController extends Controller
     public function setBulkVehicleAsNotApproved($userBulkImportId,
                                                 $status,
                                                 SetBulkVehicleAsNotApprovedRequest $setBulkVehicleAsNotApprovedRequest,
-                                                BulkImportRepository $bulkImportRepository){
+                                                BulkImportRepository $bulkImportRepository,
+                                                AdStatusRepository $adStatusRepository){
 
         $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
 
         $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
 
         $bulkImportRepository->saveDisapprovalReason($user_bulk_import, $setBulkVehicleAsNotApprovedRequest->reason, 'not_resolved');
+
+        $adStatusRepository->setAdAsDeclined($userBulkImportId);
 
         $user = $user_bulk_import->user;
 
@@ -279,5 +290,22 @@ class BulkUploadController extends Controller
         flash()->overlay('The Payment instructions were sent successfully', 'Sent');
 
         return redirect()->back();
+    }
+
+    public function moveBulkAdsOnline($bulkImportId,
+                                      BulkImportRepository $bulkImportRepository,
+                                      BulkAdsRepository $bulkAdsRepository,
+                                      BulkImportApprovalRepository $bulkImportApprovalRepository){
+
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        $bulkAdsRepository->moveAdsOnline($bulkImportId);
+
+        $bulkImportApprovalRepository->approveBulkImport($bulkImportId);
+
+        flash()->overlay('The ads have been updated to online status', 'Success');
+
+        return redirect()->back();
+
     }
 }

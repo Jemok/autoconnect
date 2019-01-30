@@ -18,8 +18,8 @@ class BulkImportApprovalRepository
         if(BulkImportApproval::where('bulk_import_id', $bulkImportId)->exists()){
 
             if(BulkImportApproval::where('bulk_import_id', $bulkImportId)
-                                   ->where('payment_status', 'paid')
-                                   ->exists()){
+                ->where('payment_status', 'paid')
+                ->exists()){
 
                 return true;
             }
@@ -35,8 +35,8 @@ class BulkImportApprovalRepository
         if(BulkImportApproval::where('bulk_import_id', $bulkImportId)->exists()){
 
             if(BulkImportApproval::where('bulk_import_id', $bulkImportId)
-                                   ->where('approval_status', 'approved')
-                                   ->exists()){
+                ->where('approval_status', 'approved')
+                ->exists()){
 
                 return true;
             }
@@ -45,6 +45,18 @@ class BulkImportApprovalRepository
         }
 
         return false;
+    }
+
+    public function approveBulkImport($bulkImportId){
+
+        if(BulkImportApproval::where('bulk_import_id', $bulkImportId)->exists()){
+
+            $bulkImportApproval = BulkImportApproval::where('bulk_import_id', $bulkImportId)->firstOrFail();
+
+            $bulkImportApproval->approval_status = 'approved';
+
+            $bulkImportApproval->save();
+        }
     }
 
 }

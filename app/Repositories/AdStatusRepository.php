@@ -10,6 +10,7 @@ namespace App\Repositories;
 
 
 use App\AdStatus;
+use App\BulkAd;
 use App\VehicleDetail;
 use App\VehiclePayment;
 
@@ -66,6 +67,17 @@ class AdStatusRepository
         }
     }
 
+    public function setAdAsDeclined($userBulkImportId){
+
+        $bulk_ad = BulkAd::where('user_bulk_import_id', $userBulkImportId)->firstOrFail();
+
+        $ad_status = $bulk_ad->ad_status;
+
+        $ad_status->status = 'declined';
+
+        $ad_status->save();
+    }
+
     public function indexForVehicle($vehicleDetailId){
 
         return AdStatus::where('vehicle_detail_id', $vehicleDetailId)->latest()->get();
@@ -73,12 +85,17 @@ class AdStatusRepository
 
     public function countActiveAds(){
 
-        return AdStatus::where('status', 'active')->count();
+        return AdStatus::where('status', 'online')->count();
     }
 
     public function countExpiredAds(){
 
         return AdStatus::where('status', 'inactive')->count();
+    }
+
+    public function countDeclinedAds(){
+
+        return AdStatus::where('status', 'declined')->count();
     }
 
     public function indexExpiredAds(){
@@ -93,6 +110,11 @@ class AdStatusRepository
     public function indexPendingVerificationAds(){
 
         return AdStatus::where('status', 'pending_verification')->get();
+    }
+
+    public function indexOnlineAds(){
+
+        return AdStatus::where('status', 'online')->get();
     }
 
     /**

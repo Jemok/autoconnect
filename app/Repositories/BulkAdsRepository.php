@@ -29,4 +29,18 @@ class BulkAdsRepository
 
         return $bulk_ad;
     }
+
+    public function moveAdsOnline($bulkImportId){
+
+        $bulk_ads = BulkAd::where('bulk_import_id', $bulkImportId)->get();
+
+        foreach ($bulk_ads as $bulk_ad){
+
+            $ad_status = $bulk_ad->ad_status;
+
+            $ad_status->status = 'online';
+
+            $ad_status->save();
+        }
+    }
 }
