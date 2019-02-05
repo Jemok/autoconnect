@@ -168,7 +168,7 @@
                                             <div class="card bg-c-blue order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Online Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-check f-left"></i><span>120</span></h2>
+                                                    <h2 class="text-right"><i class="ti-check f-left"></i><span>{{ $online_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="{{ route('indexDealerOnlineAds') }}" style="color: white; font-weight: bold;">
                                                             My Online Ads
@@ -181,7 +181,7 @@
                                             <div class="card bg-c-green order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Pending Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-star f-left"></i><span>100</span></h2>
+                                                    <h2 class="text-right"><i class="ti-star f-left"></i><span>{{ $pending_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="{{ route('indexDealerPendingVerificationAds') }}" style="color: white; font-weight: bold;">
                                                             My Pending Ads
@@ -194,7 +194,7 @@
                                             <div class="card bg-c-yellow order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Declined Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-reload f-left"></i><span>23</span></h2>
+                                                    <h2 class="text-right"><i class="ti-reload f-left"></i><span>{{ $declined_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="{{ route('indexDeclinedAdsForDealer') }}" style="color: white; font-weight: bold;">
                                                             My Declined Ads
@@ -207,7 +207,7 @@
                                             <div class="card bg-c-pink order-card">
                                                 <div class="card-block">
                                                     <h6 class="m-b-20">Expired Ads</h6>
-                                                    <h2 class="text-right"><i class="ti-close f-left"></i><span>10</span></h2>
+                                                    <h2 class="text-right"><i class="ti-close f-left"></i><span>{{ $expired_ads_count }}</span></h2>
                                                     <p class="m-b-0 float-right" style="color: white;">
                                                         <a href="{{ route('indexExpiredAdsForDealer') }}" style="color: white; font-weight: bold;">
                                                             My Expired Ads

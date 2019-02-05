@@ -20,6 +20,7 @@ class AdStatusRepository
                                   $status,
                                   $start,
                                   $stop,
+                                  $user_id,
                                   $type){
 
         $this->deActivateOthers($vehicleDetail->id);
@@ -35,6 +36,7 @@ class AdStatusRepository
             $adStatus->stop = $stop;
             $adStatus->type = $type;
             $adStatus->vehicle_detail_id = $vehicleDetail->id;
+            $adStatus->user_id = $user_id;
 
             $adStatus->save();
 
@@ -48,6 +50,7 @@ class AdStatusRepository
         $adStatus->stop = $stop;
         $adStatus->type = $type;
         $adStatus->vehicle_detail_id = $vehicleDetail->id;
+        $adStatus->user_id = $user_id;
 
         $adStatus->save();
 
@@ -86,6 +89,38 @@ class AdStatusRepository
     public function countActiveAds(){
 
         return AdStatus::where('status', 'online')->count();
+    }
+
+    public function countUserActiveAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+            ->where('status', 'online')
+            ->count();
+    }
+
+    public function countUserPendingAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+            ->where('status', 'pending_verification')
+            ->count();
+    }
+
+    public function countUserDeclinedAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+            ->where('status', 'declined')
+            ->count();
+    }
+
+    public function countUserExpiredAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+            ->where('status', 'expired')
+            ->count();
+    }
+
+    public function countDealerActiveAds(){
+
     }
 
     public function countExpiredAds(){

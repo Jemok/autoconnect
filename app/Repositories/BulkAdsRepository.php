@@ -16,7 +16,8 @@ class BulkAdsRepository
     public function store($vehicle_detail_id,
                           $ad_status_id,
                           $bulk_import_id,
-                          $user_bulk_import_id){
+                          $user_bulk_import_id,
+                          $user_id){
 
         $bulk_ad = new BulkAd();
 
@@ -24,13 +25,14 @@ class BulkAdsRepository
         $bulk_ad->ad_status_id = $ad_status_id;
         $bulk_ad->bulk_import_id = $bulk_import_id;
         $bulk_ad->user_bulk_import_id = $user_bulk_import_id;
+        $bulk_ad->user_id = $user_id;
 
         $bulk_ad->save();
 
         return $bulk_ad;
     }
 
-    public function moveAdsOnline($bulkImportId){
+    public function moveAdsOnline($bulkImportId, $bulk_import){
 
         $bulk_ads = BulkAd::where('bulk_import_id', $bulkImportId)->get();
 
@@ -39,6 +41,7 @@ class BulkAdsRepository
             $ad_status = $bulk_ad->ad_status;
 
             $ad_status->status = 'online';
+            $ad_status->user_id = $bulk_import->user_id;
 
             $ad_status->save();
         }

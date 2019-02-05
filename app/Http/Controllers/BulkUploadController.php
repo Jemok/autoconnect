@@ -299,7 +299,7 @@ class BulkUploadController extends Controller
 
         $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
 
-        $bulkAdsRepository->moveAdsOnline($bulkImportId);
+        $bulkAdsRepository->moveAdsOnline($bulkImportId, $bulk_import);
 
         $bulkImportApprovalRepository->approveBulkImport($bulkImportId);
 

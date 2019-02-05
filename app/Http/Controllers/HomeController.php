@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\AdStatusRepository;
 use App\Repositories\InvitationRepository;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,15 +25,27 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(InvitationRepository $invitationRepository)
+    public function index(InvitationRepository $invitationRepository,
+                          AdStatusRepository $adStatusRepository)
     {
         $count_invitations = $invitationRepository->countUnacceptedInvitations(Auth::user()->email);
 
         if(Auth::user()->hasRole('dealer')){
 
 //            return view('home', compact( 'count_invitations'));
+            $online_ads_count = $adStatusRepository->countUserActiveAds(Auth::user()->id);
 
-            return view('dashboards.dealer', compact( 'count_invitations'));
+            $pending_ads_count = $adStatusRepository->countUserPendingAds(Auth::user()->id);
+
+            $declined_ads_count = $adStatusRepository->countUserDeclinedAds(Auth::user()->id);
+
+            $expired_ads_count = $adStatusRepository->countUserExpiredAds(Auth::user()->id);
+
+            return view('dashboards.dealer', compact( 'count_invitations',
+                'online_ads_count',
+                'pending_ads_count',
+                'declined_ads_count',
+                'expired_ads_count'));
         }
 
         if(Auth::user()->hasRole('super-admin')){

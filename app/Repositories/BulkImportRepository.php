@@ -335,12 +335,14 @@ class BulkImportRepository
                 'pending_verification',
                 $start,
                 $stop,
+                $single_ad->user_id,
                 'bulk');
 
             $bulkAdsRepository->store($vehicle_detail->id,
                 $adStatus->id,
                 $bulkImportId,
-                $single_ad->id
+                $single_ad->id,
+                $single_ad->user_id
             );
 
             $vehicleImagesRepository = new  VehicleImagesRepository();
