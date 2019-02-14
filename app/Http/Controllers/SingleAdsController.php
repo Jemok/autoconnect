@@ -6,6 +6,7 @@ use App\Notifications\AdActivatedNotification;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SingleAdsRepository;
+use App\Repositories\UsersRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleImagesRepository;
 use Carbon\Carbon;
@@ -39,7 +40,8 @@ class SingleAdsController extends Controller
                                $vehiclePaymentId,
                                VehicleDetailRepository $vehicleDetailRepository,
                                PaymentRepository $paymentRepository,
-                               AdStatusRepository $adStatusRepository){
+                               AdStatusRepository $adStatusRepository,
+                               UsersRepository $usersRepository){
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
@@ -60,8 +62,10 @@ class SingleAdsController extends Controller
             $package = 'Premium';
         }
 
+        $user = $usersRepository->
+
         $adStatusRepository->storeAdStatus($vehicle_detail,
-            'active',
+            'pending_verification',
             $start,
             $stop);
 

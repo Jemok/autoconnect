@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PayForBulkRequest;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
+use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\PaymentRepository;
+use App\Repositories\UsersRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Services\PayForAdService;
 use App\Services\PayForBulkService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -44,7 +47,9 @@ class PaymentController extends Controller
 
     public function processPayment(Request $request,
                                    PaymentRepository $paymentRepository,
-                                   VehicleDetailRepository $vehicleDetailRepository){
+                                   VehicleDetailRepository $vehicleDetailRepository,
+                                   AdStatusRepository $adStatusRepository,
+                                   UsersRepository $usersRepository){
         $vehiclePaymentId = $request->externalIdentifier;
         $paymentStatus = $request->status;
         $amount = $request->transactedAmount;
@@ -62,6 +67,19 @@ class PaymentController extends Controller
         if($paymentStatus == 'success'){
 
             $paymentRepository->setAsPaid($vehicle_payment);
+
+            $user = $usersRepository->checkIfExistsUsingEmail($vehicle_contact->email, $vehicle_contact);
+
+            $start = Carbon::now();
+
+            $stop = Carbon::now()->addDays(30);
+
+            $adStatusRepository->storeAdStatus($vehicle_detail,
+                'pending_verification',
+                $start,
+                $stop,
+                $user->id,
+                'single');
 
             $vehicle_contact->notify(new PaymentReceivedNotification($amount,
                 $vehicle_contact->name,
@@ -125,7 +143,7 @@ class PaymentController extends Controller
             $bulkImportRepository->setApprovalAsApproved($bulkApproval);
 
             $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id,
-                                                 new BulkAdsRepository());
+                new BulkAdsRepository());
 
             $user->notify(new PaymentReceivedNotification($amount,
                 $user->name,

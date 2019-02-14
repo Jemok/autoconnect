@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('adminHome') }}">
+                    <a href="{{ route('home') }}">
                         <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
@@ -121,7 +121,7 @@
                     <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
-                                <a href="{{ route('adminHome') }}">
+                                <a href="{{ route('home') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -185,6 +185,7 @@
                                                 <tr>
                                                     <th scope="col">Id</th>
                                                     <th scope="col">Manage Ad</th>
+                                                    <th scope="col">Ad Type</th>
                                                     <th scope="col">Make</th>
                                                     <th scope="col">Model</th>
                                                     <th scope="col">Year</th>
@@ -287,6 +288,7 @@
                 columns: [
                     { data: 'id', name: 'id' },
                     { data: 'manage_ad', name: 'manage_ad'},
+                    { data: 'ad_type', name: 'ad_type'},
                     { data: 'car_make', name: 'car_make'},
                     { data: 'car_model', name: 'car_model'},
                     { data: 'year', name: 'year' },

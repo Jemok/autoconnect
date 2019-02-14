@@ -13,7 +13,9 @@ use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportApprovalRepository;
 use App\Repositories\BulkImportRepository;
+use App\Repositories\RolesRepository;
 use App\Repositories\SingleAdsRepository;
+use App\Repositories\UsersRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\VehicleDetail;
 use Illuminate\Http\Request;
@@ -55,37 +57,78 @@ class BulkUploadController extends Controller
 
     }
 
-    public function saveBulkUpload(){
+    public function saveBulkUpload(RolesRepository $rolesRepository){
 
 //        return view('bulk-uploads.save');
 
-        return view('bulk-uploads.admin.save');
+        $dealer_role = $rolesRepository->showFromName('dealer');
+
+        $dealer_roles = $rolesRepository->showAllUsersForRole($dealer_role->id);
+
+        return view('bulk-uploads.admin.save', compact('dealer_roles'));
 
     }
 
-    public function importVehicles(BulkUpladFileRequest $request, BulkImportRepository $bulkImportRepository){
+    public function importVehicles(BulkUpladFileRequest $request,
+                                   BulkImportRepository $bulkImportRepository,
+                                   UsersRepository $usersRepository){
 
-        $validator = Validator::make(
-            [
-                'vehicle_file'      => $request->vehicle_file,
-                'extension' => strtolower($request->vehicle_file->getClientOriginalExtension()),
-            ],
-            [
-                'vehicle_file'          => 'required',
-                'extension'      => 'required|in:xlsx,xls',
-            ]
-        );
+
+        if(Auth::user()->hasRole('super-admin')){
+
+            $validator = Validator::make(
+                [
+                    'vehicle_file'      => $request->vehicle_file,
+                    'extension' => strtolower($request->vehicle_file->getClientOriginalExtension()),
+                    'user'           => 'required'
+                ],
+                [
+                    'vehicle_file'          => 'required',
+                    'extension'      => 'required|in:xlsx,xls',
+                    'user'           => 'required'
+                ]
+            );
+
+        }else{
+
+            $validator = Validator::make(
+                [
+                    'vehicle_file'      => $request->vehicle_file,
+                    'extension' => strtolower($request->vehicle_file->getClientOriginalExtension()),
+                ],
+                [
+                    'vehicle_file'          => 'required',
+                    'extension'      => 'required|in:xlsx,xls',
+                ]
+            );
+        }
+
 
         $validator->validate();
 
 
-        $bulk_import = $bulkImportRepository->store(Auth::user());
+        if(Auth::user()->hasRole('super-admin')){
+
+            $user = $usersRepository->showUsingId($request->user);
+
+            $bulk_import = $bulkImportRepository->store($user);
+
+        }else{
+
+            $bulk_import = $bulkImportRepository->store(Auth::user());
+        }
 
         $bulkImportRepository->storeBulkImportStatus($bulk_import, 'uploading');
 
         if($request->hasFile('vehicle_file')){
 
-            Excel::import(new VehicleDetailsImport($bulk_import->id, Auth::user()->id), request()->file('vehicle_file'));
+            if(Auth::user()->hasRole('super-admin')){
+                Excel::import(new VehicleDetailsImport($bulk_import->id, $request->user), request()->file('vehicle_file'));
+
+            }else{
+                Excel::import(new VehicleDetailsImport($bulk_import->id, Auth::user()->id), request()->file('vehicle_file'));
+            }
+
         }
 
         return redirect()->route('confirmBulkImports', $bulk_import->id);

@@ -32,9 +32,9 @@ class VehicleDetailRepository
         $car_make_model = $carMakeRepository->showFromSlug($car_make);
         $car_model = $data['car_model'];
         $car_model_model = $carModelRepository->showFromSlug($car_model);
-        $car_series = $data['car_series'];
+        $car_series = array_key_exists('car_series', $data) ? $data['car_series'] : null;
         if($car_series != null){
-         $car_series_model = $carSeriesRepository->showFromSlug($car_series);
+            $car_series_model = $carSeriesRepository->showFromSlug($car_series);
         }
         $year = $data['year'];
         $mileage = $data['mileage'];
@@ -114,11 +114,10 @@ class VehicleDetailRepository
         $vehicle_detail->colour_type_id = $colour_type_model->id;
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;
+        $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
 
         $vehicle_detail->save();
 
         return $vehicle_detail;
     }
-
-
 }

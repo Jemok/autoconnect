@@ -144,12 +144,26 @@ class AdStatusRepository
      */
     public function indexPendingVerificationAds(){
 
-        return AdStatus::where('status', 'pending_verification')->get();
+        return AdStatus::where('status', 'pending_verification')->latest()->get();
+    }
+
+    public function indexPendingVerificationAdsForDealer($userId){
+
+        return AdStatus::where('user_id', $userId)
+                         ->where('status', 'pending_verification')
+                         ->latest()->get();
     }
 
     public function indexOnlineAds(){
 
         return AdStatus::where('status', 'online')->get();
+    }
+
+    public function indexDealerOnlineAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+                         ->where('status', 'online')
+                         ->get();
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BulkUpladFileRequest extends FormRequest
 {
@@ -23,8 +24,17 @@ class BulkUpladFileRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'vehicle_file' => 'required'
-        ];
+        if(Auth::user()->hasRole('super-admin')) {
+
+            return [
+                'vehicle_file' => 'required',
+                'user' => 'required'
+            ];
+        }else{
+
+            return [
+                'vehicle_file' => 'required',
+            ];
+        }
     }
 }

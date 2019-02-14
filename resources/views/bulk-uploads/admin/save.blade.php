@@ -234,7 +234,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 col-lg-4">
+                                <div class="col-md-12 col-lg-12">
                                     <form  method="POST" action="{{ route('importVehicles') }}" enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="card">
@@ -251,6 +251,25 @@
                                                         {{ $errors->first('vehicle_file') }}
                                                     </div>
                                                 @endif
+
+
+                                                <div class="form-group row" style="margin-top: 5%;">
+                                                    <label class="col-sm-2 col-form-label">Select User</label>
+                                                    <div class="col-sm-10">
+                                                        <select name="user" class="form-control">
+                                                            <option disabled selected>Select One User Only</option>
+                                                            @foreach($dealer_roles as $dealer_role)
+                                                                <option value="{{ $dealer_role->user->id }}">{{ $dealer_role->user->name }} - {{ $dealer_role->user->email  }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+
+                                                    @if ($errors->has('user'))
+                                                        <div class="text-danger">
+                                                            {{ $errors->first('user') }}
+                                                        </div>
+                                                    @endif
+                                                </div>
 
                                                 <button type="submit" class="btn btn-primary btn-lg btn-round" style="margin-top: 8%;">Import and Continue</button>
                                             </div>

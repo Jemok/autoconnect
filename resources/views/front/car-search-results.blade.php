@@ -73,7 +73,7 @@
                                             <?php
                                             $vehicle_front_image = getVehicleFrontImage($vehicle->id)
                                             ?>
-                                            <img class="card-img-top" src="{{ asset('images/'.$vehicle_front_image) }}" alt="Card image cap">
+                                            <img class="card-img-top" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
                                         </div>
                                         <div class="col-md-4">
                                             <h4 style="color: black;">

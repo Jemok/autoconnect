@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\RolesRepository;
 use App\Repositories\UserRepository;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -22,10 +23,13 @@ class UsersController extends Controller
                                UserRepository $userRepository
     ){
 
-            $userRepository->updateVerificationStatus($userId, $status);
+        $userRepository->updateVerificationStatus($userId, $status);
 
-            flash()->overlay('The user status was updated', 'Success');
+        flash()->overlay('The user status was updated', 'Success');
 
-            return redirect()->back();
+        return redirect()->back();
     }
+
+
+
 }

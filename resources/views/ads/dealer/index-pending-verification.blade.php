@@ -61,7 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('adminHome') }}">
+                    <a href="{{ route('home') }}">
                         <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
@@ -121,7 +121,7 @@
                     <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
-                                <a href="{{ route('adminHome') }}">
+                                <a href="{{ route('home') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -194,6 +194,7 @@
                                                 <th scope="col">Duty</th>
                                                 <th scope="col">Price (KES)</th>
                                                 <th scope="col">Negotiable Price</th>
+                                                <th scope="col">Created At</th>
                                             </tr>
                                             </thead>
                                         </table>
@@ -296,7 +297,9 @@
                     { data: 'duty', name: 'duty' },
                     { data: 'price', name: 'price' },
                     { data: 'negotiable', name : 'negotiable'},
-                ]
+                    { data: 'created_at', name : 'created_at'},
+                ],
+                order: [ [13, 'desc'] ]
             });
         });
     </script>

@@ -126,7 +126,7 @@
                                         <label for="car_series">Series</label>
                                         <select name="car_series" id="car_series" class="form-control">
                                             <option selected disabled>Choose a Series</option>
-                                            <option></option>
+                                            {{--<option></option>--}}
                                         </select>
                                     </div>
                                     <div class="col">
