@@ -201,6 +201,17 @@
                                             </li>
                                         </ul>
 
+                                        <a href="{{ route('manageVehicleAd', $vehicle_detail_id) }}" class="btn btn-sm btn-success float-right">
+                                            Ad Management
+                                        </a>
+
+                                        <form action="{{ route('expireAd', $vehicle_detail->id) }}" method="POST">
+                                            {{ csrf_field() }}
+
+                                            <button type="submit" class="btn btn-sm btn-danger float-right">
+                                                Expire This Ad
+                                            </button>
+                                        </form>
 
                                         <form action="{{ route('setBulkImportAsApproved', [$vehicle_detail->id, 'approved']) }}" method="POST">
                                             {{ csrf_field() }}

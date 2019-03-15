@@ -63,17 +63,21 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('showBulkDisapprovalPage')
         ->middleware('verified');
 
+    Route::get('/show-single-disapproval/{vehicleDetailId}', 'SingleAdsController@showSingleDisapprovalPage')
+        ->name('showSingleDisapprovalPage')
+        ->middleware('verified');
+
     Route::post('/set-bulk-as-not-approved/{userBulkImportId}/{status}', 'BulkUploadController@setBulkVehicleAsNotApproved')
         ->name('setBulkImportAsNotApproved')
+        ->middleware('verified');
+
+    Route::post('/set-single-as-not-approved/{vehicleDetailId}/{status}', 'SingleAdsController@setSingleVehicleAsNotApproved')
+        ->name('setSingleImportAsNotApproved')
         ->middleware('verified');
 
     Route::get('/vehicles/corrected-submissions/index', 'BulkUploadController@indexCorrectedSubmissions')->name('indexCorrectedSubmissions');
 
     Route::get('/set-approval-for-bulk/{bulkImportId}', 'BulkUploadController@setApprovalForBulk')->name('setApprovalForBulk');
-
-    Route::post('/fix-disapproval-correction/{userBulkImportId}/{disapprovalReasonId}/{status}', 'BulkUploadController@fixBulkCorrection')
-        ->name('fixBulkCorrection')
-        ->middleware('verified');
 
 
     Route::post('/set-approval-for-bulk/{bulkImportId}', 'BulkUploadController@storeBulkApproval')
@@ -123,6 +127,14 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('bulk-ads', 'DatatablesController@indexBulkAdsDataForAdmin')->name('indexBulkAdsDataForAdmin');
 
 });
+
+Route::post('/vehicles/expire-ad/{vehicleDetailId}', 'AdsManagementController@expireAd')->name('expireAd');
+
+Route::post('/vehicles/expire-single-ad/{vehicleDetailId}', 'AdsManagementController@expireSingleAd')->name('expireSingleAd');
+
+Route::post('/fix-disapproval-correction/{userBulkImportId}/{disapprovalReasonId}/{status}', 'BulkUploadController@fixBulkCorrection')
+    ->name('fixBulkCorrection')
+    ->middleware('verified');
 
 Route::get('index-bulk-import-ads-data/{bulkImportId}', 'DatatablesController@indexBulkUploadImportsData')->name('indexBulkUploadImportsData');
 
@@ -236,7 +248,7 @@ Route::get('/pay-for-bulk/{bulkImportId}', 'PaymentController@payForBulk')
 Route::post('/make-bulk-payment/{bulkImportId}', 'PaymentController@makeBulkPayment')
     ->name('makeBulkPayment');
 
-Route::get('/single-car-view', 'SingleCarViewController@show')
+Route::get('/single-car-view/{vehicleDetailId}', 'SingleCarViewController@show')
     ->name('singleCarView');
 
 Route::get('car-search-results', 'CarSearchController@showSearchResults')

@@ -65,7 +65,7 @@
 
                 <div class="col-md-9">
                     @foreach($vehicles as $vehicle)
-                        <a href="{{ route('singleCarView') }}" style="text-decoration: none;">
+                        <a href="{{ route('singleCarView', $vehicle->id) }}" style="text-decoration: none;">
                             <div class="card" style="margin-bottom: 1%;">
                                 <div class="card-body">
                                     <div class="row">
@@ -73,7 +73,7 @@
                                             <?php
                                             $vehicle_front_image = getVehicleFrontImage($vehicle->id)
                                             ?>
-                                            <img class="card-img-top" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                            <img class="card-img-top"  src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
                                         </div>
                                         <div class="col-md-4">
                                             <h4 style="color: black;">

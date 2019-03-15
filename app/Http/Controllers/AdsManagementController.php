@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\AdExpiredNotification;
 use App\Repositories\AdStatusRepository;
+use App\Repositories\BulkAdsRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use Illuminate\Http\Request;
@@ -16,11 +18,12 @@ class AdsManagementController extends Controller
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
+
         $vehicle_payments = $paymentRepository->indexForVehicle($vehicleId);
 
         $ads = $adStatusRepository->indexForVehicle($vehicleId);
 
-        return view('single-ads.manage', compact('vehicle_detail',
+        return view('single-ads.manage-design', compact('vehicle_detail',
             'vehicle_payments',
             'ads'));
     }
@@ -63,5 +66,46 @@ class AdsManagementController extends Controller
     public function indexExpiredAdsForDealer(){
 
         return view('ads.dealer.index-expired');
+    }
+
+    public function expireAd($vehicleDetailId,
+                             AdStatusRepository $adStatusRepository,
+                             BulkAdsRepository $bulkAdsRepository,
+                             VehicleDetailRepository $vehicleDetailRepository){
+
+        $bulk_ad = $bulkAdsRepository->showForBulk($vehicleDetailId);
+
+        $adStatusRepository->expireAd($bulk_ad->vehicle_detail_id);
+
+        $vehicle_detail = $vehicleDetailRepository->show($bulk_ad->vehicle_detail_id);
+
+        $user = $bulk_ad->user;
+
+        $user->notify(new AdExpiredNotification($vehicle_detail));
+
+        $vehicleDetailRepository->deactivateVehicle($bulk_ad->vehicle_detail_id);
+
+        flash()->overlay('Ad Was Expired', 'Ad Expired');
+
+        return redirect()->back();
+    }
+
+    public function expireSingleAd($vehicleDetailId,
+                                   AdStatusRepository $adStatusRepository,
+                                   VehicleDetailRepository $vehicleDetailRepository){
+
+        $adStatusRepository->expireAd($vehicleDetailId);
+
+        $vehicleDetailRepository->deactivateVehicle($vehicleDetailId);
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleDetailId);
+
+        $user = $vehicle_detail->vehicle_contact;
+
+        $user->notify(new AdExpiredNotification($vehicle_detail));
+
+        flash()->overlay('Ad Was Expired', 'Ad Expired');
+
+        return redirect()->back();
     }
 }

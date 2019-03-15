@@ -74,12 +74,18 @@ class PaymentController extends Controller
 
             $stop = Carbon::now()->addDays(30);
 
-            $adStatusRepository->storeAdStatus($vehicle_detail,
+            $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
                 'pending_verification',
                 $start,
                 $stop,
                 $user->id,
                 'single');
+
+            $adStatusRepository->storeAdPeriod($vehicle_detail,
+                $ad_status,
+                'active',
+                $start,
+                $stop);
 
             $vehicle_contact->notify(new PaymentReceivedNotification($amount,
                 $vehicle_contact->name,

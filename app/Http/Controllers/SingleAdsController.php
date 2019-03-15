@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Notifications\AdActivatedNotification;
+use App\Notifications\AdDisapprovedNotification;
+use App\Notifications\SingleAdDisapprovalNotification;
 use App\Repositories\AdStatusRepository;
+use App\Repositories\BulkImportRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\UsersRepository;
@@ -22,7 +26,8 @@ class SingleAdsController extends Controller
 
     public function indexImages($vehicleId,
                                 VehicleDetailRepository $vehicleDetailRepository,
-                                VehicleImagesRepository $vehicleImagesRepository){
+                                VehicleImagesRepository $vehicleImagesRepository,
+                                BulkImportRepository $bulkImportRepository){
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
@@ -30,7 +35,12 @@ class SingleAdsController extends Controller
 
         $other_features = json_decode($vehicle_detail->other_features, true);
 
-        return view('single-ads.index-images', compact('vehicleId',
+        $disapproval_reasons = $bulkImportRepository->getDisapprovalReasonsNotResolvedOrCorrected($vehicleId);
+
+
+        return view('single-ads.index-images-design', compact(
+            'disapproval_reasons',
+            'vehicleId',
             'vehicle_detail',
             'vehicle_images',
             'other_features'));
@@ -62,12 +72,20 @@ class SingleAdsController extends Controller
             $package = 'Premium';
         }
 
-        $user = $usersRepository->
+        $user = $usersRepository->showUsingId(Auth::user()->id);
 
-        $adStatusRepository->storeAdStatus($vehicle_detail,
+        $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
             'pending_verification',
             $start,
-            $stop);
+            $stop,
+            $user->id,
+            'single');
+
+//        $adStatusRepository->storeAdPeriod($vehicle_detail,
+//            $ad_status,
+//            'active',
+//            $start,
+//            $stop);
 
         $contact->notify(new AdActivatedNotification($contact,
             $vehicle_detail,
@@ -79,5 +97,36 @@ class SingleAdsController extends Controller
         flash()->overlay('The Ad has been created, Start : '. $start->toDateString(). ' Stop : '. $stop->toDateString(), 'Success');
 
         return redirect()->back();
+    }
+
+    public function showSingleDisapprovalPage($vehicleDetailId,
+                                              VehicleDetailRepository $vehicleDetailRepository){
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleDetailId);
+
+        return view('single-ads.set-as-not-approved', compact('vehicle_detail', 'vehicleDetailId'));
+    }
+
+    public function setSingleVehicleAsNotApproved($vehicleDetailId,
+                                                  $status,
+                                                  SetBulkVehicleAsNotApprovedRequest $setBulkVehicleAsNotApprovedRequest,
+                                                  VehicleDetailRepository $vehicleDetailRepository,
+                                                  AdStatusRepository $adStatusRepository){
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleDetailId);
+
+        $ad_status = $adStatusRepository->showFromVehicleDetail($vehicleDetailId);
+
+        $vehicleDetailRepository->saveDisapprovalReason('single', $vehicle_detail, $setBulkVehicleAsNotApprovedRequest->reason, 'not_resolved');
+
+        $adStatusRepository->setSingleAdAsDeclined($vehicleDetailId);
+
+        $user = $ad_status->user;
+
+        $user->notify(new SingleAdDisapprovalNotification($vehicle_detail, $setBulkVehicleAsNotApprovedRequest->reason));
+
+        flash()->overlay('The car Ad was rejected and the reason was sent to the user successfully', 'Effected');
+
+        return redirect()->route('indexSingleAdsImages', $vehicleDetailId);
     }
 }

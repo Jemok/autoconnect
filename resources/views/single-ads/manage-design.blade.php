@@ -33,11 +33,6 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
 </head>
 <body>
-<div class="fixed-button">
-    <a href="https://codedthemes.com/item/gradient-able-admin-template" target="_blank" class="btn btn-md btn-primary">
-        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Upgrade To Pro
-    </a>
-</div>
 <!-- Pre-loader start -->
 <div class="theme-loader">
     <div class="loader-track">
@@ -81,23 +76,13 @@
                         </li>
                     </ul>
                     <ul class="nav-right">
-                        <li class="user-profile header-notification">
 
-                            @if(Auth::user()->hasRole('super-admin'))
+                        <li class="user-profile header-notification">
                             <a href="#!">
                                 <img src="assets/images/avatar-4.jpg" class="img-radius">
-                                <span>Logged in as : Super Admin - Admin Account</span>
+                                <span>Logged in as : John Doe - Dealer Account</span>
                                 <i class="ti-angle-down"></i>
                             </a>
-                            @endif
-
-                                @if(Auth::user()->hasRole('dealer'))
-                                    <a href="#!">
-                                        <img src="assets/images/avatar-4.jpg" class="img-radius">
-                                        <span>Logged in as : {{ Auth::user()->name }} - Dealer Account</span>
-                                        <i class="ti-angle-down"></i>
-                                    </a>
-                                @endif
                             <ul class="show-notification profile-notification">
 
                                 <li>
@@ -108,7 +93,7 @@
 
                                 <li>
                                     <a href="#!">
-                                        <i class="ti-settings"></i> Account Settings
+                                        <i class="ti-settings"></i> Settings
                                     </a>
                                 </li>
 
@@ -134,9 +119,9 @@
             <div class="pcoded-wrapper">
                 <nav class="pcoded-navbar">
                     <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
-                    <div class="pcoded-inner-navbar main-menu">
+                    <div class="pcoded-inner-navbar main-menu" style="margin-top: 5%;">
                         <ul class="pcoded-item pcoded-left-item">
-                            <li>
+                            <li class="active">
                                 <a href="{{ route('home') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
@@ -146,8 +131,16 @@
 
                             <li class="">
                                 <a href="index.html">
-                                    <span class="pcoded-micon"><i class="ti-clipboard"></i><b>R</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Reports</span>
+                                    <span class="pcoded-micon"><i class="ti-user"></i><b>P</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Profile</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+
+                            <li class="">
+                                <a href="index.html">
+                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
+                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Settings</span>
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
@@ -159,22 +152,6 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
-
-                            <li class="">
-                                <a href="index.html">
-                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Account Settings</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
-
-                            <li class="">
-                                <a href="index.html">
-                                    <span class="pcoded-micon"><i class="ti-dashboard"></i><b>S</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">System Settings</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -182,30 +159,107 @@
                     <div class="pcoded-inner-content">
                         <div class="main-body">
                             <div class="page-wrapper">
-                                <div class="card-block">
-                                    <h5 class="m-b-10">Declined Ads</h5>
-                                    <p class="text-muted m-b-10">Manage all declined Ads here</p>
-                                    <ul class="breadcrumb-title b-t-default p-t-10">
-                                        <li class="breadcrumb-item">
-                                            <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>
-                                        </li>
-                                        <li class="breadcrumb-item"><a href="{{ route('indexDeclinedAds') }}">Declined Ads</a>
-                                        </li>
-                                    </ul>
+                                @include('flash::message')
+                                <div class="row justify-content-center">
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                {{ $vehicle_detail->car_make->name }}
+                                                {{ $vehicle_detail->car_model->name }}
+                                                @if(isset($vehicle_detail->vehicle_contact->name ))
+                                                    ( {{ $vehicle_detail->vehicle_contact->name  }}
+                                                @endif
 
-                                    <div class="table-responsive" style="padding-top: 20px;">
-                                        <table class="table table-bordered" id="users-table">
-                                            <thead>
-                                            <tr>
-                                                <th scope="col">Id</th>
-                                                <th scope="col">Reason</th>
-                                                <th scope="col">Status</th>
-                                                <th scope="col">View</th>
-                                            </tr>
-                                            </thead>
-                                        </table>
+                                                @if(isset($vehicle_detail->vehicle_contact->phone_number))
+                                                    - {{ $vehicle_detail->vehicle_contact->phone_number }} )
+                                                @endif
+
+                                                @if(Auth::user()->hasRole('super-admin'))
+                                                    @if(isset($vehicle_detail->vehicle_verification->status))
+                                                        @if($vehicle_detail->vehicle_verification->status == 'not_verified')
+                                                            <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
+                                                                {{ csrf_field() }}
+
+                                                                <button type="submit" class="btn btn-sm btn-success float-right">
+                                                                    Set as Verified
+                                                                </button>
+                                                            </form>
+                                                        @elseif($vehicle_detail->vehicle_verification->status == 'verified')
+                                                            <form action="{{ route('setVehicleAsNotVerified', $vehicle_detail->id) }}" method="POST">
+                                                                {{ csrf_field() }}
+                                                                <button class="btn btn-sm btn-danger float-right">
+                                                                    Set as Not Verified
+                                                                </button>
+                                                            </form>
+                                                        @endif
+                                                    @else
+                                                        <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
+                                                            {{ csrf_field() }}
+
+                                                            <button type="submit" class="btn btn-sm btn-success float-right">
+                                                                Set as Verified
+                                                            </button>
+                                                        </form>
+                                                    @endif
+                                                @endif
+
+                                                <a href="{{ route('indexSingleAdsImages', $vehicle_detail->id) }}" class="btn btn-sm btn-success float-right">
+                                                    Vehicle Management
+                                                </a>
+
+                                            </div>
+                                            <p>
+
+                                            <p>
+                                            <h3 style="margin-left: 2%;" class="heading">
+                                                Manage Ads
+                                            </h3>
+                                            </p>
+
+                                            <table class="table">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Ad Status</th>
+                                                    <th scope="col">Start</th>
+                                                    <th scope="col">Stop</th>
+                                                    {{--<th scope="col">Manage</th>--}}
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($ads as $ad)
+                                                    <tr>
+                                                        <th scope="row">{{ $ad->id }}</th>
+                                                        <td>
+                                                            @if($ad->status == 'active')
+                                                                Active
+                                                            @elseif($ad->status == 'inactive')
+                                                                Inactive
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if(isset($ad->start))
+                                                                {{ $ad->start }}
+                                                            @else
+                                                                N/A
+                                                            @endif
+                                                        </td>
+                                                        <td>
+                                                            @if(isset($ad->stop))
+                                                                {{ $ad->stop }}
+                                                            @else
+                                                                N/A
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+
+                                        </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -281,22 +335,10 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-    <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script>
-        $(function() {
-            $('#users-table').DataTable({
-                processing: true,
-                serverSide: true,
-                ajax: '{!! route('indexDeclinedAdsDataForDealer') !!}',
-                columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'reason', name: 'reason'},
-                    { data: 'status', name: 'status'},
-                    { data: 'view', name: 'view' }
-                ]
-            });
-        });
+        $('#flash-overlay-modal').modal();
     </script>
 </div>
 </body>
+
 </html>

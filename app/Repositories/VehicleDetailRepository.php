@@ -9,6 +9,8 @@
 namespace App\Repositories;
 
 
+use App\AdStatus;
+use App\DisapprovalReason;
 use App\VehicleDetail;
 
 class VehicleDetailRepository
@@ -119,5 +121,45 @@ class VehicleDetailRepository
         $vehicle_detail->save();
 
         return $vehicle_detail;
+    }
+
+    public function saveDisapprovalReason($type, $vehicle_detail, $reason, $status){
+
+        $disapproval_reason = new DisapprovalReason();
+
+        $disapproval_reason->reason = $reason;
+
+        $disapproval_reason->user_bulk_import_id = $vehicle_detail->id;
+
+        $disapproval_reason->status = $status;
+
+        $disapproval_reason->type = $type;
+
+        $disapproval_reason->save();
+
+        return $disapproval_reason;
+    }
+
+    public function activateVehicle($vehicleDetailId){
+
+        $vehicle_detail = VehicleDetail::where('id', $vehicleDetailId)->firstOrFail();
+
+        $vehicle_detail->status = 'active';
+
+        $vehicle_detail->save();
+    }
+
+    public function deactivateVehicle($vehicleDetailId){
+
+        $vehicle_detail = VehicleDetail::where('id', $vehicleDetailId)->firstOrFail();
+
+        $vehicle_detail->status = 'inactive';
+
+        $vehicle_detail->save();
+    }
+
+    public function getEightLatestOnline(){
+
+        return AdStatus::where('status', 'online')->take(6)->latest()->get();
     }
 }

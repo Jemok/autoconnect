@@ -8,7 +8,9 @@
 
         <div class="col-md-6" style="margin-top: 2%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
             <span style="color: white;">
-              Viewing Chevrolet Captiva
+              {{ $vehicle_detail->car_make->name }}
+                -
+              {{ $vehicle_detail->car_model->name }}
             </span>
         </div>
 
@@ -16,41 +18,51 @@
             <div class="col-md-6" style="margin-top: 2%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%;">
                 <div class="card">
                     <div class="card-header">
-                        2015 Maroon Chevrolet Captiva
+                        {{ $vehicle_detail->year }}
+
+                        {{ $vehicle_detail->car_make->name }}
+                        -
+                        {{ $vehicle_detail->car_model->name }}
 
                         <div class="float-right">
-                            Ksh 2,400,000.00
+                            Ksh {{ $vehicle_detail->price }}
                         </div>
 
                     </div>
                     <div class="card-body">
                         <div class="card-group">
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                            </div>
+                            @foreach($vehicle_images as $vehicle_image)
+                                <img style="width: 250px;" src="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}" alt="Card image cap">
+                            @endforeach
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
                         </div>
 
-                        <div class="card-group" style="margin-top: 1%;">
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                            </div>
-                            <div class="card">
-                                <img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">
-                            </div>
-                        </div>
+                        {{--<div class="card-group" style="margin-top: 1%;">--}}
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
+                            {{--<div class="card">--}}
+                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
 
                         <h4 style="margin-top: 2%; font-weight: bold;">
                             Description
                         </h4>
 
                         <p>
-                            Great Off-road Car with new shocks and tires.
+                            {{ $vehicle_detail->description }}
                         </p>
 
                         <h4 style="margin-top: 2%; font-weight: bold;">
@@ -63,7 +75,7 @@
                                     Mileage (km)
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    129000
+                                    {{ $vehicle_detail->mileage }}
                                 </p>
                             </div>
                             <div class="col-md-3">
@@ -71,7 +83,7 @@
                                     Condition
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    Locally Used
+                                    {{ $vehicle_detail->car_condition->description }}
                                 </p>
                             </div>
 
@@ -80,7 +92,7 @@
                                     Body Type
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    4 Wheel Drives
+                                    {{ $vehicle_detail->body_type->description }}
                                 </p>
                             </div>
 
@@ -89,7 +101,7 @@
                                     Colour
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    White
+                                    {{ $vehicle_detail->colour_type->description }}
                                 </p>
                             </div>
                         </div>
@@ -108,7 +120,7 @@
                                     Fuel
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    Petro
+                                    {{ $vehicle_detail->fuel_type }}
                                 </p>
                             </div>
 
@@ -126,7 +138,7 @@
                                     Transmission
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    Automatic
+                                    {{ $vehicle_detail->transmission_type->description }}
                                 </p>
                             </div>
                         </div>
@@ -137,7 +149,7 @@
                                     Duty Type
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    Duty Paid
+                                    {{ $vehicle_detail->duty->description }}
                                 </p>
                             </div>
                             <div class="col-md-3">
@@ -163,7 +175,7 @@
                                     Engine Size
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    2000
+                                    {{ $vehicle_detail->engine_size }}
                                 </p>
                             </div>
                         </div>
@@ -174,7 +186,7 @@
                                     Year
                                 </h5>
                                 <p style="margin-top: 0; padding-top: 0;">
-                                    2001
+                                    {{ $vehicle_detail->year }}
                                 </p>
                             </div>
                         </div>

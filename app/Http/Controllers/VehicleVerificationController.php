@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Notifications\SetAsNotVerifiedNotification;
 use App\Notifications\SetAsVerifiedNotification;
+use App\Repositories\AdStatusRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleVerificationsRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class VehicleVerificationController extends Controller
@@ -14,7 +16,8 @@ class VehicleVerificationController extends Controller
     public function setAsVerified($vehicleId,
                                   VehicleDetailRepository $vehicleDetailRepository,
                                   VehicleVerificationsRepository $vehicleVerificationsRepository,
-                                  PaymentRepository $paymentRepository){
+                                  PaymentRepository $paymentRepository,
+                                  AdStatusRepository $adStatusRepository){
 
         $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
 
@@ -22,6 +25,20 @@ class VehicleVerificationController extends Controller
 
         if($checkPayment){
             $vehicleVerificationsRepository->store($vehicleDetail, 'verified');
+
+            $start = Carbon::now();
+
+            $stop = Carbon::now()->addDays(30);
+
+            $ad_status = $adStatusRepository->setAdAsOnline($vehicleId, $start, $stop);
+
+            $adStatusRepository->storeAdPeriod($vehicleDetail,
+                $ad_status,
+                'active',
+                $start,
+                $stop);
+
+            $vehicleDetailRepository->activateVehicle($vehicleDetail->id);
 
             $contact = $vehicleDetail->vehicle_contact;
 

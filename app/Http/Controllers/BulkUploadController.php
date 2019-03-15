@@ -16,8 +16,10 @@ use App\Repositories\BulkImportRepository;
 use App\Repositories\RolesRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\UsersRepository;
+use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\VehicleDetail;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -103,9 +105,7 @@ class BulkUploadController extends Controller
             );
         }
 
-
         $validator->validate();
-
 
         if(Auth::user()->hasRole('super-admin')){
 
@@ -197,7 +197,8 @@ class BulkUploadController extends Controller
     public function adminManageBulkImages($bulkImportId,
                                           $singleBulkUploadId,
                                           BulkImportRepository $bulkImportRepository,
-                                          VehicleImagesRepository $vehicleImagesRepository){
+                                          VehicleImagesRepository $vehicleImagesRepository,
+                                          BulkAdsRepository $bulkAdsRepository){
 
         $vehicle_detail = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
@@ -206,6 +207,10 @@ class BulkUploadController extends Controller
         $other_features = json_decode($vehicle_detail->other_features, true);
 
         $vehicleId = $singleBulkUploadId;
+
+        $bulk_ad = $bulkAdsRepository->showForBulk($vehicle_detail->id);
+
+        $vehicle_detail_id = $bulk_ad->vehicle_detail_id;
 
         $single_bulk_upload = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
@@ -224,17 +229,39 @@ class BulkUploadController extends Controller
                 'disapproval_reasons',
                 'vehicle_detail',
                 'vehicle_images',
-                'other_features')
+                'other_features',
+                'vehicle_detail_id')
         );
     }
 
     public function setBulkVehicleAsApproved($userBulkImportId,
                                              $status,
-                                             BulkImportRepository $bulkImportRepository){
+                                             BulkImportRepository $bulkImportRepository,
+                                             AdStatusRepository $adStatusRepository,
+                                             BulkAdsRepository $bulkAdsRepository,
+                                             VehicleDetailRepository $vehicleDetailRepository){
 
         $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
 
         $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
+
+        $bulk_ad = $bulkAdsRepository->showForBulk($userBulkImportId);
+
+        $start = Carbon::now();
+
+        $stop = Carbon::now()->addDays(30);
+
+        $vehicleDetail = $vehicleDetailRepository->show($bulk_ad->vehicle_detail_id);
+
+        $ad_status = $adStatusRepository->setAdAsOnline($bulk_ad->vehicle_detail_id, $start, $stop);
+
+        $adStatusRepository->storeAdPeriod($vehicleDetail,
+            $ad_status,
+            'active',
+            $start,
+            $stop);
+
+        $vehicleDetailRepository->activateVehicle($vehicleDetail->id);
 
         flash()->overlay('The vehicle Ad was verified successfully');
 
@@ -291,13 +318,16 @@ class BulkUploadController extends Controller
     public function fixBulkCorrection($userBulkImportId,
                                       $disapprovalReasonId,
                                       $status,
-                                      BulkImportRepository $bulkImportRepository){
+                                      BulkImportRepository $bulkImportRepository,
+                                      AdStatusRepository $adStatusRepository){
 
         $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
 
         $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
 
         $bulkImportRepository->updateDisapprovalReason($userBulkImportId, $disapprovalReasonId, $status);
+
+        $adStatusRepository->setAdAsPending($userBulkImportId);
 
         flash()->overlay('Your correction was set as resolved successfully', 'Resolved');
 

@@ -56,6 +56,7 @@
                             {{ $disapproval_reason->reason }}
                         </p>
 
+
                         <form action="{{ route('fixBulkCorrection', [$single_bulk_upload->id, $disapproval_reason->id, 'resolved']) }}" method="post">
 
                             {{ csrf_field() }}

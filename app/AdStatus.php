@@ -21,4 +21,9 @@ class AdStatus extends Model
     public function bulk_ad(){
         return $this->hasOne(BulkAd::class);
     }
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+    }
 }

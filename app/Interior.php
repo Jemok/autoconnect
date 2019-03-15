@@ -13,4 +13,9 @@ class Interior extends Model
         'slug',
         'description'
     ];
+
+    public function vehicle_details(){
+
+        return $this->hasMany(VehicleDetail::class, 'interior', 'id');
+    }
 }

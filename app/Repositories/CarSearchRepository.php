@@ -17,6 +17,7 @@ use App\ColourType;
 use App\FuelType;
 use App\TransmissionType;
 use App\VehicleDetail;
+use Illuminate\Support\Collection;
 
 class CarSearchRepository
 {
@@ -34,46 +35,57 @@ class CarSearchRepository
                               $car_condition,
                               $fuel_type){
 
-        if($car_make != 'any_make'
-            && $car_model != 'any_model'){
+        if($car_make != 'any_make' && $car_model != null){
 
             $car_make_id = CarMake::where('slug', $car_make)->firstOrFail()->id;
 
-            $car_model_id = CarModel::where('slug', $car_model)->firstOrFail()->id;
+            if ($car_model != 'any_model'){
+                $car_model_id = CarModel::where('slug', $car_model)->firstOrFail()->id;
+            }
 
-            if($body_type != 'any_body_type'){
+
+            if($body_type != 'any_body_type' && $body_type != null){
                 $body_type_id = BodyType::where('slug', $body_type)->firstOrFail()->id;
             }else{
                 $body_type_id = null;
             }
 
-            if($transmission_type != 'any_transmission'){
+            if($transmission_type != 'any_transmission' && $transmission_type != null){
                 $transmission_type_id = TransmissionType::where('slug', $transmission_type)->firstOrFail()->id;
             }else{
                 $transmission_type_id = null;
             }
 
-            if($colour_type != 'any_colour_type'){
+            if($colour_type != 'any_colour_type' && $colour_type != null){
 
                 $colour_type_id = ColourType::where('slug', $colour_type)->firstOrFail()->id;
             }else{
                 $colour_type_id = null;
             }
 
-            if($car_condition != 'any_condition'){
+            if($car_condition != 'any_condition' && $car_condition != null){
                 $car_condition_id = CarCondition::where('slug', $car_condition)->firstOrFail()->id;
             }else{
                 $car_condition_id = null;
             }
 
-            if($fuel_type != 'any_fuel_type'){
+            if($fuel_type != 'any_fuel_type' && $fuel_type != null){
                 $fuel_type_id = FuelType::where('slug', $fuel_type)->firstOrFail()->id;
             }else{
                 $fuel_type_id = null;
             }
 
-            $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
-                ->where('car_model_id', $car_model_id);
+            if ($car_model != 'any_model' && $car_model != null) {
+
+                $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
+                    ->where('car_model_id', $car_model_id)
+                    ->where('status', 'active');
+            }else{
+
+                $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
+                    ->where('status', 'active');
+            }
+
 
             $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
                 ->orWhereBetween('price', [$min_price, $max_price])

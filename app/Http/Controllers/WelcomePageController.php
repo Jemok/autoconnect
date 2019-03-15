@@ -10,6 +10,7 @@ use App\Repositories\CarModelRepository;
 use App\Repositories\ColourTypeRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\TransmissionTypeRepository;
+use App\Repositories\VehicleDetailRepository;
 
 class WelcomePageController extends Controller
 {
@@ -20,7 +21,8 @@ class WelcomePageController extends Controller
                                     ColourTypeRepository $colourTypeRepository,
                                     TransmissionTypeRepository $transmissionTypeRepository,
                                     CarConditionRepository $carConditionRepository,
-                                    FuelTypeRepository $fuelTypeRepository){
+                                    FuelTypeRepository $fuelTypeRepository,
+                                    VehicleDetailRepository $vehicleDetailRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -41,6 +43,8 @@ class WelcomePageController extends Controller
         $start_year = 2004;
         $next_year = 2019;
 
+        $featured_cars = $vehicleDetailRepository->getEightLatestOnline();
+
         return view('welcome', compact(
             'car_makes',
             'car_models',
@@ -51,6 +55,7 @@ class WelcomePageController extends Controller
             'colour_types',
             'transmission_types',
             'car_conditions',
-            'fuel_types'));
+            'fuel_types',
+            'featured_cars'));
     }
 }

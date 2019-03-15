@@ -338,6 +338,12 @@ class BulkImportRepository
                 $single_ad->user_id,
                 'bulk');
 
+            $adStatusRepository->storeAdPeriod($vehicle_detail,
+                $adStatus,
+                'active',
+                $start,
+                $stop);
+
             $bulkAdsRepository->store($vehicle_detail->id,
                 $adStatus->id,
                 $bulkImportId,

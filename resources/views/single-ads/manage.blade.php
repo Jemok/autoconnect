@@ -20,8 +20,25 @@
                             - {{ $vehicle_detail->vehicle_contact->phone_number }} )
                         @endif
 
-                        @if(isset($vehicle_detail->vehicle_verification->status))
-                            @if($vehicle_detail->vehicle_verification->status == 'not_verified')
+                        @if(Auth::user()->hasRole('super-admin'))
+                            @if(isset($vehicle_detail->vehicle_verification->status))
+                                @if($vehicle_detail->vehicle_verification->status == 'not_verified')
+                                    <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
+                                        {{ csrf_field() }}
+
+                                        <button type="submit" class="btn btn-sm btn-success float-right">
+                                            Set as Verified
+                                        </button>
+                                    </form>
+                                @elseif($vehicle_detail->vehicle_verification->status == 'verified')
+                                    <form action="{{ route('setVehicleAsNotVerified', $vehicle_detail->id) }}" method="POST">
+                                        {{ csrf_field() }}
+                                        <button class="btn btn-sm btn-danger float-right">
+                                            Set as Not Verified
+                                        </button>
+                                    </form>
+                                @endif
+                            @else
                                 <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
                                     {{ csrf_field() }}
 
@@ -29,22 +46,7 @@
                                         Set as Verified
                                     </button>
                                 </form>
-                            @elseif($vehicle_detail->vehicle_verification->status == 'verified')
-                                <form action="{{ route('setVehicleAsNotVerified', $vehicle_detail->id) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    <button class="btn btn-sm btn-danger float-right">
-                                        Set as Not Verified
-                                    </button>
-                                </form>
                             @endif
-                        @else
-                            <form action="{{ route('setVehicleAsVerified', $vehicle_detail->id) }}" method="POST">
-                                {{ csrf_field() }}
-
-                                <button type="submit" class="btn btn-sm btn-success float-right">
-                                    Set as Verified
-                                </button>
-                            </form>
                         @endif
 
                         <a href="{{ route('indexSingleAdsImages', $vehicle_detail->id) }}" class="btn btn-sm btn-success float-right">

@@ -27,9 +27,19 @@ class DatatablesController extends Controller
             })
             ->addColumn('manage_ad', function ($single_ad){
 
-                $url = route('adminManageBulkImages', [$single_ad->bulk_ad->bulk_import_id, $single_ad->bulk_ad->user_bulk_import_id]);
+                if($single_ad->type == 'bulk') {
 
-                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+                    $url = route('adminManageBulkImages', [$single_ad->bulk_ad->bulk_import_id, $single_ad->bulk_ad->user_bulk_import_id]);
+
+                    return '<a class="btn btn-success btn-sm" href="' . $url . '">Manage Ad</a>';
+                }
+
+                if($single_ad->type == 'single') {
+
+                    $url = route('indexSingleAdsImages', $single_ad->vehicle_detail_id);
+
+                    return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+                }
             })
             ->addColumn('ad_type', function ($single_ad){
 
@@ -412,9 +422,23 @@ class DatatablesController extends Controller
             })
             ->addColumn('view', function ($disapproval_reason){
 
-                $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
 
-                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                if($disapproval_reason->type == 'bulk'){
+
+
+                    $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
+
+                    return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                }
+
+                if($disapproval_reason->type == 'single'){
+
+
+                    $url = route('indexSingleAdsImages', $disapproval_reason->user_bulk_import->id);
+
+                    return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                }
+
             })
             ->rawColumns(['view'])
             ->make(true);
@@ -448,9 +472,20 @@ class DatatablesController extends Controller
             })
             ->addColumn('view', function ($disapproval_reason){
 
-                $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
+                if($disapproval_reason->type == 'bulk'){
 
-                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                    $url = route('adminManageBulkImages', [$disapproval_reason->user_bulk_import->bulk_import_id, $disapproval_reason->user_bulk_import->id]);
+
+                    return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                }
+
+                if($disapproval_reason->type == 'single'){
+
+
+                    $url = route('indexSingleAdsImages', $disapproval_reason->user_bulk_import->id);
+
+                    return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
+                }
             })
             ->rawColumns(['view'])
             ->make(true);
@@ -467,9 +502,23 @@ class DatatablesController extends Controller
             })
             ->addColumn('manage_ad', function ($single_ad){
 
-                $url = route('indexSingleAdsImages', $single_ad->id);
+                if($single_ad->type == 'bulk') {
 
-                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+                    $url = route('adminManageBulkImages', [$single_ad->bulk_ad->bulk_import_id, $single_ad->bulk_ad->user_bulk_import_id]);
+
+                    return '<a class="btn btn-success btn-sm" href="' . $url . '">Manage Ad</a>';
+                }
+
+                if($single_ad->type == 'single') {
+
+                    $url = route('indexSingleAdsImages', $single_ad->vehicle_detail_id);
+
+                    return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+                }
+
+//                $url = route('indexSingleAdsImages', $single_ad->id);
+//
+//                return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
             })
             ->addColumn('car_make', function ($expired_ad){
 

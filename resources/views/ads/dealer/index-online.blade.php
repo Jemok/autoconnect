@@ -196,6 +196,7 @@
                                                     <th scope="col">Duty</th>
                                                     <th scope="col">Price (KES)</th>
                                                     <th scope="col">Negotiable Price</th>
+                                                    <th scope="col">Created At</th>
                                                 </tr>
                                                 </thead>
                                             </table>
@@ -299,7 +300,10 @@
                     { data: 'duty', name: 'duty' },
                     { data: 'price', name: 'price' },
                     { data: 'negotiable', name : 'negotiable'},
-                ]
+                    { data: 'created_at', name : 'created_at'},
+                ],
+                order: [ [13, 'desc'] ]
+
             });
         });
     </script>

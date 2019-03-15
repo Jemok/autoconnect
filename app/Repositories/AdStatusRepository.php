@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\AdPeriod;
 use App\AdStatus;
 use App\BulkAd;
 use App\VehicleDetail;
@@ -40,6 +41,7 @@ class AdStatusRepository
 
             $adStatus->save();
 
+
             return $adStatus;
         }
 
@@ -55,6 +57,25 @@ class AdStatusRepository
         $adStatus->save();
 
         return $adStatus;
+    }
+
+    public function storeAdPeriod(VehicleDetail $vehicleDetail,
+                                  $adStatus,
+                                  $status,
+                                  $start,
+                                  $stop){
+
+        $adPeriod = new AdPeriod();
+
+        $adPeriod->ad_status_id = $adStatus->id;
+        $adPeriod->vehicle_detail_id = $vehicleDetail->id;
+        $adPeriod->status = $status;
+        $adPeriod->start = $start;
+        $adPeriod->stop = $stop;
+
+        $adPeriod->save();
+
+        return $adPeriod;
     }
 
     public function deActivateOthers($vehicleId){
@@ -79,6 +100,37 @@ class AdStatusRepository
         $ad_status->status = 'declined';
 
         $ad_status->save();
+    }
+
+    public function setSingleAdAsDeclined($vehicleDetailId){
+
+        $ad_status = AdStatus::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+
+        $ad_status->status = 'declined';
+
+        $ad_status->save();
+    }
+
+    public function setAdAsOnline($vehicleDetailId, $start, $stop){
+
+        $ad_status = AdStatus::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+
+        $ad_status->start = $start;
+        $ad_status->stop = $stop;
+        $ad_status->status = 'online';
+
+        $ad_status->save();
+
+        return $ad_status;
+    }
+
+    public function setAdAsPending($vehicleDetailId){
+
+        $adStatus = AdStatus::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+
+        $adStatus->status = 'pending_verification';
+
+        $adStatus->save();
     }
 
     public function indexForVehicle($vehicleDetailId){
@@ -125,7 +177,7 @@ class AdStatusRepository
 
     public function countExpiredAds(){
 
-        return AdStatus::where('status', 'inactive')->count();
+        return AdStatus::where('status', 'expired')->count();
     }
 
     public function countDeclinedAds(){
@@ -135,9 +187,8 @@ class AdStatusRepository
 
     public function indexExpiredAds(){
 
-        return AdStatus::where('status', 'inactive')->get();
+        return AdStatus::where('status', 'expired')->get();
     }
-
 
     /**
      * @return mixed
@@ -150,20 +201,27 @@ class AdStatusRepository
     public function indexPendingVerificationAdsForDealer($userId){
 
         return AdStatus::where('user_id', $userId)
-                         ->where('status', 'pending_verification')
-                         ->latest()->get();
+            ->where('status', 'pending_verification')
+            ->latest()->get();
     }
 
     public function indexOnlineAds(){
 
-        return AdStatus::where('status', 'online')->get();
+        return AdStatus::where('status', 'online')->latest()->get();
     }
 
     public function indexDealerOnlineAds($userId){
 
         return AdStatus::where('user_id', $userId)
-                         ->where('status', 'online')
-                         ->get();
+            ->where('status', 'online')
+            ->get();
+    }
+
+    public function indexDealerExpiredAds($userId){
+
+        return AdStatus::where('user_id', $userId)
+            ->where('status', 'expired')
+            ->get();
     }
 
     /**
@@ -172,5 +230,21 @@ class AdStatusRepository
     public function countPendingVerificationAds(){
 
         return AdStatus::where('status', 'pending_verification')->count();
+    }
+
+    public function showFromVehicleDetail($vehicleDetailId){
+
+        return AdStatus::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+    }
+
+    public function expireAd($vehicleDetailId){
+
+        $ad_status = AdStatus::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+
+        $ad_status->status = 'expired';
+
+        $ad_status->save();
+
+        return $ad_status;
     }
 }

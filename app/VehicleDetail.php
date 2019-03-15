@@ -56,6 +56,11 @@ class VehicleDetail extends Model
         return $this->belongsTo(ColourType::class);
     }
 
+    public function interior(){
+
+        return $this->belongsTo(Interior::class, 'interior', 'id');
+    }
+
     public function vehicle_verification(){
 
         return $this->hasOne(VehicleVerification::class);
