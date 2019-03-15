@@ -32,7 +32,9 @@
                     <div class="card-body">
                         <div class="card-group">
                             @foreach($vehicle_images as $vehicle_image)
-                                <img style="width: 250px;" src="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}" alt="Card image cap">
+                                <div class="col-md-4">
+                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_image->image_name) }}" alt="Card image cap">
+                                </div>
                             @endforeach
                             {{--<div class="card">--}}
                                 {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
