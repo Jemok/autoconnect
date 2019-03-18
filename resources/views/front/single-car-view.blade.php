@@ -3,14 +3,12 @@
     <link rel="stylesheet" href="{{ asset('css/carousel.css') }}">
 @endsection
 @section('content')
-
     <div class="container-fluid">
-
         <div class="col-md-6" style="margin-top: 2%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
             <span style="color: white;">
               {{ $vehicle_detail->car_make->name }}
                 -
-              {{ $vehicle_detail->car_model->name }}
+                {{ $vehicle_detail->car_model->name }}
             </span>
         </div>
 
@@ -37,26 +35,26 @@
                                 </div>
                             @endforeach
                             {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
                             {{--</div>--}}
                             {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
                             {{--</div>--}}
                             {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
                             {{--</div>--}}
                             {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
                             {{--</div>--}}
                         </div>
 
                         {{--<div class="card-group" style="margin-top: 1%;">--}}
-                            {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                            {{--</div>--}}
-                            {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                            {{--</div>--}}
+                        {{--<div class="card">--}}
+                        {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                        {{--</div>--}}
+                        {{--<div class="card">--}}
+                        {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
+                        {{--</div>--}}
                         {{--</div>--}}
 
                         <h4 style="margin-top: 2%; font-weight: bold;">
@@ -329,15 +327,9 @@
                                 Call Me Back
                             </button>
                         </form>
-
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
-
 @endsection

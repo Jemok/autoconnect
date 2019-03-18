@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('adminHome') }}">
+                    <a href="{{ route('home') }}">
                         <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
@@ -123,7 +123,7 @@
                     <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
-                                <a href="{{ route('adminHome') }}">
+                                <a href="{{ route('home') }}">
                                     <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
                                     <span class="pcoded-mcaret"></span>
@@ -205,6 +205,9 @@
                                             Ad Management
                                         </a>
 
+
+
+                                        @if(Auth::user()->hasRole('super-admin'))
                                         <form action="{{ route('expireAd', $vehicle_detail->id) }}" method="POST">
                                             {{ csrf_field() }}
 
@@ -224,6 +227,7 @@
                                         <a href="{{ route('showBulkDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
                                             Decline Ad
                                         </a>
+                                        @endif
                                     </div>
                                 </div>
                                 <!-- Page-header end -->

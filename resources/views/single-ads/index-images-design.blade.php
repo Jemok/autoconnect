@@ -212,15 +212,16 @@
                                                     <a href="{{ route('showSingleDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
                                                         Decline Ad
                                                     </a>
+
+                                                    <form action="{{ route('expireSingleAd', $vehicle_detail->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+
+                                                        <button type="submit" class="btn btn-sm btn-danger float-right">
+                                                            Expire This Ad
+                                                        </button>
+                                                    </form>
                                                 @endif
 
-                                                <form action="{{ route('expireSingleAd', $vehicle_detail->id) }}" method="POST">
-                                                    {{ csrf_field() }}
-
-                                                    <button type="submit" class="btn btn-sm btn-danger float-right">
-                                                        Expire This Ad
-                                                    </button>
-                                                </form>
                                             </div>
 
 
@@ -234,7 +235,7 @@
                                                             {{ $disapproval_reason->reason }}
                                                         </p>
 
-                                                        @if(Auth::user()->hasRole('super-admin'))
+                                                        {{--@if(Auth::user()->hasRole('super-admin'))--}}
                                                             <form action="{{ route('fixBulkCorrection', [$vehicle_detail->id, $disapproval_reason->id, 'resolved']) }}" method="post">
 
                                                                 {{ csrf_field() }}
@@ -243,7 +244,7 @@
                                                                     Fix Corrections
                                                                 </button>
                                                             </form>
-                                                        @endif
+                                                        {{--@endif--}}
                                                     @endforeach
                                                 </div>
                                             @endif

@@ -53,7 +53,6 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('moveBulkAdsOnline')
         ->middleware('verified');
 
-    Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
 
     Route::post('/set-bulk-as-approved/{userBulkImportId}/{status}', 'BulkUploadController@setBulkVehicleAsApproved')
         ->name('setBulkImportAsApproved')
@@ -127,6 +126,8 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('bulk-ads', 'DatatablesController@indexBulkAdsDataForAdmin')->name('indexBulkAdsDataForAdmin');
 
 });
+
+Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
 
 Route::post('/vehicles/expire-ad/{vehicleDetailId}', 'AdsManagementController@expireAd')->name('expireAd');
 
