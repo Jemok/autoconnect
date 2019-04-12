@@ -255,4 +255,6 @@ Route::get('/single-car-view/{vehicleDetailId}', 'SingleCarViewController@show')
 Route::get('car-search-results', 'CarSearchController@showSearchResults')
     ->name('carSearchResults');
 
+Route::post('/request-callback/{adStatusId}', 'RequestCallbackController@storeAdStatusCallback')
+    ->name('storeAdStatusCallback');
 

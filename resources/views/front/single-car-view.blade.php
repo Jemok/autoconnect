@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <div class="container-fluid">
+        @include('flash::message')
         <div class="col-md-6" style="margin-top: 2%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
             <span style="color: white;">
               {{ $vehicle_detail->car_make->name }}
@@ -304,24 +305,26 @@
                             REQUEST CALL BACK
                         </h4>
 
-                        <form>
+
+                        <form action="{{ route('storeAdStatusCallback', [$ad_status->id]) }}" method="post">
+                            {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="inputFirstName">First Name</label>
-                                    <input type="text" class="form-control" id="inputFirstName" placeholder="Your First Name">
+                                    <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="Your First Name">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="inputSecondName">Second Name</label>
-                                    <input type="text" class="form-control" id="inputSecondName" placeholder="Your Second Name">
+                                    <input type="text" name="last_name" class="form-control" id="inputSecondName" placeholder="Your Second Name">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="inputPhoneNumber">Phone Number (E.g 0712675071)</label>
-                                <input type="text" class="form-control" id="inputPhoneNumber" placeholder="E.g 0712675071">
+                                <input type="text" class="form-control" name="phone_number" id="inputPhoneNumber" placeholder="E.g 0712675071">
                             </div>
                             <div class="form-group">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="E.g example@gmail.com">
+                                <input type="email" class="form-control" name="email" id="inputEmail" placeholder="E.g example@gmail.com">
                             </div>
                             <button type="submit" class="btn btn-block">
                                 Call Me Back
@@ -332,4 +335,9 @@
             </div>
         </div>
     </div>
+    @push('scripts')
+    <script>
+        $('#flash-overlay-modal').modal();
+    </script>
+    @endpush
 @endsection

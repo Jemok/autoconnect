@@ -247,4 +247,9 @@ class AdStatusRepository
 
         return $ad_status;
     }
+
+    public function showAdStatus($adStatusId){
+
+        return AdStatus::where('id', $adStatusId)->firstOrFail();
+    }
 }
