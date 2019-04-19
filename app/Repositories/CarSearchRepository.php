@@ -80,11 +80,11 @@ class CarSearchRepository
 
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
                     ->where('car_model_id', $car_model_id)
-                    ->where('status', 'inactive');
+                    ->where('status', 'active');
             }else{
 
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
-                    ->where('status', 'inactive');
+                    ->where('status', 'active');
             }
 
             $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
