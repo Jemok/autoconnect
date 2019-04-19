@@ -99,7 +99,7 @@ class CarSearchRepository
             return $vehicles;
         }
 
-        return VehicleDetail::all();
+        return VehicleDetail::where('status', 'active')->get();
     }
 
 }
