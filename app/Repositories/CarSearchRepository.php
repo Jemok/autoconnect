@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 
+use App\AdStatus;
 use App\BodyType;
 use App\CarCondition;
 use App\CarMake;
@@ -79,13 +80,12 @@ class CarSearchRepository
 
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
                     ->where('car_model_id', $car_model_id)
-                    ->where('status', 'active');
+                    ->where('status', 'inactive');
             }else{
 
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
-                    ->where('status', 'active');
+                    ->where('status', 'inactive');
             }
-
 
             $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
                 ->orWhereBetween('price', [$min_price, $max_price])
@@ -96,7 +96,22 @@ class CarSearchRepository
                 ->orWhere('fuel_type', $fuel_type_id)
                 ->get();
 
-            return $vehicles;
+            $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
+
+                if(AdStatus::where('vehicle_detail_id', $value->id)->exists()){
+
+                    $ad_status = AdStatus::where('vehicle_detail_id', $value->id)->firstOrFail();
+
+                    if($ad_status->status == 'online'){
+
+                        return true;
+
+                    }
+                }
+            });
+
+            return $filtered_online_vehicles;
+
         }
 
         return VehicleDetail::where('status', 'active')->get();
