@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.mCustomScrollbar.css') }}">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
 </head>
 <body>
 <!-- Pre-loader start -->
@@ -236,14 +237,14 @@
                                                         </p>
 
                                                         {{--@if(Auth::user()->hasRole('super-admin'))--}}
-                                                            <form action="{{ route('fixBulkCorrection', [$vehicle_detail->id, $disapproval_reason->id, 'resolved']) }}" method="post">
+                                                        <form action="{{ route('fixBulkCorrection', [$vehicle_detail->id, $disapproval_reason->id, 'resolved']) }}" method="post">
 
-                                                                {{ csrf_field() }}
+                                                            {{ csrf_field() }}
 
-                                                                <button type="submit" class="btn btn-primary">
-                                                                    Fix Corrections
-                                                                </button>
-                                                            </form>
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Fix Corrections
+                                                            </button>
+                                                        </form>
                                                         {{--@endif--}}
                                                     @endforeach
                                                 </div>
@@ -451,7 +452,9 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script>
+        baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
         $('#flash-overlay-modal').modal();
     </script>
 </div>
