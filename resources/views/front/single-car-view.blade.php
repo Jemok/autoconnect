@@ -295,9 +295,68 @@
                             For an immediate response call this seller
                         </p>
 
-                        <button class="btn btn-block">
-                            Call this seller
+                        <p>
+                            +2547 *** ***
+                        </p>
+
+                        {{--<button class="btn btn-block">--}}
+                            {{--Call this seller--}}
+                        {{--</button>--}}
+                        <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModal" style="background-color: tomato;">
+                            Get seller phone numbers
                         </button>
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Call the seller</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <h6>
+                                            Please submit your contact details. This will make it easier for the seller
+                                            to follow back or contact you.
+                                        </h6>
+
+                                        <hr>
+
+                                        <form action="{{ route('storeAdStatusCallback', [$ad_status->id]) }}" method="post">
+                                            {{ csrf_field() }}
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputFirstName">First Name</label>
+                                                    <input type="text" name="first_name" class="form-control" id="inputFirstName" placeholder="Your First Name">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputSecondName">Second Name</label>
+                                                    <input type="text" name="last_name" class="form-control" id="inputSecondName" placeholder="Your Second Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPhoneNumber">Phone Number (E.g 0712675071)</label>
+                                                <input type="text" class="form-control" name="phone_number" id="inputPhoneNumber" placeholder="E.g 0712675071">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail">Email</label>
+                                                <input type="email" class="form-control" name="email" id="inputEmail" placeholder="E.g example@gmail.com">
+                                            </div>
+                                            <button type="submit" class="btn btn-block" style="background-color: tomato;">
+                                                Call Me Back
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        {{--<button type="button" class="btn btn-primary">Send message</button>--}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                         <hr>
 

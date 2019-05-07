@@ -110,7 +110,9 @@
                         </a>
                     @endforeach
                 </div>
-
+                <div class="offset-md-5">
+                    {{$vehicles->render("pagination::bootstrap-4")}}
+                </div>
             </div>
         </div>
     </div>
