@@ -114,7 +114,7 @@ class CarSearchRepository
 
         }
 
-        return VehicleDetail::where('status', 'active')->paginate(3);
+        return VehicleDetail::where('status', 'active')->paginate(5);
     }
 
 }
