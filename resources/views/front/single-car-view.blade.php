@@ -417,13 +417,12 @@
                     null,
                     null);
                 ?>
-                @if($similar_ads->count() > 1)
+                @if($similar_ads->count() >= 1)
                     <div class="card-header">
                         Similar vehicles
                     </div>
                     <div class="card">
-                        @foreach($similar_ads as $similar_ad)
-                            @if($similar_ad->id != $vehicle_detail->id)
+                        @foreach($similar_ads as $similar_ad)@if($similar_ad->id != $vehicle_detail->id)
                                 <div class="card-body">
                                     @if(checkIfAdIsBulk($similar_ad->id) == false)
                                         <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getVehicleFrontImage($similar_ad->id)) }}" alt="Card image cap">
