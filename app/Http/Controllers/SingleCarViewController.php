@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\BulkAd;
 use App\Repositories\AdStatusRepository;
+use App\Repositories\BulkAdsRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleImagesRepository;
 use Illuminate\Http\Request;
@@ -12,7 +14,8 @@ class SingleCarViewController extends Controller
     public function show($vehicleDetailId,
                          VehicleDetailRepository $vehicleDetailRepository,
                          VehicleImagesRepository $vehicleImagesRepository,
-                         AdStatusRepository $adStatusRepository){
+                         AdStatusRepository $adStatusRepository,
+                         BulkAdsRepository $bulkAdsRepository){
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleDetailId);
 
@@ -33,6 +36,7 @@ class SingleCarViewController extends Controller
             'vehicleDetailId',
             'is_bulk',
             'adStatusRepository',
+            'bulkAdsRepository',
             'ad_status'));
     }
 }

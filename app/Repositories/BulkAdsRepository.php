@@ -19,6 +19,11 @@ class BulkAdsRepository
         return BulkAd::where('user_bulk_import_id', $userBulkImportId)->firstOrFail();
     }
 
+    public function showFromVehicleDetail($vehicleDetailId){
+
+        return BulkAd::where('vehicle_detail_id', $vehicleDetailId)->firstOrFail();
+    }
+
     public function store($vehicle_detail_id,
                           $ad_status_id,
                           $bulk_import_id,
