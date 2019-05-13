@@ -417,75 +417,31 @@
                     null,
                     null);
                 ?>
-                @if($similar_ads->count() >= 1)
-                    <div class="card-header">
-                        Similar vehicles
-                    </div>
-                    <div class="card">
-                        @foreach($similar_ads as $similar_ad)@if($similar_ad->id != $vehicle_detail->id)
-                                <div class="card-body">
-                                    @if(checkIfAdIsBulk($similar_ad->id) == false)
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getVehicleFrontImage($similar_ad->id)) }}" alt="Card image cap">
-                                    @else
-                                        <?php
-                                        $bulk_ad =  $bulkAdsRepository->showFromVehicleDetail($similar_ad->id);
+                <div class="card-header">
+                    Similar vehicles
+                </div>
+                <div class="card">
+                    @foreach($similar_ads as $similar_ad)@if($similar_ad->id != $vehicle_detail->id)
+                        <div class="card-body">
+                            @if(checkIfAdIsBulk($similar_ad->id) == false)
+                                <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getVehicleFrontImage($similar_ad->id)) }}" alt="Card image cap">
+                            @else
+                                <?php
+                                $bulk_ad =  $bulkAdsRepository->showFromVehicleDetail($similar_ad->id);
 
-                                        ?>
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getBulkVehicleFrontImage($bulk_ad->user_bulk_import_id)) }}" alt="Card image cap">
-                                    @endif
-                                    {{ $similar_ad->car_make->name }}
-                                    -
-                                    {{ $similar_ad->car_model->name }}
-                                    <p>
-                                        Ksh {{ $similar_ad->price }}
-                                    </p>
-                                </div>
+                                ?>
+                                <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getBulkVehicleFrontImage($bulk_ad->user_bulk_import_id)) }}" alt="Card image cap">
                             @endif
-                        @endforeach
-                    </div>
-                @else
-                    <?php
-                    $more_ads = showSimilarAdsForAd('any_make',
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null);
-                    ?>
-                    <div class="card-header">
-                        More vehicles
-                    </div>
-                    <div class="card">
-                        @foreach($more_ads as $more_ad)
-                            @if($more_ad->id != $vehicle_detail->id)
-                                <div class="card-body">
-                                    @if(checkIfAdIsBulk($more_ad->id) == false)
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getVehicleFrontImage($more_ad->id)) }}" alt="Card image cap">
-                                    @else
-                                        <?php
-                                        $bulk_ad =  $bulkAdsRepository->showFromVehicleDetail($more_ad->id);
-
-                                        ?>
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.getBulkVehicleFrontImage($bulk_ad->user_bulk_import_id)) }}" alt="Card image cap">
-                                    @endif
-                                    {{ $more_ad->car_make->name }}
-                                    -
-                                    {{ $more_ad->car_model->name }}
-                                    <p>
-                                        Ksh {{ $more_ad->price }}
-                                    </p>
-                                </div>
-                            @endif
-                        @endforeach
-                    </div>
-                @endif
+                            {{ $similar_ad->car_make->name }}
+                            -
+                            {{ $similar_ad->car_model->name }}
+                            <p>
+                                Ksh {{ $similar_ad->price }}
+                            </p>
+                        </div>
+                    @endif
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>
