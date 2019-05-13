@@ -144,9 +144,10 @@ function showSimilarAdsForAd($car_make,
 
         return $filtered_online_vehicles;
 
+    }elseif ($car_make == 'any_make' && $car_model == null){
+
+        return \App\VehicleDetail::where('status', 'active')->take(7)->get();
+
     }
-
-    return \App\VehicleDetail::where('status', 'active')->take(7)->get();
-
 
 }
