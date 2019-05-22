@@ -68,6 +68,6 @@ class WelcomePageController extends Controller
 
     public function demoDonationTwo(){
 
-        return view('demo-donation');
+        return view('demo-donation-two');
     }
 }
