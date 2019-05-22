@@ -65,4 +65,9 @@ class WelcomePageController extends Controller
 
         return view('demo-donation');
     }
+
+    public function demoDonationTwo(){
+
+        return view('demo-donation');
+    }
 }

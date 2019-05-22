@@ -14,6 +14,7 @@
 Route::get('/', 'WelcomePageController@showWelcomePage');
 
 Route::get('demo-donation-page', 'WelcomePageController@demoDonation');
+Route::get('demo-donation-page-2', 'WelcomePageController@demoDonationTwo');
 
 Auth::routes(['verify' => true]);
 

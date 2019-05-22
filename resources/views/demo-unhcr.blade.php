@@ -48,6 +48,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="mx-auto" style="margin-top: 4%;">
+                <h2>
+                    #Demo 1
+                </h2>
                 <p>
                     Refugees are people just like you. The difference is they have been forced to flee their homes.
                     The numbers of people fleeing their home, their country, has accelerated to a level never seen before. In the past five years no fewer than 15 conflicts – some new, some old – have brought unspeakable tragedy and misery to millions across the world.
@@ -58,6 +61,24 @@
                     Donate NOW to make a difference and help save lives.
                 </h4>
                 <a href="{{ url('demo-donation-page') }}" class="btn btn-block btn-success btn-lg">
+                    Donate With Mpesa
+                </a>
+            </div>
+
+            <div class="mx-auto" style="margin-top: 4%;">
+                <h2>
+                    #Demo 2
+                </h2>
+                <p>
+                    Refugees are people just like you. The difference is they have been forced to flee their homes.
+                    The numbers of people fleeing their home, their country, has accelerated to a level never seen before. In the past five years no fewer than 15 conflicts – some new, some old – have brought unspeakable tragedy and misery to millions across the world.
+                    UNHCR has responded. We have stretched our resources to help more people than ever before. UNHCR is present in all of the world’s conflict hotspots, working around the clock to extend our protection and lifesaving aid to millions.
+                    Donate NOW to make a difference and help save lives.
+                </p>
+                <h4>
+                    Donate NOW to make a difference and help save lives.
+                </h4>
+                <a href="{{ url('demo-donation-page-2') }}" class="btn btn-block btn-success btn-lg">
                     Donate With Mpesa
                 </a>
             </div>
