@@ -46,7 +46,7 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top: 4%;">
             {{--<iframe src="https://tujengepay.com/collection-link/c596aa60-7c57-11e9-a91d-93ac315e33cf" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="600px" allowfullscreen></iframe>--}}
             <iframe src="https://tujengepay.com/iframe-link/c596aa60-7c57-11e9-a91d-93ac315e33cf" style="border:0px #ffffff none;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="400px" width="600px" allowfullscreen></iframe>
         </div>
