@@ -111,11 +111,11 @@ function showSimilarAdsForAd($car_make,
 
             $raw_vehicles = \App\VehicleDetail::where('car_make_id', $car_make_id)
                 ->where('car_model_id', $car_model_id)
-                ->where('status', 'active');
+                ->where('status', 'inactive');
         }else{
 
             $raw_vehicles = \App\VehicleDetail::where('car_make_id', $car_make_id)
-                ->where('status', 'active');
+                ->where('status', 'inactive');
         }
 
         $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
@@ -146,7 +146,7 @@ function showSimilarAdsForAd($car_make,
 
     }elseif ($car_make == 'any_make' && $car_model == null){
 
-        return \App\VehicleDetail::where('status', 'active')->take(7)->get();
+        return \App\VehicleDetail::where('status', 'inactive')->take(7)->get();
 
     }
 

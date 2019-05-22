@@ -13,6 +13,8 @@
 
 Route::get('/', 'WelcomePageController@showWelcomePage');
 
+Route::get('demo-donation-page', 'WelcomePageController@demoDonation');
+
 Auth::routes(['verify' => true]);
 
 Route::get('register-buyer', 'Auth\RegisterController@showBuyerRegistrationForm')->name('register-buyer');
