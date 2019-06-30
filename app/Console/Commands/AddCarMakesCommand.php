@@ -45,6 +45,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'Audi',
                 'slug' => 'audi',
                 'description' => 'Audi',
+                'image_name' => 'audi.png',
                 'models' => [
                     [
                         'name' => 'A1',
@@ -100,6 +101,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'Acmat',
                 'slug' => 'acmat',
                 'description' => 'Acmat',
+                'image_name' => 'amcat.png',
                 'models' => [
                     [
                         'name' => 'TPK 25.SH',
@@ -113,6 +115,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'Acura',
                 'slug' => 'acura',
                 'description' => 'Acura',
+                'image_name' => 'acura.png',
                 'models'    => [
                     [
                         'name' => 'CL',
@@ -390,6 +393,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'ALFA ROMEO',
                 'slug' => 'alfa_romeo',
                 'description' => 'ALFA ROMEO',
+                'image_name' => 'alfa_romeo.png',
                 'models' => [
                     [
                         'name' => '147',
@@ -403,6 +407,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'APRILIA',
                 'slug' => 'aprilia',
                 'description' => 'APRILIA',
+                'image_name' => 'aprilia.png',
                 'models' => [
                     [
                         'name' => 'Dorsodoro',
@@ -422,6 +427,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'AVELING BARFORD',
                 'slug' => 'aveling_barford',
                 'description' => 'AVELING BARFORD',
+                'image_name' => 'aveling_barford.png',
                 'models' => [
                     [
                         'name' => 'Grader',
@@ -435,6 +441,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'BENTLEY',
                 'slug' => 'bently',
                 'description' => 'BENTLEY',
+                'image_name' => 'bently.png',
                 'models' => [
                     [
                         'name' => 'Bentayga',
@@ -448,6 +455,21 @@ class AddCarMakesCommand extends Command
                 'name' => 'BOBCAT',
                 'slug' => 'bobcat',
                 'description' => 'BOBCAT',
+                'image_name' => 'bobcat.png',
+                'models' => [
+                    [
+                        'name' => 'T190',
+                        'slug' => 't190',
+                        'description' => 'T190',
+                        'series' => []
+                    ]
+                ]
+            ],
+            [
+                'name' => 'BMW',
+                'slug' => 'bmw',
+                'description' => 'BMW',
+                'image_name' => 'bmw.png',
                 'models' => [
                     [
                         'name' => 'T190',
@@ -461,6 +483,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'CADILLAC',
                 'slug' => 'cadillac',
                 'description' => 'CADILLAC',
+                'image_name' => 'cadillac.png',
                 'models' => [
                     [
                         'name' => 'Escalade',
@@ -474,6 +497,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'CASE ii+',
                 'slug' => 'case_ii+',
                 'description' => 'CASE ii+',
+                'image_name' => 'caseii.png',
                 'models' => [
                     [
                         'name' => 'Skid Steel Loader',
@@ -487,6 +511,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'CHEVLORET',
                 'slug' => 'chevloret',
                 'description' => 'CHEVLORET',
+                'image_name' => 'chevloret.png',
                 'models' => [
                     [
                         'name' => 'Captiva',
@@ -518,6 +543,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'CHRYSLER',
                 'slug' => 'chrysler',
                 'description' => 'CHRYSLER',
+                'image_name' => 'chrysler.png',
                 'models' => [
                     [
                         'name' => '300c',
@@ -531,6 +557,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'DAF',
                 'slug' => 'daf',
                 'description' => 'DAF',
+                'image_name' => 'daf.png',
                 'models' => [
                     [
                         'name' => 'CF',
@@ -550,6 +577,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'DAIHATSU',
                 'slug' => 'daihatsu',
                 'description' => 'DAIHATSU',
+                'image_name' => 'daihatsu.png',
                 'models' => [
                     [
                         'name' => 'Bego',
@@ -593,6 +621,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'DATSUN',
                 'slug' => 'datsun',
                 'description' => 'DATSUN',
+                'image_name' => 'datsun.png',
                 'models' => [
                     [
                         'name' =>  '1200',
@@ -612,6 +641,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'DOOSAN',
                 'slug' => 'doosan',
                 'description' => 'DOOSAN',
+                'image_name' => 'doosan.png',
                 'models' => [
                     [
                         'name' => 'Excavotor',
@@ -625,6 +655,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'DUCATI',
                 'slug' => 'ducati',
                 'description' => 'DUCATI',
+                'image_name' => 'ducati.png',
                 'models' => [
                     [
                         'name' => 'Monster',
@@ -638,6 +669,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'FAW',
                 'slug' => 'faw',
                 'description' => 'FAW',
+                'image_name' => 'faw.png',
                 'models' => [
                     [
                         'name' => '5TON',
@@ -657,6 +689,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'FORD',
                 'slug' => 'ford',
                 'description' => 'FORD',
+                'image_name' => 'ford.png',
                 'models' => [
                     [
                         'name' => '4600',
@@ -730,6 +763,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'FOTON',
                 'slug' => 'fonton',
                 'description' => 'FOTON',
+                'image_name' => 'foton.png',
                 'models' => [
 
                 ]
@@ -738,6 +772,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'BMW',
                 'slug' => 'bmw',
                 'description' => 'BMW',
+                'image_name' => 'bmw.png',
                 'models' => [
                     [
                         'name' => 'I SERIES',
@@ -913,6 +948,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HALLEY DAVIDSON',
                 'slug' => 'halley_davidson',
                 'description' => 'HALLEY DAVIDSON',
+                'image_name' => 'halley_davidson.png',
                 'models' => [
                     [
                         'name' => 'Electrica Glide',
@@ -944,6 +980,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HERO',
                 'slug' => 'hero',
                 'description' => 'HERO',
+                'image_name' => 'hero.png',
                 'models' => [
                     [
                         'name' => 'HF Dawn',
@@ -957,6 +994,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HINO',
                 'slug' => 'hino',
                 'description' => 'HINO',
+                'image_name' => 'hino.png',
                 'models' => [
                     [
                         'name' => 'Dutro',
@@ -988,6 +1026,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HITACHI',
                 'slug' => 'hitachi',
                 'description' => 'HITACHI',
+                'image_name' => 'hitachi.png',
                 'models' => [
                     [
                         'name' => 'Earth Mover',
@@ -1001,6 +1040,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HUMMER',
                 'slug' => 'hummer',
                 'description' => 'HUMMER',
+                'image_name' => 'hummer.png',
                 'models' => [
                     [
                         'name' => 'H3',
@@ -1014,6 +1054,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HYUNDAI',
                 'slug'  => 'hyundai',
                 'description' => 'HYUNDAI',
+                'image_name' => 'hyundai.png',
                 'models' => [
                     [
                         'name' => 'Accenty',
@@ -1033,6 +1074,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'HONDA',
                 'slug' => 'honda',
                 'description' => 'HONDA',
+                'image_name' => 'honda.png',
                 'models' => [
                     [
                         'name' => '1300',
@@ -1160,6 +1202,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'ISUZU',
                 'slug' => 'isuzu',
                 'description' => 'ISUZU',
+                'image_name' => 'isuzu.png',
                 'models' => [
                     [
                         'name' => 'Como',
@@ -1257,6 +1300,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'INFINITI',
                 'slug' => 'infiniti',
                 'description' => 'INFINITI',
+                'image_name' => 'infiniti.png',
                 'models' => [
                     [
                         'name' => 'QX80',
@@ -1270,6 +1314,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'IVECO',
                 'slug' => 'iveco',
                 'description' => 'IVECO',
+                'image_name' => 'iveco.png',
                 'models' => [
                     [
                         'name' => 'Cusor',
@@ -1283,6 +1328,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'JAGUAR',
                 'slug' => 'jaguar',
                 'description' => 'JAGUAR',
+                'image_name' => 'jaguar.png',
                 'models' => [
                     [
                         'name' => 'S-Type',
@@ -1320,6 +1366,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'JEEP',
                 'slug' => 'jeep',
                 'description' => 'JEEP',
+                'image_name' => 'jeep.png',
                 'models' => [
                     [
                         'name' => 'Cherokee',
@@ -1363,6 +1410,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'KAWASAKI',
                 'slug' => 'kawasaki',
                 'description' => 'KAWASAKI',
+                'image_name' => 'kawasaki.png',
                 'models' => [
                     [
                         'name' => 'GTR',
@@ -1382,6 +1430,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'KIA',
                 'slug' => 'kia',
                 'description' => 'KIA',
+                'image_name' => 'kia.png',
                 'models' => [
                     [
                         'name' => 'Sorento',
@@ -1401,6 +1450,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'LEYLAND',
                 'slug' => 'leyland',
                 'description' => 'LEYLAND',
+                'image_name' => 'leyland.png',
                 'models' => [
                     [
                         'name' => 'Ashok',
@@ -1414,6 +1464,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'LEXUS',
                 'slug' => 'lexus',
                 'description' => 'LEXUS',
+                'image_name' => 'lexus.png',
                 'models' => [
                     [
                         'name' => 'G70',
@@ -1463,6 +1514,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'LANDROVER',
                 'slug' => 'landrover',
                 'description' => 'LANDROVER',
+                'image_name' => 'landrover.png',
                 'models' => [
                     [
                         'name' => '88',
@@ -1548,6 +1600,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'MAN',
                 'slug' => 'man',
                 'description' => 'MAN',
+                'image_name' => 'man.png',
                 'models' => [
                     [
                         'name' => 'TGM',
@@ -1570,9 +1623,18 @@ class AddCarMakesCommand extends Command
                 ]
             ],
             [
+                'name' => 'MAZDA',
+                'slug' => 'mazda',
+                'description' => 'MAZDA',
+                'image_name' => 'mazda.png',
+                'models' => [
+                ]
+            ],
+            [
                 'name' => 'MINI',
                 'slug' => 'mini',
                 'description' => 'MINI',
+                'image_name' => 'mini.png',
                 'models' => [
                     [
                         'name' => 'Cooper',
@@ -1586,6 +1648,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'MITSUHIBSHI',
                 'slug' => 'mitsubishi',
                 'description' => 'MITSUHIBSHI',
+                'image_name' => 'mitsubishi.png',
                 'models' => [
                     [
                         'name' => 'Canter',
@@ -1719,6 +1782,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'MERCEDES BENZ',
                 'slug' => 'mercedes_benz',
                 'description' => 'MERCEDES BENZ',
+                'image_name' => 'mercedes_benz.png',
                 'models' => [
                     [
                         'name' => 'C Coupe',
@@ -2092,6 +2156,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'NISSAN',
                 'slug' => 'nissan',
                 'description' => 'NISSAN',
+                'image_name' => 'nissan.png',
                 'models' => [
                     [
                         'name' => '100',
@@ -2532,6 +2597,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SUBARU',
                 'slug' => 'subaru',
                 'description' => 'SUBARU',
+                'image_name' => 'subaru.png',
                 'models' => [
                     [
                         'name' => '1.8',
@@ -2827,6 +2893,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'TOYOTA',
                 'slug' => 'toyota',
                 'description' => 'TOYOTA',
+                'image_name' => 'toyota.png',
                 'models' => [
                     [
                         'name' => '1000',
@@ -3291,6 +3358,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'VOLKSWAGEN',
                 'slug' => 'volkswagen',
                 'description' => 'VOLKSWAGEN',
+                'image_name' => 'volkswagen.png',
                 'models' => [
                     [
                         'name' => 'Amarok',
@@ -3460,8 +3528,20 @@ class AddCarMakesCommand extends Command
                 CarMake::create([
                     'name' => $make['name'],
                     'slug' => $make['slug'],
+                    'image_name' => array_key_exists('image_name', $make) ? $make['image_name'] : null,
                     'description' => $make['description']
                 ]);
+            }else{
+
+                $car_make_model = CarMake::where('slug', $make['slug'])->firstOrFail();
+
+                $car_make_model->name = $make['name'];
+                $car_make_model->slug = $make['slug'];
+                $car_make_model->image_name = array_key_exists('image_name', $make) ? $make['image_name'] : null;
+                $car_make_model->description = $make['description'];
+
+                $car_make_model->save();
+
             }
 
             $car_make = CarMake::where('slug', $make['slug'])->firstOrFail();
@@ -3469,8 +3549,8 @@ class AddCarMakesCommand extends Command
             foreach ($make['models'] as $model){
 
                 if(CarModel::where('slug', $model['slug'])
-                             ->where('car_make_id', $car_make->id)
-                              ->exists() == false){
+                        ->where('car_make_id', $car_make->id)
+                        ->exists() == false){
 
                     $car_model = new CarModel();
 
@@ -3487,8 +3567,8 @@ class AddCarMakesCommand extends Command
                 foreach ($model['series'] as $series){
 
                     if(CarSeries::where('slug', $series['slug'])
-                                  ->where('car_model_id', $car_model->id)
-                                  ->exists() == false){
+                            ->where('car_model_id', $car_model->id)
+                            ->exists() == false){
 
                         $car_series = new CarSeries();
 

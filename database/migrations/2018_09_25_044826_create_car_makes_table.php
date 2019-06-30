@@ -17,6 +17,7 @@ class CreateCarMakesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('image_name')->nullable();
             $table->text('description');
             $table->timestamps();
         });

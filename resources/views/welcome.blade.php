@@ -8,14 +8,20 @@
         <div class="row">
             <div class="col-md-3" style="margin-top: 0; padding-top: 2%;">
                 <div class="card">
-                    <div class="card-header">
-                        <i class="fa fa-filter"></i> Search By Make
+                    <div class="card-header background-nav">
+                        <i class="fa fa-filter"></i>
+                        <span style="font-weight: bold;">
+                            Search By Make
+                        </span>
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach($car_makes as $car_make)
                             <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/'.$car_make->image_name) }}" alt="">
                                 <a href="{{ url('/car-search-results?carMake='.$car_make->slug.'&carModel=any_model') }}">
-                                    {{ $car_make->description }}
+                                   <span style="font-weight: bold;">
+                                       {{ $car_make->description }}
+                                   </span>
                                 </a>
                                 {{--<i class="fa fa-caret-down float-right"></i>--}}
                             </li>
@@ -33,7 +39,9 @@
 
                 <div style="padding-top: 5%;">
                     <h5 class="text-left">
-                        Featured Vehicles
+                        <span style="font-weight: bold;">
+                          Featured
+                        </span>
                     </h5>
 
                     <div class="col-md-12 row">
@@ -63,10 +71,10 @@
                                 </div>
                                 <div class="card-footer" style="padding: 0; background-color: white;">
                                     @if($featured_car->type == 'bulk')
-                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                        <h6 style="color: tomato;">{{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}</h6>
-                                    </a>
-                                    <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                        <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                            <h6 style="color: tomato;">{{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}</h6>
+                                        </a>
+                                        <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                     @else
                                         <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
                                             <h6 style="color: tomato;">{{ $featured_car->vehicle_detail->car_make->name }}</h6>
@@ -81,36 +89,49 @@
                 </div>
 
                 <div style="padding-top: 5%;">
-                    <h5 class="text-left">
-                        Vehicle Types
-                    </h5>
 
                     <div class="col-md-12 row">
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/car.png') }}" alt="Card image cap">
-                                <h5 class="card-title text-center">Cars</h5>
+                                <img class="card-img-top" src="{{ asset('images/car-uni.jpeg') }}" alt="Card image cap">
+                                <h5 class="card-title text-center">
+                                    <span style="font-weight: bold;">
+                                        Cars
+                                    </span>
+                                </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/bike.png') }}" alt="Card image cap">
-                                <h5 class="card-title text-center">Motorbikes</h5>
+                                <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
+                                <h5 class="card-title text-center">
+                                    <span style="font-weight: bold;">
+                                    Motorbikes
+                                    </span>
+                                </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/trucks.png') }}" alt="Card image cap">
-                                <h5 class="card-title">Trucks & Trailers</h5>
+                                <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
+                                <h5 class="card-title">
+                                    <span style="font-weight: bold;">
+                                    Trucks & Trailers
+                                    </span>
+                                </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/bus.png') }}" alt="Card image cap">
-                                <h5 class="card-title">Vans & Buses</h5>
+                                <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
+                                <h5 class="card-title">
+                                    <span style="font-weight: bold;">
+                                    Vans & Buses
+                                    </span>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -118,39 +139,126 @@
 
                 <div style="padding-top: 2%;">
                     <h5 class="text-center">
+                        <span style="font-weight: bold;">
                         Popular Brands
+                        </span>
                     </h5>
 
                     <div class="col-md-12 row">
                         <div class="col-md-6 text-center">
                             <ul class="list-group">
-                                <li class="list-group-item">Audi</li>
-                                <li class="list-group-item">Toyota</li>
-                                <li class="list-group-item">Nissan</li>
-                                <li class="list-group-item">Subaru</li>
-                                <li class="list-group-item">Honda</li>
-                                <li class="list-group-item">Land Rover</li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/audi.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=audi&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Audi
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/toyota.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=toyota&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Toyota
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/nissan.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=nissan&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Nissan
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/subaru.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=subaru&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Subaru
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/honda.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=honda&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Honda
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/landrover.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=landrover&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Land Rover
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
 
                         <div class="col-md-6 text-center">
                             <ul class="list-group">
-                                <li class="list-group-item">Mitsubishi</li>
-                                <li class="list-group-item">Mercedes Benz</li>
-                                <li class="list-group-item">Mazda</li>
-                                <li class="list-group-item">Volkswagen</li>
-                                <li class="list-group-item">BMW</li>
-                                <li class="list-group-item">Isuzu</li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/mitsubishi.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=mitsubishi&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mitsubishi
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/mercedes_benz.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=mercedes_benz&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mercedes Benz
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/mazda.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=mazda&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mazda
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/volkswagen.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=volkswagen&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Volkswagen
+                                        </span>
+
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/bmw.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=bmw&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        BMW
+                                        </span>
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <img src="{{ asset('images/car_logos/isuzu.png') }}" alt="">
+                                    <a href="{{ url('/car-search-results?carMake=isuzu&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Isuzu
+                                        </span>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
 
 
-                    <div class="col-md-12 center-block" style="padding: 2%;">
-                        <button class="btn btn-block mx-auto" style="width: 40%; color: white; background-color: tomato; font-weight: bold;">
-                            View All Brands
-                        </button>
-                    </div>
+                    {{--<div class="col-md-12 center-block" style="padding: 2%;">--}}
+                    {{--<button class="btn btn-block mx-auto" style="width: 40%; color: white; background-color: tomato; font-weight: bold;">--}}
+                    {{--View All Brands--}}
+                    {{--</button>--}}
+                    {{--</div>--}}
                 </div>
 
                 <div style="padding-top: 1%;">
@@ -220,10 +328,17 @@
                                 <div class="card card-signin col-md-12" style="height: 90%;">
                                     <div class="card-body">
                                         <h6 class="card-title">
+                                            <i class="fa fa-search"></i>
+                                            <span style="font-weight: bold;">
                                             Find a car on sale
+                                            </span>
                                         </h6>
                                         <div class="form-group">
-                                            <label for="carMake">Make</label>
+                                            <label for="carMake">
+                                                <span style="font-weight: bold;">
+                                                    Make
+                                                </span>
+                                            </label>
                                             <select name="carMake" class="form-control" id="car_make">
                                                 <option value="any_make" selected>Any Make</option>
                                                 @foreach($car_makes as $car_make)
@@ -232,7 +347,11 @@
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="carModel">Model</label>
+                                            <label for="carModel">
+                                                <span style="font-weight: bold;">
+                                                Model
+                                                </span>
+                                            </label>
                                             <select name="carModel" class="form-control" id="car_model">
                                                 <option value="any_model" selected>Any Model</option>
                                                 @foreach($car_models as $car_model)
@@ -242,7 +361,11 @@
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="yearFrom">Year</label>
+                                                <label for="yearFrom">
+                                                    <span style="font-weight: bold;">
+                                                    Year
+                                                    </span>
+                                                </label>
                                                 <select name="yearFrom" class="form-control" id="yearFrom">
                                                     <option value="year_from">From</option>
                                                     @for($next_year; $next_year >= $start_year; $next_year--)

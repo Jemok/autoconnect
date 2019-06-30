@@ -39,12 +39,64 @@
 </head>
 <body>
 <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-light background-nav" style="height: 20px;">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+
+            </ul>
+            <ul class="navbar-nav  ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-phone"></i>
+                        Call : +25472174479
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-envelope-open"></i>
+                        Email : info@univasautoconnect.com
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-facebook"></i>
+                        Facebook
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-twitter"></i>
+                        Twitter
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-youtube-square"></i>
+                        Youtube
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-instagram"></i>
+                        Instagram
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-whatsapp"></i>
+                        WhatsApp
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel background-nav">
         <div class="container">
 
             @if(Auth::guest())
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Univas Auto Connect') }}
+                    {{--{{ config('app.name', 'Univas Auto Connect') }}--}}
+                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">
                 </a>
             @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
@@ -60,7 +112,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('createVehicle') }}" style="color:  black;">Sell A Car</a>
+                        <a class="nav-link" href="{{ route('createVehicle') }}" style="color:  black;">
+                            <span style="font-weight: bold;">
+                                Sell Your Car Now
+                            </span>
+                        </a>
                     </li>
                 </ul>
 
@@ -69,12 +125,20 @@
                     <!-- Authentication Links -->
                     @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}" style="color:  black;">Sign In</a>
+                        <a class="nav-link" href="{{ route('login') }}" style="color:  black;">
+                            <span style="font-weight: bold;">
+                            Sign In
+                            </span>
+                        </a>
                     </li>
 
                     @if(url()->current() != env('APP_URL').'/register')
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}" style="color:  black;">Get a dealer account</a>
+                            <a class="nav-link" href="{{ route('register') }}" style="color:  black;">
+                                <span style="font-weight: bold;">
+                                Get a dealer account
+                                </span>
+                            </a>
                         </li>
                     @endif
 
