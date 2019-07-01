@@ -80,7 +80,7 @@
                                     @else
                                         <div style="padding-top: 3%;">
                                             <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
-                                                <h6 style="color: black;">
+                                                <h6 style="color: black; font-size: 12px; font-weight: bold;">
                                                     {{ $featured_car->vehicle_detail->car_make->name }}
                                                     {{ $featured_car->vehicle_detail->car_model->name }}
                                                     {{ $featured_car->vehicle_detail->year }}
