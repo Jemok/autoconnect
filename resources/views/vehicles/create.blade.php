@@ -70,7 +70,9 @@
 
                 <div class="col-md-8 offset-md-2">
                     <div class="card">
-                        <div class="card-header">Sell Your Vehicle</div>
+                        <div class="card-header background-nav" style="font-weight: bold;">
+                            Sell Your Vehicle
+                        </div>
 
                         <div class="card-body">
                             @if (session('status'))
@@ -85,7 +87,7 @@
                                 {{ csrf_field() }}
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="car_make">Make*</label>
+                                        <label for="car_make" style="font-weight: bold;">Make*</label>
                                         <select name="car_make" id="car_make" class="form-control {{ $errors->has('car_make') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose a Make</option>
                                             @foreach($car_makes as $car_make)
@@ -103,7 +105,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="car_model">Model*</label>
+                                        <label for="car_model" style="font-weight: bold;">Model*</label>
                                         <select name="car_model" id="car_model" class="form-control {{ $errors->has('car_model') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose a Model</option>
                                             @foreach($car_models as $car_model)
@@ -123,14 +125,14 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="car_series">Series</label>
+                                        <label for="car_series" style="font-weight: bold;">Series</label>
                                         <select name="car_series" id="car_series" class="form-control">
                                             <option selected disabled>Choose a Series</option>
                                             {{--<option></option>--}}
                                         </select>
                                     </div>
                                     <div class="col">
-                                        <label for="year">Year*</label>
+                                        <label for="year" style="font-weight: bold;">Year*</label>
                                         <select name="year"  id="year" class="form-control {{ $errors->has('year') ? 'is-invalid' : '' }}" required>
                                             <option selected disabled>Choose...</option>
                                             @for($next_year; $next_year >= $start_year; $next_year--)
@@ -150,7 +152,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="mileage">Mileage (km) *</label>
+                                        <label for="mileage" style="font-weight: bold;">Mileage (km) *</label>
                                         <input type="number" name="mileage" id="mileage" class="form-control {{ $errors->has('mileage') ? 'is-invalid' : '' }}" value="{{ old('mileage') }}" placeholder="">
                                         @if ($errors->has('mileage'))
                                             <small id="mileage" class="form-text text-danger">
@@ -159,7 +161,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="body_type">Body Type *</label>
+                                        <label for="body_type" style="font-weight: bold;">Body Type *</label>
                                         <select name="body_type" id="body_type" class="form-control {{ $errors->has('body_type') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($body_types as $body_type)
@@ -179,7 +181,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="transmission_type">Transmission Type *</label>
+                                        <label for="transmission_type" style="font-weight: bold;">Transmission Type *</label>
                                         <select name="transmission_type" id="transmission_type" class="form-control {{ $errors->has('transmission_type') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($transmission_types as $transmission_type)
@@ -197,7 +199,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="condition">Condition *</label>
+                                        <label for="condition" style="font-weight: bold;">Condition *</label>
                                         <select name="car_condition" id="condition" class="form-control {{ $errors->has('car_condition') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($car_conditions as $car_condition)
@@ -217,7 +219,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="duty">Duty *</label>
+                                        <label for="duty" style="font-weight: bold;">Duty *</label>
                                         <select name="duty" id="duty" class="form-control {{ $errors->has('duty') ? 'is-invalid' : '' }}">
                                             <option selected disabled="">Choose...</option>
                                             @foreach($duties as $duty)
@@ -235,7 +237,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="price">Price (KSH) *</label>
+                                        <label for="price" style="font-weight: bold;">Price (KSH) *</label>
                                         <input type="number" name="price" id="price" class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" value="{{ old('price') }}" placeholder="">
                                         @if($errors->has('duty'))
                                             <small id="priceHelp" class="form-text text-danger">
@@ -248,7 +250,7 @@
                                     <div class="form-group">
                                         <div class="form-check">
                                             <input class="form-check-input {{ $errors->has('negotiable_price') ? 'is-invalid' : '' }}" name="negotiable_price" type="checkbox" value="allowed" id="negotiable_price">
-                                            <label class="form-check-label" for="negotiable_price">
+                                            <label class="form-check-label" for="negotiable_price" style="font-weight: bold;">
                                                 Price is negotiable
                                             </label>
                                             @if($errors->has('negotiable_price'))
@@ -260,11 +262,13 @@
                                     </div>
                                 </div>
 
-                                Add Features (improve ad quality)
+                                <span style="font-weight: bold;">
+                                    Add Features (improve ad quality)
+                                </span>
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="fuel_type">Fuel Type</label>
+                                        <label for="fuel_type" style="font-weight: bold;">Fuel Type</label>
                                         <select name="fuel_type" id="fuel_type" class="form-control {{ $errors->has('fuel_type') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($fuel_types as $fuel_type)
@@ -282,7 +286,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="engine_size">Engine size (cc)</label>
+                                        <label for="engine_size" style="font-weight: bold;">Engine size (cc)</label>
                                         <input type="text" id="engine_size" name="engine_size" class="form-control {{ $errors->has('engine_size') ? 'is-invalid' : '' }}" value="{{ old('engine_size') }}" placeholder="">
                                         @if($errors->has('engine_size'))
                                             <small id="engineSizeHelp" class="form-text text-danger">
@@ -294,7 +298,7 @@
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="interior">Interior</label>
+                                        <label for="interior" style="font-weight: bold;">Interior</label>
                                         <select name="interior" id="interior" class="form-control {{ $errors->has('interior') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($interiors as $interior)
@@ -312,7 +316,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="colour_type">Colour Type*</label>
+                                        <label for="colour_type" style="font-weight: bold;">Colour Type*</label>
                                         <select name="colour_type" id="colour_type" class="form-control {{ $errors->has('colour_type') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($colour_types as $colour_type)
@@ -337,7 +341,7 @@
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="description">Description </label>
+                                        <label for="description" style="font-weight: bold;">Description </label>
                                         <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="3">{{ old('description') }}</textarea>
                                         @if($errors->has('description'))
                                             <small id="descriptionHelp" class="form-text text-danger">
@@ -347,15 +351,16 @@
                                     </div>
                                 </div>
 
-                                Select your vehicle features
-
+                                <span style="font-weight: bold;">
+                                    Select your vehicle features
+                                </span>
 
                                 <div class="form-row">
                                     @foreach($vehicle_features as $vehicle_feature)
                                         <div class="form-group col-md-3">
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" name="{{ $vehicle_feature->slug }}" value="{{ $vehicle_feature->slug }}" id="{{ $vehicle_feature->slug }}">
-                                                <label class="form-check-label" for="gridCheck">
+                                                <label class="form-check-label" for="gridCheck" style="font-weight: bold;">
                                                     {{ $vehicle_feature->description }}
                                                 </label>
                                             </div>
@@ -363,9 +368,15 @@
                                     @endforeach
                                 </div>
 
-                                <button type="button" class="btn btn-danger float-left">Cancel</button>
+                                <button type="button" class="btn btn-danger btn-lg float-left">
+                                    <i class="fa fa-times"></i>
+                                    Cancel
+                                </button>
 
-                                <button type="submit" class="btn btn-success float-right">Next</button>
+                                <button type="submit" class="btn btn-success btn-lg float-right">
+                                    <i class="fa fa-check"></i>
+                                    Next
+                                </button>
                             </form>
                         </div>
                     </div>
