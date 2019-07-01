@@ -44,7 +44,7 @@
                         </span>
                     </h5>
 
-                    <div class="col-md-12 row">
+                    <div class="col-md-12 row" style="padding-left: 0px;">
                         @foreach($featured_cars as $featured_car)
                             <?php
 
@@ -72,14 +72,22 @@
                                 <div class="card-footer" style="padding: 0; background-color: white;">
                                     @if($featured_car->type == 'bulk')
                                         <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                            <h6 style="color: tomato;">{{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}</h6>
+                                            <h6 style="color: tomato;">
+                                                {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                            </h6>
                                         </a>
                                         <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                     @else
-                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
-                                            <h6 style="color: tomato;">{{ $featured_car->vehicle_detail->car_make->name }}</h6>
-                                        </a>
-                                        <h6 style="color: tomato;">Price : {{ $featured_car->vehicle_detail->price }}</h6>
+                                        <div style="padding-top: 3%;">
+                                            <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
+                                                <h6 style="color: black;">
+                                                    {{ $featured_car->vehicle_detail->car_make->name }}
+                                                    {{ $featured_car->vehicle_detail->car_model->name }}
+                                                    {{ $featured_car->vehicle_detail->year }}
+                                                </h6>
+                                            </a>
+                                            <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+                                        </div>
                                     @endif
 
                                 </div>
