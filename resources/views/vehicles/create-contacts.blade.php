@@ -70,7 +70,7 @@
 
                 <div class="col-md-8 offset-md-2">
                     <div class="card">
-                        <div class="card-header">Your Contact Details</div>
+                        <div class="card-header background-nav" style="font-weight: bold;">Your Contact Details</div>
 
                         <div class="card-body">
                             @if (session('status'))
@@ -85,7 +85,7 @@
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="name">Name*</label>
+                                        <label for="name" style="font-weight: bold;">Name*</label>
                                         @if(old('name') != null)
                                             <input type="text" name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" value="{{ old('name') }}" placeholder="Name" id="name">
                                         @elseif(old('name') == null && isset($vehicle_detail->vehicle_contact->name))
@@ -100,7 +100,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="inputState">Email*</label>
+                                        <label for="inputState" style="font-weight: bold;">Email*</label>
                                         @if(old('email') != null)
                                             <input type="email" name="email" class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" value="{{ old('email') }}" placeholder="Email" id="email_old">
                                         @elseif(old('name') == null && isset($vehicle_detail->vehicle_contact->email))
@@ -119,7 +119,7 @@
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="inputState">Country Code*</label>
+                                        <label for="inputState" style="font-weight: bold;">Country Code*</label>
                                         <select name="country_code" id="inputState" class="form-control {{ $errors->has('country_code') ? 'is-invalid' : '' }}">
                                             <option value="254" selected>+254</option>
                                         </select>
@@ -130,7 +130,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="inputState">Phone Number*</label>
+                                        <label for="inputState" style="font-weight: bold;">Phone Number*</label>
                                         @if(old('phone_number') != null)
                                             <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') }}" placeholder="Phone Number" id="phone_number_old">
                                         @elseif(old('phone_number') == null && isset($vehicle_detail->vehicle_contact->phone_number))
@@ -143,13 +143,13 @@
                                                 {{ $errors->first('phone_number') }}
                                             </small>
                                         @endif
-                                        <small id="emailHelp" class="form-text text-muted">Use your Mpesa number, will be used to make payment in the next step</small>
+                                        <small id="emailHelp" class="form-text text-muted" style="font-weight: bold;">Use your Mpesa number, this will be used to make payment in the next step</small>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="col">
-                                        <label for="inputState">Area/City*</label>
+                                        <label for="inputState" style="font-weight: bold;">Area/City*</label>
                                         <select name="area" id="inputState" class="form-control {{ $errors->has('area') ? 'is-invalid' : '' }}">
                                             <option selected disabled>Choose...</option>
                                             @foreach($areas as $area)
@@ -174,9 +174,17 @@
                                     </div>
                                 </div>
 
-                                <a href="{{ route('createVehiclePictures', $vehicleId) }}" class="btn btn-danger float-left">Previous</a>
+                                <div style="padding-top: 2%;">
+                                    <a href="{{ route('createVehiclePictures', $vehicleId) }}" class="btn btn-danger float-left">
+                                        <i class="fa fa-arrow-left"></i>
+                                        Previous
+                                    </a>
 
-                                <button type="submit" class="btn btn-success float-right">Next</button>
+                                    <button type="submit" class="btn btn-success float-right">
+                                        <i class="fa fa-check"></i>
+                                        Next
+                                    </button>
+                                </div>
                             </form>
                         </div>
                     </div>
