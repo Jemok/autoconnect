@@ -71,7 +71,7 @@
 
                 <div class="col-md-8 offset-md-2">
                     <div class="card">
-                        <div class="card-header">Sell Your Vehicle</div>
+                        <div class="card-header background-nav" style="font-weight: bold;">Sell Your Vehicle</div>
 
                         <div class="card-body">
                             @if (session('status'))
@@ -80,7 +80,9 @@
                                 </div>
                             @endif
 
-                            Chose your Advertising Package
+                            <h3 class="text-center">
+                                Chose your Advertising Package
+                            </h3>
 
                             <div class="row">
                                 <div class="col-sm-6">
@@ -88,18 +90,21 @@
                                         <div class="card-body">
                                             <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
                                                 {{ csrf_field() }}
-                                                <h5 class="card-title">Premium Package</h5>
-                                                <p class="card-text">Ksh 5</p>
-                                                <p class="card-text">Priority Ad</p>
-                                                <p class="card-text">Valid for 30 days</p>
-                                                <div class="alert alert-primary" role="alert">
+                                                <h5 class="card-title" style="font-weight: bold;">Premium Package</h5>
+                                                <p class="card-text" style="font-weight: bold;">KES 5</p>
+                                                <p class="card-text" style="font-weight: bold;">Priority Ad</p>
+                                                <p class="card-text" style="font-weight: bold;">Valid for 30 days</p>
+                                                <div class="alert alert-primary" role="alert" style="font-weight: bold;">
                                                     Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                     click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
                                                 </div>
                                                 <p class="card-text">
-                                                    <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
+                                                    <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link" style="font-weight: bold;">
+                                                        Change Mpesa Buying Number
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
                                                 </p>
-                                                <button type="submit" class="btn btn-success">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
+                                                <button type="submit" class="btn btn-success" style="font-weight: bold;">Click to Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
                                             </form>
                                         </div>
                                     </div>
@@ -109,27 +114,36 @@
                                         <div class="card-body">
                                             <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
                                                 {{ csrf_field() }}
-                                                <h5 class="card-title">Standard Package</h5>
-                                                <p class="card-text">Ksh 5</p>
-                                                <p class="card-text">Standard Ad</p>
-                                                <p class="card-text">Valid for 30 days</p>
-                                                <div class="alert alert-primary" role="alert">
+                                                <h5 class="card-title" style="font-weight: bold;">Standard Package</h5>
+                                                <p class="card-text" style="font-weight: bold;">Ksh 5</p>
+                                                <p class="card-text" style="font-weight: bold;">Standard Ad</p>
+                                                <p class="card-text" style="font-weight: bold;">Valid for 30 days</p>
+                                                <div class="alert alert-primary" role="alert" style="font-weight: bold;">
                                                     Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                     click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
                                                 </div>
                                                 <p class="card-text">
-                                                    <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link">Change Number</a>
+                                                    <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="card-link" style="font-weight: bold;">
+                                                        Change Mpesa Buying Number
+                                                        <i class="fa fa-arrow-right"></i>
+                                                    </a>
                                                 </p>
-                                                <button type="submit" class="btn btn-success">Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
+                                                <button type="submit" class="btn btn-success" style="font-weight: bold;">Click to Make Payment <img src="{{ asset('images/mpesa-logo.png') }}" /></button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="btn btn-danger float-left">Previous</a>
+                            <a href="{{ route('createVehicleContacts', $vehicleId) }}" class="btn btn-danger float-left">
+                                <i class="fa fa-arrow-left"></i>
+                                Previous
+                            </a>
 
-                            <a href="{{ route('publishVehicleAd') }}" class="btn btn-success float-right">Finish</a>
+                            <a href="{{ route('publishVehicleAd') }}" class="btn btn-success float-right">
+                                <i class="fa fa-check"></i>
+                                Finish
+                            </a>
                         </div>
                     </div>
                 </div>
