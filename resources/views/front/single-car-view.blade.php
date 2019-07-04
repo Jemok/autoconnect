@@ -11,6 +11,9 @@
               {{ $vehicle_detail->car_make->name }}
                 -
                 {{ $vehicle_detail->car_model->name }}
+
+                -
+                {{ $vehicle_detail->year }}
             </span>
         </div>
 
@@ -23,6 +26,9 @@
                         {{ $vehicle_detail->car_make->name }}
                         -
                         {{ $vehicle_detail->car_model->name }}
+
+                        -
+                        {{ $vehicle_detail->year }}
 
                         <div class="float-right">
                             Ksh {{ $vehicle_detail->price }}
