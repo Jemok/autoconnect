@@ -2170,6 +2170,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'OPEL',
                 'slug' => 'opel',
                 'description' => 'OPEL',
+                'image_name' => 'opel.png',
                 'models' => [
                     [
                         'name' => 'Advan',
@@ -2453,6 +2454,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'PEUGEOT',
                 'slug' => 'peugeot',
                 'description' => 'PEUGEOT',
+                'image_name' => 'peugeot.png',
                 'models' => [
                     [
                         'name' => '206',
@@ -2527,6 +2529,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'PORSCHE',
                 'slug' => 'porsche',
                 'description' => 'PORSCHE',
+                'image_name' => 'porsche.png',
                 'models' => [
                     [
                         'name' => 'Cayenne',
@@ -2552,6 +2555,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'RENAULT',
                 'slug' => 'renault',
                 'description' => 'RENAULT',
+                'image_name' => 'renault.png',
                 'models' => [
                     [
                         'name' => 'Magane',
@@ -2571,6 +2575,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'ROLLS ROYCE',
                 'slug' => 'rolls_royce',
                 'description' => 'ROLLS ROYCE',
+                'image_name' => 'rolls_royce.png',
                 'models' => [
                     [
                         'name' => 'Phantom',
@@ -2584,6 +2589,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'ROYAL',
                 'slug' => 'royal',
                 'description' => 'ROYAL',
+                'image_name' => 'royal.png',
                 'models' => [
                     [
                         'name' => 'Enfield',
@@ -2689,6 +2695,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SUZUKI',
                 'slug' => 'suzuki',
                 'description' => 'SUZUKI',
+                'image_name' => 'suzuki.png',
                 'models' => [
                     [
                         'name' => 'Alto',
@@ -2804,6 +2811,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SAAB',
                 'slug' => 'saab',
                 'description' => 'SAAB',
+                'image_name' => 'saab.png',
                 'models' => [
                     [
                         'name' => '93',
@@ -2817,6 +2825,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SCANIA',
                 'slug' => 'scania',
                 'description' => 'SCANIA',
+                'image_name' => 'scania.png',
                 'models' => [
                     [
                         'name' => '114C',
@@ -2836,6 +2845,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SMART',
                 'slug' => 'smart',
                 'description' => 'SMART',
+                'image_name' => 'smart.png',
                 'models' => [
                     [
                         'name' => 'For Two',
@@ -2849,6 +2859,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'SONALIKA',
                 'slug' => 'sonalika',
                 'description' => 'SONALIKA',
+                'image_name' => 'sonalika.png',
                 'models' => [
                     [
                         'name' => 'DI 90',
@@ -2862,6 +2873,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'TATA',
                 'slug' => 'tata',
                 'description' => 'TATA',
+                'image_name' => 'tata.png',
                 'models' => [
                     [
                         'name' => '407',
@@ -3456,6 +3468,7 @@ class AddCarMakesCommand extends Command
                 'name' => 'VOLVO',
                 'slug' => 'volvo',
                 'description' => 'VOLVO',
+                'image_name' => 'volvo.png',
                 'models' => [
                     [
                         'name' => '120',
