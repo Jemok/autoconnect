@@ -65,54 +65,58 @@
 
                 <div class="col-md-9">
                     @foreach($vehicles as $vehicle)
-                        <a href="{{ route('singleCarView', $vehicle->id) }}" style="text-decoration: none;">
-                            <div class="card" style="margin-bottom: 1%;">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <?php
-                                            $vehicle_front_image = getVehicleFrontImage($vehicle->id)
-                                            ?>
-                                            <img class="card-img-top"  src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h4 style="color: black;">
-                                                {{ $vehicle->car_make->name }} - {{ $vehicle->car_model->name }}
-                                            </h4>
-                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                                {{ $vehicle->year }} - {{ $vehicle->fuel_type }} - {{ $vehicle->transmission_type->name }}
-                                            </p>
+                        @if($carSearchRepository->checkIfAdIsOnline($vehicle))
+                            <a href="{{ route('singleCarView', $vehicle->id) }}" style="text-decoration: none;">
+                                <div class="card" style="margin-bottom: 1%;">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <?php
+                                                $vehicle_front_image = getVehicleFrontImage($vehicle->id)
+                                                ?>
+                                                <img class="card-img-top"  src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h4 style="color: black;">
+                                                    {{ $vehicle->car_make->name }} - {{ $vehicle->car_model->name }}
+                                                </h4>
+                                                <p style="color: darkgray; margin-top: 0; padding-top: 0;">
+                                                    {{ $vehicle->year }} - {{ $vehicle->fuel_type }} - {{ $vehicle->transmission_type->name }}
+                                                </p>
 
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h4 style="color: black;">
-                                                KSH {{ number_format($vehicle->price, 2) }}
-                                            </h4>
-                                            <p style="color: darkgray; margin-top: 0; padding-top: 0;">
-                                                {{ strtoupper($vehicle->negotiable_price) }}
-                                            </p>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h4 style="color: black;">
+                                                    KSH {{ number_format($vehicle->price, 2) }}
+                                                </h4>
+                                                <p style="color: darkgray; margin-top: 0; padding-top: 0;">
+                                                    {{ strtoupper($vehicle->negotiable_price) }}
+                                                </p>
 
-                                            <div class="row col-md-12" style="margin-top: 10%;">
-                                                <div class="col-md-4">
-                                                    <i class="fa fa-phone"></i>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <i class="fa fa-comment"></i>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <i class="fa fa-whatsapp"></i>
+                                                <div class="row col-md-12" style="margin-top: 10%;">
+                                                    <div class="col-md-4">
+                                                        <i class="fa fa-phone"></i>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <i class="fa fa-comment"></i>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <i class="fa fa-whatsapp"></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        @endif
                     @endforeach
                 </div>
-                <div class="offset-md-5">
-                    {{$vehicles->render("pagination::bootstrap-4")}}
-                </div>
+                @if($vehicles->count())
+                    <div class="offset-md-5">
+                        {{$vehicles->render("pagination::bootstrap-4")}}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

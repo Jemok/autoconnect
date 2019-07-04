@@ -94,27 +94,46 @@ class CarSearchRepository
                 ->orWhere('colour_type_id', $colour_type_id)
                 ->orWhere('car_condition_id', $car_condition_id)
                 ->orWhere('fuel_type', $fuel_type_id)
-                ->get();
+                ->paginate(5);
 
-            $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
+//            $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
+//
+//                if(AdStatus::where('vehicle_detail_id', $value->id)->exists()){
+//
+//                    $ad_status = AdStatus::where('vehicle_detail_id', $value->id)->firstOrFail();
+//
+//                    if($ad_status->status == 'online'){
+//
+//                        return true;
+//
+//                    }
+//                }
+//            });
 
-                if(AdStatus::where('vehicle_detail_id', $value->id)->exists()){
+//            return $filtered_online_vehicles->paginate(10);
 
-                    $ad_status = AdStatus::where('vehicle_detail_id', $value->id)->firstOrFail();
-
-                    if($ad_status->status == 'online'){
-
-                        return true;
-
-                    }
-                }
-            });
-
-            return $filtered_online_vehicles;
+            return $vehicles;
 
         }
 
         return VehicleDetail::where('status', 'active')->paginate(5);
+    }
+
+
+    public function checkIfAdIsOnline($value){
+
+        if(AdStatus::where('vehicle_detail_id', $value->id)->exists()){
+
+            $ad_status = AdStatus::where('vehicle_detail_id', $value->id)->firstOrFail();
+
+            if($ad_status->status == 'online'){
+
+                return true;
+
+            }
+        }
+
+        return false;
     }
 
 }

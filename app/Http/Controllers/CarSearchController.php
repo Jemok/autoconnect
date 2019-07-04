@@ -37,6 +37,6 @@ class CarSearchController extends Controller
                                         $car_condition,
                                         $fuel_type);
 
-        return view('front.car-search-results', compact('vehicles', 'car_make', 'car_model'));
+        return view('front.car-search-results', compact('vehicles', 'car_make', 'car_model', 'carSearchRepository'));
     }
 }
