@@ -56,7 +56,6 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('moveBulkAdsOnline')
         ->middleware('verified');
 
-
     Route::post('/set-bulk-as-approved/{userBulkImportId}/{status}', 'BulkUploadController@setBulkVehicleAsApproved')
         ->name('setBulkImportAsApproved')
         ->middleware('verified');
@@ -260,4 +259,11 @@ Route::get('car-search-results', 'CarSearchController@showSearchResults')
 
 Route::post('/request-callback/{adStatusId}', 'RequestCallbackController@storeAdStatusCallback')
     ->name('storeAdStatusCallback');
+
+Route::get('dealer-profile', 'DealerProfileController@showProfile')
+    ->name('showDealerProfile');
+
+Route::post('upload-dealer-profile', 'DealerProfileController@uploadDealerProfile')
+    ->name('uploadDealerProfile');
+
 

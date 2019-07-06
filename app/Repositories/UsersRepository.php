@@ -44,6 +44,5 @@ class UsersRepository
 
             return $user;
         }
-
     }
 }

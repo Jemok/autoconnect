@@ -136,4 +136,20 @@ class CarSearchRepository
         return false;
     }
 
+    public function returnAdProfile($value){
+
+        if(AdStatus::where('vehicle_detail_id', $value->id)->exists()){
+
+            $ad_status = AdStatus::where('vehicle_detail_id', $value->id)->firstOrFail();
+
+            $dealer_profile_repository = new DealerProfileRepository();
+
+            $dealer_profile = $dealer_profile_repository->checkIfUserProfileExists($ad_status->user_id);
+
+            return $dealer_profile;
+        }
+
+        return false;
+    }
+
 }
