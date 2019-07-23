@@ -45,20 +45,20 @@ class WelcomePageController extends Controller
 
         $featured_cars = $vehicleDetailRepository->getEightLatestOnline();
 
-//        return view('demo-unhcr');
+        return view('demo-unhcr');
 
-        return view('welcome', compact(
-            'car_makes',
-            'car_models',
-            'start_year',
-            'next_year',
-            'areas',
-            'body_types',
-            'colour_types',
-            'transmission_types',
-            'car_conditions',
-            'fuel_types',
-            'featured_cars'));
+//        return view('welcome', compact(
+//            'car_makes',
+//            'car_models',
+//            'start_year',
+//            'next_year',
+//            'areas',
+//            'body_types',
+//            'colour_types',
+//            'transmission_types',
+//            'car_conditions',
+//            'fuel_types',
+//            'featured_cars'));
     }
 
     public function demoDonation(){
