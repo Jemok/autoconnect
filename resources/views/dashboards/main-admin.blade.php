@@ -263,10 +263,14 @@
                                                                     <thead>
                                                                     <tr>
                                                                         <th scope="col">Id</th>
+                                                                        <th scope="col">Unique Identifier</th>
                                                                         <th scope="col">Name</th>
                                                                         <th scope="col">Email</th>
                                                                         <th scope="col">Payment Status</th>
+                                                                        <th scope="col">Payment Method</th>
+                                                                        <th scope="col">Payment Commitment</th>
                                                                         <th scope="col">Approval Status</th>
+                                                                        <th scope="col">Created At</th>
                                                                         <th scope="col">View</th>
                                                                     </tr>
                                                                     </thead>
@@ -509,12 +513,17 @@
             ajax: '{!! route('indexBulkAdsDataForAdmin') !!}',
             columns: [
                 { data: 'id', name: 'id' },
+                { data: 'unique_identifier', name: 'unique_identifier'},
                 { data: 'name', name: 'name'},
                 { data: 'email', name: 'email'},
                 { data: 'payment_status', name: 'payment_status'},
+                { data: 'payment_method', name: 'payment_method'},
+                { data: 'payment_commitment', name: 'payment_commitment'},
                 { data: 'approval_status', name: 'approval_status' },
+                { data: 'created_at', name: 'created_at'},
                 { data: 'view', name: 'view'},
-            ]
+            ],
+            order: [ [6, 'desc'] ]
         });
     });
 </script>

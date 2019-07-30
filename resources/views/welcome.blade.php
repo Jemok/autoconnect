@@ -50,7 +50,7 @@
 
                             if($featured_car->type == 'bulk'){
 
-                                $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->vehicle_detail->id);
+                                $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
 
                             }else{
                                 $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);

@@ -4,12 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class BulkImportStatus extends Model
+class OtherBulkPayment extends Model
 {
-    /**
-     * @var string
-     */
-    protected $table = 'bulk_import_statuses';
+    protected $table = 'other_bulk_payments';
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -18,5 +15,4 @@ class BulkImportStatus extends Model
 
         return $this->belongsTo(BulkImport::class);
     }
-
 }

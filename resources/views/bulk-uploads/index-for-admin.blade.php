@@ -28,6 +28,10 @@
                             </form>
                         @endif
 
+                        <a href="{{ route('indexBulkPayments', $bulkImportId) }}" class="btn btn-primary pull-right">
+                            View Payments
+                        </a>
+
                         <a href="{{ route('setApprovalForBulk', $bulkImportId) }}" class="btn btn-primary pull-right">
                             Send Payment Instructions
                         </a>

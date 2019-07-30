@@ -5,21 +5,34 @@ namespace App\Http\Controllers;
 use App\Exports\VehicleDetailExport;
 use App\Http\Requests\BulkApprovalRequest;
 use App\Http\Requests\BulkUpladFileRequest;
+use App\Http\Requests\CarDetailsRequest;
 use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Imports\VehicleDetailsImport;
 use App\Notifications\AdDisapprovedNotification;
 use App\Notifications\BulkPaymentNotification;
 use App\Repositories\AdStatusRepository;
+use App\Repositories\BodyTypeRepository;
 use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportApprovalRepository;
 use App\Repositories\BulkImportRepository;
+use App\Repositories\BulkPaymentsRepository;
+use App\Repositories\CarConditionRepository;
+use App\Repositories\CarMakeRepository;
+use App\Repositories\CarModelRepository;
+use App\Repositories\ColourTypeRepository;
+use App\Repositories\DutyRepository;
+use App\Repositories\FuelTypeRepository;
+use App\Repositories\InteriorRepository;
 use App\Repositories\RolesRepository;
 use App\Repositories\SingleAdsRepository;
+use App\Repositories\TransmissionTypeRepository;
 use App\Repositories\UsersRepository;
 use App\Repositories\VehicleDetailRepository;
+use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\VehicleDetail;
 use Carbon\Carbon;
+use DemeterChain\B;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -358,7 +371,10 @@ class BulkUploadController extends Controller
 
         $user = $bulk_import->user;
 
-        $user->notify(new BulkPaymentNotification($bulk_import, $bulk_import_approval));
+        if($bulkApprovalRequest->payment_method == 'mpesa'){
+
+            $user->notify(new BulkPaymentNotification($bulk_import, $bulk_import_approval));
+        }
 
         flash()->overlay('The Payment instructions were sent successfully', 'Sent');
 
@@ -372,13 +388,140 @@ class BulkUploadController extends Controller
 
         $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
 
-        $bulkAdsRepository->moveAdsOnline($bulkImportId, $bulk_import);
+        $bulkApproval = $bulkImportApprovalRepository->approveBulkImport($bulkImportId);
 
-        $bulkImportApprovalRepository->approveBulkImport($bulkImportId);
+        $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id,
+            new BulkAdsRepository());
+
+        $bulkAdsRepository->moveAdsOnline($bulkImportId, $bulk_import);
 
         flash()->overlay('The ads have been updated to online status', 'Success');
 
         return redirect()->back();
+    }
 
+    public function showBulkInterface(UsersRepository $usersRepository,
+                                      Request $request,
+                                      BulkImportRepository $bulkImportRepository){
+
+        if(Auth::user()->hasRole('super-admin')){
+
+            $user = $usersRepository->showUsingId($request->user);
+
+            $bulk_import = $bulkImportRepository->store($user);
+
+        }else{
+
+            $bulk_import = $bulkImportRepository->store(Auth::user());
+        }
+
+
+        return redirect()->route('retrieveBulkUploads', $bulk_import->id);
+    }
+
+    public function retrieveBulkUploads($bulkImportId,
+                                        CarMakeRepository $carMakeRepository,
+                                        CarModelRepository $carModelRepository,
+                                        BodyTypeRepository $bodyTypeRepository,
+                                        TransmissionTypeRepository $transmissionTypeRepository,
+                                        CarConditionRepository $carConditionRepository,
+                                        DutyRepository $dutyRepository,
+                                        FuelTypeRepository $fuelTypeRepository,
+                                        InteriorRepository $interiorRepository,
+                                        ColourTypeRepository $colourTypeRepository,
+                                        VehicleFeaturesRepository $vehicleFeaturesRepository,
+                                        BulkImportRepository $bulkImportRepository){
+
+        $car_makes = $carMakeRepository->index();
+
+        $car_models = $carModelRepository->index();
+
+        $body_types = $bodyTypeRepository->index();
+
+        $transmission_types = $transmissionTypeRepository->index();
+
+        $car_conditions = $carConditionRepository->index();
+
+        $duties = $dutyRepository->index();
+
+        $fuel_types = $fuelTypeRepository->index();
+
+        $interiors = $interiorRepository->index();
+
+        $colour_types = $colourTypeRepository->index();
+
+        $vehicle_features = $vehicleFeaturesRepository->index();
+
+        $start_year = 1900;
+        $next_year = Carbon::now()->year + 1;
+
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        return view('bulk-uploads.bulk-interface', compact(
+            'bulk_import',
+            'car_makes',
+            'car_models',
+            'next_year',
+            'start_year',
+            'body_types',
+            'transmission_types',
+            'car_conditions',
+            'duties',
+            'fuel_types',
+            'interiors',
+            'colour_types',
+            'vehicle_features'));
+
+    }
+
+    public function storeBulkVehicle(CarDetailsRequest $carDetailsRequest,
+                                     $bulkImportId,
+                                     BulkImportRepository $bulkImportRepository){
+
+        $userId = Auth::user()->id;
+
+        $bulkImportRepository->storeBulkImports($carDetailsRequest->all(),
+            $bulkImportId,
+            $userId,
+            new CarMakeRepository(),
+            new CarModelRepository(),
+            new BodyTypeRepository(),
+            new TransmissionTypeRepository(),
+            new CarConditionRepository(),
+            new DutyRepository(),
+            new ColourTypeRepository());
+
+        flash()->overlay('Car Was Added Successfully', 'Continue to add another car');
+
+        return redirect()->back();
+    }
+
+    public function indexBulkPayments($bulkImportId,
+                                      BulkImportRepository $bulkImportRepository,
+                                      BulkPaymentsRepository $bulkPaymentsRepository){
+
+        $bulk_approval = $bulkImportRepository->showApproval($bulkImportId);
+
+        $bulk_mpesa_payments = $bulkPaymentsRepository->indexMpesaForBulk($bulkImportId);
+
+        $other_payments = $bulkPaymentsRepository->indexOtherForBulk($bulkImportId);
+
+        return view('bulk-uploads.index-payments', compact('bulk_approval', 'bulk_mpesa_payments', 'bulkImportId', 'other_payments'));
+    }
+
+    public function recordBulkPayment($bulkImportId){
+
+        return view('bulk-uploads.record-bulk-payment', compact('bulkImportId'));
+    }
+
+    public function storeOtherBulkPayment($bulkImportId,
+                                          Request $request,
+                                          BulkPaymentsRepository $bulkPaymentsRepository){
+
+        $bulkPaymentsRepository->storeOtherBulkPayment($bulkImportId, $request->all());
+
+        flash()->overlay('Payment Recorded Successfully');
+
+        return redirect()->back();
     }
 }

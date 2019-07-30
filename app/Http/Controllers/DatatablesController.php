@@ -716,6 +716,9 @@ class DatatablesController extends Controller
                 }
 
                 return 'Verified';
+            })->addColumn('created_at', function ($single_ad){
+
+                return $single_ad->created_at;
             })
             ->rawColumns(['images_uploaded', 'upload_images', 'verified'])
             ->make(true);
@@ -732,6 +735,10 @@ class DatatablesController extends Controller
 
                 return $bulk_import->bulk_import->id;
             })
+            ->addColumn('unique_identifier', function ($bulk_import){
+
+                return $bulk_import->bulk_import->unique_identifier;
+            })
             ->addColumn('name', function ($bulk_import){
 
                 return $bulk_import->bulk_import->user->name;
@@ -739,6 +746,9 @@ class DatatablesController extends Controller
             ->addColumn('email', function ($bulk_import){
 
                 return $bulk_import->bulk_import->user->email;
+            }) ->addColumn('created_at', function ($bulk_import){
+
+                return $bulk_import->created_at;
             })
             ->addColumn('payment_status', function ($bulk_import){
 
@@ -750,6 +760,36 @@ class DatatablesController extends Controller
                     }
                 }else{
                     return 'Not Paid';
+                }
+            })
+            ->addColumn('payment_method', function ($bulk_import){
+
+                if(isset($bulk_import->bulk_import->bulk_import_approval->payment_method)){
+                    if($bulk_import->bulk_import->bulk_import_approval->payment_method == 'cash'){
+                        return 'Cash';
+                    }elseif($bulk_import->bulk_import->bulk_import_approval->payment_method == 'mpesa'){
+                        return 'Mpesa';
+                    }elseif($bulk_import->bulk_import->bulk_import_approval->payment_method == 'cheque'){
+                        return 'Cheque';
+                    }else{
+                        return 'Mpesa';
+                    }
+                }else{
+                    return 'Mpesa';
+                }
+            })
+            ->addColumn('payment_commitment', function ($bulk_import){
+
+                if(isset($bulk_import->bulk_import->bulk_import_approval->payment_commitment)){
+                    if($bulk_import->bulk_import->bulk_import_approval->payment_commitment == 'partial'){
+                        return 'Partial';
+                    }elseif($bulk_import->bulk_import->bulk_import->bulk_import_approval->payment_commitment == 'full'){
+                        return 'Full';
+                    }else{
+                        return 'Full';
+                    }
+                }else{
+                    return 'Full';
                 }
             })
             ->addColumn('approval_status', function ($bulk_import){
@@ -781,7 +821,7 @@ class DatatablesController extends Controller
 
             ->addColumn('id', function ($bulk_import){
 
-                return $bulk_import->id;
+                return $bulk_import->unique_identifier;
             })
             ->addColumn('created_at', function ($bulk_import){
 

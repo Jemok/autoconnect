@@ -56,5 +56,15 @@ class BulkAdsRepository
 
             $ad_status->save();
         }
+
+    }
+
+    public function checkIfBulkAdExists($bulkImportId){
+
+        if(BulkAd::where('bulk_import_id', $bulkImportId)->exists()){
+            return true;
+        }
+
+        return false;
     }
 }

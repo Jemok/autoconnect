@@ -48,8 +48,20 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         ->name('indexForPayments')
         ->middleware('verified');
 
+    Route::get('/view-bulk-payments/index/{bulkImportId}', 'BulkUploadController@indexBulkPayments')
+        ->name('indexBulkPayments')
+        ->middleware('verified');
+
     Route::get('/bulk-for-admin/index/{bulkImportId}', 'BulkUploadController@indexBulkImportsForAdmin')
         ->name('indexForAdmin')
+        ->middleware('verified');
+
+    Route::get('/record-bulk-payment/{bulkImportId}', 'BulkUploadController@recordBulkPayment')
+        ->name('recordBulkPayment')
+        ->middleware('verified');
+
+    Route::post('/store-bulk-payment/{bulkImportId}', 'BulkUploadController@storeOtherBulkPayment')
+        ->name('storeOtherBulkPayment')
         ->middleware('verified');
 
     Route::post('/move-bulk-ads-online/{bulkImportId}', 'BulkUploadController@moveBulkAdsOnline')
@@ -206,6 +218,12 @@ Route::group(['middleware' => ['role:buyer']], function () {
 Route::get('start-bulk-uploads', 'BulkUploadController@startBulkUpload')
     ->name('startBulkUpload');
 
+Route::get('show-bulk-interface', 'BulkUploadController@showBulkInterface')
+    ->name('showBulkInterface');
+
+Route::get('retrieve-bulk-uploads/{bulkImportId}', 'BulkUploadController@retrieveBulkUploads')
+    ->name('retrieveBulkUploads');
+
 Route::get('save-bulk-uploads', 'BulkUploadController@saveBulkUpload')
     ->name('saveBulkUpload');
 
@@ -214,6 +232,9 @@ Route::get('/download-excel-template',  'BulkUploadController@downloadExcelTempl
 
 Route::post('/import-vehicles', 'BulkUploadController@importVehicles')
     ->name('importVehicles');
+
+Route::post('/store-bulk-vehicles/{bulkImportId}', 'BulkUploadController@storeBulkVehicle')
+    ->name('storeBulkVehicle');
 
 Route::get('/confirm-bulk-imports/{bulkImportId}', 'BulkUploadController@confirmBulkImports')
     ->name('confirmBulkImports');

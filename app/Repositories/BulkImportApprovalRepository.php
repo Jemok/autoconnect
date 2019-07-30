@@ -56,6 +56,8 @@ class BulkImportApprovalRepository
             $bulkImportApproval->approval_status = 'approved';
 
             $bulkImportApproval->save();
+
+            return $bulkImportApproval;
         }
     }
 

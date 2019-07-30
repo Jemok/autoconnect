@@ -362,7 +362,9 @@
                     { data: 'created_at', name: 'created_at'},
                     { data: 'approval_status', name: 'approval_status'},
                     { data: 'view', name: 'view'},
-                ]
+                ],
+                order: [ [1, 'desc'] ]
+
             });
         });
     </script>

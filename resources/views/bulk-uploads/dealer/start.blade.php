@@ -176,11 +176,11 @@
                                     <div class="col bs-wizard-step">
                                         <div class="text-center bs-wizard-stepnum">
                              <span class="d-xs-block d-sm-block d-md-none d-lg-none d-xl-none wizard-small-font">
-                                Download Excel Template
+                                Download Excel Template/Start
                             </span>
                                             <span class="d-none d-md-block d-lg-block d-xl-block">
                                    <strong>
-                                Download Excel Template
+                                Download Excel Template/Start
                             </strong>
                             </span>
                                         </div>
@@ -234,14 +234,28 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="card">
-                                        <div class="card-block text-center">
-                                            <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
-                                            <p class="m-b-20" style="margin-top: 4%;">
-                                                Download and fill in the .xls template
-                                            </p>
-                                            <a href="{{ route('downloadExcelTemplate') }}"  class="btn btn-primary btn-lg btn-round">Download</a>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="card">
+                                            <div class="card-block text-center">
+                                                <img src="{{ asset('images/excel-logo.jpg') }}" class="img-fluid" width="50%" alt="">
+                                                <p class="m-b-20" style="margin-top: 4%;">
+                                                    Download and fill in the .xls template
+                                                </p>
+                                                <a href="{{ route('downloadExcelTemplate') }}"  class="btn btn-primary btn-lg btn-round">Download</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-lg-6">
+                                        <div class="card">
+                                            <div class="card-block text-center">
+                                                <img src="{{ asset('images/table.png') }}" class="img-fluid" width="50%" alt="">
+                                                <p class="m-b-20" style="margin-top: 4%;">
+                                                    Upload Using Bulk Interface
+                                                </p>
+                                                <a href="{{ route('showBulkInterface') }}"  class="btn btn-primary btn-lg btn-round">Start Uploading</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

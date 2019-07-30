@@ -49,6 +49,25 @@
                                 </select>
                             </div>
 
+                            <div class="form-group">
+                                <label for="period">Payment Method *</label>
+                                <select class="form-control" name="payment_method" id="payment_method">
+                                    <option selected disabled></option>
+                                    <option value="mpesa">Mpesa</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="cheque">Cheque</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="period">Commitment *</label>
+                                <select class="form-control" name="payment_commitment" id="payment_method">
+                                    <option selected disabled></option>
+                                    <option value="full">Full</option>
+                                    <option value="partial">Partial</option>
+                                </select>
+                            </div>
+
 
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block">

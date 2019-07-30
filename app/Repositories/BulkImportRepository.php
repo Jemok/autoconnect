@@ -23,7 +23,11 @@ class BulkImportRepository
 {
     public function store(User $user){
 
-        return $user->bulk_import()->save(new BulkImport());
+        $bulk_import = new BulkImport();
+
+        $bulk_import->unique_identifier = 'UNI-'.rand(10000, 90000);
+
+        return $user->bulk_import()->save($bulk_import);
     }
 
     /**
@@ -61,6 +65,7 @@ class BulkImportRepository
 
     public function storeBulkImports(array $data,
                                      $bulk_import_id,
+                                     $user_id,
                                      CarMakeRepository $carMakeRepository,
                                      CarModelRepository $carModelRepository,
                                      BodyTypeRepository $bodyTypeRepository,
@@ -144,11 +149,14 @@ class BulkImportRepository
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;
         $vehicle_detail->bulk_import_id = $bulk_import_id;
+        $vehicle_detail->user_id  = $user_id;
+        $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
 
         $vehicle_detail->save();
 
         return $vehicle_detail;
     }
+
 
     public function indexFroBulkImport($bulkImportId){
 
@@ -252,6 +260,8 @@ class BulkImportRepository
 
             $bulk_import_approval->amount = $data['amount'];
             $bulk_import_approval->period = $data['period'];
+            $bulk_import_approval->payment_method = $data['payment_method'];
+            $bulk_import_approval->payment_commitment = $data['payment_commitment'];
             $bulk_import_approval->bulk_import_id = $bulkImportId;
 
             $bulk_import_approval->save();
@@ -263,6 +273,8 @@ class BulkImportRepository
 
         $bulk_import_approval->amount = $data['amount'];
         $bulk_import_approval->period = $data['period'];
+        $bulk_import_approval->payment_method = $data['payment_method'];
+        $bulk_import_approval->payment_commitment = $data['payment_commitment'];
         $bulk_import_approval->bulk_import_id = $bulkImportId;
 
         $bulk_import_approval->save();
@@ -299,9 +311,14 @@ class BulkImportRepository
     public function moveAdsToLive($bulkImportId,
                                   BulkAdsRepository $bulkAdsRepository){
 
-        $single_ads = UserBulkImport::where('bulk_import_id', $bulkImportId)->get();
+        $single_ads = UserBulkImport::where('bulk_import_id', $bulkImportId)->where('approval_status', 'not_approved')->get();
+
 
         foreach ($single_ads as $single_ad){
+
+            $single_ad->approval_status = 'approved';
+
+            $single_ad->save();
 
             $vehicle_detail = new VehicleDetail();
 
