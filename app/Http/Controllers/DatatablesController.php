@@ -827,6 +827,10 @@ class DatatablesController extends Controller
 
                 return $bulk_import->created_at->diffForHumans();
             })
+            ->addColumn('created_at_not_human', function ($bulk_import){
+
+                return $bulk_import->created_at;
+            })
             ->addColumn('approval_status', function ($bulk_import){
 
 //                if($bulk_import->bulk_import_approval->approval_status == 'approved'){

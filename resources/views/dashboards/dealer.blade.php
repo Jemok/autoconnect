@@ -264,6 +264,7 @@
                                                                     <th scope="col">Uploaded On</th>
                                                                     <th scope="col">Approval Status</th>
                                                                     <th scope="col">View</th>
+                                                                    <th scope="col">Created At</th>
                                                                 </tr>
                                                                 </thead>
                                                             </table>
@@ -362,8 +363,9 @@
                     { data: 'created_at', name: 'created_at'},
                     { data: 'approval_status', name: 'approval_status'},
                     { data: 'view', name: 'view'},
+                    { data: 'created_at_not_human', name : 'created_at_not_human'}
                 ],
-                order: [ [1, 'desc'] ]
+                order: [ [4, 'desc'] ]
 
             });
         });

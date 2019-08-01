@@ -145,120 +145,167 @@
                     </div>
                 </div>
 
+                <div class="col-md-12 row" style="padding-left: 0px;">
+                    @foreach($featured_cars as $featured_car)
+                        <?php
+
+                        if($featured_car->type == 'bulk'){
+
+                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
+
+                        }else{
+                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
+                        }
+                        ?>
+                        <div class="card col-md-4"  style="width: 12rem; border: none;">
+                            @if($featured_car->type == 'bulk')
+                                <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                </a>
+                            @else
+                                <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
+                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                </a>
+                            @endif
+
+                            <div class="card-body" style="padding: 0; margin: 0;">
+                            </div>
+                            <div class="card-footer" style="padding: 0; background-color: white;">
+                                @if($featured_car->type == 'bulk')
+                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        <h6 style="color: tomato;">
+                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                        </h6>
+                                    </a>
+                                    <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                @else
+                                    <div style="padding-top: 3%;">
+                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
+                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                {{ $featured_car->vehicle_detail->car_make->name }}
+                                                {{ $featured_car->vehicle_detail->car_model->name }}
+                                                {{ $featured_car->vehicle_detail->year }}
+                                            </h6>
+                                        </a>
+                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+                                    </div>
+                                @endif
+
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+
                 <div style="padding-top: 2%;">
-                    <h5 class="text-center">
-                        <span style="font-weight: bold;">
-                        Popular Brands
-                        </span>
-                    </h5>
+
 
                     <div class="col-md-12 row">
-                        <div class="col-md-6 text-center">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/audi.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=audi&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Audi
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/toyota.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=toyota&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Toyota
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/nissan.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=nissan&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Nissan
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/subaru.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=subaru&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Subaru
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/honda.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=honda&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Honda
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/landrover.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=landrover&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Land Rover
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        {{--<div class="col-md-6 text-center">--}}
+                        {{--<ul class="list-group">--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/audi.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=audi&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Audi--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/toyota.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=toyota&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Toyota--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/nissan.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=nissan&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Nissan--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/subaru.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=subaru&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Subaru--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/honda.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=honda&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Honda--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/landrover.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=landrover&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Land Rover--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
 
-                        <div class="col-md-6 text-center">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/mitsubishi.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=mitsubishi&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Mitsubishi
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/mercedes_benz.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=mercedes_benz&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Mercedes Benz
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/mazda.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=mazda&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Mazda
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/volkswagen.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=volkswagen&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Volkswagen
-                                        </span>
+                        {{--<div class="col-md-6 text-center">--}}
+                        {{--<ul class="list-group">--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/mitsubishi.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=mitsubishi&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Mitsubishi--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/mercedes_benz.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=mercedes_benz&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Mercedes Benz--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/mazda.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=mazda&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Mazda--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/volkswagen.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=volkswagen&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Volkswagen--}}
+                        {{--</span>--}}
 
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/bmw.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=bmw&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        BMW
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="list-group-item">
-                                    <img src="{{ asset('images/car_logos/isuzu.png') }}" alt="">
-                                    <a href="{{ url('/car-search-results?carMake=isuzu&carModel=any_model') }}">
-                                        <span style="font-weight: bold;">
-                                        Isuzu
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/bmw.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=bmw&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--BMW--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--<li class="list-group-item">--}}
+                        {{--<img src="{{ asset('images/car_logos/isuzu.png') }}" alt="">--}}
+                        {{--<a href="{{ url('/car-search-results?carMake=isuzu&carModel=any_model') }}">--}}
+                        {{--<span style="font-weight: bold;">--}}
+                        {{--Isuzu--}}
+                        {{--</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--</ul>--}}
+                        {{--</div>--}}
                     </div>
 
 
@@ -269,63 +316,6 @@
                     {{--</div>--}}
                 </div>
 
-                <div style="padding-top: 1%;">
-                    <h5 class="text-center">
-                        Locations
-                    </h5>
-
-                    <div class="col-md-12 row">
-                        <div class="col-md-6 text-center">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Nairobi
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Kisumu
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Thika
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Mombasa
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Nakuru
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="col-md-6 text-center">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Eldoret
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Malindi
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Nyeri
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Ruiru
-                                </li>
-                                <li class="list-group-item">
-                                    <i class="fa fa-map-marker"></i>
-                                    Westlands
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="col-md-3">
@@ -527,6 +517,181 @@
                     </form>
 
                 </div>
+
+                <h5 class="text-center">
+                        <span style="font-weight: bold;">
+                        Popular Brands
+                        </span>
+                </h5>
+
+                <div class="row">
+
+                    <div class="col-md-6 text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/audi.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=audi&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Audi
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/toyota.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=toyota&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Toyota
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/nissan.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=nissan&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Nissan
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/subaru.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=subaru&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Subaru
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/honda.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=honda&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Honda
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/landrover.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=landrover&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Land Rover
+                                        </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/mitsubishi.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=mitsubishi&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mitsubishi
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/mercedes_benz.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=mercedes_benz&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mercedes Benz
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/mazda.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=mazda&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Mazda
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/volkswagen.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=volkswagen&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Volkswagen
+                                        </span>
+
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/bmw.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=bmw&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        BMW
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="{{ asset('images/car_logos/isuzu.png') }}" alt="">
+                                <a href="{{ url('/car-search-results?carMake=isuzu&carModel=any_model') }}">
+                                        <span style="font-weight: bold;">
+                                        Isuzu
+                                        </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="padding-top: 1%;">
+                    <h5 class="text-center">
+                        Locations
+                    </h5>
+
+                    <div class="col-md-12 row">
+                        <div class="col-md-6 text-center">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Nairobi
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Kisumu
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Thika
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Mombasa
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Nakuru
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Eldoret
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Malindi
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Nyeri
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Ruiru
+                                </li>
+                                <li class="list-group-item">
+                                    <i class="fa fa-map-marker"></i>
+                                    Westlands
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
         </div>

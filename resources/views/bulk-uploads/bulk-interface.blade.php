@@ -127,11 +127,20 @@
                     <div class="pcoded-inner-navbar main-menu">
                         <ul class="pcoded-item pcoded-left-item">
                             <li>
-                                <a href="{{ route('adminHome') }}">
-                                    <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
-                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
-                                    <span class="pcoded-mcaret"></span>
-                                </a>
+                                @if(Auth::user()->hasRole('super-admin'))
+                                    <a href="{{ route('adminHome') }}">
+                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                @endif
+                                @if(Auth::user()->hasRole('dealer'))
+                                    <a href="{{ route('home') }}">
+                                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                                        <span class="pcoded-mcaret"></span>
+                                    </a>
+                                @endif
                             </li>
 
                             <li class="">
@@ -678,7 +687,6 @@
             });
         });
     </script>
-
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script>
         $(function() {
