@@ -146,7 +146,7 @@
                 </div>
 
                 <div class="col-md-12 row" style="padding-left: 0px; margin-top: 3%">
-                    @foreach($featured_cars as $featured_car)
+                    @foreach($featured_standard_cars as $featured_car)
                         <?php
 
                         if($featured_car->type == 'bulk'){

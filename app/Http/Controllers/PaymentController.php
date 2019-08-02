@@ -79,7 +79,8 @@ class PaymentController extends Controller
                 $start,
                 $stop,
                 $user->id,
-                'single');
+                'single',
+                $vehicle_payment->package);
 
             $adStatusRepository->storeAdPeriod($vehicle_detail,
                 $ad_status,

@@ -45,6 +45,8 @@ class WelcomePageController extends Controller
 
         $featured_cars = $vehicleDetailRepository->getEightLatestOnline();
 
+        $featured_standard_cars = $vehicleDetailRepository->getEightLatestOnlineStandard();
+
 //        return view('demo-unhcr');
 
         return view('welcome', compact(
@@ -58,7 +60,8 @@ class WelcomePageController extends Controller
             'transmission_types',
             'car_conditions',
             'fuel_types',
-            'featured_cars'));
+            'featured_cars',
+            'featured_standard_cars'));
     }
 
     public function demoDonation(){

@@ -22,7 +22,8 @@ class AdStatusRepository
                                   $start,
                                   $stop,
                                   $user_id,
-                                  $type){
+                                  $type,
+                                  $ad_type){
 
         $this->deActivateOthers($vehicleDetail->id);
 
@@ -38,6 +39,7 @@ class AdStatusRepository
             $adStatus->type = $type;
             $adStatus->vehicle_detail_id = $vehicleDetail->id;
             $adStatus->user_id = $user_id;
+            $adStatus->ad_type = $ad_type;
 
             $adStatus->save();
 
@@ -53,6 +55,7 @@ class AdStatusRepository
         $adStatus->type = $type;
         $adStatus->vehicle_detail_id = $vehicleDetail->id;
         $adStatus->user_id = $user_id;
+        $adStatus->ad_type = $ad_type;
 
         $adStatus->save();
 
