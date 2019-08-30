@@ -149,5 +149,20 @@ function showSimilarAdsForAd($car_make,
         return \App\VehicleDetail::where('status', 'inactive')->take(7)->get();
 
     }
+}
 
+
+function checkIfCarFeatureInArray($vehicle_feature_slug, $selected_vehicle_features_array){
+
+
+    foreach ($selected_vehicle_features_array as $key => $value){
+
+        if($value != null){
+            if($vehicle_feature_slug == $value){
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

@@ -783,7 +783,7 @@ class DatatablesController extends Controller
                 if(isset($bulk_import->bulk_import->bulk_import_approval->payment_commitment)){
                     if($bulk_import->bulk_import->bulk_import_approval->payment_commitment == 'partial'){
                         return 'Partial';
-                    }elseif($bulk_import->bulk_import->bulk_import->bulk_import_approval->payment_commitment == 'full'){
+                    }elseif($bulk_import->bulk_import->bulk_import_approval->payment_commitment == 'full'){
                         return 'Full';
                     }else{
                         return 'Full';

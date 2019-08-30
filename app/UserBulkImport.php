@@ -46,6 +46,15 @@ class UserBulkImport extends Model
         return $this->belongsTo(ColourType::class);
     }
 
+    public function interior_relationship(){
+        return $this->belongsTo(Interior::class);
+    }
+
+    public function fuel_types(){
+
+        return $this->belongsTo(FuelType::class);
+    }
+
     public function user(){
 
         return $this->belongsTo(User::class);

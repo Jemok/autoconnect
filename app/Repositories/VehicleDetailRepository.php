@@ -28,7 +28,8 @@ class VehicleDetailRepository
                           TransmissionTypeRepository $transmissionTypeRepository,
                           CarConditionRepository $carConditionRepository,
                           DutyRepository $dutyRepository,
-                          ColourTypeRepository $colourTypeRepository){
+                          ColourTypeRepository $colourTypeRepository,
+                          $vehicle_detail_id = null){
 
         $car_make = $data['car_make'];
         $car_make_model = $carMakeRepository->showFromSlug($car_make);
@@ -90,7 +91,14 @@ class VehicleDetailRepository
             'Xenon Lights' => array_key_exists('xenon_lights', $data) ? $data['xenon_lights'] : null
         ]);
 
-        $vehicle_detail = new VehicleDetail();
+        if(VehicleDetail::where('id', $vehicle_detail_id)->exists()){
+
+            $vehicle_detail = VehicleDetail::where('id', $vehicle_detail_id)->firstOrFail();
+
+        }else{
+            $vehicle_detail = new VehicleDetail();
+        }
+
 
         $vehicle_detail->car_make_id = $car_make_model->id;
         $vehicle_detail->car_model_id = $car_model_model->id;

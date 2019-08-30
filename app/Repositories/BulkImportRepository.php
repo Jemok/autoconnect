@@ -72,7 +72,8 @@ class BulkImportRepository
                                      TransmissionTypeRepository $transmissionTypeRepository,
                                      CarConditionRepository $carConditionRepository,
                                      DutyRepository $dutyRepository,
-                                     ColourTypeRepository $colourTypeRepository){
+                                     ColourTypeRepository $colourTypeRepository,
+                                     $user_bulk_import_id = null){
 
         $car_make = array_key_exists('car_make', $data) ? $data['car_make'] : null;
         $car_make_model = $carMakeRepository->showFromSlug($car_make);
@@ -130,7 +131,14 @@ class BulkImportRepository
             'Xenon Lights' => array_key_exists('xenon_lights', $data) ? $data['xenon_lights'] : null
         ]);
 
-        $vehicle_detail = new UserBulkImport();
+        if(UserBulkImport::where('id', $user_bulk_import_id)->exists()){
+
+            $vehicle_detail = UserBulkImport::where('id', $user_bulk_import_id)->firstOrFail();
+        }else{
+
+            $vehicle_detail = new UserBulkImport();
+        }
+
 
         $vehicle_detail->car_make_id = $car_make_model->id;
         $vehicle_detail->car_model_id = $car_model_model->id;
@@ -150,7 +158,12 @@ class BulkImportRepository
         $vehicle_detail->other_features = $other_features;
         $vehicle_detail->bulk_import_id = $bulk_import_id;
         $vehicle_detail->user_id  = $user_id;
-        $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
+        if(UserBulkImport::where('id', $user_bulk_import_id)->exists()){
+
+        }else{
+
+            $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
+        }
 
         $vehicle_detail->save();
 
@@ -386,6 +399,87 @@ class BulkImportRepository
             $vehicleVerificationsRepository->store($vehicle_detail, 'pending_verification');
 
         }
+    }
+
+    public function moveSingleBulkAdOnline($user_bulk_import){
+
+
+        $single_ad = $user_bulk_import;
+
+        $single_ad->approval_status = 'approved';
+
+        $single_ad->save();
+
+        $vehicle_detail = new VehicleDetail();
+
+        $vehicle_detail->car_make_id = $single_ad->car_make_id;
+        $vehicle_detail->car_model_id = $single_ad->car_model_id;
+        $vehicle_detail->year = $single_ad->year;
+        $vehicle_detail->mileage = $single_ad->mileage;
+        $vehicle_detail->body_type_id = $single_ad->body_type_id;
+        $vehicle_detail->transmission_type_id = $single_ad->transmission_type_id;
+        $vehicle_detail->car_condition_id = $single_ad->car_condition_id;
+        $vehicle_detail->duty_id = $single_ad->duty_id;
+        $vehicle_detail->price = $single_ad->price;
+        $vehicle_detail->negotiable_price = $single_ad->negotiable_price;
+        $vehicle_detail->fuel_type = $single_ad->fuel_type;
+        $vehicle_detail->engine_size = $single_ad->engine_size;
+        $vehicle_detail->interior = $single_ad->interior;
+        $vehicle_detail->colour_type_id = $single_ad->colour_type_id;
+        $vehicle_detail->description = $single_ad->description;
+        $vehicle_detail->unique_identifier = $single_ad->unique_identifier;
+        $vehicle_detail->other_features = $single_ad->other_features;
+
+        $vehicle_detail->save();
+
+        $adStatusRepository = new AdStatusRepository();
+
+        $start = Carbon::now();
+
+        $stop = Carbon::now()->addDays(30);
+
+        $adStatus = $adStatusRepository->storeAdStatus($vehicle_detail,
+            'pending_verification',
+            $start,
+            $stop,
+            $single_ad->user_id,
+            'bulk',
+            'standard');
+
+        $adStatusRepository->storeAdPeriod($vehicle_detail,
+            $adStatus,
+            'active',
+            $start,
+            $stop);
+
+        $bulkAdsRepository = new BulkAdsRepository();
+
+        $bulkImportId = $single_ad->bulk_import_id;
+
+        $bulk_ad = $bulkAdsRepository->store($vehicle_detail->id,
+            $adStatus->id,
+            $bulkImportId,
+            $single_ad->id,
+            $single_ad->user_id
+        );
+
+        $vehicleImagesRepository = new  VehicleImagesRepository();
+
+        $images = $this->getBulkImages($single_ad->id);
+
+        foreach ($images as $image){
+
+            $vehicleImagesRepository->store($vehicle_detail,
+                $image->image_name,
+                $image->image_area,
+                $vehicle_detail->id);
+        }
+
+        $vehicleVerificationsRepository = new VehicleVerificationsRepository();
+
+        $vehicleVerificationsRepository->store($vehicle_detail, 'pending_verification');
+
+        return $bulk_ad;
     }
 
     public function countBulkPendingAds(){

@@ -16,7 +16,12 @@ class BulkAdsRepository
 
     public function showForBulk($userBulkImportId){
 
-        return BulkAd::where('user_bulk_import_id', $userBulkImportId)->firstOrFail();
+        if(BulkAd::where('user_bulk_import_id', $userBulkImportId)->exists()){
+
+            return BulkAd::where('user_bulk_import_id', $userBulkImportId)->firstOrFail();
+        }
+
+        return false;
     }
 
     public function showFromVehicleDetail($vehicleDetailId){

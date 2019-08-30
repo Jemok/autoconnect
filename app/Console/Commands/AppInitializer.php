@@ -62,6 +62,5 @@ class AppInitializer extends Command
         $this->info('Vehicle Features Updated');
         Artisan::call('areas:add');
         $this->info('Areas Updated');
-
     }
 }

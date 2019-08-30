@@ -243,6 +243,7 @@
                                     </div>
                                 </div>
 
+
                                 <div class="row">
                                     <div class="table-responsive">
                                         <form method="POST" action="{{ route('storeBulkVehicle', [$bulk_import->id]) }}">
@@ -511,9 +512,9 @@
                                                         </div>
                                                     </td>
                                                     <td>
-                                                        <div class="col">
+                                                        <div class="col" style="width: 500px;">
                                                             <label for="description" style="font-weight: bold;">Description </label>
-                                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="3" cols="15">{{ old('description') }}</textarea>
+                                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="7" cols="100">{{ old('description') }}</textarea>
                                                             @if($errors->has('description'))
                                                                 <small id="descriptionHelp" class="form-text text-danger">
                                                                     {{ $errors->first('description') }}

@@ -51,7 +51,7 @@ class BulkUploadController extends Controller
     }
 
 
-    public function startBulkUpload(){
+    public function startBulkUpload(RolesRepository $rolesRepository){
 
 //        return view('bulk-uploads.start-uploading');
 
@@ -61,7 +61,11 @@ class BulkUploadController extends Controller
 
         }
 
-        return view('bulk-uploads.admin.start');
+        $dealer_role = $rolesRepository->showFromName('dealer');
+
+        $dealer_roles = $rolesRepository->showAllUsersForRole($dealer_role->id);
+
+        return view('bulk-uploads.admin.start', compact('dealer_roles'));
     }
 
 
@@ -271,7 +275,11 @@ class BulkUploadController extends Controller
 
         $bulk_ad = $bulkAdsRepository->showForBulk($vehicle_detail->id);
 
-        $vehicle_detail_id = $bulk_ad->vehicle_detail_id;
+        if($bulk_ad != false){
+            $vehicle_detail_id = $bulk_ad->vehicle_detail_id;
+        }else{
+            $vehicle_detail_id = false;
+        }
 
         $single_bulk_upload = $bulkImportRepository->showSingleBulkImport($singleBulkUploadId, $bulkImportId);
 
@@ -307,6 +315,11 @@ class BulkUploadController extends Controller
         $bulkImportRepository->updateApprovalStatus($user_bulk_import, $status);
 
         $bulk_ad = $bulkAdsRepository->showForBulk($userBulkImportId);
+
+        if($bulk_ad == false){
+
+            $bulkImportRepository->moveSingleBulkAdOnline($user_bulk_import);
+        }
 
         $start = Carbon::now();
 
@@ -454,6 +467,25 @@ class BulkUploadController extends Controller
 
         if(Auth::user()->hasRole('super-admin')){
 
+            $user = $usersRepository->showUsingId(Auth::user()->id);
+
+            $bulk_import = $bulkImportRepository->store($user);
+
+        }else{
+
+            $bulk_import = $bulkImportRepository->store(Auth::user());
+        }
+
+
+        return redirect()->route('retrieveBulkUploads', $bulk_import->id);
+    }
+
+    public function showBulkInterfaceAdmin(UsersRepository $usersRepository,
+                                           Request $request,
+                                           BulkImportRepository $bulkImportRepository){
+
+        if(Auth::user()->hasRole('super-admin')){
+
             $user = $usersRepository->showUsingId($request->user);
 
             $bulk_import = $bulkImportRepository->store($user);
@@ -467,6 +499,7 @@ class BulkUploadController extends Controller
         return redirect()->route('retrieveBulkUploads', $bulk_import->id);
     }
 
+
     public function retrieveBulkUploads($bulkImportId,
                                         CarMakeRepository $carMakeRepository,
                                         CarModelRepository $carModelRepository,
@@ -478,7 +511,8 @@ class BulkUploadController extends Controller
                                         InteriorRepository $interiorRepository,
                                         ColourTypeRepository $colourTypeRepository,
                                         VehicleFeaturesRepository $vehicleFeaturesRepository,
-                                        BulkImportRepository $bulkImportRepository){
+                                        BulkImportRepository $bulkImportRepository,
+                                        RolesRepository $rolesRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -504,6 +538,8 @@ class BulkUploadController extends Controller
         $next_year = Carbon::now()->year + 1;
 
         $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+
 
         return view('bulk-uploads.bulk-interface', compact(
             'bulk_import',

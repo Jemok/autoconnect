@@ -201,32 +201,45 @@
                                             </li>
                                         </ul>
 
-                                        <a href="{{ route('manageVehicleAd', $vehicle_detail_id) }}" class="btn btn-sm btn-success float-right">
-                                            Ad Management
-                                        </a>
-
+                                        @if($vehicle_detail_id != null)
+                                            <a href="{{ route('manageVehicleAd', $vehicle_detail_id) }}" class="btn btn-sm btn-success float-right">
+                                                Ad Management
+                                            </a>
+                                        @endif
 
 
                                         @if(Auth::user()->hasRole('super-admin'))
-                                        <form action="{{ route('expireAd', $vehicle_detail->id) }}" method="POST">
-                                            {{ csrf_field() }}
+                                            @if($vehicle_detail_id == null)
+                                                <form action="{{ route('expireAd', $vehicle_detail->id) }}" method="POST">
+                                                    {{ csrf_field() }}
 
-                                            <button type="submit" class="btn btn-sm btn-danger float-right">
-                                                Expire This Ad
-                                            </button>
-                                        </form>
+                                                    <button type="submit" class="btn btn-sm btn-danger float-right">
+                                                        Expire This Ad
+                                                    </button>
+                                                </form>
 
-                                        <form action="{{ route('setBulkImportAsApproved', [$vehicle_detail->id, 'approved']) }}" method="POST">
-                                            {{ csrf_field() }}
+                                                <a href="{{ route('editUserBulkImportVehicle', [$vehicle_detail->id, $vehicle_detail->bulk_import_id]) }}" class="btn btn-sm btn-success float-right">
+                                                    Edit Vehicle Details
+                                                </a>
+                                            @else
+                                                <a href="{{ route('editUserBothImportVehicle', [$vehicle_detail_id, $vehicle_detail->id, $vehicle_detail->bulk_import_id]) }}" class="btn btn-sm btn-success float-right">
+                                                    Edit Vehicle Details
+                                                </a>
+                                            @endif
 
-                                            <button type="submit" class="btn btn-sm btn-success float-right">
-                                                Approve Ad For Online
-                                            </button>
-                                        </form>
+                                            <form action="{{ route('setBulkImportAsApproved', [$vehicle_detail->id, 'approved']) }}" method="POST">
+                                                {{ csrf_field() }}
 
-                                        <a href="{{ route('showBulkDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
-                                            Decline Ad
-                                        </a>
+                                                <button type="submit" class="btn btn-sm btn-success float-right">
+                                                    Approve Ad For Online
+                                                </button>
+                                            </form>
+
+                                            <a href="{{ route('showBulkDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
+                                                Decline Ad
+                                            </a>
+
+
                                         @endif
                                     </div>
                                 </div>
@@ -327,7 +340,7 @@
                                                     @foreach($other_features as $key => $value)
                                                         <div class="card col-md-3">
                                                             <div class="card-body">
-                                         <span class="alert alert-default" style="font-size: 12px;">
+                                         <span class="" style="font-size: 12px;">
                                              {{ $key }}
                                              @if($value != null)
                                                  <i class="fa fa-check text-success"></i>

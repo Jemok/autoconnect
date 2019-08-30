@@ -221,6 +221,9 @@ Route::get('start-bulk-uploads', 'BulkUploadController@startBulkUpload')
 Route::get('show-bulk-interface', 'BulkUploadController@showBulkInterface')
     ->name('showBulkInterface');
 
+Route::post('show-bulk-interface-admin', 'BulkUploadController@showBulkInterfaceAdmin')
+    ->name('showBulkInterfaceAdmin');
+
 Route::get('retrieve-bulk-uploads/{bulkImportId}', 'BulkUploadController@retrieveBulkUploads')
     ->name('retrieveBulkUploads');
 
@@ -287,4 +290,21 @@ Route::get('dealer-profile', 'DealerProfileController@showProfile')
 Route::post('upload-dealer-profile', 'DealerProfileController@uploadDealerProfile')
     ->name('uploadDealerProfile');
 
+Route::get('edit-user-bulk-vehicle/{userBulkImport}/{bulkImportId}', 'EditVehicleController@editUserBulkImportVehicle')
+    ->name('editUserBulkImportVehicle');
+
+Route::get('edit-user-single-vehicle/{vehicleDetailId}', 'EditVehicleController@editUserSingleImportVehicle')
+    ->name('editUserSingleImportVehicle');
+
+Route::get('edit-both-vehicle/{vehicleDetailId}/{userBulkImportId}/{bulkImportId}', 'EditVehicleController@editUserBothImportVehicle')
+    ->name('editUserBothImportVehicle');
+
+Route::post('update-user-bulk-vehicle/{userBulkImport}/{bulkImportId}', 'EditVehicleController@updateUserBulkImportVehicle')
+    ->name('updateUserBulkImportVehicle');
+
+Route::post('update-user-single-vehicle/{vehicleDetailId}', 'EditVehicleController@updateUserSingleImportVehicle')
+    ->name('updateUserSingleImportVehicle');
+
+Route::post('update-user-both-bulk-vehicle/{vehicleDetailId}/{userBulkImport}/{bulkImportId}', 'EditVehicleController@updateUserBothBulkImportVehicle')
+    ->name('updateUserBothBulkImportVehicle');
 
