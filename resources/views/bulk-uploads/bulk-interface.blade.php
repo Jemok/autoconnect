@@ -511,15 +511,92 @@
                                                             @endif
                                                         </div>
                                                     </td>
+                                                    {{--<td>--}}
+                                                        {{--<div class="col" style="width: 500px;">--}}
+                                                            {{--<label for="description" style="font-weight: bold;">Description </label>--}}
+                                                            {{--<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="7" cols="100">{{ old('description') }}</textarea>--}}
+                                                            {{--@if($errors->has('description'))--}}
+                                                                {{--<small id="descriptionHelp" class="form-text text-danger">--}}
+                                                                    {{--{{ $errors->first('description') }}--}}
+                                                                {{--</small>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
+                                                    {{--</td>--}}
                                                     <td>
-                                                        <div class="col" style="width: 500px;">
-                                                            <label for="description" style="font-weight: bold;">Description </label>
-                                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="7" cols="100">{{ old('description') }}</textarea>
-                                                            @if($errors->has('description'))
-                                                                <small id="descriptionHelp" class="form-text text-danger">
-                                                                    {{ $errors->first('description') }}
-                                                                </small>
-                                                            @endif
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+                                                            Add a description
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModal1Label" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Add a description for this car</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="col">
+                                                                            <label for="description" style="font-weight: bold;">Description </label>
+                                                                            <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="10" cols="15">{{ old('description') }}</textarea>
+                                                                            @if($errors->has('description'))
+                                                                                <small id="descriptionHelp" class="form-text text-danger">
+                                                                                    {{ $errors->first('description') }}
+                                                                                </small>
+                                                                            @endif
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                    <td>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                            Add Other Car Features
+                                                        </button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">Select car features</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div style="padding-left: 2%;">
+                                                                            <div class="form-row">
+                                                                                @foreach($vehicle_features as $vehicle_feature)
+                                                                                    <div class="form-group col-md-3">
+                                                                                        <div class="form-check">
+                                                                                            <input class="form-check-input" type="checkbox" name="{{ $vehicle_feature->slug }}" value="{{ $vehicle_feature->slug }}" id="{{ $vehicle_feature->slug }}">
+                                                                                            <label class="form-check-label" for="gridCheck" style="font-weight: bold; font-size: 10px;">
+                                                                                                {{ $vehicle_feature->description }}
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                @endforeach
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        {{--<button type="button" class="btn btn-primary">Save changes</button>--}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </td>
                                                     <td>
