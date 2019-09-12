@@ -564,6 +564,12 @@ class BulkUploadController extends Controller
 
         $userId = Auth::user()->id;
 
+        $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
+
+        $bulk_import->bulk_upload_status = null;
+
+        $bulk_import->save();
+
         $bulkImportRepository->storeBulkImports($carDetailsRequest->all(),
             $bulkImportId,
             $userId,
