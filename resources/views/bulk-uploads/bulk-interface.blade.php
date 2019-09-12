@@ -629,6 +629,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th scope="col">Id</th>
+                                                    <th scope="col">Edit</th>
                                                     <th scope="col">Images Uploaded</th>
                                                     <th scope="col">Upload Images</th>
                                                     <th scope="col">Verified</th>
@@ -774,6 +775,7 @@
                 ajax: '{!! route('indexBulkUploadImportsData', [$bulk_import->id]) !!}',
                 columns: [
                     { data: 'id', name: 'id' },
+                    { data: 'edit', name: 'edit' },
                     { data: 'images_uploaded', name : 'images_uploaded'},
                     { data: 'upload_images', name : 'upload_images'},
                     { data: 'verified', name : 'verified'},
