@@ -26,6 +26,7 @@ class BulkImportRepository
         $bulk_import = new BulkImport();
 
         $bulk_import->unique_identifier = 'UNI-'.rand(10000, 90000);
+        $bulk_import->bulk_upload_status = 'initiated';
 
         return $user->bulk_import()->save($bulk_import);
     }
@@ -198,7 +199,7 @@ class BulkImportRepository
 
     public function indexForUser($userId){
 
-        return BulkImport::where('user_id', $userId)->latest()->get();
+        return BulkImport::where('user_id', $userId)->where('bulk_upload_status', '!=', 'initiated')->latest()->get();
     }
 
     public function updateApprovalStatus($userBulkImport, $status){
