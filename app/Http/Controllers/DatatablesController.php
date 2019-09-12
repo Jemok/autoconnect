@@ -700,11 +700,17 @@ class DatatablesController extends Controller
                     return '<i class="fa fa-times text-danger"></i>'. ' Not Uploaded';
                 }
             })
+            ->editColumn('edit', function ($single_ad) use ($bulkImportId) {
+
+                $url = route('editUserBulkImportVehicle', [$single_ad->id, $bulkImportId]);
+
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>Edit</a>';
+            })
             ->editColumn('upload_images', function ($single_ad) use ($bulkImportId) {
 
                 $url = route('createBulkImages', [$bulkImportId, $single_ad->id]);
 
-                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>Upload Images</a>';
+                return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i>Upload Images</a>';
             })
             ->addColumn('verified', function ($single_ad){
 
@@ -720,7 +726,7 @@ class DatatablesController extends Controller
 
                 return $single_ad->created_at;
             })
-            ->rawColumns(['images_uploaded', 'upload_images', 'verified'])
+            ->rawColumns(['images_uploaded', 'upload_images', 'verified', 'edit'])
             ->make(true);
     }
 
