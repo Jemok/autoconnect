@@ -199,7 +199,10 @@ class BulkImportRepository
 
     public function indexForUser($userId){
 
-        return BulkImport::where('user_id', $userId)->where('bulk_upload_status', '!=', 'initiated')->latest()->get();
+        return BulkImport::where('user_id', $userId)
+            ->whereBulkUploadStatus(null)
+            ->latest()
+            ->get();
     }
 
     public function updateApprovalStatus($userBulkImport, $status){
