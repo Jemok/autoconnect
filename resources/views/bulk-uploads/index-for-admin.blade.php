@@ -92,6 +92,11 @@
 
                                     </td>
                                     <td>
+                                        <a href="{{ route('editUserBulkImportVehicle', [$single_ad->id, $bulkImportId]) }}" class="btn btn-primary btn-sms">
+                                            Edit
+                                        </a>
+                                    </td>
+                                    <td>
                                         <a class="btn btn-success btn-sm" href="{{ route('adminManageBulkImages', [$bulkImportId, $single_ad->id]) }}">
                                             Images
                                         </a>

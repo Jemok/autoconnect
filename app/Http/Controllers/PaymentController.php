@@ -38,11 +38,19 @@ class PaymentController extends Controller
             $amount = 5;
         }
 
-        $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
+        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
 
-        flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
+        if($response->getStatusCode() == 200){
 
-        return redirect()->back();
+            flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
+
+            return redirect()->back();
+        }else{
+
+            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
+
+            return redirect()->back();
+        }
     }
 
     public function processPayment(Request $request,

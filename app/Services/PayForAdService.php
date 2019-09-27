@@ -83,6 +83,6 @@ class PayForAdService
             ])
         ]);
 
-        return $linked;
+        return $response;
     }
 }
