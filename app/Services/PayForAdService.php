@@ -67,22 +67,31 @@ class PayForAdService
 
         $url = env('TUJENGE_BASE_URL').'api/v1/payments';
 
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Content-Type' =>  'application/json',
-                'Authorization' => 'Bearer '.$access_token
-            ],
-            'body' => json_encode([
-                //Fill in the request parameters with valid values
-                'organizationId' => env('APP_ORGANIZATION_ID'),
-                'resourceIdentifier' => $linked['accountNumber'],
-                'externalIdentifier' => $vehiclePayment->id,
-                'phoneNumber' => $phone_number,
-                'amount'      => $amount,
-                'callBackUrl' => env('APP_URL').'/api/payment/results'
-            ])
-        ]);
+        try{
+            $response = $client->request('POST', $url, [
+                'headers' => [
+                    'Content-Type' =>  'application/json',
+                    'Authorization' => 'Bearer '.$access_token
+                ],
+                'body' => json_encode([
+                    //Fill in the request parameters with valid values
+                    'organizationId' => env('APP_ORGANIZATION_ID'),
+                    'resourceIdentifier' => $linked['accountNumber'],
+                    'externalIdentifier' => $vehiclePayment->id,
+                    'phoneNumber' => $phone_number,
+                    'amount'      => $amount,
+                    'callBackUrl' => env('APP_URL').'/api/payment/results'
+                ])
+            ]);
 
-        return $response;
+            return $response;
+        }catch (\Exception $exception){
+
+            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
+
+            return redirect()->back();
+        }
+
+
     }
 }
