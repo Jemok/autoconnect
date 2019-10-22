@@ -50,6 +50,7 @@
                     <a class="mobile-menu" id="mobile-collapse" href="#!">
                         <i class="ti-menu"></i>
                     </a>
+
                     <div class="mobile-search">
                         <div class="header-search">
                             <div class="main-search morphsearch-search">
@@ -62,7 +63,7 @@
                         </div>
                     </div>
                     <a href="{{ route('home') }}">
-                        <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
+                        <img class="img-fluid" width="150" src="{{ asset('images/univas-real.png') }}" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
                         <i class="ti-more"></i>
@@ -79,7 +80,7 @@
 
                         <li class="user-profile header-notification">
                             <a href="#!">
-                                <img src="assets/images/avatar-4.jpg" class="img-radius">
+                                {{--<img src="assets/images/avatar-4.jpg" class="img-radius">--}}
                                 <span>Logged in as : John Doe - Dealer Account</span>
                                 <i class="ti-angle-down"></i>
                             </a>
@@ -287,45 +288,6 @@
     <!-- Warning Section Starts -->
     <!-- Older IE warning message -->
     <!--[if lt IE 9]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
-    </div>
     <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->

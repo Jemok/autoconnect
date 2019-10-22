@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <a href="{{ route('home') }}">
-                        <img class="img-fluid" src="assets/images/logo.png" alt="UNIVAS AUTO CONNECT" />
+                        <img class="img-fluid" width="150" src="{{ asset('images/univas-real.png') }}" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
                         <i class="ti-more"></i>
@@ -78,7 +78,6 @@
                     <ul class="nav-right">
                         <li class="user-profile header-notification">
                             <a href="#!">
-                                <img src="assets/images/avatar-4.jpg" class="img-radius">
                                 <span>Logged in as : Super Admin - Admin Account</span>
                                 <i class="ti-angle-down"></i>
                             </a>
