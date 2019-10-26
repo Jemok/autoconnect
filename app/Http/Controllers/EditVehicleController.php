@@ -205,7 +205,7 @@ class EditVehicleController extends Controller
 
         flash()->overlay('Car details updated successfully', 'Success');
 
-        return redirect()->back();
+        return redirect()->route('confirmBulkImports', [$bulkImportId]);
     }
 
     public function updateUserSingleImportVehicle(CarDetailsRequest $carDetailsRequest,

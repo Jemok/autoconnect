@@ -18,7 +18,8 @@ class PaymentRepository
 {
     public function store(VehicleDetail $vehicleDetail,
                           $vehicleId,
-                          $package){
+                          $package,
+                          $no_of_days){
 
         if(VehiclePayment::where('vehicle_detail_id', $vehicleId)->exists()){
 
@@ -26,10 +27,12 @@ class PaymentRepository
                 ->firstOrFail();
 
             $vehiclePayment->package = $package;
+            $vehiclePayment->no_of_days;
 
             $vehiclePayment->save();
 
             $vehiclePayment->save();
+
 
             return $vehiclePayment;
         }
@@ -37,6 +40,7 @@ class PaymentRepository
         $vehiclePayment = new VehiclePayment();
 
         $vehiclePayment->package = $package;
+        $vehiclePayment->no_of_days;
 
         return $vehicleDetail->vehicle_payment()->save($vehiclePayment);
     }

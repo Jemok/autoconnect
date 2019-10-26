@@ -93,7 +93,24 @@
                                                 <h5 class="card-title" style="font-weight: bold;">Premium Package</h5>
                                                 <p class="card-text" style="font-weight: bold;">KES 5</p>
                                                 <p class="card-text" style="font-weight: bold;">Priority Ad</p>
-                                                <p class="card-text" style="font-weight: bold;">Valid for 30 days</p>
+                                                {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
+                                                <div class="form-group">
+                                                    <label for="period">Period</label>
+                                                    <select class="form-control" name="period" id="period">
+                                                        <option value="1" selected>1 Month</option>
+                                                        <option value="2">2 Months</option>
+                                                        <option value="3">3 Months</option>
+                                                        <option value="4">4 Months</option>
+                                                        <option value="5">5 Months</option>
+                                                        <option value="6">6 Months</option>
+                                                        <option value="7">7 Months</option>
+                                                        <option value="8">8 Months</option>
+                                                        <option value="9">9 Months</option>
+                                                        <option value="10">10 Months</option>
+                                                        <option value="11">11 Months</option>
+                                                        <option value="12">12 Months</option>
+                                                    </select>
+                                                </div>
                                                 <div class="alert alert-primary" role="alert" style="font-weight: bold;">
                                                     Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                     click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.
@@ -117,7 +134,24 @@
                                                 <h5 class="card-title" style="font-weight: bold;">Standard Package</h5>
                                                 <p class="card-text" style="font-weight: bold;">Ksh 5</p>
                                                 <p class="card-text" style="font-weight: bold;">Standard Ad</p>
-                                                <p class="card-text" style="font-weight: bold;">Valid for 30 days</p>
+                                                {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
+                                                <div class="form-group">
+                                                    <label for="period">Period</label>
+                                                    <select class="form-control" name="period" id="period">
+                                                        <option value="1" selected>1 Month</option>
+                                                        <option value="2">2 Months</option>
+                                                        <option value="3">3 Months</option>
+                                                        <option value="4">4 Months</option>
+                                                        <option value="5">5 Months</option>
+                                                        <option value="6">6 Months</option>
+                                                        <option value="7">7 Months</option>
+                                                        <option value="8">8 Months</option>
+                                                        <option value="9">9 Months</option>
+                                                        <option value="10">10 Months</option>
+                                                        <option value="11">11 Months</option>
+                                                        <option value="12">12 Months</option>
+                                                    </select>
+                                                </div>
                                                 <div class="alert alert-primary" role="alert" style="font-weight: bold;">
                                                     Payment will be made using  Mpesa number {{ $vehicle_detail->vehicle_contact->phone_number }} ,
                                                     click Make Payment below, then wait to enter Mpesa pin on your phone. Then click finish.

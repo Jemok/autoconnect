@@ -23,13 +23,17 @@ class PaymentController extends Controller
                                 $paymentType,
                                 PayForAdService $payForAdService,
                                 PaymentRepository $paymentRepository,
-                                VehicleDetailRepository $vehicleDetailRepository
+                                VehicleDetailRepository $vehicleDetailRepository,
+                                Request $request
     ){
         $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
 
+        $no_of_days = $request->period * 30;
+
         $vehiclePayment = $paymentRepository->store($vehicleDetail,
             $vehicleId,
-            $paymentType
+            $paymentType,
+        $no_of_days
         );
 
         if($paymentType == 'standard'){
@@ -80,7 +84,7 @@ class PaymentController extends Controller
 
             $start = Carbon::now();
 
-            $stop = Carbon::now()->addDays(30);
+            $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
 
             $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
                 'pending_verification',

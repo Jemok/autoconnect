@@ -178,6 +178,7 @@
                     </div>
                 </nav>
                 <div class="pcoded-content">
+                    @include('flash::message')
                     <div class="pcoded-inner-content">
                         <div class="main-body">
                             <div class="page-wrapper">
@@ -733,6 +734,8 @@
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
     <script>
+        $('#flash-overlay-modal').modal();
+
         jQuery(document).ready(function($){
             $('#car_make').change(function(){
                 $.get("{{ url('/api/dropdown')}}",
