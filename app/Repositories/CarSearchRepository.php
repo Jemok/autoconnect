@@ -40,6 +40,8 @@ class CarSearchRepository
 
             $car_make_id = CarMake::where('slug', $car_make)->firstOrFail()->id;
 
+            dd($car_make_id);
+
             if ($car_model != 'any_model'){
                 $car_model_id = CarModel::where('slug', $car_model)->firstOrFail()->id;
             }
