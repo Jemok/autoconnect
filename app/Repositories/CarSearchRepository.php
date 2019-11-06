@@ -88,6 +88,8 @@ class CarSearchRepository
 
             }
 
+            dd($raw_vehicles->get());
+
 
             $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
                 ->orWhereBetween('price', [$min_price, $max_price])
