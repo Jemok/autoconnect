@@ -14,7 +14,7 @@ class AddPackageTypeToBulkAdsTable extends Migration
     public function up()
     {
         Schema::table('bulk_ads', function (Blueprint $table) {
-            $table->string('type');
+            $table->string('type')->nullable();
         });
     }
 
