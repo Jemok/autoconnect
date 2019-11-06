@@ -33,7 +33,8 @@ class BulkAdsRepository
                           $ad_status_id,
                           $bulk_import_id,
                           $user_bulk_import_id,
-                          $user_id){
+                          $user_id,
+                          $ad_type){
 
         $bulk_ad = new BulkAd();
 
@@ -42,6 +43,7 @@ class BulkAdsRepository
         $bulk_ad->bulk_import_id = $bulk_import_id;
         $bulk_ad->user_bulk_import_id = $user_bulk_import_id;
         $bulk_ad->user_id = $user_id;
+        $bulk_ad->type = $ad_type;
 
         $bulk_ad->save();
 
@@ -58,7 +60,6 @@ class BulkAdsRepository
 
             $ad_status->status = 'online';
             $ad_status->user_id = $bulk_import->user_id;
-            $ad_status->ad_type = $bulk_ad->ad_type;
 
             $ad_status->save();
         }

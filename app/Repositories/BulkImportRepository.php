@@ -390,7 +390,8 @@ class BulkImportRepository
                 $adStatus->id,
                 $bulkImportId,
                 $single_ad->id,
-                $single_ad->user_id
+                $single_ad->user_id,
+                $single_ad->type
             );
 
             $vehicleImagesRepository = new  VehicleImagesRepository();
@@ -472,7 +473,8 @@ class BulkImportRepository
             $adStatus->id,
             $bulkImportId,
             $single_ad->id,
-            $single_ad->user_id
+            $single_ad->user_id,
+            $single_ad->type
         );
 
         $vehicleImagesRepository = new  VehicleImagesRepository();
