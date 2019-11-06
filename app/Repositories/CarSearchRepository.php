@@ -88,7 +88,6 @@ class CarSearchRepository
 
             }
 
-            dd($raw_vehicles->get());
 
 
             $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
@@ -97,8 +96,11 @@ class CarSearchRepository
                 ->orWhere('transmission_type_id', $transmission_type_id)
                 ->orWhere('colour_type_id', $colour_type_id)
                 ->orWhere('car_condition_id', $car_condition_id)
-                ->orWhere('fuel_type', $fuel_type_id)
-                ->paginate(5);
+                ->orWhere('fuel_type', $fuel_type_id);
+//                ->paginate(5);
+
+            dd($vehicles->get());
+
 
 //            $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
 //
