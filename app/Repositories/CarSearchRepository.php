@@ -87,7 +87,7 @@ class CarSearchRepository
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
                     ->where('status', 'active');
 
-                dd($car_model_id);
+                dd($car_make_id);
 
             }
 
