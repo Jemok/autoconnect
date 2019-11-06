@@ -116,7 +116,7 @@ class CarSearchRepository
 
         }
 
-        return VehicleDetail::where('status', 'active')->paginate(5);
+        dd(VehicleDetail::where('status', 'active')->paginate(5));
     }
 
 
