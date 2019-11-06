@@ -38,13 +38,11 @@ class CarSearchRepository
 
         if($car_make != 'any_make' && $car_model != null){
 
-            $car_make_id = dd(CarMake::where('slug', $car_make)->firstOrFail());
-
+            $car_make_id = CarMake::where('slug', $car_make)->firstOrFail()->id;
 
             if ($car_model != 'any_model'){
                 $car_model_id = CarModel::where('slug', $car_model)->firstOrFail()->id;
             }
-
 
             if($body_type != 'any_body_type' && $body_type != null){
                 $body_type_id = BodyType::where('slug', $body_type)->firstOrFail()->id;
@@ -86,7 +84,7 @@ class CarSearchRepository
             }else{
 
                 $raw_vehicles = VehicleDetail::where('car_make_id', $car_make_id)
-                    ->where('status', 'active');
+                    ->where('status', 'inactive');
 
             }
 
