@@ -25,8 +25,12 @@ class SingleCarViewController extends Controller
 
         if($bulk_ad != false){
 
+            $is_bulk = true;
+
             $vehicle_images = $vehicleImagesRepository->indexForBulUploadVehicle($bulk_ad->user_bulk_import_id);
         }else{
+
+            $is_bulk = false;
 
             $vehicle_images = $vehicleImagesRepository->indexForVehicle($vehicleDetailId);
         }
