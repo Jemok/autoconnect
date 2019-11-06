@@ -58,6 +58,7 @@ class BulkAdsRepository
 
             $ad_status->status = 'online';
             $ad_status->user_id = $bulk_import->user_id;
+            $ad_status->ad_type = $bulk_ad->ad_type;
 
             $ad_status->save();
         }

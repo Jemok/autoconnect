@@ -39,7 +39,8 @@ class CarDetailsRequest extends FormRequest
             'engine_size' => 'nullable',
             'interior' => 'nullable',
             'colour_type' => 'nullable',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'package_type' => 'required'
         ];
     }
 }

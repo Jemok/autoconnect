@@ -98,6 +98,7 @@ class BulkImportRepository
         $colour_type = array_key_exists('colour_type', $data) ? $data['colour_type'] : 'other';
         $drive_setup = array_key_exists('drive_setup', $data) ? $data['drive_setup'] : 'other';
         $drive_type = array_key_exists('drive_type', $data) ? $data['drive_type'] : 'other';
+        $package_type = array_key_exists('package_type', $data) ? $data['package_type'] : 'standard';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = array_key_exists('description', $data) ? $data['description'] : null;
 
@@ -158,6 +159,7 @@ class BulkImportRepository
         $vehicle_detail->interior = $interior;
         $vehicle_detail->drive_setup = $drive_setup;
         $vehicle_detail->drive_type = $drive_type;
+        $vehicle_detail->type = $package_type;
         $vehicle_detail->colour_type_id = $colour_type_model->id;
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;

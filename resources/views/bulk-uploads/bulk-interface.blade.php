@@ -563,16 +563,48 @@
                                                     </td>
 
                                                     {{--<td>--}}
-                                                        {{--<div class="col" style="width: 500px;">--}}
-                                                            {{--<label for="description" style="font-weight: bold;">Description </label>--}}
-                                                            {{--<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="7" cols="100">{{ old('description') }}</textarea>--}}
-                                                            {{--@if($errors->has('description'))--}}
-                                                                {{--<small id="descriptionHelp" class="form-text text-danger">--}}
-                                                                    {{--{{ $errors->first('description') }}--}}
-                                                                {{--</small>--}}
-                                                            {{--@endif--}}
-                                                        {{--</div>--}}
+                                                    {{--<div class="col" style="width: 500px;">--}}
+                                                    {{--<label for="description" style="font-weight: bold;">Description </label>--}}
+                                                    {{--<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="7" cols="100">{{ old('description') }}</textarea>--}}
+                                                    {{--@if($errors->has('description'))--}}
+                                                    {{--<small id="descriptionHelp" class="form-text text-danger">--}}
+                                                    {{--{{ $errors->first('description') }}--}}
+                                                    {{--</small>--}}
+                                                    {{--@endif--}}
+                                                    {{--</div>--}}
                                                     {{--</td>--}}
+
+                                                    <td>
+                                                        <div class="col">
+                                                            <label for="package_type" style="font-weight: bold;">Ad Package Type*</label>
+                                                            <select style="width: 150px;"  name="package_type" id="package_type" class="form-control {{ $errors->has('package_type') ? 'is-invalid' : '' }}">
+                                                                <option selected disabled>Choose...</option>
+                                                                @if(old('package_type') == 'standard')
+                                                                    <option selected  value="standard">
+                                                                        Standard
+                                                                    </option>
+                                                                @elseif(old('package_type') == 'premium')
+                                                                    <option value="premium">
+                                                                        Premium
+                                                                    </option>
+                                                                @endif
+
+                                                                <option value="standard">
+                                                                    Standard
+                                                                </option>
+
+                                                                <option value="premium">
+                                                                    Premium
+                                                                </option>
+                                                            </select>
+                                                            @if($errors->has('package_type'))
+                                                                <small id="packageTypeHelp" class="form-text text-danger">
+                                                                    {{ $errors->first('package_type') }}
+                                                                </small>
+                                                            @endif
+                                                        </div>
+                                                    </td>
+
                                                     <td>
                                                         <!-- Button trigger modal -->
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
@@ -607,8 +639,9 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </td>
+
+
                                                     <td>
                                                         <!-- Button trigger modal -->
                                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
