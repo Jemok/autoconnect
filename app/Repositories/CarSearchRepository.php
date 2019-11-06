@@ -112,7 +112,7 @@ class CarSearchRepository
 
 //            return $filtered_online_vehicles->paginate(10);
 
-            dd($vehicles);
+            return $vehicles;
 
         }
 
