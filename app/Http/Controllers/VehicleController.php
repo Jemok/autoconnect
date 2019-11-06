@@ -12,6 +12,8 @@ use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\CarSeriesRepository;
 use App\Repositories\ColourTypeRepository;
+use App\Repositories\DriveSetUpRepository;
+use App\Repositories\DriveTypeRepository;
 use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\InteriorRepository;
@@ -43,7 +45,9 @@ class VehicleController extends Controller
                            FuelTypeRepository $fuelTypeRepository,
                            InteriorRepository $interiorRepository,
                            ColourTypeRepository $colourTypeRepository,
-                           VehicleFeaturesRepository $vehicleFeaturesRepository){
+                           VehicleFeaturesRepository $vehicleFeaturesRepository,
+                           DriveSetUpRepository $driveSetUpRepository,
+                           DriveTypeRepository $driveTypeRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -65,6 +69,12 @@ class VehicleController extends Controller
 
         $vehicle_features = $vehicleFeaturesRepository->index();
 
+        $drive_setups = $driveSetUpRepository->index();
+
+        $drive_types = $driveTypeRepository->index();
+
+
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -79,7 +89,9 @@ class VehicleController extends Controller
             'fuel_types',
             'interiors',
             'colour_types',
-            'vehicle_features'));
+            'vehicle_features',
+            'drive_types',
+            'drive_setups'));
     }
 
     public function store(CarDetailsRequest $carDetailsRequest,

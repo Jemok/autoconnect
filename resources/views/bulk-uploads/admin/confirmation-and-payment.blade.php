@@ -513,6 +513,56 @@
                                                         @endif
                                                     </div>
                                                 </td>
+
+                                                <td>
+                                                    <div class="col">
+                                                        <label for="drive_setup" style="font-weight: bold;">Drive Setup*</label>
+                                                        <select style="width: 150px;"  name="drive_setup" id="drive_setup" class="form-control {{ $errors->has('drive_setup') ? 'is-invalid' : '' }}">
+                                                            <option selected disabled>Choose...</option>
+                                                            @foreach($drive_setups as $drive_setup)
+                                                                @if(old('drive_setup') == $drive_setup->slug)
+                                                                    <option selected  value="{{ $drive_setup->slug }}">
+                                                                        {{ $drive_setup->description }}
+                                                                    </option>
+                                                                @else
+                                                                    <option value="{{ $drive_setup->slug }}">
+                                                                        {{ $drive_setup->description }}
+                                                                    </option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('drive_setup'))
+                                                            <small id="driveSetUpHelp" class="form-text text-danger">
+                                                                {{ $errors->first('drive_setup') }}
+                                                            </small>
+                                                        @endif
+                                                    </div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="col">
+                                                        <label for="drive_type" style="font-weight: bold;">Drive Type*</label>
+                                                        <select style="width: 150px;"  name="drive_type" id="drive_type" class="form-control {{ $errors->has('drive_type') ? 'is-invalid' : '' }}">
+                                                            <option selected disabled>Choose...</option>
+                                                            @foreach($drive_types as $drive_type)
+                                                                @if(old('drive_type') == $drive_type->slug)
+                                                                    <option selected  value="{{ $drive_type->slug }}">
+                                                                        {{ $drive_type->description }}
+                                                                    </option>
+                                                                @else
+                                                                    <option value="{{ $drive_type->slug }}">
+                                                                        {{ $drive_type->description }}
+                                                                    </option>
+                                                                @endif
+                                                            @endforeach
+                                                        </select>
+                                                        @if($errors->has('drive_type'))
+                                                            <small id="driveTypeHelp" class="form-text text-danger">
+                                                                {{ $errors->first('drive_type') }}
+                                                            </small>
+                                                        @endif
+                                                    </div>
+                                                </td>
                                                 <td>
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">

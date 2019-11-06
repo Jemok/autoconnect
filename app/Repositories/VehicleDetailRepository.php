@@ -55,6 +55,8 @@ class VehicleDetailRepository
         $engine_size = array_key_exists('engine_size', $data) ? $data['engine_size'] : null;
         $interior = array_key_exists('interior', $data) ? $data['interior'] : null;
         $colour_type = array_key_exists('colour_type', $data) ? $data['colour_type'] : 'other';
+        $drive_setup = array_key_exists('drive_setup', $data) ? $data['drive_setup'] : 'other';
+        $drive_type = array_key_exists('drive_type', $data) ? $data['drive_type'] : 'other';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = $data['description'];
 
@@ -121,6 +123,8 @@ class VehicleDetailRepository
         $vehicle_detail->fuel_type = $fuel_type;
         $vehicle_detail->engine_size = $engine_size;
         $vehicle_detail->interior = $interior;
+        $vehicle_detail->drive_setup = $drive_setup;
+        $vehicle_detail->drive_type = $drive_type;
         $vehicle_detail->colour_type_id = $colour_type_model->id;
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;

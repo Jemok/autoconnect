@@ -20,6 +20,8 @@ use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\ColourTypeRepository;
+use App\Repositories\DriveSetUpRepository;
+use App\Repositories\DriveTypeRepository;
 use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\InteriorRepository;
@@ -163,7 +165,9 @@ class BulkUploadController extends Controller
                                        FuelTypeRepository $fuelTypeRepository,
                                        InteriorRepository $interiorRepository,
                                        ColourTypeRepository  $colourTypeRepository,
-                                       VehicleFeaturesRepository $vehicleFeaturesRepository ){
+                                       VehicleFeaturesRepository $vehicleFeaturesRepository,
+                                       DriveSetUpRepository $driveSetUpRepository,
+                                       DriveTypeRepository $driveTypeRepository){
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
@@ -189,6 +193,11 @@ class BulkUploadController extends Controller
 
         $vehicle_features = $vehicleFeaturesRepository->index();
 
+
+        $drive_setups = $driveSetUpRepository->index();
+
+        $drive_types = $driveTypeRepository->index();
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -209,7 +218,9 @@ class BulkUploadController extends Controller
             'interiors',
             'colour_types',
             'vehicle_features',
-            'bulk_import'));
+            'bulk_import',
+            'drive_setups',
+            'drive_types'));
     }
 
     public function createBulkImages(
@@ -512,6 +523,8 @@ class BulkUploadController extends Controller
                                         ColourTypeRepository $colourTypeRepository,
                                         VehicleFeaturesRepository $vehicleFeaturesRepository,
                                         BulkImportRepository $bulkImportRepository,
+                                        DriveSetUpRepository $driveSetUpRepository,
+                                        DriveTypeRepository $driveTypeRepository,
                                         RolesRepository $rolesRepository){
 
         $car_makes = $carMakeRepository->index();
@@ -534,6 +547,11 @@ class BulkUploadController extends Controller
 
         $vehicle_features = $vehicleFeaturesRepository->index();
 
+        $drive_setups = $driveSetUpRepository->index();
+
+        $drive_types = $driveTypeRepository->index();
+
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -554,7 +572,9 @@ class BulkUploadController extends Controller
             'fuel_types',
             'interiors',
             'colour_types',
-            'vehicle_features'));
+            'vehicle_features',
+            'drive_setups',
+            'drive_types'));
 
     }
 
