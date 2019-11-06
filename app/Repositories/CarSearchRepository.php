@@ -112,11 +112,11 @@ class CarSearchRepository
 
 //            return $filtered_online_vehicles->paginate(10);
 
-            return $vehicles;
+            dd($vehicles);
 
         }
 
-        dd(VehicleDetail::where('status', 'active')->paginate(5));
+        return VehicleDetail::where('status', 'active')->paginate(5);
     }
 
 
