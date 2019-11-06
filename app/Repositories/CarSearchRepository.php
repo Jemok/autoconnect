@@ -88,18 +88,22 @@ class CarSearchRepository
 
             }
 
-            dd($raw_vehicles->count());
+            if($raw_vehicles->count() > 0){
 
+                $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
+                    ->orWhereBetween('price', [$min_price, $max_price])
+                    ->orWhere('body_type_id', $body_type_id)
+                    ->orWhere('transmission_type_id', $transmission_type_id)
+                    ->orWhere('colour_type_id', $colour_type_id)
+                    ->orWhere('car_condition_id', $car_condition_id)
+                    ->orWhere('fuel_type', $fuel_type_id)
+                    ->paginate(5);
 
-            $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
-                ->orWhereBetween('price', [$min_price, $max_price])
-                ->orWhere('body_type_id', $body_type_id)
-                ->orWhere('transmission_type_id', $transmission_type_id)
-                ->orWhere('colour_type_id', $colour_type_id)
-                ->orWhere('car_condition_id', $car_condition_id)
-                ->orWhere('fuel_type', $fuel_type_id)
-                ->paginate(5);
+                return $vehicles;
 
+            }
+
+            return $raw_vehicles->paginate(5);
 
 //            $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
 //
@@ -117,7 +121,6 @@ class CarSearchRepository
 
 //            return $filtered_online_vehicles->paginate(10);
 
-            return $vehicles;
 
         }
 
