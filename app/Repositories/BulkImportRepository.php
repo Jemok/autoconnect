@@ -360,6 +360,7 @@ class BulkImportRepository
             $vehicle_detail->description = $single_ad->description;
             $vehicle_detail->unique_identifier = $single_ad->unique_identifier;
             $vehicle_detail->other_features = $single_ad->other_features;
+            $vehicle_detail->status = 'active';
 
             $vehicle_detail->save();
 
