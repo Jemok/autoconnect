@@ -76,6 +76,8 @@ class MpesaConfirmationController extends Controller
 
             if($paymentStatus == 'success'){
 
+                Log::info('SUCCESS');
+
                 $paymentRepository->setAsPaid($vehicle_payment);
 
                 $user = $usersRepository->checkIfExistsUsingEmail($vehicle_contact->email, $vehicle_contact);
@@ -102,6 +104,8 @@ class MpesaConfirmationController extends Controller
                     $vehicle_contact->name,
                     $vehicle));
             }
+
+            Log::info('COMPLETED');
 
             return response()->json(['message' => 'success']);
         }
