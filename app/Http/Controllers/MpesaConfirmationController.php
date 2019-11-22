@@ -41,7 +41,7 @@ class MpesaConfirmationController extends Controller
 
         $this->logConfirmationResponse($request);
 
-        $this->makeMpesaConfirmationModel($request);
+        $this->makeMpesaConfirmationModel($request->all());
 
 
     }
