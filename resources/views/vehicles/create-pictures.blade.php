@@ -212,6 +212,28 @@
     </div>
     @push('scripts')
     <script src="{{ asset('js/dropzone.js') }}"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+        $(".dropzone").dropzone({
+            addRemoveLinks: true,
+            removedfile: function(file) {
+
+                var name = file.name;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/images/delete/{{ $vehicleId }}',
+                    data: {imageName: name},
+                    sucess: function(data){
+                        console.log('success: ' + data);
+                    }
+                });
+
+                var _ref;
+                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+            }
+        });
+    </script>
     <script src="{{ asset('js/file-uploader.js') }}"></script>
     <script>
         $('#flash-overlay-modal').modal();

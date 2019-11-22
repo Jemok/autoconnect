@@ -20,6 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/images/upload', 'VehicleImagesController@upload');
 
+Route::post('/images/delete/{vehicleId}', 'VehicleImagesController@delete');
+
+Route::post('/images/delete-bulk/{vehicleId}', 'BulkImageController@delete');
+
+
 Route::post('/images/upload-bulk', 'BulkImageController@upload');
 
 Route::post('/images/upload/others/{vehicleId}', 'VehicleImagesController@uploadOthers');

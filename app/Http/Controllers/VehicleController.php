@@ -167,4 +167,6 @@ class VehicleController extends Controller
         return redirect()->route('createAd', $vehicleId);
     }
 
+
+
 }

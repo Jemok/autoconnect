@@ -1,4 +1,8 @@
 function readURL(input, identifier, imageSelector, advertId) {
+
+
+
+
     if (input.files && input.files[0]) {
         var reader = new FileReader();
 
@@ -30,3 +34,4 @@ function readURL(input, identifier, imageSelector, advertId) {
         enctype: 'multipart/form-data',
     });
 }
+

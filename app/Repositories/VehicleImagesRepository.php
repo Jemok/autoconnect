@@ -16,7 +16,11 @@ use App\VehicleImage;
 
 class VehicleImagesRepository
 {
-    public function store(VehicleDetail $vehicleDetail, $imageName, $imageArea, $vehicleId){
+    public function store(VehicleDetail $vehicleDetail,
+                          $imageName,
+                          $imageRealName,
+                          $imageArea,
+                          $vehicleId){
 
         if(VehicleImage::where('image_area', $imageArea)
             ->where('vehicle_detail_id', $vehicleId)
@@ -28,6 +32,7 @@ class VehicleImagesRepository
                 ->firstOrFail();
 
             $vehicleImage->image_name = $imageName;
+            $vehicleImage->image_real_name = $imageRealName;
 
             $vehicleImage->save();
 
@@ -38,6 +43,7 @@ class VehicleImagesRepository
 
         $vehicleImage->image_area = $imageArea;
         $vehicleImage->image_name = $imageName;
+        $vehicleImage->image_real_name = $imageRealName;
 
         return $vehicleDetail->vehicle_images()->save($vehicleImage);
     }
@@ -100,7 +106,11 @@ class VehicleImagesRepository
     }
 
 
-    public function storeForBulk(UserBulkImport $userBulkImport, $imageName, $imageArea, $vehicleId){
+    public function storeForBulk(UserBulkImport $userBulkImport,
+                                 $imageName,
+                                 $imageRealName,
+                                 $imageArea,
+                                 $vehicleId){
 
         if(BulkImportImage::where('image_area', $imageArea)
             ->where('user_bulk_import_id', $vehicleId)
@@ -112,6 +122,7 @@ class VehicleImagesRepository
                 ->firstOrFail();
 
             $vehicleImage->image_name = $imageName;
+            $vehicleImage->image_real_name = $imageRealName;
 
             $vehicleImage->save();
 
@@ -122,6 +133,7 @@ class VehicleImagesRepository
 
         $vehicleImage->image_area = $imageArea;
         $vehicleImage->image_name = $imageName;
+        $vehicleImage->image_real_name = $imageRealName;
 
         return $userBulkImport->bulk_import_images()->save($vehicleImage);
     }
