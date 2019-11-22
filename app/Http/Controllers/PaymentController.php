@@ -184,18 +184,72 @@ class PaymentController extends Controller
     public function makeBulkPayment($bulkImportId,
                                     PayForBulkRequest $payForBulkRequest,
                                     BulkImportRepository $bulkImportRepository,
-                                    PayForBulkService $payForAdService
+                                    PayForBulkService $payForAdService,
+                                    PaymentRepository $paymentRepository
     ){
 
         $bulk_import = $bulkImportRepository->showBulkImport($bulkImportId);
 
         $bulk_approval = $bulkImportRepository->showApproval($bulkImportId);
 
-        $payForAdService->handle($bulk_approval, $bulk_approval, $payForBulkRequest->phone_number, $bulk_approval->amount, $bulk_import->user->name);
+        $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
 
-        flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
+        Log::info('B64'. $mpesa_credentials);
 
-        return redirect()->back();
+        $phone_number = '254'.substr($payForBulkRequest->phone_number, 1);
+
+        try{
+
+            $mpesa_payment  = new MpesaPayment();
+
+            $mpesa_payment->univas_car_id = $bulk_import->id;
+            $mpesa_payment->vehicle_payment_id = $bulk_approval->id;
+            $mpesa_payment->mpesa_account_number = $bulk_import.'-1';
+            $mpesa_payment->type = 'bulk';
+
+            $mpesa_payment->save();
+
+            dispatch(new StkPushJob($mpesa_credentials, $phone_number, $mpesa_payment->mpesa_account_number, (int) $bulk_approval->amount));
+
+            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
+            return redirect()->back();
+        }
+        catch (\Exception $exception){
+
+            if ($exception instanceof \GuzzleHttp\Exception\RequestException) {
+                // get the full text of the exception (including stack trace),
+                // and replace the original message (possibly truncated),
+                // with the full text of the entire response body.
+                if($exception != null){
+                    if($exception->getResponse() != null){
+                        $message = str_replace(
+                            rtrim($exception->getMessage()),
+                            (string) $exception->getResponse()->getBody(),
+                            (string) $exception
+                        );
+
+                        Log::info('ERROR MESSAGE API : '.$message);
+                    }else{
+                        Log::info('ERROR MESSAGE API GET RESPONSE IS NULL :'.$exception->getResponse());
+                    }
+                }
+            }
+
+
+//        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
+
+            flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int) $bulk_approval->amount, 'Please try again');
+
+//            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
+
+            return redirect()->back();
+        }
+
+//        $payForAdService->handle($bulk_approval, $bulk_approval, $payForBulkRequest->phone_number, $bulk_approval->amount, $bulk_import->user->name);
+
+//        flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
+
+//        return redirect()->back();
     }
 
     public function processBulkPayment(Request $request,

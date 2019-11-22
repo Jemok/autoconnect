@@ -11,12 +11,15 @@ use App\Jobs\ThirdPartyNotificationJob;
 use App\MpesaApiPayment;
 use App\MpesaConfirmation;
 use App\MpesaPayment;
+use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
 use App\Notifications\PhoneRollupNotification;
 use App\Notifications\TransactionStatusErrorNotification;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\AirtimeRepository;
 use App\Repositories\BillingCostRepository;
+use App\Repositories\BulkAdsRepository;
+use App\Repositories\BulkImportRepository;
 use App\Repositories\KplcRepository;
 use App\Repositories\PaymentCallbackRepository;
 use App\Repositories\PaymentRepository;
@@ -46,7 +49,8 @@ class MpesaConfirmationController extends Controller
                                  PaymentRepository $paymentRepository,
                                  VehicleDetailRepository $vehicleDetailRepository,
                                  UsersRepository $usersRepository,
-                                 AdStatusRepository $adStatusRepository){
+                                 AdStatusRepository $adStatusRepository,
+                                 BulkImportRepository $bulkImportRepository){
 
         Log::info('MPESA CONFIRMED RN');
 
@@ -54,11 +58,14 @@ class MpesaConfirmationController extends Controller
 
         $this->makeMpesaConfirmationModel($request->all());
 
-        if(MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])->exists()){
+        if(MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])
+            ->where('type', 'single')->exists()){
 
             Log::info('Single Ad Payment');
 
-            $mpesa_payment = MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])->firstOrFail();
+            $mpesa_payment = MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])
+                ->where('type', 'single')
+                ->firstOrFail();
 
             $vehiclePaymentId = $mpesa_payment->vehicle_payment_id;
             $paymentStatus = 'success';
@@ -104,6 +111,45 @@ class MpesaConfirmationController extends Controller
                     $vehicle_contact->name,
                     $vehicle));
             }
+
+            Log::info('COMPLETED');
+
+            return response()->json(['message' => 'success']);
+        }
+
+        if(MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])
+            ->where('type', 'bulk')->exists()){
+
+            Log::info('Bulk Ad Payment');
+
+            $mpesa_payment = MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])
+                ->where('type', 'bulk')
+                ->firstOrFail();
+
+            $bulkApprovalId = $mpesa_payment->vehicle_payment_id;
+            $paymentStatus = 'success';
+            $amount = (float) $request['TransAmount'];
+
+            $bulkApproval = $bulkImportRepository->showApprovalUsingId($bulkApprovalId);
+
+            $user = $bulkApproval->bulk_import->user;
+
+//            $paymentRepository->storeBulkPaymentResult($request->all(), $bulkApprovalId);
+
+            if($paymentStatus == 'success'){
+
+                $bulkImportRepository->setApprovalAsApproved($bulkApproval);
+
+                $bulkImportRepository->moveAdsToLive($bulkApproval->bulk_import_id,
+                    new BulkAdsRepository());
+
+                $user->notify(new PaymentReceivedNotification($amount,
+                    $user->name,
+                    ' Bilk Import Batch '.$bulkApproval->bulk_import->id));
+
+                $user->notify(new BulkImportAdNotification($bulkApproval->bulk_import, $user));
+            }
+
 
             Log::info('COMPLETED');
 
