@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AddPrice;
 use App\Http\Requests\PayForBulkRequest;
+use App\Jobs\StkPushJob;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
 use App\Repositories\AdStatusRepository;
@@ -57,17 +58,41 @@ class PaymentController extends Controller
             $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
         }
 
+        $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
+        $phone_number = '254'.substr($vehicleDetail->vehicle_contact->phone_number, 1);
+        try{
+            dispatch(new StkPushJob($mpesa_credentials, $phone_number, $vehicleDetail->id, (int) $amount));
 
-        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
-
-        if($response->getStatusCode() == 200){
-
-            flash()->overlay('Please wait to enter mpesa pin on phone', 'Enter Mpesa Pin');
-
+            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
             return redirect()->back();
-        }else{
+        }
+        catch (\Exception $exception){
 
-            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
+            if ($exception instanceof \GuzzleHttp\Exception\RequestException) {
+                // get the full text of the exception (including stack trace),
+                // and replace the original message (possibly truncated),
+                // with the full text of the entire response body.
+                if($exception != null){
+                    if($exception->getResponse() != null){
+                        $message = str_replace(
+                            rtrim($exception->getMessage()),
+                            (string) $exception->getResponse()->getBody(),
+                            (string) $exception
+                        );
+
+                        Log::info('ERROR MESSAGE API : '.$message);
+                    }else{
+                        Log::info('ERROR MESSAGE API GET RESPONSE IS NULL :'.$exception->getResponse());
+                    }
+                }
+            }
+
+
+//        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
+
+            flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id. '<br> Amount: KES '.(int)$amount, 'Please try again');
+
+//            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
 
             return redirect()->back();
         }
@@ -188,7 +213,6 @@ class PaymentController extends Controller
         }
 
         return response()->json(['message' => 'success']);
-
     }
 }
 

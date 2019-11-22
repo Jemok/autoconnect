@@ -53,3 +53,7 @@ Route::post('/payment/results', 'PaymentController@processPayment')->name('proce
 
 Route::post('/payment/bulk-results', 'PaymentController@processBulkPayment')->name('processBulkPayment');
 
+
+Route::post('/payments/validation/0060d580-e175-11e8-9ec6-270c5094d460', 'MpesaValidationController@validation');
+Route::post('/payments/confirmation/00b32f00-fd94-11e9-9bba-57b75a2d9b4d', 'MpesaConfirmationController@confirmation');
+

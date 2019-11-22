@@ -91,7 +91,7 @@
                                             <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
                                                 {{ csrf_field() }}
                                                 <h5 class="card-title" style="font-weight: bold;">Standard Package</h5>
-                                                <input type="text" name="priceStandard" readonly id="priceStandard" value="KES {{ $standard_ads[0]['amount'] }}">
+                                                <input class="form-control" type="text" name="priceStandard" readonly id="priceStandard" value="KES {{ $standard_ads[0]['amount'] }}">
                                                 <p class="card-text" style="font-weight: bold;">Standard Ad</p>
                                                 {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
                                                 <div class="form-group">
@@ -138,7 +138,7 @@
                                             <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
                                                 {{ csrf_field() }}
                                                 <h5 class="card-title" style="font-weight: bold;">Premium Package</h5>
-                                                <input type="text" name="pricePremium"  readonly id="pricePremium" value="KES {{ $premium_ads[0]['amount'] }}">
+                                                <input class="form-control" type="text" name="pricePremium"  readonly id="pricePremium" value="KES {{ $premium_ads[0]['amount'] }}">
                                                 {{--<p class="card-text"  style="font-weight: bold;"></p>--}}
                                                 <p class="card-text" style="font-weight: bold;">Priority Ad</p>
                                                 {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
