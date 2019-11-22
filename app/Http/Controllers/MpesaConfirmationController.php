@@ -60,7 +60,7 @@ class MpesaConfirmationController extends Controller
 
             $mpesa_payment = MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])->firstOrFail();
 
-            $vehiclePaymentId = $mpesa_payment->univas_car_id;
+            $vehiclePaymentId = $mpesa_payment->vehicle_payment_id;
             $paymentStatus = 'success';
             $amount = (float) $request['TransAmount'];
 
