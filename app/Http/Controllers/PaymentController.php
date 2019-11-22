@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\AddPrice;
 use App\Http\Requests\PayForBulkRequest;
 use App\Jobs\StkPushJob;
+use App\MpesaPayment;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
 use App\Repositories\AdStatusRepository;
@@ -64,9 +65,18 @@ class PaymentController extends Controller
 
         $phone_number = '254'.substr($vehicleDetail->vehicle_contact->phone_number, 1);
         try{
-            dispatch(new StkPushJob($mpesa_credentials, $phone_number, $vehicleDetail->id, (int) $amount));
 
-            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
+            $mpesa_payment  = new MpesaPayment();
+
+            $mpesa_payment->univas_car_id = $vehicleDetail->id;
+            $mpesa_payment->mpesa_account_number = $vehicleDetail->id.'-1';
+            $mpesa_payment->type = 'single';
+
+            $mpesa_payment->save();
+
+            dispatch(new StkPushJob($mpesa_credentials, $phone_number, $mpesa_payment->mpesa_account_number, (int) $amount));
+
+            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
             return redirect()->back();
         }
         catch (\Exception $exception){

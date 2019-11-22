@@ -10,20 +10,27 @@ use App\Jobs\ThirdPartyCollectionNotificationJob;
 use App\Jobs\ThirdPartyNotificationJob;
 use App\MpesaApiPayment;
 use App\MpesaConfirmation;
+use App\MpesaPayment;
+use App\Notifications\PaymentReceivedNotification;
 use App\Notifications\PhoneRollupNotification;
 use App\Notifications\TransactionStatusErrorNotification;
+use App\Repositories\AdStatusRepository;
 use App\Repositories\AirtimeRepository;
 use App\Repositories\BillingCostRepository;
 use App\Repositories\KplcRepository;
 use App\Repositories\PaymentCallbackRepository;
+use App\Repositories\PaymentRepository;
 use App\Repositories\PaymentResultsRepository;
 use App\Repositories\PreConfirmationRepository;
 use App\Repositories\PreConfirmationStatusRepository;
 use App\Repositories\StkCheckRepository;
 use App\Repositories\TransactionStatusRepository;
+use App\Repositories\UsersRepository;
+use App\Repositories\VehicleDetailRepository;
 use App\Traits\accountTrait;
 use App\Traits\MpesaConfirmationTrait;
 use App\Traits\PaymentTrait;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Repositories\MpesaConfirmationRepository;
 use App\Repositories\AccountRepository;
@@ -35,7 +42,11 @@ use AfricasTalking\SDK\AfricasTalking;
 
 class MpesaConfirmationController extends Controller
 {
-    public function confirmation(Request $request){
+    public function confirmation(Request $request,
+                                 PaymentRepository $paymentRepository,
+                                 VehicleDetailRepository $vehicleDetailRepository,
+                                 UsersRepository $usersRepository,
+                                 AdStatusRepository $adStatusRepository){
 
         Log::info('MPESA CONFIRMED RN');
 
@@ -43,7 +54,57 @@ class MpesaConfirmationController extends Controller
 
         $this->makeMpesaConfirmationModel($request->all());
 
+        if(MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])->exists()){
 
+            Log::info('Single Ad Payment');
+
+            $mpesa_payment = MpesaPayment::where('mpesa_account_number', $request['BillRefNumber'])->firstOrFail();
+
+            $vehiclePaymentId = $mpesa_payment->univas_car_id;
+            $paymentStatus = 'success';
+            $amount = (float) $request['TransAmount'];
+
+            $vehicle_payment = $paymentRepository->show($vehiclePaymentId);
+
+            $vehicle_detail = $vehicleDetailRepository->show($vehicle_payment->vehicle_detail_id);
+
+            $paymentRepository->storePaymentResult($request->all(), $vehicle_detail->id, $vehicle_payment->id);
+
+            $vehicle_contact = $vehicle_detail->vehicle_contact;
+
+            $vehicle = $vehicle_detail->car_make->name.' '.$vehicle_detail->car_model->name;
+
+            if($paymentStatus == 'success'){
+
+                $paymentRepository->setAsPaid($vehicle_payment);
+
+                $user = $usersRepository->checkIfExistsUsingEmail($vehicle_contact->email, $vehicle_contact);
+
+                $start = Carbon::now();
+
+                $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
+
+                $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
+                    'pending_verification',
+                    $start,
+                    $stop,
+                    $user->id,
+                    'single',
+                    $vehicle_payment->package);
+
+                $adStatusRepository->storeAdPeriod($vehicle_detail,
+                    $ad_status,
+                    'active',
+                    $start,
+                    $stop);
+
+                $vehicle_contact->notify(new PaymentReceivedNotification($amount,
+                    $vehicle_contact->name,
+                    $vehicle));
+            }
+
+            return response()->json(['message' => 'success']);
+        }
     }
 
 
