@@ -59,6 +59,9 @@ class PaymentController extends Controller
         }
 
         $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
+
+        Log::info('B64'. $mpesa_credentials);
+
         $phone_number = '254'.substr($vehicleDetail->vehicle_contact->phone_number, 1);
         try{
             dispatch(new StkPushJob($mpesa_credentials, $phone_number, $vehicleDetail->id, (int) $amount));
