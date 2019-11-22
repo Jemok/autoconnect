@@ -68,7 +68,7 @@ class MpesaConfirmationController extends Controller
 
             $vehicle_detail = $vehicleDetailRepository->show($vehicle_payment->vehicle_detail_id);
 
-            $paymentRepository->storePaymentResult($request->all(), $vehicle_detail->id, $vehicle_payment->id);
+//            $paymentRepository->storePaymentResult($request->all(), $vehicle_detail->id, $vehicle_payment->id);
 
             $vehicle_contact = $vehicle_detail->vehicle_contact;
 
