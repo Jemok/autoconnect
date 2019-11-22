@@ -18,6 +18,7 @@ class CreateMpesaPaymentsTable extends Migration
 
             $table->string('mpesa_account_number');
             $table->string('univas_car_id');
+            $table->integer('vehicle_payment_id');
             $table->string('type');
 
             $table->timestamps();
