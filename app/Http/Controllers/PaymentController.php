@@ -204,14 +204,14 @@ class PaymentController extends Controller
 
             $mpesa_payment->univas_car_id = $bulk_import->id;
             $mpesa_payment->vehicle_payment_id = $bulk_approval->id;
-            $mpesa_payment->mpesa_account_number = $bulk_import.'-1';
+            $mpesa_payment->mpesa_account_number = $bulk_import->id.'-1';
             $mpesa_payment->type = 'bulk';
 
             $mpesa_payment->save();
 
             dispatch(new StkPushJob($mpesa_credentials, $phone_number, $mpesa_payment->mpesa_account_number, (int) $bulk_approval->amount));
 
-            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
+            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int) $bulk_approval->amount, 'Enter Mpesa Pin on Phone');
             return redirect()->back();
         }
         catch (\Exception $exception){
