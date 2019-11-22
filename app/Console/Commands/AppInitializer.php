@@ -66,6 +66,8 @@ class AppInitializer extends Command
         $this->info('Drive Types Updated');
         Artisan::call('drive-setups:add');
         $this->info('Drive SetUps Updated');
+        Artisan::call('ad:prices');
+        $this->info('Ad Prices Updated');
 
     }
 }

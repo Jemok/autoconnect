@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AddPrice;
 use App\BodyType;
 use App\Http\Requests\CarDetailsRequest;
 use App\Http\Requests\CreateVehicleContactRequest;
@@ -146,7 +147,15 @@ class VehicleController extends Controller
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
-        return view('vehicles.create-ad', compact('vehicleId', 'vehicle_detail'));
+        $standard_ads = AddPrice::where('type', 'standard')->get();
+
+        $premium_ads = AddPrice::where('type', 'premium')->get();
+
+
+        return view('vehicles.create-ad', compact('vehicleId',
+            'vehicle_detail',
+            'standard_ads',
+            'premium_ads'));
     }
 
     public function publishVehicleAd(){

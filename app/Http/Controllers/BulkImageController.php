@@ -18,7 +18,7 @@ class BulkImageController extends Controller
 
         $extension = $request->file((string) $request->keyIdentifier)->extension();
 
-        $imageRealName = $request->file('file')->getClientOriginalName();
+        $imageRealName = $request->file((string) $request->keyIdentifier)->getClientOriginalName();
 
         $imageName = $request->imageArea.time().'-'.$request->vehicleId.'.'.$extension;
 

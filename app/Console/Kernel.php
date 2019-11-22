@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
         AppInitializer::class,
         RolesCommand::class,
         AdminCommand::class,
-        AddAreasCommand::class
+        AddAreasCommand::class,
     ];
 
     /**

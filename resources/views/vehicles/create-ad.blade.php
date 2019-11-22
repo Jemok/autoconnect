@@ -88,27 +88,33 @@
                                 <div class="col-sm-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
+                                            <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
                                                 {{ csrf_field() }}
-                                                <h5 class="card-title" style="font-weight: bold;">Premium Package</h5>
-                                                <p class="card-text" style="font-weight: bold;">KES 5</p>
-                                                <p class="card-text" style="font-weight: bold;">Priority Ad</p>
+                                                <h5 class="card-title" style="font-weight: bold;">Standard Package</h5>
+                                                <input type="text" name="priceStandard" readonly id="priceStandard" value="KES {{ $standard_ads[0]['amount'] }}">
+                                                <p class="card-text" style="font-weight: bold;">Standard Ad</p>
                                                 {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
                                                 <div class="form-group">
                                                     <label for="period">Period</label>
-                                                    <select class="form-control" name="period" id="period">
-                                                        <option value="1" selected>1 Month</option>
-                                                        <option value="2">2 Months</option>
-                                                        <option value="3">3 Months</option>
-                                                        <option value="4">4 Months</option>
-                                                        <option value="5">5 Months</option>
-                                                        <option value="6">6 Months</option>
-                                                        <option value="7">7 Months</option>
-                                                        <option value="8">8 Months</option>
-                                                        <option value="9">9 Months</option>
-                                                        <option value="10">10 Months</option>
-                                                        <option value="11">11 Months</option>
-                                                        <option value="12">12 Months</option>
+                                                    <select class="form-control add-standard"  onchange="selectStandardPrice()" name="period" id="standardAdPrices">
+                                                        @foreach($standard_ads as $standard_ad)
+                                                            @if($standard_ad['weeks'] == 4)
+                                                                <option data-id="{{$standard_ad['amount']}}" value="{{$standard_ad['weeks']}}" selected>{{ $standard_ad['weeks'] }} Weeks</option>
+                                                            @else
+                                                                <option data-id="{{$standard_ad['amount']}}" value="{{$standard_ad['weeks']}}">{{ $standard_ad['weeks'] }} Weeks</option>
+                                                            @endif
+                                                            {{--<option value="6">6 Weeks</option>--}}
+                                                            {{--<option value="8">8 Weeks</option>--}}
+                                                        @endforeach
+                                                        {{--<option value="4">4 Months</option>--}}
+                                                        {{--<option value="5">5 Months</option>--}}
+                                                        {{--<option value="6">6 Months</option>--}}
+                                                        {{--<option value="7">7 Months</option>--}}
+                                                        {{--<option value="8">8 Months</option>--}}
+                                                        {{--<option value="9">9 Months</option>--}}
+                                                        {{--<option value="10">10 Months</option>--}}
+                                                        {{--<option value="11">11 Months</option>--}}
+                                                        {{--<option value="12">12 Months</option>--}}
                                                     </select>
                                                 </div>
                                                 <div class="alert alert-primary" role="alert" style="font-weight: bold;">
@@ -129,27 +135,34 @@
                                 <div class="col-sm-6">
                                     <div class="card">
                                         <div class="card-body">
-                                            <form method="POST" action="{{ route('makePayment', [$vehicleId, 'standard']) }}">
+                                            <form method="POST" action="{{ route('makePayment', [$vehicleId, 'premium']) }}">
                                                 {{ csrf_field() }}
-                                                <h5 class="card-title" style="font-weight: bold;">Standard Package</h5>
-                                                <p class="card-text" style="font-weight: bold;">Ksh 5</p>
-                                                <p class="card-text" style="font-weight: bold;">Standard Ad</p>
+                                                <h5 class="card-title" style="font-weight: bold;">Premium Package</h5>
+                                                <input type="text" name="pricePremium"  readonly id="pricePremium" value="KES {{ $premium_ads[0]['amount'] }}">
+                                                {{--<p class="card-text"  style="font-weight: bold;"></p>--}}
+                                                <p class="card-text" style="font-weight: bold;">Priority Ad</p>
                                                 {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}
                                                 <div class="form-group">
                                                     <label for="period">Period</label>
-                                                    <select class="form-control" name="period" id="period">
-                                                        <option value="1" selected>1 Month</option>
-                                                        <option value="2">2 Months</option>
-                                                        <option value="3">3 Months</option>
-                                                        <option value="4">4 Months</option>
-                                                        <option value="5">5 Months</option>
-                                                        <option value="6">6 Months</option>
-                                                        <option value="7">7 Months</option>
-                                                        <option value="8">8 Months</option>
-                                                        <option value="9">9 Months</option>
-                                                        <option value="10">10 Months</option>
-                                                        <option value="11">11 Months</option>
-                                                        <option value="12">12 Months</option>
+                                                    <select class="form-control add-premium"  onchange="selectPremiumPrice()" name="period" id="premiumAdPrices">
+                                                        @foreach($premium_ads as $premium_ad)
+                                                            @if($premium_ad['weeks'] == 4)
+                                                                <option data-id="{{$premium_ad['amount']}}" value="{{$premium_ad['weeks']}}" selected>{{ $premium_ad['weeks'] }} Weeks</option>
+                                                            @else
+                                                                <option data-id="{{$premium_ad['amount']}}" value="{{$premium_ad['weeks']}}">{{ $premium_ad['weeks'] }} Weeks</option>
+                                                            @endif
+                                                            {{--<option value="6">6 Weeks</option>--}}
+                                                            {{--<option value="8">8 Weeks</option>--}}
+                                                        @endforeach
+                                                        {{--<option value="4">4 Months</option>--}}
+                                                        {{--<option value="5">5 Months</option>--}}
+                                                        {{--<option value="6">6 Months</option>--}}
+                                                        {{--<option value="7">7 Months</option>--}}
+                                                        {{--<option value="8">8 Months</option>--}}
+                                                        {{--<option value="9">9 Months</option>--}}
+                                                        {{--<option value="10">10 Months</option>--}}
+                                                        {{--<option value="11">11 Months</option>--}}
+                                                        {{--<option value="12">12 Months</option>--}}
                                                     </select>
                                                 </div>
                                                 <div class="alert alert-primary" role="alert" style="font-weight: bold;">
@@ -185,6 +198,26 @@
         </div>
     </div>
     @push('scripts')
+    <script>
+        function selectStandardPrice() {
+
+            var price = $('#standardAdPrices').find(":selected").attr('data-id');
+
+
+            $('#priceStandard').val("KES "+price);
+        }
+
+        function selectPremiumPrice() {
+
+            var price = $('#premiumAdPrices').find(":selected").attr('data-id');
+
+
+            $('#pricePremium').val("KES "+price);
+        }
+
+
+
+    </script>
     <script>
         $('#flash-overlay-modal').modal();
     </script>

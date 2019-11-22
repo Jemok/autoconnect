@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AddPrice;
 use App\Http\Requests\PayForBulkRequest;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
@@ -28,19 +29,34 @@ class PaymentController extends Controller
     ){
         $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
 
-        $no_of_days = $request->period * 30;
+        if($request->period == 4){
+            $no_of_days  = 30;
+        }
+
+        if($request->period == 6){
+            $no_of_days  = 45;
+        }
+
+        if($request->period == 8){
+            $no_of_days  = 60;
+        }
 
         $vehiclePayment = $paymentRepository->store($vehicleDetail,
             $vehicleId,
             $paymentType,
-        $no_of_days
+            $no_of_days
         );
 
         if($paymentType == 'standard'){
-            $amount = 5;
+
+            $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
+
+
         }elseif ($paymentType == 'premium'){
-            $amount = 5;
+
+            $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
         }
+
 
         $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
 
