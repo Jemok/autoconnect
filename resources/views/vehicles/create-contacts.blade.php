@@ -130,7 +130,7 @@
                                         @endif
                                     </div>
                                     <div class="col">
-                                        <label for="inputState" style="font-weight: bold;">Phone Number*</label>
+                                        <label for="inputState" style="font-weight: bold;">Phone Number* (0712345678)</label>
                                         @if(old('phone_number') != null)
                                             <input type="text" name="phone_number" class="form-control {{ $errors->has('phone_number') ? 'is-invalid' : '' }}" value="{{ old('phone_number') }}" placeholder="Phone Number" id="phone_number_old">
                                         @elseif(old('phone_number') == null && isset($vehicle_detail->vehicle_contact->phone_number))

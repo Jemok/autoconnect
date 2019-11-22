@@ -40,7 +40,9 @@ class CarDetailsRequest extends FormRequest
             'interior' => 'nullable',
             'colour_type' => 'nullable',
             'description' => 'nullable',
-            'package_type' => 'required'
+//            'package_type' => 'required',
+            'drive_type' => 'required',
+            'drive_setup' => 'required'
         ];
     }
 }
