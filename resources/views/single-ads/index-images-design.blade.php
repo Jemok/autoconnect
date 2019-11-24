@@ -377,6 +377,112 @@
                                                         </div>
                                                     </div>
                                                 </section>
+
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-header">Upload Vehicle Pictures</div>
+
+                                                        <div class="card-body">
+                                                            @if (session('status'))
+                                                                <div class="alert alert-success" role="alert">
+                                                                    {{ session('status') }}
+                                                                </div>
+                                                            @endif
+
+                                                            <h4>
+                                                                {{  $vehicle_detail->car_make->name }} - {{ $vehicle_detail->car_model->name  }} - {{  $vehicle_detail->year }} - {{  $vehicle_detail->colour_type->name }}
+                                                            </h4>
+
+
+                                                            High quality images attract more Buyers. Upload at least 6 images. We recommend 6-9 images for best results.
+
+                                                            <form action="">
+                                                                <div class="row">
+                                                                    <div class="col-sm-4">
+                                                                        <div class="card" style="border: none;">
+                                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                                <img class="card-img-top" src="{{ asset('images/front.png') }}" id="front" alt="Card image cap">
+                                                                            </div>
+                                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                                <h6 class="card-title">Front</h6>
+                                                                                <input type="file" name="front"  onchange="readURL(this, 'front', 'frontImage', '{{ $vehicleId }}');"  class="form-control-file" id="frontImage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="card" style="border: none;">
+                                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                                <img class="card-img-top" src="{{ asset('images/back.png') }}" id="back" alt="Card image cap">
+                                                                            </div>
+                                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                                <h6 class="card-title">Back</h6>
+                                                                                <input type="file" name="back" onchange="readURL(this, 'back', 'backImage', '{{ $vehicleId }}');" class="form-control-file" id="backImage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-4">
+                                                                        <div class="card" style="border: none;">
+                                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                                <img class="card-img-top" src="{{ asset('images/left.png') }}" id="left" alt="Card image cap">
+                                                                            </div>
+                                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                                <h6 class="card-title">Left Side</h6>
+                                                                                <input type="file" name="left" onchange="readURL(this, 'left', 'leftImage', '{{ $vehicleId }}');" class="form-control-file" id="leftImage">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                            <div class="row" style="margin-top: 3%;">
+                                                                <div class="col-sm-4">
+                                                                    <div class="card" style="border: none;">
+                                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                            <img class="card-img-top" src="{{ asset('images/right.png') }}" id="right" alt="Card image cap">
+                                                                        </div>
+                                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                                            <h5 class="card-title">Right</h5>
+                                                                            <input type="file" name="right" onchange="readURL(this, 'right', 'rightImage',  '{{ $vehicleId }}');" class="form-control-file" id="rightImage">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="card" style="border: none;">
+                                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                            <img class="card-img-top" src="{{ asset('images/dashboard.jpeg') }}" id="dashboard" alt="Card image cap">
+                                                                        </div>
+                                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                                            <h5 class="card-title">Dashboard</h5>
+                                                                            <input type="file" name="dashboard" onchange="readURL(this, 'dashboard', 'dashboardImage', '{{ $vehicleId }}');" class="form-control-file" id="dashboardImage">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4">
+                                                                    <div class="card" style="border: none;">
+                                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                            <img class="card-img-top" src="{{ asset('images/interior.jpg') }}" id="interior" alt="Card image cap">
+                                                                        </div>
+                                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                                            <h5 class="card-title">Interior</h5>
+                                                                            <input type="file" name="interior" onchange="readURL(this, 'interior', 'interiorImage', '{{ $vehicleId }}');" class="form-control-file" id="interiorImage">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            Upload More Images
+
+                                                            <form action="/api/images/upload-bulk/others/{{$vehicleId}}"
+                                                                  class="dropzone"
+                                                                  id="my-awesome-dropzone"></form>
+
+                                                            {{--<a href="{{ route('createVehicle') }}" class="btn btn-danger float-left">Previous</a>--}}
+
+                                                            {{--<a href="{{ route('indexForAdmin', $vehicle_detail->bulk_import_id) }}" class="btn btn-success float-right">Next</a>--}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -456,6 +562,30 @@
     <script src="{{ asset('js/pcoded.min.js') }}"></script>
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    <script src="{{ asset('js/dropzone.js') }}"></script>
+    <script>
+        Dropzone.autoDiscover = false;
+        $(".dropzone").dropzone({
+            addRemoveLinks: true,
+            removedfile: function(file) {
+
+                var name = file.name;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/images/delete/{{ $vehicleId }}',
+                    data: {imageName: name},
+                    sucess: function(data){
+                        console.log('success: ' + data);
+                    }
+                });
+
+                var _ref;
+                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+            }
+        });
+    </script>
+    <script src="{{ asset('js/file-uploader.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script>
         baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
