@@ -187,7 +187,7 @@
                                 Previous
                             </a>
 
-                            <a href="{{ route('publishVehicleAd') }}" class="btn btn-success float-right">
+                            <a href="{{ route('publishVehicleAd', $vehicleId) }}" class="btn btn-success float-right">
                                 <i class="fa fa-check"></i>
                                 Finish
                             </a>

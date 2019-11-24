@@ -190,7 +190,7 @@ Route::get('/vehicles/create-vehicle-ad/{vehicleId}', 'VehicleController@createA
 
 Route::get('/vehicles/create-vehicle-contacts/{vehicleId}', 'VehicleController@createContacts')->name('createVehicleContacts');
 
-Route::get('/vehicles/publish-vehicle-ad', 'VehicleController@publishVehicleAd')->name('publishVehicleAd');
+Route::get('/vehicles/publish-vehicle-ad/{vehicleId}', 'VehicleController@publishVehicleAd')->name('publishVehicleAd');
 
 Route::post('/vehicles', 'VehicleController@store')->name('storeVehicle');
 

@@ -72,6 +72,7 @@ class PaymentController extends Controller
             $mpesa_payment->vehicle_payment_id = $vehiclePayment->id;
             $mpesa_payment->mpesa_account_number = $vehicleDetail->id.'-1';
             $mpesa_payment->type = 'single';
+            $mpesa_payment->amount = $amount;
 
             $mpesa_payment->save();
 

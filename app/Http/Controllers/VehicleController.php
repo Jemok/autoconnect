@@ -24,6 +24,7 @@ use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleFeaturesRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\Repositories\VehicleVerificationsRepository;
+use App\VehiclePayment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -158,7 +159,20 @@ class VehicleController extends Controller
             'premium_ads'));
     }
 
-    public function publishVehicleAd(){
+    public function publishVehicleAd($vehicleId,
+                                     VehicleDetailRepository $vehicleDetailRepository){
+
+
+        if(VehiclePayment::where('vehicle_detail_id', $vehicleId)
+                           ->where('status', 'not_paid')
+                           ->exists()){
+
+            flash()->overlay('Please Complete Payment to Continue', 'Payment not Completed');
+
+            return redirect()->back();
+        }
+
+
 
         return view('vehicles.publish-ad');
     }

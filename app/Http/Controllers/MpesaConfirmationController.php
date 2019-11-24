@@ -73,46 +73,52 @@ class MpesaConfirmationController extends Controller
 
             $vehicle_payment = $paymentRepository->show($vehiclePaymentId);
 
-            $vehicle_detail = $vehicleDetailRepository->show($vehicle_payment->vehicle_detail_id);
+            if($amount >= $mpesa_payment->amount){
+                $vehicle_payment->status = 'paid';
+
+                $vehicle_payment->save();
+
+                $vehicle_detail = $vehicleDetailRepository->show($vehicle_payment->vehicle_detail_id);
 
 //            $paymentRepository->storePaymentResult($request->all(), $vehicle_detail->id, $vehicle_payment->id);
 
-            $vehicle_contact = $vehicle_detail->vehicle_contact;
+                $vehicle_contact = $vehicle_detail->vehicle_contact;
 
-            $vehicle = $vehicle_detail->car_make->name.' '.$vehicle_detail->car_model->name;
+                $vehicle = $vehicle_detail->car_make->name.' '.$vehicle_detail->car_model->name;
 
-            if($paymentStatus == 'success'){
+                if($paymentStatus == 'success'){
 
-                Log::info('SUCCESS');
+                    Log::info('SUCCESS');
 
-                $paymentRepository->setAsPaid($vehicle_payment);
+                    $paymentRepository->setAsPaid($vehicle_payment);
 
-                $user = $usersRepository->checkIfExistsUsingEmail($vehicle_contact->email, $vehicle_contact);
+                    $user = $usersRepository->checkIfExistsUsingEmail($vehicle_contact->email, $vehicle_contact);
 
-                $start = Carbon::now();
+                    $start = Carbon::now();
 
-                $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
+                    $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
 
-                $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
-                    'pending_verification',
-                    $start,
-                    $stop,
-                    $user->id,
-                    'single',
-                    $vehicle_payment->package);
+                    $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
+                        'pending_verification',
+                        $start,
+                        $stop,
+                        $user->id,
+                        'single',
+                        $vehicle_payment->package);
 
-                $adStatusRepository->storeAdPeriod($vehicle_detail,
-                    $ad_status,
-                    'active',
-                    $start,
-                    $stop);
+                    $adStatusRepository->storeAdPeriod($vehicle_detail,
+                        $ad_status,
+                        'active',
+                        $start,
+                        $stop);
 
-                $vehicle_contact->notify(new PaymentReceivedNotification($amount,
-                    $vehicle_contact->name,
-                    $vehicle));
+                    $vehicle_contact->notify(new PaymentReceivedNotification($amount,
+                        $vehicle_contact->name,
+                        $vehicle));
+                }
+
+                Log::info('COMPLETED');
             }
-
-            Log::info('COMPLETED');
 
             return response()->json(['message' => 'success']);
         }
@@ -131,6 +137,10 @@ class MpesaConfirmationController extends Controller
             $amount = (float) $request['TransAmount'];
 
             $bulkApproval = $bulkImportRepository->showApprovalUsingId($bulkApprovalId);
+
+            $bulkApproval->payment_status = 'paid';
+
+            $bulkApproval->save();
 
             $user = $bulkApproval->bulk_import->user;
 
