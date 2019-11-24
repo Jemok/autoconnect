@@ -86,6 +86,17 @@ class AddAdPricesCommand extends Command
                     'type' => $ad['type'],
                     'status' => $ad['status']
                 ]);
+            }else{
+
+                $ad_price = AddPrice::where('weeks', $ad['weeks'])
+                    ->where('type', $ad['type'])->firstOrFail();
+
+                $ad_price->weeks = $ad['weeks'];
+                $ad_price->amount = $ad['amount'];
+                $ad_price->type = $ad['type'];
+                $ad_price->type = $ad['status'];
+
+                $ad_price->save();
             }
         }
 
