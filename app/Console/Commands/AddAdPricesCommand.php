@@ -94,7 +94,7 @@ class AddAdPricesCommand extends Command
                 $ad_price->weeks = $ad['weeks'];
                 $ad_price->amount = $ad['amount'];
                 $ad_price->type = $ad['type'];
-                $ad_price->type = $ad['status'];
+                $ad_price->status = $ad['status'];
 
                 $ad_price->save();
             }
