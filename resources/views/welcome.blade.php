@@ -164,7 +164,7 @@
                                 </a>
                             @else
                                 <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
-                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" height="100" width="100">
                                 </a>
                             @endif
 
