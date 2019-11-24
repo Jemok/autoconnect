@@ -145,7 +145,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-12 row" style="padding-left: 0px; margin-top: 3%">
+                <div class="col-md-12 row" style="padding-left: 0px; margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 
@@ -158,15 +158,18 @@
                         }
                         ?>
                         <div class="card col-md-4"  style="width: 12rem; border: none;">
-                            @if($featured_car->type == 'bulk')
-                                <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" height="100" width="100">
-                                </a>
-                            @else
-                                <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
-                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" height="100" width="100">
-                                </a>
-                            @endif
+                            <div style="height: 200px; width: 200px; overflow: hidden;">
+                                @if($featured_car->type == 'bulk')
+                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    </a>
+                                @else
+                                    <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    </a>
+                                @endif
+                            </div>
+
 
                             <div class="card-body" style="padding: 0; margin: 0;">
                             </div>
