@@ -186,7 +186,7 @@
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                 @else
-                                    <div style="padding-top: 3%;">
+                                    <div>
                                         <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
                                             <h6 style="color: black; font-size: 12px; font-weight: bold;">
                                                 {{ $featured_car->vehicle_detail->car_make->name }}
