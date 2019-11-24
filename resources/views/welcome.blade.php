@@ -165,7 +165,7 @@
                                             {{--<p style="color: black;">--}}
                                             {{--{{ $vehicle_image->image_area }}--}}
                                             {{--</p>--}}
-                                            <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}">
+                                            <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-height: 150px;">
                                         </a>
                                     </div>
                                 @else
