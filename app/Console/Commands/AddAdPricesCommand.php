@@ -41,7 +41,7 @@ class AddAdPricesCommand extends Command
         $ads = [
             [
                 'weeks' => '4',
-                'amount' => 1000,
+                'amount' => 5,
                 'type' => 'standard',
                 'status' => 'active'
             ],
