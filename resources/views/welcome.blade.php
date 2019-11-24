@@ -160,7 +160,7 @@
                         <div class="card col-md-4"  style="width: 12rem; border: none;">
                             @if($featured_car->type == 'bulk')
                                 <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" height="100" width="100">
                                 </a>
                             @else
                                 <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
@@ -190,7 +190,6 @@
                                         <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
                                     </div>
                                 @endif
-
                             </div>
                         </div>
                     @endforeach
