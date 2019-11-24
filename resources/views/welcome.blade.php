@@ -175,6 +175,8 @@
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
                                         <h6 style="color: tomato; font-weight: bold;">
                                             {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                        </h6>
+                                        <h6>
                                             {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
                                             {{ $featured_car->bulk_ad->vehicle_detail->year }}
                                         </h6>
@@ -185,6 +187,8 @@
                                         <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
                                             <h6 style="color: black; font-size: 12px; font-weight: bold;">
                                                 {{ $featured_car->vehicle_detail->car_make->name }}
+                                            </h6>
+                                            <h6>
                                                 {{ $featured_car->vehicle_detail->car_model->name }}
                                                 {{ $featured_car->vehicle_detail->year }}
                                             </h6>
