@@ -73,7 +73,7 @@ class MpesaConfirmationController extends Controller
 
             $vehicle_payment = $paymentRepository->show($vehiclePaymentId);
 
-            if($amount >= $mpesa_payment->amount){
+//            if($amount >= $mpesa_payment->amount){
                 $vehicle_payment->status = 'paid';
 
                 $vehicle_payment->save();
@@ -118,7 +118,7 @@ class MpesaConfirmationController extends Controller
                 }
 
                 Log::info('COMPLETED');
-            }
+//            }
 
             return response()->json(['message' => 'success']);
         }
