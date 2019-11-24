@@ -94,7 +94,7 @@
         <div class="container">
 
             @if(Auth::guest())
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/') }}" style="margin-top: -2%;">
                     {{--{{ config('app.name', 'Univas Auto Connect') }}--}}
                     <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">
                 </a>
@@ -113,7 +113,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('createVehicle') }}" style="color:  black;">
-                            <span style="font-weight: bold;">
+                            <span style="font-weight: bolder;">
                                 Sell Your Car Now
                             </span>
                         </a>
