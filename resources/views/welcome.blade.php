@@ -158,7 +158,7 @@
                         }
                         ?>
                         {{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
-                            <div class="col-md-6 col-lg-4 item" style="height: 210px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid black 1px;">
+                            <div class="col-md-6 col-lg-4 item" style="height: 210px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
                                 @if($featured_car->type == 'bulk')
                                     <div class="row">
                                         <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
