@@ -657,51 +657,19 @@
 
                     <div class="col-md-12 text-center">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Nairobi
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Kisumu
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Thika
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Mombasa
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Nakuru
-                            </li>
+                            @foreach($areas as $area)
+                                <li class="list-group-item">
+                                    <a href="{{ route('filterByLocation', [$area->id]) }}">
+                                        <i class="fa fa-map-marker"></i>
+                                        {{ $area->name }}
+                                    </a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
 
                     <div class="col-md-12 text-center">
                         <ul class="list-group">
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Eldoret
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Malindi
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Nyeri
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Ruiru
-                            </li>
-                            <li class="list-group-item">
-                                <i class="fa fa-map-marker"></i>
-                                Westlands
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -833,12 +801,12 @@
                     <ul style="color: black; list-style: none;">
                         <li class="">
                             <a href="" style="color: black;">
-                                Privacy Statement
+                                Terms and Conditions
                             </a>
                         </li>
                         <li class="">
-                            <a href="" style="color: black;">
-                                Terms and Conditions
+                            <a href="{{ env('APP_URL').'sitemap.xml' }}" style="color: black;">
+                                Site Map
                             </a>
                         </li>
                     </ul>
@@ -864,12 +832,12 @@
                     <ul style="color: black; list-style: none;">
                         <li class="">
                             <a href="" style="color: black;">
-                                News Letter
+                                Instagram
                             </a>
                         </li>
                         <li class="">
-                            <a href="{{ env('APP_URL').'sitemap.xml' }}" style="color: black;">
-                                Site Map
+                            <a href="" style="color: black;">
+                                Youtube
                             </a>
                         </li>
                     </ul>
