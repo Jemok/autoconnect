@@ -868,8 +868,8 @@
                             </a>
                         </li>
                         <li class="">
-                            <a href="" style="color: black;">
-                                Blog
+                            <a href="{{ env('APP_URL').'sitemap.xml' }}" style="color: black;">
+                                Site Map
                             </a>
                         </li>
                     </ul>
@@ -879,7 +879,7 @@
 
 
         <p class="text-center">
-            &copy; 2018 Univas Auto Connect
+            &copy; {{ \Carbon\Carbon::now()->year }} Univas Auto Connect
         </p>
     </footer>
 
