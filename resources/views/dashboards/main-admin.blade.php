@@ -137,7 +137,7 @@
                             </li>
 
                             <li class="">
-                                <a href="index.html">
+                                <a href="{{ route('indexMpesaPayments') }}">
                                     <span class="pcoded-micon"><i class="fa fa-money"></i><b>P</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Payments</span>
                                     <span class="pcoded-mcaret"></span>

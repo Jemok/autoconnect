@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkImportRepository;
+use App\Repositories\MpesaPaymentsRepository;
 use App\Repositories\SingleAdsRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\Repositories\VehicleVerificationsRepository;
@@ -818,6 +819,76 @@ class DatatablesController extends Controller
             ->rawColumns(['view'])
             ->make(true);
     }
+
+    public function getAllMpesaPayments(MpesaPaymentsRepository  $mpesaPaymentsRepository){
+
+        $mpesa_payments = $mpesaPaymentsRepository->index();
+
+        return Datatables::of($mpesa_payments)
+
+            ->addColumn('id', function ($mpesa_payment){
+
+                return $mpesa_payment->id;
+            })
+            ->addColumn('transaction_type', function ($mpesa_payment){
+
+                return $mpesa_payment->transaction_type;
+            })
+            ->addColumn('trans_id', function ($mpesa_payment){
+
+                return $mpesa_payment->trans_id;
+            })
+            ->addColumn('trans_amount', function ($mpesa_payment){
+
+                return $mpesa_payment->trans_amount;
+
+            }) ->addColumn('business_short_code', function ($mpesa_payment){
+
+                return $mpesa_payment->business_short_code;
+            })
+            ->addColumn('bill_ref_number', function ($mpesa_payment){
+
+                return $mpesa_payment->bill_ref_number;
+            })
+            ->addColumn('invoice_number', function ($mpesa_payment){
+
+                return $mpesa_payment->invoice_number;
+            })
+            ->addColumn('org_account_number', function ($mpesa_payment){
+
+                return $mpesa_payment->org_account_number;
+            })
+            ->addColumn('internal_transaction_id', function ($mpesa_payment){
+
+                return $mpesa_payment->org_account_number;
+            })
+            ->addColumn('msisdn', function ($mpesa_payment){
+
+                return $mpesa_payment->msisdn;
+            })
+            ->addColumn('first_name', function ($mpesa_payment){
+
+                return $mpesa_payment->first_name;
+            })
+            ->addColumn('middle_name', function ($mpesa_payment){
+
+                return $mpesa_payment->middle_name;
+            })
+            ->addColumn('last_name', function ($mpesa_payment){
+
+                return $mpesa_payment->last_name;
+            })
+            ->addColumn('created_at', function ($mpesa_payment){
+
+                return $mpesa_payment->created_at;
+            })
+            ->addColumn('updated_at', function ($mpesa_payment){
+
+                return $mpesa_payment->created_at;
+            })
+            ->make(true);
+    }
+
 
     public function indexBulkAdsDataForDealer(BulkImportRepository $bulkImportRepository){
 
