@@ -208,6 +208,10 @@
                                                                     <thead>
                                                                     <tr>
                                                                         <th scope="col">Id</th>
+                                                                        <th scope="col">MSISDN</th>
+                                                                        <th scope="col">First Name</th>
+                                                                        <th scope="col">Middle Name</th>
+                                                                        <th scope="col">Last Name</th>
                                                                         <th scope="col">Transaction Type</th>
                                                                         <th scope="col">Transaction Id</th>
                                                                         <th scope="col">Transaction Time</th>
@@ -217,10 +221,6 @@
                                                                         <th scope="col">Invoice Number</th>
                                                                         <th scope="col">Org Account Balance</th>
                                                                         <th scope="col">Internal Transaction Id</th>
-                                                                        <th scope="col">MSISDN</th>
-                                                                        <th scope="col">First Name</th>
-                                                                        <th scope="col">Middle Name</th>
-                                                                        <th scope="col">Last Name</th>
                                                                         <th scope="col">Created At</th>
                                                                         <th scope="col">Updated At</th>
                                                                     </tr>
@@ -464,6 +464,10 @@
             ajax: '{!! route('getAllMpesaPayments') !!}',
             columns: [
                 { data: 'id', name: 'id' },
+                { data: 'msisdn', name: 'msisdn'},
+                { data: 'first_name', name: 'first_name'},
+                { data: 'middle_name', name: 'middle_name'},
+                { data: 'last_name', name: 'last_name'},
                 { data: 'transaction_type', name: 'transaction_type'},
                 { data: 'trans_id', name: 'trans_id'},
                 { data: 'trans_time', name: 'trans_time'},
@@ -473,10 +477,6 @@
                 { data: 'invoice_number', name: 'invoice_number' },
                 { data: 'org_account_balance', name: 'org_account_balance'},
                 { data: 'internal_transaction_id', name: 'internal_transaction_id'},
-                { data: 'msisdn', name: 'msisdn'},
-                { data: 'first_name', name: 'first_name'},
-                { data: 'middle_name', name: 'middle_name'},
-                { data: 'last_name', name: 'last_name'},
                 { data: 'created_at', name: 'created_at'},
                 { data: 'updated_at', name: 'updated_at'},
             ],
