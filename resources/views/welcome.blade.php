@@ -101,44 +101,60 @@
                     <div class="col-md-12 row">
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top" src="{{ asset('images/car-uni.jpeg') }}" alt="Card image cap">
+                                <a href="{{ route('filterByCategory', ['cars']) }}">
+                                    <img class="card-img-top" src="{{ asset('images/car-uni.jpeg') }}" alt="Card image cap">
+                                </a>
                                 <h5 class="card-title text-center">
+                                    <a href="{{ route('filterByCategory', ['cars']) }}">
                                     <span style="font-weight: bold;">
                                         Cars
                                     </span>
+                                    </a>
                                 </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
+                                <a href="{{ route('filterByCategory', ['motorbikes']) }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
+                                </a>
                                 <h5 class="card-title text-center">
+                                    <a href="{{ route('filterByCategory', ['motorbikes']) }}">
                                     <span style="font-weight: bold;">
                                     Motorbikes
                                     </span>
+                                    </a>
                                 </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
+                                <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
+                                </a>
                                 <h5 class="card-title">
+                                    <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
                                     <span style="font-weight: bold;">
                                     Trucks & Trailers
                                     </span>
+                                    </a>
                                 </h5>
                             </div>
                         </div>
 
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
-                                <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
+                                <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
+                                    <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
+                                </a>
                                 <h5 class="card-title">
+                                    <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <span style="font-weight: bold;">
                                     Vans & Buses
                                     </span>
+                                    </a>
                                 </h5>
                             </div>
                         </div>

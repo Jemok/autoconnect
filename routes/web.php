@@ -284,6 +284,9 @@ Route::get('car-search-results', 'CarSearchController@showSearchResults')
 Route::get('filter-location/{areaId}', 'LocationController@filterByLocation')
     ->name('filterByLocation');
 
+Route::get('filter-category/{category}', 'CarCategoriesController@filterByCategory')
+    ->name('filterByCategory');
+
 Route::post('/request-callback/{adStatusId}', 'RequestCallbackController@storeAdStatusCallback')
     ->name('storeAdStatusCallback');
 
