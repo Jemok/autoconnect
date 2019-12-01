@@ -59,7 +59,7 @@ class AddAdPricesCommand extends Command
             ],
             [
                 'weeks' => '4',
-                'amount' => 2500,
+                'amount' => 5,
                 'type' => 'premium',
                 'status' => 'active'
             ],
