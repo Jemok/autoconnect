@@ -50,15 +50,15 @@
                             <i class="fa fa-filter"></i>  Filter
                         </div>
                         {{--<ul class="list-group list-group-flush">--}}
-                            {{--<li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">BODY TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">YEAR <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">PRICE <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">LOCATION <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">FUEL TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>--}}
-                            {{--<li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">BODY TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">YEAR <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">PRICE <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">LOCATION <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">FUEL TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>--}}
+                        {{--<li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>--}}
                         {{--</ul>--}}
                     </div>
                 </div>
