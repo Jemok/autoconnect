@@ -44,11 +44,11 @@
             <hr>
 
             <div class="row">
-                {{--<div class="col-md-3">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-header">--}}
-                            {{--<i class="fa fa-filter"></i>  Filter--}}
-                        {{--</div>--}}
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fa fa-filter"></i>  Filter
+                        </div>
                         {{--<ul class="list-group list-group-flush">--}}
                             {{--<li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>--}}
                             {{--<li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>--}}
@@ -60,10 +60,10 @@
                             {{--<li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>--}}
                             {{--<li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>--}}
                         {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+                    </div>
+                </div>
 
-                <div class="col-md-12">
+                <div class="col-md-9">
                     @foreach($vehicles as $vehicle)
                         @if($carSearchRepository->checkIfAdIsOnline($vehicle))
                             <a href="{{ route('singleCarView', $vehicle->id) }}" style="text-decoration: none;">
@@ -74,7 +74,7 @@
                                                 <?php
                                                 $vehicle_front_image = getVehicleFrontImage($vehicle->id)
                                                 ?>
-                                                <img class="card-img-top"  src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" style="height: 150px;">
+                                                <img class="card-img-top"  src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
                                             </div>
 
                                             <div class="col-md-4">
