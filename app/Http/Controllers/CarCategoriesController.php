@@ -76,7 +76,6 @@ class CarCategoriesController extends Controller
 
         return view('front.category-vehicles', compact(
             'category',
-            'area',
             'vehicles',
             'carSearchRepository',
             'userVerificationRepository'));
