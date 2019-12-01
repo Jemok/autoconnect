@@ -40,7 +40,7 @@
                 <div style="padding-top: 5%;">
                     <h5 class="text-left">
                         <span style="font-weight: bold;">
-                          Featured
+                          Featured Ads
                         </span>
                     </h5>
 
@@ -160,6 +160,13 @@
                         </div>
                     </div>
                 </div>
+
+
+                <h5 class="text-left" style="padding-top: 5%;">
+                        <span style="font-weight: bold;">
+                         More Featured Ads
+                        </span>
+                </h5>
 
                 <div class="col-md-12 row" style="padding-left: 0px; margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
