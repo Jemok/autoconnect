@@ -402,6 +402,7 @@ class BulkImportRepository
 
                 $vehicleImagesRepository->store($vehicle_detail,
                     $image->image_name,
+                    $image->image_real_name,
                     $image->image_area,
                     $vehicle_detail->id);
             }
@@ -485,6 +486,7 @@ class BulkImportRepository
 
             $vehicleImagesRepository->store($vehicle_detail,
                 $image->image_name,
+                $image->image_real_name,
                 $image->image_area,
                 $vehicle_detail->id);
         }
