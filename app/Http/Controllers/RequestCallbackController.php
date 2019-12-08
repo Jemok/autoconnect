@@ -26,7 +26,15 @@ class RequestCallbackController extends Controller
 
         $message = "I'm ". $request_callback->first_name.", I'm interested in your Ad, ".$vehicle_detail->car_make->name." ".$vehicle_detail->car_model->name." My number is : ".$request_callback->phone_number.' Pls call me back';
 
-        $number = '254'.substr($vehicle_contact->phone_number, 1);
+        if($adStatus->type == 'single'){
+
+            $number = '254'.substr($vehicle_contact->phone_number, 1);
+        }
+
+        if($adStatus->type == 'bulk'){
+
+            $number = '254'.substr($user->phone_number, 1);
+        }
 
         $user->notify(new SendCallbackNotification($vehicle_detail, $user, $request_callback, $number, $message));
 
