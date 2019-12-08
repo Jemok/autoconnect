@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateDealerProfile;
 use App\Http\Requests\UploadDealerProfile;
 use App\Repositories\DealerProfileRepository;
 use Illuminate\Http\Request;
@@ -34,6 +35,16 @@ class DealerProfileController extends Controller
         $dealerProfileRepository->storeUserProfile(Auth::user()->id, $file_name);
 
         flash()->overlay('Your photo was uploaded successfully');
+
+        return redirect()->back();
+    }
+
+    public function updateDealerProfile(UpdateDealerProfile $updateDealerProfile,
+                                        DealerProfileRepository $dealerProfileRepository){
+
+        $dealerProfileRepository->updateDealerProfile($updateDealerProfile->all(), Auth::user()->id);
+
+        flash()->overlay('Your Profile has been updated Successfully');
 
         return redirect()->back();
     }

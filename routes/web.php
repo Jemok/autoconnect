@@ -296,6 +296,9 @@ Route::post('/request-callback/{adStatusId}', 'RequestCallbackController@storeAd
 Route::get('dealer-profile', 'DealerProfileController@showProfile')
     ->name('showDealerProfile');
 
+Route::post('update-dealer-profile', 'DealerProfileController@updateDealerProfile')
+    ->name('updateDealerProfile');
+
 Route::post('upload-dealer-profile', 'DealerProfileController@uploadDealerProfile')
     ->name('uploadDealerProfile');
 
