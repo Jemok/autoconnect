@@ -251,6 +251,57 @@
                                                         </span>
                                                     @endif
                                                 </div>
+
+                                                <h5>
+                                                    ONLY IMAGES SUPPORTED
+                                                </h5>
+
+                                                <div class="col-sm-12">
+                                                    <div class="card" style="border: none;">
+                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="business_registration_certificate" alt="Card image cap">
+                                                        </div>
+                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                            <h6 class="card-title">
+                                                    <span style="font-weight: bold;">
+                                                        Business Registration Certificate
+                                                    </span>
+                                                            </h6>
+                                                            <input type="file" name="business_registration_certificate"  onchange="readURL(this, 'business_registration_certificate', 'businessRegistrationCertificate', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');"  class="form-control-file" id="businessRegistrationCertificate">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="card" style="border: none;">
+                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="kra_pin" alt="Card image cap">
+                                                        </div>
+                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                            <h6 class="card-title">
+                                                    <span style="font-weight: bold;">
+                                                    KRA PIN
+                                                    </span>
+                                                            </h6>
+                                                            <input type="file" name="kra_pin" onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <div class="card" style="border: none;">
+                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="cr_12" alt="Card image cap">
+                                                        </div>
+                                                        <div class="card-body" style="background-color: lightgrey;">
+                                                            <h6 class="card-title">
+                                                    <span style="font-weight: bold;">
+                                                    CR 12
+                                                    </span>
+                                                            </h6>
+                                                            <input type="file" name="left" onchange="readURL(this, 'cr_12', 'cr12', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="cr12">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
@@ -333,6 +384,7 @@
     <script src="{{ asset('js/vartical-demo.js') }}"></script>
     <script src="{{ asset('js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
     <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('js/dropzone.js') }}"></script>
     <script>
 
         $('#flash-overlay-modal').modal();
@@ -351,6 +403,7 @@
             });
         });
     </script>
+    <script src="{{ asset('js/file-uploader-1.js') }}"></script>
 </div>
 </body>
 

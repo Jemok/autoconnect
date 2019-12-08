@@ -68,4 +68,31 @@ class DealerProfileRepository
 
         return $dealer_profile;
     }
+
+    public function storeFile($userId, $fileType, $fileName){
+
+        $dealer_profile = UserProfile::where('user_id', $userId)->firstOrFail();
+
+        if($fileType == 'businessRegistrationCertificate'){
+
+            $dealer_profile->business_registration_certificate = $fileName;
+
+        }
+
+        if($fileType == 'kraPin'){
+
+            $dealer_profile->kra_pin_certificate = $fileName;
+
+        }
+
+        if($fileType == 'cr12'){
+
+            $dealer_profile->cr12_document = $fileName;
+        }
+
+        $dealer_profile->save();
+
+        return $dealer_profile;
+
+    }
 }

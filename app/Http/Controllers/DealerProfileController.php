@@ -15,7 +15,7 @@ class DealerProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['uploadDealerFiles']);
     }
 
     public function showProfile(DealerProfileRepository $dealerProfileRepository){
@@ -47,5 +47,22 @@ class DealerProfileController extends Controller
         flash()->overlay('Your Profile has been updated Successfully');
 
         return redirect()->back();
+    }
+
+    public function uploadDealerFiles(Request $request,
+                                      DealerProfileRepository $dealerProfileRepository){
+
+        $extension = $request->file((string) $request->keyIdentifier)->extension();
+
+        $imageRealName = $request->file((string) $request->keyIdentifier)->getClientOriginalName();
+
+        $imageName = $request->imageArea.time().'-'.$request->userId.'.'.$extension;
+
+        $request->file((string) $request->keyIdentifier)->storeAs('images/dealers', $imageName, 'public');
+
+        $dealerProfileRepository->storeFile($request->userId, $request->imageArea, $imageName);
+
+        return 'ok';
+
     }
 }
