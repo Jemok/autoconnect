@@ -35,6 +35,18 @@
                             </div>
 
                             <div class="form-label-group">
+                                <input id="phone_number" type="text" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" required>
+
+                                <label for="phone_number">Phone Number</label>
+
+                                @if ($errors->has('phone_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-label-group">
                                 <input type="password" id="inputPassword" name="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" required>
                                 <label for="inputPassword">Password</label>
                                 @if ($errors->has('password'))
