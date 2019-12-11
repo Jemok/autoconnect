@@ -102,9 +102,9 @@
 
                                                     @if($user_profile != false)
                                                         <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
-                                                        <h5 style="margin-top: 2%; font-weight: bold;">
+                                                        <h6 style="margin-top: 2%; font-weight: bold;">
                                                             {{ $user_profile->business_name }}
-                                                        </h5>
+                                                        </h6>
                                                     @endif
                                                 </div>
                                             </div>
