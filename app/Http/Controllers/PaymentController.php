@@ -224,6 +224,7 @@ class PaymentController extends Controller
 
             $mpesa_payment  = new MpesaPayment();
 
+            $mpesa_payment->amount = (int) $bulk_approval->amount;
             $mpesa_payment->univas_car_id = $bulk_import->id;
             $mpesa_payment->vehicle_payment_id = $bulk_approval->id;
             $mpesa_payment->mpesa_account_number = $bulk_import->id.'-2';
