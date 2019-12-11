@@ -31,6 +31,7 @@ class BulkPaymentsRepository
 
         $other_bulk_payment->channel = $data['payment_method'];
         $other_bulk_payment->amount = $data['amount'];
+        $other_bulk_payment->receipt_number = $data['receipt_number'];
         $other_bulk_payment->bulk_import_id = $bulkImportId;
 
         $other_bulk_payment->save();

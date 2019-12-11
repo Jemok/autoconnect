@@ -33,6 +33,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="receipt_number">Receipt No *</label>
+
+                                <input id="receipt_number" type="text" class="form-control{{ $errors->has('receipt_number') ? ' is-invalid' : '' }}" name="receipt_number" value="{{ old('receipt_number') }}" required>
+
+                                @if ($errors->has('receipt_number'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('receipt_number') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
                                 <label for="amount">Payment Amount</label>
                                 <input type="number" name="amount" class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}" id="amount" aria-describedby="amountHelp" placeholder="E.g 10000">
                                 @if($errors->has('amount'))
