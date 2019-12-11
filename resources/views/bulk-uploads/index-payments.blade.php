@@ -71,6 +71,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Receipt Number</th>
                                 <th scope="col">Channel</th>
                                 <th scope="col">Date</th>
                             </tr>
@@ -83,6 +84,9 @@
                                     </td>
                                     <td>
                                         {{ $other_payment->amount }}
+                                    </td>
+                                    <td>
+                                        {{ $other_payment->receipt_number }}
                                     </td>
                                     <td>
                                         {{ $other_payment->channel }}
