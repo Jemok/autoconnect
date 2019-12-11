@@ -145,7 +145,7 @@
                             </li>
 
                             <li class="">
-                                <a href="index.html">
+                                <a href="{{ route('indexAccountSettings') }}">
                                     <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Account Settings</span>
                                     <span class="pcoded-mcaret"></span>
