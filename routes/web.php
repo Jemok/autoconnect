@@ -171,6 +171,25 @@ Route::get('/dealer-online-ads', 'AdsManagementController@indexDealerOnlineAds')
     ->name('indexDealerOnlineAds')
     ->middleware('verified');
 
+Route::get('/settings', 'SettingsController@index')
+    ->name('indexAccountSettings')
+    ->middleware('verified');
+
+Route::post('/settings', 'SettingsController@updateAccount')
+    ->name('updateAccount')
+    ->middleware('auth')
+    ->middleware('verified');
+
+Route::post('settings-email', 'SettingsController@updateEmail')
+    ->name('settingsEmail')
+    ->middleware('auth')
+    ->middleware('verified');
+
+Route::post('/update-password', 'SettingsController@updatePassword')
+    ->name('updatePassword')
+    ->middleware('auth')
+    ->middleware('verified');
+
 Route::get('/dealer-pending-verification-ads', 'AdsManagementController@indexDealerPendingVerificationAds')
     ->name('indexDealerPendingVerificationAds')
     ->middleware('verified');
@@ -242,7 +261,7 @@ Route::post('/import-vehicles', 'BulkUploadController@importVehicles')
 Route::post('/store-bulk-vehicles/{bulkImportId}', 'BulkUploadController@storeBulkVehicle')
     ->name('storeBulkVehicle');
 
-Route::get('/confirm-bulk-imports/{bulkImportId}', 'BulkUploadController@confirmBulkImports')
+Route::get('/x-bulk-imports/{bulkImportId}', 'BulkUploadController@confirmBulkImports')
     ->name('confirmBulkImports');
 
 Route::get('/pay-for-bulk-imports/{bulkImportId}', 'PaymentController@showBulkPaymentsPage')
