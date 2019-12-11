@@ -31,4 +31,17 @@ class UserVerificationRepository
         }
     }
 
+    public function checkVerificationFromUser($userId){
+
+        if(UserVerification::where('user_id', $userId)->exists()){
+
+            $user_verification = UserVerification::where('user_id', $userId)->firstOrFail();
+
+            return $user_verification;
+        }else{
+
+            return false;
+        }
+    }
+
 }

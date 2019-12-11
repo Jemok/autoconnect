@@ -315,6 +315,9 @@ Route::post('/request-callback/{adStatusId}', 'RequestCallbackController@storeAd
 Route::get('dealer-profile', 'DealerProfileController@showProfile')
     ->name('showDealerProfile');
 
+Route::get('index-dealer-profile/{userId}', 'DealerProfileController@indexDealerProfile')
+    ->name('indexDealerProfile');
+
 Route::post('update-dealer-profile', 'DealerProfileController@updateDealerProfile')
     ->name('updateDealerProfile');
 

@@ -101,10 +101,12 @@
                                                     ?>
 
                                                     @if($user_profile != false)
-                                                        <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
-                                                        <h6 style="margin-top: 2%; font-weight: bold;">
-                                                            {{ $user_profile->business_name }}
-                                                        </h6>
+                                                            <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
+                                                                <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                                                                <h6 style="margin-top: 2%; font-weight: bold;">
+                                                                    {{ $user_profile->business_name }}
+                                                                </h6>
+                                                            </a>
                                                     @endif
                                                 </div>
                                             </div>

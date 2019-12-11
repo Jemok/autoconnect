@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateDealerProfile;
 use App\Http\Requests\UploadDealerProfile;
+use App\Repositories\AdStatusRepository;
 use App\Repositories\DealerProfileRepository;
+use App\Repositories\UserVerificationRepository;
+use App\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +18,7 @@ class DealerProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except(['uploadDealerFiles']);
+        $this->middleware('auth')->except(['uploadDealerFiles', 'indexDealerProfile']);
     }
 
     public function showProfile(DealerProfileRepository $dealerProfileRepository){
@@ -63,6 +66,25 @@ class DealerProfileController extends Controller
         $dealerProfileRepository->storeFile($request->userId, $request->imageArea, $imageName);
 
         return 'ok';
+    }
 
+    /**
+     * @param $userId
+     * @param AdStatusRepository $adStatusRepository
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function indexDealerProfile($userId,
+                                       AdStatusRepository $adStatusRepository,
+                                       UserVerificationRepository $userVerificationRepository){
+
+        $user_profile = UserProfile::where('user_id', $userId)->firstOrFail();
+
+        $featured_cars = $adStatusRepository->indexDealerOnlineAds($userId);
+
+        $user_verification = $userVerificationRepository->checkVerificationFromUser($userId);
+
+        return view('dealer.index-profile', compact('featured_cars',
+            'user_profile',
+            'user_verification'));
     }
 }
