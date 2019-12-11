@@ -43,11 +43,29 @@ class PaymentController extends Controller
             $no_of_days  = 60;
         }
 
-        $vehiclePayment = $paymentRepository->store($vehicleDetail,
-            $vehicleId,
-            $paymentType,
-            $no_of_days
-        );
+        if($request->period == null){
+
+            $no_of_days = 1000000;
+        }
+
+        if($paymentType == 'ultimate'){
+
+            $vehiclePayment = $paymentRepository->store($vehicleDetail,
+                $vehicleId,
+                'standard',
+                $no_of_days
+            );
+
+        }else{
+
+            $vehiclePayment = $paymentRepository->store($vehicleDetail,
+                $vehicleId,
+                $paymentType,
+                $no_of_days
+            );
+        }
+
+
 
         if($paymentType == 'standard'){
 
@@ -57,6 +75,9 @@ class PaymentController extends Controller
         }elseif ($paymentType == 'premium'){
 
             $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
+        }elseif ($paymentType == 'ultimate'){
+
+            $amount = 2500;
         }
 
         $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
@@ -105,7 +126,7 @@ class PaymentController extends Controller
 
 //        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
 
-            flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id. '<br> Amount: KES '.(int)$amount, 'Please try again');
+            flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id.'-1'. '<br> Amount: KES '.(int)$amount, 'Please try again');
 
 //            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
 
