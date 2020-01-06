@@ -129,7 +129,7 @@
                             </li>
 
                             <li class="">
-                                <a href="index.html">
+                                <a href="{{ route('indexAllReports') }}">
                                     <span class="pcoded-micon"><i class="ti-clipboard"></i><b>R</b></span>
                                     <span class="pcoded-mtext" data-i18n="nav.dash.main">Reports</span>
                                     <span class="pcoded-mcaret"></span>

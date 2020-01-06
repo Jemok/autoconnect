@@ -37,14 +37,63 @@
                     </div>
                 </div>
 
-                <div style="padding-top: 5%;">
-                    @if($featured_cars->count())
+                <div style="padding-top: 5%;" class="d-none d-md-block d-lg-block d-xl-block">
                     <h5 class="text-left">
                         <span style="font-weight: bold;">
                           Featured Ads
                         </span>
                     </h5>
-                    @endif
+
+                    <div class="col-md-12 row" style="padding-left: 0px;" >
+                        @foreach($featured_cars as $featured_car)
+                            <?php
+
+                            if($featured_car->type == 'bulk'){
+
+                                $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
+
+                            }else{
+                                $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
+                            }
+                            ?>
+                            <div class="card col-md-4"  style="width: 12rem; border: none;">
+                                @if($featured_car->type == 'bulk')
+                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    </a>
+                                @else
+                                    <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                    </a>
+                                @endif
+
+                                <div class="card-body" style="padding: 0; margin: 0;">
+                                </div>
+                                <div class="card-footer" style="padding: 0; background-color: white;">
+                                    @if($featured_car->type == 'bulk')
+                                        <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                            <h6 style="color: tomato;">
+                                                {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                            </h6>
+                                        </a>
+                                        <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                    @else
+                                        <div style="padding-top: 3%;">
+                                            <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
+                                                <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                    {{ $featured_car->vehicle_detail->car_make->name }}
+                                                    {{ $featured_car->vehicle_detail->car_model->name }}
+                                                    {{ $featured_car->vehicle_detail->year }}
+                                                </h6>
+                                            </a>
+                                            <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+                                        </div>
+                                    @endif
+
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
 
                     <div class="col-md-12 row d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px;" >
                         @foreach($featured_cars as $featured_car)
@@ -96,12 +145,13 @@
                             </div>
                         @endforeach
                     </div>
+
                 </div>
 
                 <div style="padding-top: 5%;">
 
-                    <div class="col-md-12 row d-none d-md-block d-lg-block d-xl-block">
-                        <div class="card col-md-3"  style="width: 12rem;">
+                    <div class="col-md-12 row">
+                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['cars']) }}">
                                     <img class="card-img-top" src="{{ asset('images/car-uni.jpeg') }}" alt="Card image cap">
@@ -116,7 +166,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3"  style="width: 12rem;">
+                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['motorbikes']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
@@ -131,7 +181,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3"  style="width: 12rem;">
+                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
@@ -146,7 +196,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3"  style="width: 12rem;">
+                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
@@ -170,7 +220,7 @@
                         </span>
                 </h5>
 
-                <div class="col-md-12 row d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px; margin-top: 1%">
+                <div class="col-md-12 row" style="padding-left: 0px; margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 
@@ -248,86 +298,6 @@
                         {{--</div>--}}
                     @endforeach
                 </div>
-
-                <div class="col-md-12 row d-xs-block d-md-none d-lg-none d-xl-none mx-auto" style="padding-left: 0px; margin-top: 1%">
-                    @foreach($featured_standard_cars as $featured_car)
-                        <?php
-
-                        if($featured_car->type == 'bulk'){
-
-                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
-
-                        }else{
-                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
-                        }
-                        ?>
-                        {{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
-                        <div class="col-md-12 col-lg-12 item mx-auto" style="height: 250px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
-                            @if($featured_car->type == 'bulk')
-                                <div class="row">
-                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                        {{--<p style="color: black;">--}}
-                                        {{--{{ $vehicle_image->image_area }}--}}
-                                        {{--</p>--}}
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
-                                    </a>
-                                </div>
-                            @else
-                                <div class="row">
-                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
-                                        {{--<p style="color: black;">--}}
-                                        {{--{{ $vehicle_image->image_area }}--}}
-                                        {{--</p>--}}
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
-                                    </a>
-                                </div>
-                            @endif
-                            <div class="card-footer" style="padding: 0; background-color: white;">
-                                @if($featured_car->type == 'bulk')
-                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                        <h6 style="color: tomato; font-weight: bold;">
-                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
-                                        </h6>
-                                        <h6>
-                                            {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
-                                            {{ $featured_car->bulk_ad->vehicle_detail->year }}
-                                        </h6>
-                                    </a>
-                                    <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
-                                @else
-                                    <div>
-                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
-                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">
-                                                {{ $featured_car->vehicle_detail->car_make->name }}
-                                            </h6>
-                                            <h6>
-                                                {{ $featured_car->vehicle_detail->car_model->name }}
-                                                {{ $featured_car->vehicle_detail->year }}
-                                            </h6>
-                                        </a>
-                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-
-                        {{--<div style="height: 200px; width: 200px; overflow: hidden;">--}}
-                        {{--@if($featured_car->type == 'bulk')--}}
-                        {{--<a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-                        {{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
-                        {{--</a>--}}
-                        {{--@else--}}
-                        {{--<a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">--}}
-                        {{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
-                        {{--</a>--}}
-                        {{--@endif--}}
-                        {{--</div>--}}
-
-
-                        {{--</div>--}}
-                    @endforeach
-                </div>
-
 
                 <div style="padding-top: 2%;">
                     <div class="col-md-12 row">

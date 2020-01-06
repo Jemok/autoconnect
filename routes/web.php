@@ -142,6 +142,11 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('get-all-mpesa-payments', 'DatatablesController@getAllMpesaPayments')->name('getAllMpesaPayments');
 
     Route::get('mpesa-payments', 'MpesaPaymentsController@indexPayments')->name('indexMpesaPayments');
+
+    Route::get('reports', 'ReportsController@indexAll')->name('indexAllReports');
+
+    Route::get('financial-reports', 'ReportsController@financialReport')->name('financialReport');
+
 });
 
 Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
