@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Exports\OnlineAdsExport;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\App;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ReportsController extends Controller
 {
@@ -15,5 +18,20 @@ class ReportsController extends Controller
 
 
         return view('reports.financial');
+    }
+
+    public function exportOnlineAds(){
+
+        $pdf = App::make('dompdf.wrapper');
+        $pdf->loadView('reports.online-ads-pdf');
+        return $pdf->stream();
+
+//        return $pdf->download('online-ads-report-'.Carbon::now()->toDateTimeString());
+    }
+
+    public function exportOnlineAdsExcel(){
+
+        return Excel::download(new OnlineAdsExport(), 'online-ads'.Carbon::now()->toDateTimeString().'.xlsx');
+
     }
 }

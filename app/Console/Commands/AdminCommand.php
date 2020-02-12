@@ -43,6 +43,7 @@ class AdminCommand extends Command
             [
                 'name' => 'Admin',
                 'email' => 'admin@univasautoconnect.com',
+                'phone_number' => '0712675071',
                 'password' => '123456',
             ]
         ];
@@ -52,6 +53,7 @@ class AdminCommand extends Command
                 $user = User::create([
                     'name' => $user['name'],
                     'email' => $user['email'],
+                    'phone_number' => $user['phone_number'],
                     'password' => bcrypt($user['password']),
                 ]);
 

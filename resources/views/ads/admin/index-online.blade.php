@@ -171,6 +171,19 @@
                                     <div class="card-block">
                                         <h5 class="m-b-10">Online Ads</h5>
                                         <p class="text-muted m-b-10">Manage all online Ads here</p>
+
+                                        <div class="pull-right">
+                                            <a href="{{ route('exportOnlineAds') }}" class="btn btn-primary btn-sm">
+                                                Export Pdf
+                                            </a>
+                                        </div>
+
+                                        <div class="pull-right">
+                                            <a href="{{ route('exportOnlineAdsExcel') }}" class="btn btn-primary btn-sm">
+                                                Export Excel
+                                            </a>
+                                        </div>
+
                                         <ul class="breadcrumb-title b-t-default p-t-10">
                                             <li class="breadcrumb-item">
                                                 <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>

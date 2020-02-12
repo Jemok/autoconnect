@@ -153,6 +153,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
 
@@ -215,6 +217,10 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+//        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
     ],
 
 ];
