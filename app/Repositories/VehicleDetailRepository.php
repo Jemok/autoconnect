@@ -177,7 +177,7 @@ class VehicleDetailRepository
 
     public function getEightLatestOnlineStandard(){
 
-        return AdStatus::where('status', 'online')->where('ad_type', 'standard')->take(8)->latest()->get();
+        return AdStatus::where('status', 'online')->where('ad_type', 'standard')->take(100)->latest()->get();
     }
 
 
