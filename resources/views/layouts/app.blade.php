@@ -130,7 +130,7 @@
 
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item d-none d-lg-block d-xl-block nav-phone-li" style="margin-left: 60px;">
-                    <a href="{{ url('login') }}" class="nav-link nav-phone-text color-black">
+                    <a href="{{ url('vehicles/create') }}" class="nav-link nav-phone-text color-black">
                         Sell Your Car Now
                     </a>
                 </li>
@@ -152,19 +152,19 @@
 
             <ul class="navbar-nav d-lg-none d-xl-none yellow_line ul-inline-landing">
                 <li class="nav-item d-lg-none inline-display">
-                    <a  href="{{ url('login') }}" class="nav-phone-small">
+                    <a  href="{{ url('vehicles/create') }}" class="nav-phone-small">
                         Sell Your Car Now |
                     </a>
                 </li>
 
                 <li class="nav-item d-lg-none inline-display">
-                    <a href="{{ url('register') }}" class="nav-phone-small">
+                    <a href="{{ url('login') }}" class="nav-phone-small">
                         Sign In |
                     </a>
                 </li>
 
                 <li class="nav-item d-lg-none inline-display">
-                    <a href="{{ url('pricing') }}" class="nav-phone-small">
+                    <a href="{{ url('register') }}" class="nav-phone-small">
                         Create Account
                     </a>
                 </li>

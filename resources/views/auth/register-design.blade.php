@@ -37,7 +37,7 @@
                             <div class="form-label-group">
                                 <input id="phone_number" type="text" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}" name="phone_number" value="{{ old('phone_number') }}" required>
 
-                                <label for="phone_number">Phone Number</label>
+                                <label for="phone_number">Phone Number (E.g 0712345678)</label>
 
                                 @if ($errors->has('phone_number'))
                                     <span class="invalid-feedback" role="alert">
