@@ -150,7 +150,7 @@
                 </li>
             </ul>
 
-            <ul class="navbar-na d-lg-none d-xl-none yellow_line ul-inline-landing">
+            <ul class="navbar-nav d-lg-none d-xl-none yellow_line ul-inline-landing">
                 <li class="nav-item d-lg-none inline-display">
                     <a  href="{{ url('login') }}" class="nav-phone-small">
                         Sell Your Car Now |
