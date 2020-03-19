@@ -239,20 +239,19 @@
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
 {{--<script src="{{ asset('js/bootstrap.min.js') }}"></script>--}}
-{{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}
-@stack('scripts')
+{{--<script src="{{ asset('js/jquery.min.js') }}"></script>--}}@stack('scripts')
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/5ae6bbf5227d3d7edc24d543/1da8cdb80';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-<!--End of Tawk.to Script-->
+{{--<script type="text/javascript">--}}
+{{--    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();--}}
+{{--    (function(){--}}
+{{--        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];--}}
+{{--        s1.async=true;--}}
+{{--        s1.src='https://embed.tawk.to/5ae6bbf5227d3d7edc24d543/1da8cdb80';--}}
+{{--        s1.charset='UTF-8';--}}
+{{--        s1.setAttribute('crossorigin','*');--}}
+{{--        s0.parentNode.insertBefore(s1,s0);--}}
+{{--    })();--}}
+{{--</script>--}}
+{{--<!--End of Tawk.to Script-->--}}
 </body>
 </html>

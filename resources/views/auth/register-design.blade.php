@@ -62,15 +62,23 @@
                             </div>
 
                             <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input" name="termsAndConditions" id="customCheck1">
+                                <input type="checkbox" class="custom-control-input {{ $errors->has('termsAndConditions') ? 'is-invalid' : '' }}" name="termsAndConditions" value="accepted" id="termsAndConditions" required>
                                 <label class="custom-control-label" for="customCheck1">
-                                    Accept terms and conditions
+                                    <button class="btn btn-link" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
+                                        Accept terms and conditions
+                                    </button>
                                 </label>
+                                @if ($errors->has('termsAndConditions'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('termsAndConditions') }}
+                                    </div>
+                                @endif
                             </div>
                             <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
                             <hr class="my-4">
                             <a href="{{ route('login') }}" class="">Sign In</a>
                         </form>
+                        @include('guest.terms-and-conditions')
                     </div>
                 </div>
             </div>
