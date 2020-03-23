@@ -62,8 +62,8 @@
                             </div>
 
                             <div class="custom-control custom-checkbox mb-3">
-                                <input type="checkbox" class="custom-control-input {{ $errors->has('termsAndConditions') ? 'is-invalid' : '' }}" name="termsAndConditions" value="accepted" id="termsAndConditions" required>
-                                <label class="custom-control-label" for="customCheck1">
+                                <input type="checkbox" class="form-check-input {{ $errors->has('termsAndConditions') ? 'is-invalid' : '' }}" name="termsAndConditions" value="accepted" id="termsAndConditions" required>
+                                <label class="" for="customCheck1">
                                     <button class="btn btn-link" type="button" data-toggle="modal" data-target=".bd-example-modal-lg">
                                         Accept terms and conditions
                                     </button>
