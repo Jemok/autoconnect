@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdStatus;
 use App\Http\Requests\SetBulkVehicleAsNotApprovedRequest;
 use App\Notifications\AdActivatedNotification;
 use App\Notifications\AdDisapprovedNotification;
@@ -37,13 +38,15 @@ class SingleAdsController extends Controller
 
         $disapproval_reasons = $bulkImportRepository->getDisapprovalReasonsNotResolvedOrCorrected($vehicleId);
 
+        $ad_status = AdStatus::where('vehicle_detail_id', $vehicle_detail->id)->firstOrFail();
 
         return view('single-ads.index-images-design', compact(
             'disapproval_reasons',
             'vehicleId',
             'vehicle_detail',
             'vehicle_images',
-            'other_features'));
+            'other_features',
+        'ad_status'));
     }
 
     public function activateAd($vehicleId,

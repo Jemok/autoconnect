@@ -212,6 +212,11 @@
                                                     Edit Vehicle Details
                                                 </a>
 
+                                                @if($ad_status->status == 'expired')
+                                                    <a href="{{ route('editUserSingleImportVehicle', [$vehicle_detail->id]) }}" class="btn btn-sm btn-success float-right">
+                                                        Click to renew this Ad
+                                                    </a>
+                                                 @endif
 
                                                 @if(Auth::user()->hasRole('super-admin'))
                                                     <a href="{{ route('showSingleDisapprovalPage', $vehicle_detail->id) }}" class="btn btn-sm btn-danger float-right">
