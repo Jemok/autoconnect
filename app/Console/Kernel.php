@@ -7,6 +7,7 @@ use App\Console\Commands\AdminCommand;
 use App\Console\Commands\AppInitializer;
 use App\Console\Commands\GenerateSitemap;
 use App\Console\Commands\RolesCommand;
+use App\Console\Commands\StopAdsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -22,7 +23,8 @@ class Kernel extends ConsoleKernel
         RolesCommand::class,
         AdminCommand::class,
         AddAreasCommand::class,
-        GenerateSitemap::class
+        GenerateSitemap::class,
+        StopAdsCommand::class
     ];
 
     /**
