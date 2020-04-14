@@ -275,7 +275,7 @@
                 </div>
 
 
-                <div class="col-md-12 d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px; margin-top: 1%">
+                <div class="row d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px; margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 

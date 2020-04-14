@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AdPeriod;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkImportRepository;
 use App\Repositories\MpesaPaymentsRepository;
@@ -119,6 +120,44 @@ class DatatablesController extends Controller
                 $url = route('indexSingleAdsImages', $single_ad->vehicle_detail->id);
 
                 return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })->addColumn('ad_start', function ($single_ad){
+
+                if($single_ad->type == 'bulk') {
+
+                    $active_ad_period = AdPeriod::where('vehicle_detail_id', $single_ad->vehicle_detail_id)
+                        ->where('status', 'active')->firstOrFail();
+
+                    return $active_ad_period->start;
+
+                }
+
+                if($single_ad->type == 'single') {
+
+                    $active_ad_period = AdPeriod::where('vehicle_detail_id', $single_ad->vehicle_detail_id)
+                        ->where('status', 'active')->firstOrFail();
+
+                    return $active_ad_period->start;
+                }
+
+            })->addColumn('ad_stop', function ($single_ad){
+
+                if($single_ad->type == 'bulk') {
+
+                    $active_ad_period = AdPeriod::where('vehicle_detail_id', $single_ad->vehicle_detail_id)
+                        ->where('status', 'active')->firstOrFail();
+
+                    return $active_ad_period->stop;
+
+                }
+
+                if($single_ad->type == 'single') {
+
+                    $active_ad_period = AdPeriod::where('vehicle_detail_id', $single_ad->vehicle_detail_id)
+                        ->where('status', 'active')->firstOrFail();
+
+                    return $active_ad_period->stop;
+
+                }
             })
             ->addColumn('ad_type', function ($single_ad){
 
