@@ -37,6 +37,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->command('ads:stop')->everyMinute();
     }
 
     /**
