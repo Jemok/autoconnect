@@ -6,6 +6,7 @@ use App\AdPeriod;
 use App\AdStatus;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class StopAdsCommand extends Command
 {
@@ -41,6 +42,8 @@ class StopAdsCommand extends Command
     public function handle()
     {
         $online_ads = AdPeriod::where('status', 'active')->get();
+
+        Log::info('TESTING WHETHER CRON IS WORKING');
 
         foreach ($online_ads as $online_ad){
 
