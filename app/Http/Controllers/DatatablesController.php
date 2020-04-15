@@ -622,6 +622,17 @@ class DatatablesController extends Controller
                 $url = route('indexSingleAdsImages', $single_ad->id);
 
                 return '<a class="btn btn-success btn-sm" href="'.$url.'">Manage Ad</a>';
+            })->addColumn('ad_type', function ($single_ad){
+
+                if($single_ad->type == 'bulk'){
+
+                    $url = route('confirmBulkImports', $single_ad->bulk_ad->bulk_import_id);
+
+                    return '<a class="" href="'.$url.'">Bulk</a>';
+                }elseif ($single_ad->type == 'single'){
+
+                    return 'Single';
+                }
             })
             ->addColumn('car_make', function ($expired_ad){
 
@@ -667,7 +678,7 @@ class DatatablesController extends Controller
                     return 'Not Negotiable';
                 }
             })
-            ->rawColumns(['manage_ad'])
+            ->rawColumns(['manage_ad', 'ad_type'])
             ->make(true);
     }
 

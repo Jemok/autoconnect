@@ -52,6 +52,11 @@ class VehicleDetail extends Model
         return $this->hasOne(VehiclePayment::class);
     }
 
+    public function vehicle_renewal_payment(){
+
+        return $this->hasOne(VehicleRenewalPayment::class);
+    }
+
     public function colour_type(){
         return $this->belongsTo(ColourType::class);
     }

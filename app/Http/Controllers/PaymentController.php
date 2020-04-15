@@ -6,6 +6,7 @@ use App\AddPrice;
 use App\Http\Requests\PayForBulkRequest;
 use App\Jobs\StkPushJob;
 use App\MpesaPayment;
+use App\MpesaRenewalPayment;
 use App\Notifications\BulkImportAdNotification;
 use App\Notifications\PaymentReceivedNotification;
 use App\Repositories\AdStatusRepository;
@@ -127,6 +128,118 @@ class PaymentController extends Controller
 //        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
 
             flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id.'-1'. '<br> Amount: KES '.(int)$amount, 'Please try again');
+
+//            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
+
+            return redirect()->back();
+        }
+    }
+
+    public function makeRenewalPayment($vehicleId,
+                                $paymentType,
+                                PayForAdService $payForAdService,
+                                PaymentRepository $paymentRepository,
+                                VehicleDetailRepository $vehicleDetailRepository,
+                                Request $request
+    ){
+        $vehicleDetail = $vehicleDetailRepository->show($vehicleId);
+
+        if($request->period == 4){
+            $no_of_days  = 30;
+        }
+
+        if($request->period == 6){
+            $no_of_days  = 45;
+        }
+
+        if($request->period == 8){
+            $no_of_days  = 60;
+        }
+
+        if($request->period == null){
+
+            $no_of_days = 1000000;
+        }
+
+        if($paymentType == 'ultimate'){
+
+            $vehiclePayment = $paymentRepository->storeRenewalPayment($vehicleDetail,
+                $vehicleId,
+                'standard',
+                $no_of_days
+            );
+
+        }else{
+
+            $vehiclePayment = $paymentRepository->storeRenewalPayment($vehicleDetail,
+                $vehicleId,
+                $paymentType,
+                $no_of_days
+            );
+        }
+
+
+
+        if($paymentType == 'standard'){
+
+            $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
+
+
+        }elseif ($paymentType == 'premium'){
+
+            $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
+        }elseif ($paymentType == 'ultimate'){
+
+            $amount = 2500;
+        }
+
+        $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
+
+        Log::info('B64'. $mpesa_credentials);
+
+        $phone_number = '254'.substr($vehicleDetail->vehicle_contact->phone_number, 1);
+        try{
+
+            $mpesa_payment  = new MpesaRenewalPayment();
+
+            $mpesa_payment->univas_car_id = $vehicleDetail->id;
+            $mpesa_payment->vehicle_payment_id = $vehiclePayment->id;
+            $mpesa_payment->mpesa_account_number = $vehicleDetail->id.'-1-ren';
+            $mpesa_payment->type = 'single';
+            $mpesa_payment->amount = $amount;
+
+            $mpesa_payment->save();
+
+            dispatch(new StkPushJob($mpesa_credentials, $phone_number, $mpesa_payment->mpesa_account_number, (int) $amount));
+
+            flash()->overlay('Ensure Phone is Unlocked'. '<br><br>If you dont see pop up on your phone, <br> Close all open apps on your phone and try again <br> OtherWise Use : <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$mpesa_payment->mpesa_account_number. '<br> Amount: KES '.(int)$amount, 'Enter Mpesa Pin on Phone');
+            return redirect()->back();
+        }
+        catch (\Exception $exception){
+
+            if ($exception instanceof \GuzzleHttp\Exception\RequestException) {
+                // get the full text of the exception (including stack trace),
+                // and replace the original message (possibly truncated),
+                // with the full text of the entire response body.
+                if($exception != null){
+                    if($exception->getResponse() != null){
+                        $message = str_replace(
+                            rtrim($exception->getMessage()),
+                            (string) $exception->getResponse()->getBody(),
+                            (string) $exception
+                        );
+
+                        Log::info('ERROR MESSAGE API : '.$message);
+                    }else{
+                        Log::info('ERROR MESSAGE API GET RESPONSE IS NULL :'.$exception->getResponse());
+                    }
+                }
+            }
+
+
+//        $response = $payForAdService->handle($vehicleDetail, $vehiclePayment, $vehicleDetail->vehicle_contact->phone_number, $amount, $vehicleDetail->vehicle_contact->name);
+
+            flash()->overlay('Close all open apps on your phone and try again<br> If you dont see pop up on your phone <br> Use <br> Mpesa Paybill no: '.env('PAYBILL').'<br> Account Number: '.$vehicleDetail->id.'-1-ren'. '<br> Amount: KES '.(int)$amount, 'Please try again');
 
 //            flash()->overlay('We are unable to process your payment', 'Please try again shortly');
 

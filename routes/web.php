@@ -220,6 +220,8 @@ Route::get('/vehicles/create-bulk-pictures/{bulkImportId}/{singleBulkUploadId}',
 
 Route::get('/vehicles/create-vehicle-ad/{vehicleId}', 'VehicleController@createAd')->name('createAd');
 
+Route::get('/vehicles/renew-vehicle-ad/{vehicleId}', 'VehicleController@renewSingleAd')->name('renewSingleAd');
+
 Route::get('/vehicles/create-vehicle-contacts/{vehicleId}', 'VehicleController@createContacts')->name('createVehicleContacts');
 
 Route::get('/vehicles/publish-vehicle-ad/{vehicleId}', 'VehicleController@publishVehicleAd')->name('publishVehicleAd');
@@ -233,6 +235,8 @@ Route::get('/single-ads/index/car-details/{vehicleId}', 'SingleAdsController@ind
 Route::post('/vehicles/store-vehicle-contacts/{vehicleId}', 'VehicleController@storeVehicleContacts')->name('storeVehicleContacts');
 
 Route::post('/vehicles/make-payment/{vehicleId}/{paymentType}', 'PaymentController@makePayment')->name('makePayment');
+
+Route::post('/vehicles/renewal-payment/{vehicleId}/{paymentType}', 'PaymentController@makeRenewalPayment')->name('makeRenewalPayment');
 
 Route::post('/vehicles/set-as-verified/{vehicleId}', 'VehicleVerificationController@setAsVerified')->name('setVehicleAsVerified');
 

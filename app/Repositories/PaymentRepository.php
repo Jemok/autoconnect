@@ -13,6 +13,7 @@ use App\BulkMpesaResult;
 use App\MpesaPaymentResult;
 use App\VehicleDetail;
 use App\VehiclePayment;
+use App\VehicleRenewalPayment;
 
 class PaymentRepository
 {
@@ -45,6 +46,35 @@ class PaymentRepository
         return $vehicleDetail->vehicle_payment()->save($vehiclePayment);
     }
 
+    public function storeRenewalPayment(VehicleDetail $vehicleDetail,
+                          $vehicleId,
+                          $package,
+                          $no_of_days){
+
+        if(VehicleRenewalPayment::where('vehicle_detail_id', $vehicleId)->exists()){
+
+            $vehiclePayment = VehicleRenewalPayment::where('vehicle_detail_id', $vehicleId)
+                ->firstOrFail();
+
+            $vehiclePayment->package = $package;
+            $vehiclePayment->no_of_days;
+
+            $vehiclePayment->save();
+
+            $vehiclePayment->save();
+
+
+            return $vehiclePayment;
+        }
+
+        $vehiclePayment = new VehicleRenewalPayment();
+
+        $vehiclePayment->package = $package;
+        $vehiclePayment->no_of_days;
+
+        return $vehicleDetail->vehicle_renewal_payment()->save($vehiclePayment);
+    }
+
     public function indexForVehicle($vehicleId){
 
         return VehiclePayment::where('vehicle_detail_id', $vehicleId)->latest()->get();
@@ -59,11 +89,25 @@ class PaymentRepository
         return VehiclePayment::where('id', $vehiclePaymentId)->firstOrFail();
     }
 
+    public function showRenewalPayment($vehiclePaymentId){
+
+        return VehiclePayment::where('id', $vehiclePaymentId)->firstOrFail();
+    }
+
     /**
      * @param VehiclePayment $vehiclePayment
      * @return VehiclePayment
      */
     public function setAsPaid(VehiclePayment $vehiclePayment){
+
+        $vehiclePayment->status = 'paid';
+
+        $vehiclePayment->save();
+
+        return $vehiclePayment;
+    }
+
+    public function setRenewalAsPaid(VehicleRenewalPayment $vehiclePayment){
 
         $vehiclePayment->status = 'paid';
 

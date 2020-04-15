@@ -159,6 +159,22 @@ class VehicleController extends Controller
             'premium_ads'));
     }
 
+    public function renewSingleAd($vehicleId,
+                             VehicleDetailRepository $vehicleDetailRepository){
+
+        $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
+
+        $standard_ads = AddPrice::where('type', 'standard')->get();
+
+        $premium_ads = AddPrice::where('type', 'premium')->get();
+
+        return view('vehicles.renew-single-ad', compact('vehicleId',
+            'vehicle_detail',
+            'standard_ads',
+            'premium_ads'));
+    }
+
+
     public function publishVehicleAd($vehicleId,
                                      VehicleDetailRepository $vehicleDetailRepository){
 
