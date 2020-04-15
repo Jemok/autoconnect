@@ -91,7 +91,7 @@ class PaymentRepository
 
     public function showRenewalPayment($vehiclePaymentId){
 
-        return VehiclePayment::where('id', $vehiclePaymentId)->firstOrFail();
+        return VehicleRenewalPayment::where('id', $vehiclePaymentId)->firstOrFail();
     }
 
     /**
