@@ -98,7 +98,7 @@ class MpesaConfirmationController extends Controller
 
                     $start = Carbon::now();
 
-                    $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
+                    $stop = Carbon::now()->addDays($vehicle_payment->days);
 
                     $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
                         'pending_verification',
@@ -169,7 +169,7 @@ class MpesaConfirmationController extends Controller
 
                     $start = Carbon::now();
 
-                    $stop = Carbon::now()->addDays($vehicle_payment->no_of_days);
+                    $stop = Carbon::now()->addDays($vehicle_payment->days);
 
                     // HERE
                     $ad_status = $adStatusRepository->storeAdStatus($vehicle_detail,
