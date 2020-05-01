@@ -211,7 +211,7 @@
                         </span>
                 </h5>
 
-                <div class="col-md-12 row d-md-none d-lg-none d-xl-none mx-auto" style="margin-top: 1%">
+                <div class="row d-md-none d-lg-none d-xl-none" style="margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 
