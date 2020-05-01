@@ -8,11 +8,12 @@
         @include('flash::message')
         <div class="col-md-6" style="margin-top: 2%; margin-left: 4.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
             <span style="color: white;">
+                Car ID : {{  $vehicle_detail->unique_identifier }}
               {{ $vehicle_detail->car_make->name }}
                 -
                 {{ $vehicle_detail->car_model->name }}
 
-                -
+                -Click on image to enlarge
                 {{ $vehicle_detail->year }}
             </span>
         </div>

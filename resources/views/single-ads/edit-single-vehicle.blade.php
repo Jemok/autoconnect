@@ -384,6 +384,61 @@
 
                                 <div class="form-row">
                                     <div class="col">
+                                        <label for="drive_type" style="font-weight: bold;">Drive Type</label>
+                                        <select name="drive_type" id="drive_type" class="form-control {{ $errors->has('drive_type') ? 'is-invalid' : '' }}">
+                                            <option selected disabled>Choose...</option>
+                                            @foreach($drive_types as $drive_type)
+                                                @if(old('drive_type') == $drive_type->slug)
+                                                    <option selected  value="{{ $drive_type->slug }}">
+                                                        {{ $drive_type->description }}
+                                                    </option>
+                                                @else
+                                                    @if($vehicleDetail->drive_type == $drive_type->slug)
+                                                        <option selected value="{{ $drive_type->slug }}">{{ $drive_type->description }}</option>
+                                                    @else
+                                                        <option value="{{ $drive_type->slug }}">{{ $drive_type->description }}</option>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('drive_type'))
+                                            <small id="driveTypeHelp" class="form-text text-danger">
+                                                {{ $errors->first('drive_type') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                    <div class="col">
+                                        <label for="colour_type" style="font-weight: bold;">Drive Setup*</label>
+                                        <select name="drive_setup" id="drive_setup" class="form-control {{ $errors->has('drive_setup') ? 'is-invalid' : '' }}">
+                                            <option selected disabled>Choose...</option>
+                                            @foreach($drive_setups as $drive_setup)
+                                                @if(old('drive_setup') == $drive_setup->slug)
+                                                    <option selected  value="{{ $drive_setup->slug }}">
+                                                        {{ $drive_setup->description }}
+                                                    </option>
+                                                @else
+                                                    @if($vehicleDetail->drive_setup == $drive_setup->slug)
+                                                        <option selected  value="{{ $drive_setup->slug }}">
+                                                            {{ $drive_setup->description }}
+                                                        </option>
+                                                    @else
+                                                        <option value="{{ $drive_setup->slug }}">
+                                                            {{ $drive_setup->description }}
+                                                        </option>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('drive_setup'))
+                                            <small id="driveSetUpHelp" class="form-text text-danger">
+                                                {{ $errors->first('drive_setup') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="col">
                                         <label for="description" style="font-weight: bold;">Description </label>
                                         <textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" id="description" name="description" rows="3">{{ old('description') != null ? old('description') : $vehicleDetail->description  }}</textarea>
                                         @if($errors->has('description'))
@@ -423,43 +478,43 @@
         </div>
     </div>
     @push('scripts')
-    <script>
-        $('#flash-overlay-modal').modal();
+        <script>
+            $('#flash-overlay-modal').modal();
 
-        jQuery(document).ready(function($){
-            $('#car_make').change(function(){
-                $.get("{{ url('/api/dropdown')}}",
-                    { option: $(this).val() },
-                    function(data) {
-                        var model = $('#car_model');
-                        model.empty();
+            jQuery(document).ready(function($){
+                $('#car_make').change(function(){
+                    $.get("{{ url('/api/dropdown')}}",
+                        { option: $(this).val() },
+                        function(data) {
+                            var model = $('#car_model');
+                            model.empty();
 
-                        model.append("<option selected disabled>Choose a Model</option>");
+                            model.append("<option selected disabled>Choose a Model</option>");
 
-                        $.each(data, function(index, element) {
-                            model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
-                        });
-                    }
-                );
+                            $.each(data, function(index, element) {
+                                model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
+                            });
+                        }
+                    );
+                });
+
+
+                $('#car_model').change(function(){
+                    $.get("{{ url('/api/dropdown-series')}}",
+                        { option: $(this).val() },
+                        function(data) {
+                            var model = $('#car_series');
+                            model.empty();
+
+                            model.append("<option selected disabled>Choose a Series</option>");
+
+                            $.each(data, function(index, element) {
+                                model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
+                            });
+                        }
+                    );
+                });
             });
-
-
-            $('#car_model').change(function(){
-                $.get("{{ url('/api/dropdown-series')}}",
-                    { option: $(this).val() },
-                    function(data) {
-                        var model = $('#car_series');
-                        model.empty();
-
-                        model.append("<option selected disabled>Choose a Series</option>");
-
-                        $.each(data, function(index, element) {
-                            model.append("<option value='"+ element.slug +"'>" + element.name + "</option>");
-                        });
-                    }
-                );
-            });
-        });
-    </script>
+        </script>
     @endpush
 @endsection

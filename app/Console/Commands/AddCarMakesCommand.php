@@ -42,11 +42,516 @@ class AddCarMakesCommand extends Command
     {
         $makes = [
             [
+                'name' => '3 Xross',
+                'slug' => '3_xross',
+                'description' => '3 Xross',
+                'image_name' => '3_xross.png',
+                'models' => [
+
+                ]
+            ],
+            [
+                'name' => 'Atlas Copco',
+                'slug' => 'atlas_copco',
+                'description' => 'Atlas Copco',
+                'image_name' => 'atlascopco.png',
+                'models' => [
+                    [
+                        'name' => 'Dump Truck',
+                        'slug' => 'dump_truck',
+                        'description' => 'Dump Truck',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Generator',
+                        'slug' => 'generator',
+                        'description' => 'Generator',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Wheeled Crane',
+                        'slug' => 'wheeled_crane',
+                        'description' => 'Wheeled Crane',
+                        'series' => [
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'name' => 'Atul',
+                'slug' => 'atul',
+                'description' => 'Atul',
+                'image_name' => 'atul.png',
+                'models' => [
+                    [
+                        'name' => 'Passenger',
+                        'slug' => 'passenger',
+                        'description' => 'Passenger',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Cargo',
+                        'slug' => 'cargo',
+                        'description' => 'Cargo',
+                        'series' => [
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'name' => 'Aston Martin',
+                'slug' => 'aston_martin',
+                'description' => 'Aston Martin',
+                'image_name' => 'astornmartin.png',
+                'models' => [
+                    [
+                        'name' => 'AM',
+                        'slug' => 'am',
+                        'description' => 'AM',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Atom',
+                        'slug' => 'atom',
+                        'description' => 'Atom',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB',
+                        'slug' => 'db',
+                        'description' => 'DB',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB2',
+                        'slug' => 'db2',
+                        'description' => 'DB2',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB3',
+                        'slug' => 'db3',
+                        'description' => 'DB3',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB4',
+                        'slug' => 'db4',
+                        'description' => 'DB4',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB5',
+                        'slug' => 'db5',
+                        'description' => 'DB5',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB6',
+                        'slug' => 'db6',
+                        'description' => 'DB6',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB7',
+                        'slug' => 'db7',
+                        'description' => 'DB7',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB9',
+                        'slug' => 'db9',
+                        'description' => 'DB9',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DBR',
+                        'slug' => 'dbr',
+                        'description' => 'DBR',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DBR2',
+                        'slug' => 'dbr2',
+                        'description' => 'DBR2',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DBS',
+                        'slug' => 'dbs',
+                        'description' => 'DBS',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Lagonda',
+                        'slug' => 'lagonda',
+                        'description' => 'Lagonda',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Vanquish',
+                        'slug' => 'vanquish',
+                        'description' => 'Vanquish',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'DB3',
+                        'slug' => 'db3',
+                        'description' => 'DB3',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Vintage',
+                        'slug' => 'vintage',
+                        'description' => 'Vintage',
+                        'series' => [
+                            [
+                                'name' => '5.3 V8',
+                                'slug' => '5_8_v8',
+                                'description' => '5.3 V8'
+                            ],
+                            [
+                                'name' => 'V12 Coupe',
+                                'slug' => 'v12_coupe',
+                                'description' => 'V12 Coupe'
+                            ],
+                            [
+                                'name' => 'V12 Zagato',
+                                'slug' => 'v12_zagato',
+                                'description' => 'V12 Zagato'
+                            ],
+                            [
+                                'name' => 'V8 Coupe',
+                                'slug' => 'v8_coupe',
+                                'description' => 'V8 Coupe'
+                            ],
+                            [
+                                'name' => 'V8 Coupe S',
+                                'slug' => 'v8_coupe_s',
+                                'description' => 'V8 Coupe S'
+                            ],
+                            [
+                                'name' => 'V8 Roadster',
+                                'slug' => 'v8_roadster',
+                                'description' => 'V8 Roadster'
+                            ],
+                            [
+                                'name' => 'V8 Roadster S',
+                                'slug' => 'v8_roadster_s',
+                                'description' => 'V8 Roadster S'
+                            ]
+                        ]
+                    ],
+                ]
+            ],
+            [
+                'name' => 'Asia',
+                'slug' => 'asia',
+                'description' => 'Asia',
+                'image_name' => 'asia.png',
+                'models' => [
+
+                ]
+            ],
+            [
+                'name' => 'Apsonic',
+                'slug' => 'apsonic',
+                'description' => 'Apsonic',
+                'image_name' => 'apsonic.png',
+                'models' => [
+                    [
+                        'name' => 'AP110',
+                        'slug' => 'ap110',
+                        'description' => 'AP110',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Feleche',
+                        'slug' => 'feleche',
+                        'description' => 'Feleche',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Motor King',
+                        'slug' => 'motor_king',
+                        'description' => 'Motor King',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Power EX',
+                        'slug' => 'power_ex',
+                        'description' => 'Power EX',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Yorobo',
+                        'slug' => 'yorobo',
+                        'description' => 'Yorobo',
+                        'series' => [
+                        ]
+                    ],
+                ]
+            ],
+            [
+                'name' => 'AMW',
+                'slug' => 'amw',
+                'description' => 'AMW',
+                'image_name' => 'amw.png',
+                'models' => [
+                    [
+                        'name' => '1618 TP-10',
+                        'slug' => '1618_tp_10',
+                        'description' => '1618 TP-10',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2516',
+                        'slug' => '2516',
+                        'description' => '2516',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2518',
+                        'slug' => '2518',
+                        'description' => '2518',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2518 TP-14',
+                        'slug' => '2518_tp_14',
+                        'description' => '2518 TP-14',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2523',
+                        'slug' => '2523',
+                        'description' => '2523',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2523 TP-16',
+                        'slug' => '2523_tp_a6',
+                        'description' => '2523 TP-16',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '2528',
+                        'slug' => '2528',
+                        'description' => '2528',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '3116',
+                        'slug' => '3116',
+                        'description' => '3116',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '3118',
+                        'slug' => '3118',
+                        'description' => '3118',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '3123 TP-20',
+                        'slug' => '3123_tp_20',
+                        'description' => '3123 TP-20',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '3518',
+                        'slug' => '3518',
+                        'description' => '3518',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '4018',
+                        'slug' => '4018',
+                        'description' => '4018',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '4923',
+                        'slug' => '4923',
+                        'description' => '4923',
+                        'series' => [
+                        ]
+                    ],
+                ]
+            ],
+            [
+                'name' => 'Alibaba',
+                'slug' => 'alibaba',
+                'description' => 'Alibaba',
+                'image_name' => 'alibaba.png',
+                'models' => [
+                    [
+                        'name' => '2 Wheel Trailer',
+                        'slug' => '2_wheel_trailer',
+                        'description' => '2 Wheel Trailer',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => '4 Wheel Trailer',
+                        'slug' => '4_wheel_trailer',
+                        'description' => '4 Wheel Trailer',
+                        'series' => [
+                        ]
+                    ],
+                    [
+                        'name' => 'Mobile Pesticide Sprayer',
+                        'slug' => 'mobile_pesticide_sprayer',
+                        'description' => 'Mobile Pesticide Sprayer',
+                        'series' => [
+                        ]
+                    ],
+                ]
+            ],
+            [
+                'name' => 'ADLY',
+                'slug' => 'adly',
+                'description' => 'ADLY',
+                'image_name' => 'adly.png',
+                'models' => [
+                    [
+                        'name' => 'ATV',
+                        'slug' => 'atv',
+                        'description' => 'ATV',
+                        'series' => [
+                            [
+                                'name' => '320 S',
+                                'slug' => '320_s',
+                                'description' => '320 S'
+                            ],
+                            [
+                                'name' => '320 U',
+                                'slug' => '320_u',
+                                'description' => '320 U'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => 'Serie U',
+                        'slug' => 'serie_u',
+                        'description' => 'Serie U',
+                        'series' => []
+                    ],
+                ]
+            ],
+            [
+                'name' => 'Agrimac',
+                'slug' => 'Agrimac',
+                'description' => 'Agrimac',
+                'image_name' => 'agrimac.png',
+                'models' => [
+
+                ]
+            ],
+            [
                 'name' => 'Audi',
                 'slug' => 'audi',
                 'description' => 'Audi',
                 'image_name' => 'audi.png',
                 'models' => [
+                    [
+                        'name' => '100',
+                        'slug' => '100',
+                        'description' => '100',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '200',
+                        'slug' => '200',
+                        'description' => '200',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '4000',
+                        'slug' => '4000',
+                        'description' => '4000',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '50',
+                        'slug' => '50',
+                        'description' => '50',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '5000',
+                        'slug' => '5000',
+                        'description' => '5000',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '80',
+                        'slug' => '80',
+                        'description' => '80',
+                        'series' => [
+                            [
+                                'name' => '1.3',
+                                'slug' => '1_3',
+                                'description' => '1.3'
+                            ],
+                            [
+                                'name' => 'Avant TDI',
+                                'slug' => 'avant_tdi',
+                                'description' => 'Avant TDI'
+                            ],
+                            [
+                                'name' => 'GLE',
+                                'slug' => 'gle',
+                                'description' => 'GLE'
+                            ],
+                            [
+                                'name' => 'TDI',
+                                'slug' => 'tdi',
+                                'description' => 'TDI'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => '90',
+                        'slug' => '90',
+                        'description' => '90',
+                        'series' => []
+                    ],
                     [
                         'name' => 'A1',
                         'slug' => 'a1',
@@ -54,10 +559,448 @@ class AddCarMakesCommand extends Command
                         'series' => []
                     ],
                     [
+                        'name' => 'A2',
+                        'slug' => 'a2',
+                        'description' => 'A2',
+                        'series' => [
+                            [
+                                'name' => '1.2 TDI',
+                                'slug' => '1_2_tdi',
+                                'description' => '1.2 TDI'
+                            ],
+                            [
+                                'name' => '1.4',
+                                'slug' => '1_4',
+                                'description' => '1.4'
+                            ],
+                            [
+                                'name' => '1.4 Colour',
+                                'slug' => '1_4_colour',
+                                'description' => '1.4 Colour'
+                            ],
+                            [
+                                'name' => '1.4 SE',
+                                'slug' => '1_4_se',
+                                'description' => '1.4 SE'
+                            ],
+                            [
+                                'name' => '1.4 Special',
+                                'slug' => '1_4_special',
+                                'description' => '1.4 Special'
+                            ],
+                            [
+                                'name' => '1.4 Sport',
+                                'slug' => '1_4_sport',
+                                'description' => '1.4 Sport'
+                            ],
+                            [
+                                'name' => '1.4 TDi',
+                                'slug' => '1_4_tdi',
+                                'description' => '1.4 TDi'
+                            ],
+                            [
+                                'name' => '1.6 FSI',
+                                'slug' => '1_6_fsi',
+                                'description' => '1.4 FSI'
+                            ]
+                        ]
+                    ],
+                    [
                         'name' => 'A3',
                         'slug' => 'a3',
                         'description' => 'A3',
-                        'series' => []
+                        'series' => [
+                            [
+                                'name' => '1.4 T FSI',
+                                'slug' => '1_4_t_fsi',
+                                'description' => '1.4 T FSI'
+                            ],
+                            [
+                                'name' => '1.6 Attraction',
+                                'slug' => '1_6_attraction',
+                                'description' => '1.6 Attraction'
+                            ],
+                            [
+                                'name' => '1.6 FSI Attraction',
+                                'slug' => '1_6_fsi_attraction',
+                                'description' => '1.6 FSI Attraction'
+                            ],
+                            [
+                                'name' => '1.6 FSI Sportback Attraction',
+                                'slug' => '1_6_fsi_sportback_attraction',
+                                'description' => '1.6 FSI Sportback Attraction'
+                            ],
+                            [
+                                'name' => '1.6 Sportback Attraction',
+                                'slug' => '1_6_sportback_attraction',
+                                'description' => '1.6 Sportback Attraction'
+                            ],
+                            [
+                                'name' => '1.8 Automatic',
+                                'slug' => '1_8_automatic',
+                                'description' => '1.8 Automatic'
+                            ],
+                            [
+                                'name' => '1.8 T Tiptronic',
+                                'slug' => '1_8_t_tiptronic',
+                                'description' => '1.8 T Tiptronic'
+                            ],
+                            [
+                                'name' => '1.9 TDI Attraction',
+                                'slug' => '1_9_tdi_attraction',
+                                'description' => '1.9 TDI Attraction'
+                            ],
+                            [
+                                'name' => '1.9 TDI Sportback Attraction',
+                                'slug' => '1_9_tdi_sportback_attraction',
+                                'description' => '1.9 TDI Sportback Attraction'
+                            ],
+                            [
+                                'name' => '2.0',
+                                'slug' => '2_0',
+                                'description' => '2.0'
+                            ],
+                            [
+                                'name' => '2.0 FSI Ambition',
+                                'slug' => '2_0_fsi_ambition',
+                                'description' => '2.0 FSI Ambition'
+                            ],
+                            [
+                                'name' => '2.0 FSI Ambition Tiptronic',
+                                'slug' => '2_0_fsi_ambition_tiptronic',
+                                'description' => '2.0 FSI Ambition Trptronic'
+                            ],
+                            [
+                                'name' => '2.0 FSI Sportback Ambition',
+                                'slug' => '2_0_fsi_sportback_ambition',
+                                'description' => '2.0 FSI Sportback Ambition'
+                            ],
+                            [
+                                'name' => '2.0 T DSG',
+                                'slug' => '2_0_t_dsg',
+                                'description' => '2.0 T DSG'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Ambition',
+                                'slug' => '2_0_t_fsi_ambition',
+                                'description' => '2.0 T FSI Ambition'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Ambition DSG',
+                                'slug' => '2_0_t_fsi_ambition_dsg',
+                                'description' => '2.0 T FSI Ambition DSG'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Quattro Sportback Ambition',
+                                'slug' => '2_0_t_fsi_quattro_sportback_ambition',
+                                'description' => '2.0 T FSI Quattro Sportback Ambition'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Sportback Ambition',
+                                'slug' => '2_0_t_fsi_sportback_ambition',
+                                'description' => '2.0 T FSI Sportback Ambition'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Sportback Ambitionual',
+                                'slug' => '2_0_t_fsi_sportback_ambitionual',
+                                'description' => '2.0 T FSI Sportback Ambitionual'
+                            ],
+                            [
+                                'name' => '2.0 T FSI Sportback SDG',
+                                'slug' => '2_0_t_fsi_sportback_sdg',
+                                'description' => '2.0 T FSI Sportback SDG'
+                            ],
+                            [
+                                'name' => '2.0 TDI Abmbition SDG',
+                                'slug' => '2_0_tdi_ambition_sdg',
+                                'description' => '2.0 TDI Abmbition SDG'
+                            ],
+                            [
+                                'name' => '2.0 TDI Abmbition SDG',
+                                'slug' => '2_0_tdi_ambition_sdg',
+                                'description' => '2.0 TDI Abmbition SDG'
+                            ],
+                            [
+                                'name' => '2.0 TDI Abmbition Sportback S-Tronic',
+                                'slug' => '2_0_tdi_ambition_sportback_s_tronic',
+                                'description' => '2.0 TDI Abmbition Sportback S-Tronic'
+                            ],
+                            [
+                                'name' => '2.0 TDi Ambition Sportbackual',
+                                'slug' => '2_0_tdi_ambition_sportbackual',
+                                'description' => '2.0 TDi Ambition Sportbackual'
+                            ],
+                            [
+                                'name' => '2.0 TDI Ambitionual',
+                                'slug' => '2_0_tdi_ambitionual',
+                                'description' => '2.0 TDI Ambitionual'
+                            ],
+                            [
+                                'name' => '2.0 TDI Attraction',
+                                'slug' => '2_0_tdi_attraction',
+                                'description' => '2.0 TDI attraction'
+                            ],
+                            [
+                                'name' => '2.0 TDI Attraction Automatic',
+                                'slug' => '2_0_tdi_attraction_automatic',
+                                'description' => '2.0 TDI Attraction Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TDI Convertible',
+                                'slug' => '2_0_tdi_convertible',
+                                'description' => '2.0 TDI convertible'
+                            ],
+                            [
+                                'name' => '2.0 TDI Convertible Automatic',
+                                'slug' => '2_0_tdi_convertible_automatic',
+                                'description' => '2.0 TDI convertible Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TDI Premium',
+                                'slug' => '2_0_tdi_premium',
+                                'description' => '2.0 TDI Premium'
+                            ],
+                            [
+                                'name' => '2.0 TDI Quattro Ambition',
+                                'slug' => '2_0_tdi_quattro_ambition',
+                                'description' => '2.0 TDI Quattro Ambition'
+                            ],
+                            [
+                                'name' => '2.0 TDI Quattro Sportback Ambition',
+                                'slug' => '2_0_tdi_quattro_sportback_ambition',
+                                'description' => '2.0 TDI Quattro Sportback Ambition'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback',
+                                'slug' => '2_0_tdi_sportback',
+                                'description' => '2.0 TDI Sportback'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Ambition',
+                                'slug' => '2_0_tdi_sportback_ambition',
+                                'description' => '2.0 TDI Sportback Ambition'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Ambition DSG',
+                                'slug' => '2_0_tdi_sportback_ambition_dsg',
+                                'description' => '2.0 TDI Sportback Ambition DSG'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Ambitionual',
+                                'slug' => '2_0_tdi_sportback_ambitionual',
+                                'description' => '2.0 TDI Sportback Ambitionual'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Attraction',
+                                'slug' => '2_0_tdi_sportback_attraction',
+                                'description' => '2.0 TDI Sportback Attraction'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Attraction Automatic',
+                                'slug' => '2_0_tdi_sportback_attraction_automatic',
+                                'description' => '2.0 TDI Sportback Attraction Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Automatic',
+                                'slug' => '2_0_tdi_sportback_automatic',
+                                'description' => '2.0 TDI Sportback Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TDI Sportback Automatic',
+                                'slug' => '2_0_tdi_sportback_automatic',
+                                'description' => '2.0 TDI Sportback Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TFSI',
+                                'slug' => '2_0_tfsi',
+                                'description' => '2.0 TFSI'
+                            ],
+                            [
+                                'name' => '2.0 TFSI Convertible',
+                                'slug' => '2_0_tfsi_convertible',
+                                'description' => '2.0 TFSi Convertible'
+                            ],
+                            [
+                                'name' => '2.0 TFSI Convertible Automatic',
+                                'slug' => '2_0_tfsi_convertible_automatic',
+                                'description' => '2.0 TFSi Convertible Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Sportback',
+                                'slug' => '2_0_tfsi_sportback',
+                                'description' => '2.0 TFSi Sportback'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Sportback Automatic',
+                                'slug' => '2_0_tfsi_sportback Automatic',
+                                'description' => '2.0 TFSi Sportback Automatic'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Ambition',
+                                'slug' => '2_0_tfsi_ambition',
+                                'description' => '2.0 TFSi Ambition'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Ambition S',
+                                'slug' => '2_0_tfsi_ambition_s',
+                                'description' => '2.0 TFSi Ambition S'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Ambition S-Tronic',
+                                'slug' => '2_0_tfsi_ambtion_s_tronic',
+                                'description' => '2.0 TFSI Ambition S-Tronic'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Ambition Sportback S-Tronic',
+                                'slug' => '2_0_tfsi_ambtion_sportback_s_tronic',
+                                'description' => '2.0 TFSI Ambition Sportback S-Tronic'
+                            ],
+                            [
+                                'name' => '2.0 TFSi Ambition Sportbackual',
+                                'slug' => '2_0_tfsi_ambtion_sportbackual',
+                                'description' => '2.0 TFSI Ambition Sportbackual'
+                            ],
+                            [
+                                'name' => '2.0 T Premium',
+                                'slug' => '2_0_t_premium',
+                                'description' => '2.0 T Premium'
+                            ],
+                            [
+                                'name' => '2.0 T Premium Automatic',
+                                'slug' => '2_0_t_premium_automatic',
+                                'description' => '2.0 T Premium Automatic'
+                            ],
+                            [
+                                'name' => '2.0 T Premium Quattro',
+                                'slug' => '2_0_t_premium_quattro',
+                                'description' => '2.0 T Premium Quattro'
+                            ],
+                            [
+                                'name' => '2.0 T Premium S tronic',
+                                'slug' => '2_0_t_premium_stronic',
+                                'description' => '2.0 T Premium S tronic'
+                            ],
+                            [
+                                'name' => '3.2 V6 Quattro DSG',
+                                'slug' => '3_2_v6_quattro_dsg',
+                                'description' => '3.2 V6 Quattro DSG'
+                            ],
+                            [
+                                'name' => '3.2 V6 Quattro DSG',
+                                'slug' => '3_2_v6_quattro_dsg',
+                                'description' => '3.2 V6 Quattro DSG'
+                            ],
+                            [
+                                'name' => '3.2 V6 Quattroual',
+                                'slug' => '3_2_v6_quattroual',
+                                'description' => '3.2 V6 Quattroual'
+                            ],
+                            [
+                                'name' => '3.2 V6 Quattroual Sportback',
+                                'slug' => '3_2_v6_quattroual_sportback',
+                                'description' => '3.2 V6 Quattroual Sportback'
+                            ],
+                            [
+                                'name' => 'Attraction 1.6',
+                                'slug' => 'attraction_1.6',
+                                'description' => 'Attraction 1.6'
+                            ],
+                            [
+                                'name' => 'S3',
+                                'slug' => 's3',
+                                'description' => 'S3'
+                            ],
+                            [
+                                'name' => 'S3 1.8 T',
+                                'slug' => 's3_1_8_t',
+                                'description' => 'S3 1.8 T'
+                            ],
+                            [
+                                'name' => 'S3 2.0 TFSi',
+                                'slug' => 's3_2_0_tfsi',
+                                'description' => 'S3 2.0 TFSi'
+                            ],
+                            [
+                                'name' => 'S3 Sportback 2.0 TFSi',
+                                'slug' => 's3_sportback_2.0_tfsi',
+                                'description' => 'S3 Sportback 2.0 TFSi'
+                            ],
+                            [
+                                'name' => 'Spor',
+                                'slug' => 'spor',
+                                'description' => 'Spor'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6',
+                                'slug' => 'sportback_1_6',
+                                'description' => 'Sportback 1.6'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6 Automatic',
+                                'slug' => 'sportback_1_6_automatic',
+                                'description' => 'Sportback 1.6 Automatic'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6 Automatic',
+                                'slug' => 'sportback_1_6_automatic',
+                                'description' => 'Sportback 1.6 Automatic'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6 FSi',
+                                'slug' => 'sportback_1_6_fsi',
+                                'description' => 'Sportback 1.6 Fsi'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6 Tiptronic',
+                                'slug' => 'sportback_1_6_tiptronic',
+                                'description' => 'Sportback 1.6 Tiptronic'
+                            ],
+                            [
+                                'name' => 'Sportback 1.6 TDI',
+                                'slug' => 'sportback_1_6_tdi',
+                                'description' => 'Sportback 1.6 TDI'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 FSI',
+                                'slug' => 'sportback_2_0_fsi',
+                                'description' => 'Sportback 2.0 FSI'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 TDi',
+                                'slug' => 'sportback_2_0_tdi',
+                                'description' => 'Sportback 2.0 TDI'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 TDI DSG',
+                                'slug' => 'sportback_2_0_tdi_dsg',
+                                'description' => 'Sportback 2.0 TDI DSG'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 TFSI',
+                                'slug' => 'sportback_2_0_tfsi',
+                                'description' => 'Sportback 2.0 TFSI'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 TFSI DSG',
+                                'slug' => 'sportback_2_0_tfsi_dsg',
+                                'description' => 'Sportback 2.0 DSG'
+                            ],
+                            [
+                                'name' => 'Sportback 2.0 TFSI Quattro',
+                                'slug' => 'sportback_2_0_tfsi_quattro',
+                                'description' => 'Sportback 2.0 Quattro'
+                            ],
+                            [
+                                'name' => 'Sportback 3.2 Quattro',
+                                'slug' => 'sportback_3.2_quattro',
+                                'description' => 'Sportback 3.2 Quattro'
+                            ],
+                            [
+                                'name' => 'Sportback 3.2 Quattro DSG',
+                                'slug' => 'sportback_3.2_quattro_dsg',
+                                'description' => 'Sportback 3.2 Quattro DSG'
+                            ]
+                        ]
                     ],
                     [
                         'name' => 'A4',
@@ -386,7 +1329,13 @@ class AddCarMakesCommand extends Command
                                 'description' => 'Tech Package'
                             ]
                         ]
-                    ]
+                    ],
+                    [
+                        'name' => 'ZDX',
+                        'slug' => 'zdx',
+                        'description' => 'ZDX',
+                        'series' => []
+                    ],
                 ]
             ],
             [
@@ -396,12 +1345,431 @@ class AddCarMakesCommand extends Command
                 'image_name' => 'alfa_romeo.png',
                 'models' => [
                     [
+                        'name' => '145',
+                        'slug' => '145',
+                        'description' => '145',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '146',
+                        'slug' => '146',
+                        'description' => '146',
+                        'series' => []
+                    ],
+                    [
                         'name' => '147',
                         'slug' => '147',
                         'description' => '147',
                         'series' => []
-                    ]
-                ]
+                    ],
+                    [
+                        'name' => '155',
+                        'slug' => '155',
+                        'description' => '155',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '156',
+                        'slug' => '156',
+                        'description' => '156',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '159',
+                        'slug' => '159',
+                        'description' => '159',
+                        'series' => [
+                            [
+                                'name' => '1.7 5',
+                                'slug' => '1_7_5',
+                                'description' => '1.7 5'
+                            ],
+                            [
+                                'name' => '1.8 MPI',
+                                'slug' => '1_8_mpi',
+                                'description' => '1.8 MPI'
+                            ],
+                            [
+                                'name' => '1.9 JDTM',
+                                'slug' => '1_9_jdtm',
+                                'description' => '1.9 JDTM'
+                            ],
+                            [
+                                'name' => '1.9 JTS',
+                                'slug' => '1_9_jts',
+                                'description' => '1.9 JTS'
+                            ],
+                            [
+                                'name' => '2.0 JDTM',
+                                'slug' => '2_0_jdtm',
+                                'description' => '2.0 JDTM'
+                            ],
+                            [
+                                'name' => '2.0 JTS',
+                                'slug' => '2_0_jts',
+                                'description' => '2.0 JTS'
+                            ],
+                            [
+                                'name' => '2.2 JTS',
+                                'slug' => '2_2_jts',
+                                'description' => '2.2 JTS'
+                            ],
+                            [
+                                'name' => '2.4 JDTm',
+                                'slug' => '2_4_jdtm',
+                                'description' => '2.4 JDTM'
+                            ],
+                            [
+                                'name' => '3.2 JTS',
+                                'slug' => '3_2_jts',
+                                'description' => '3.2 JTS'
+                            ],
+                            [
+                                'name' => '3.2 V6',
+                                'slug' => '3_2_v6',
+                                'description' => '3.2 V6'
+                            ]
+                        ]
+                    ],
+                    [
+                        'name' => '1600',
+                        'slug' => '1600',
+                        'description' => '1600',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '164',
+                        'slug' => '164',
+                        'description' => '164',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '166',
+                        'slug' => '166',
+                        'description' => '166',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '175',
+                        'slug' => '175',
+                        'description' => '175',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '1750',
+                        'slug' => '1750',
+                        'description' => '1750',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '179',
+                        'slug' => '179',
+                        'description' => '179',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '1900',
+                        'slug' => '1900',
+                        'description' => '1900',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '2000',
+                        'slug' => '2000',
+                        'description' => '2000',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '2600',
+                        'slug' => '2600',
+                        'description' => '2600',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '33',
+                        'slug' => '33',
+                        'description' => '33',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '4C Spider',
+                        'slug' => '4c_spider',
+                        'description' => '4C Spider',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '6',
+                        'slug' => '6',
+                        'description' => '6',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '66',
+                        'slug' => '66',
+                        'description' => '66',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '75',
+                        'slug' => '75',
+                        'description' => '75',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '8C',
+                        'slug' => '8c',
+                        'description' => '8C',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '90',
+                        'slug' => '90',
+                        'description' => '90',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Alfasud',
+                        'slug' => 'alfasud',
+                        'description' => 'Alfasud',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Alfetta',
+                        'slug' => 'alfetta',
+                        'description' => 'Alfetta',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Alfetta',
+                        'slug' => 'alfetta',
+                        'description' => 'Alfetta',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'AR',
+                        'slug' => 'ar',
+                        'description' => 'AR',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Arna',
+                        'slug' => 'arna',
+                        'description' => 'Arna',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Bella',
+                        'slug' => 'bella',
+                        'description' => 'Bella',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Berlina',
+                        'slug' => 'berlina',
+                        'description' => 'Berlina',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Brera',
+                        'slug' => 'brera',
+                        'description' => 'Brera',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Caimano',
+                        'slug' => 'caimano',
+                        'description' => 'Caimano',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Carabo',
+                        'slug' => 'carabo',
+                        'description' => 'Carabo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Centauri',
+                        'slug' => 'centauri',
+                        'description' => 'Centauri',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Crossaagon',
+                        'slug' => 'crosswagon',
+                        'description' => 'Crosswagon',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Cuneo',
+                        'slug' => 'cuneo',
+                        'description' => 'Cuneo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Dardo',
+                        'slug' => 'dardo',
+                        'description' => 'Dardo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Disco',
+                        'slug' => 'disco',
+                        'description' => 'Disco',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Eagle',
+                        'slug' => 'eagle',
+                        'description' => 'Eagle',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Guilia',
+                        'slug' => 'guilia',
+                        'description' => 'Guilia',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Giulia QV',
+                        'slug' => 'giulia_qv',
+                        'description' => 'Giulia QV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Giulia Super',
+                        'slug' => 'giulia_super',
+                        'description' => 'Giulia Super',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Giulia Super Stile',
+                        'slug' => 'giulia_super_stile',
+                        'description' => 'Giulia Super Stile',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Giulietta',
+                        'slug' => 'giulietta',
+                        'description' => 'giulietta',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Graduate',
+                        'slug' => 'graduate',
+                        'description' => 'Graduate',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'GT',
+                        'slug' => 'gt',
+                        'description' => 'GT',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'GTA',
+                        'slug' => 'gta',
+                        'description' => 'GTA',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'GTV',
+                        'slug' => 'gtv',
+                        'description' => 'GTV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Junior',
+                        'slug' => 'junior',
+                        'description' => 'Junior',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Kamal',
+                        'slug' => 'kamal',
+                        'description' => 'Kamal',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'MiTo',
+                        'slug' => 'mito',
+                        'description' => 'MiTo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'MiTo',
+                        'slug' => 'mito',
+                        'description' => 'MiTo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Navajo',
+                        'slug' => 'navajo',
+                        'description' => 'Navajo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Navola',
+                        'slug' => 'nuvalo',
+                        'description' => 'Nuvalo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Proteo',
+                        'slug' => 'proteo',
+                        'description' => 'Proteo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RZ',
+                        'slug' => 'rz',
+                        'description' => 'RZ',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Scarabeo',
+                        'slug' => 'scarebeo',
+                        'description' => 'Scarebeo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Scighera',
+                        'slug' => 'scighera',
+                        'description' => 'Scighera',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Spider',
+                        'slug' => 'spider',
+                        'description' => 'Spider',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Sportiva',
+                        'slug' => 'sportiva',
+                        'description' => 'Sportiva',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Sportwagon',
+                        'slug' => 'sportwagon',
+                        'description' => 'sportwagon',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Sprint',
+                        'slug' => 'sprint',
+                        'description' => 'Sprint',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SZ',
+                        'slug' => 'sz',
+                        'description' => 'SZ',
+                        'series' => []
+                    ],
+
+                ],
+
             ],
             [
                 'name' => 'APRILIA',
@@ -410,9 +1778,141 @@ class AddCarMakesCommand extends Command
                 'image_name' => 'aprilia.png',
                 'models' => [
                     [
-                        'name' => 'Dorsodoro',
-                        'slug' => 'dorsodoro',
-                        'description' => 'Dorsodoro',
+                        'name' => '125',
+                        'slug' => '125',
+                        'description' => '125',
+                        'series' => []
+                    ],
+                    [
+                        'name' => '250',
+                        'slug' => '250',
+                        'description' => '250',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'AF',
+                        'slug' => 'af',
+                        'description' => 'AF',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'AF1',
+                        'slug' => 'af1',
+                        'description' => 'AF1',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Atlantic',
+                        'slug' => 'atlantic',
+                        'description' => 'Atlantic',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Blue',
+                        'slug' => 'blue',
+                        'description' => 'Blue',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Caponord',
+                        'slug' => 'caponord',
+                        'description' => 'Caponord',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Classic',
+                        'slug' => 'classic',
+                        'description' => 'Classic',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Climber',
+                        'slug' => 'climber',
+                        'description' => 'Climber',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Caponord',
+                        'slug' => 'caponord',
+                        'description' => 'Caponord',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Dorsoduro',
+                        'slug' => 'dorsoduro',
+                        'description' => 'Dorsoduro',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'ETV',
+                        'slug' => 'etv',
+                        'description' => 'ETV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'ETX',
+                        'slug' => 'etx',
+                        'description' => 'ETX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'F1',
+                        'slug' => 'f1',
+                        'description' => 'F1',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Falco',
+                        'slug' => 'falco',
+                        'description' => 'Falco',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Leonardo',
+                        'slug' => 'leonardo',
+                        'description' => 'Leonardo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Mana',
+                        'slug' => 'mana',
+                        'description' => 'Mana',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Mini',
+                        'slug' => 'mini',
+                        'description' => 'Mini',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Mojito',
+                        'slug' => 'mojito',
+                        'description' => 'Mojito',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Moto',
+                        'slug' => 'moto',
+                        'description' => 'Moto',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'MX',
+                        'slug' => 'mx',
+                        'description' => 'MX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'MXV',
+                        'slug' => 'mxv',
+                        'description' => 'MXV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'NA',
+                        'slug' => 'na',
+                        'description' => 'NA',
                         'series' => []
                     ],
                     [
@@ -420,7 +1920,115 @@ class AddCarMakesCommand extends Command
                         'slug' => 'tuono',
                         'description' => 'Tuono',
                         'series' => []
-                    ]
+                    ],
+                    [
+                        'name' => 'Pegaso',
+                        'slug' => 'pegaso',
+                        'description' => 'Pegaso',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RS',
+                        'slug' => 'rs',
+                        'description' => 'RS',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RST',
+                        'slug' => 'rst',
+                        'description' => 'RST',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RSV',
+                        'slug' => 'rsv',
+                        'description' => 'RSV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RX',
+                        'slug' => 'rx',
+                        'description' => 'RX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'RXV',
+                        'slug' => 'rxv',
+                        'description' => 'RXV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Scarebeo',
+                        'slug' => 'scarebeo',
+                        'description' => 'Scarebeo',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Shiver',
+                        'slug' => 'shiver',
+                        'description' => 'Shiver',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SL',
+                        'slug' => 'sl',
+                        'description' => 'SL',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Sonic',
+                        'slug' => 'sonic',
+                        'description' => 'Sonic',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SportCity',
+                        'slug' => 'sportcity',
+                        'description' => 'SportCity',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SR',
+                        'slug' => 'sr',
+                        'description' => 'SR',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SX',
+                        'slug' => 'sx',
+                        'description' => 'SX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SXV',
+                        'slug' => 'sxv',
+                        'description' => 'SXV',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'Tuareg',
+                        'slug' => 'tuareg',
+                        'description' => 'Tuareg',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'SX',
+                        'slug' => 'sx',
+                        'description' => 'SX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'TX',
+                        'slug' => 'tx',
+                        'description' => 'TX',
+                        'series' => []
+                    ],
+                    [
+                        'name' => 'TXR',
+                        'slug' => 'txr',
+                        'description' => 'TXR',
+                        'series' => []
+                    ],
                 ]
             ],
             [

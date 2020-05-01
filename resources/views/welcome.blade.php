@@ -253,6 +253,9 @@
                                             {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
                                             {{ $featured_car->bulk_ad->vehicle_detail->year }}
                                         </h6>
+                                        <h6>
+                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                        </h6>
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                 @else
@@ -265,8 +268,13 @@
                                                 {{ $featured_car->vehicle_detail->car_model->name }}
                                                 {{ $featured_car->vehicle_detail->year }}
                                             </h6>
+                                            <h6>
+                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
+                                            </h6>
                                         </a>
-                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+                                        <h6 style="color: black; font-weight: bold;">
+                                            KES {{ number_format($featured_car->vehicle_detail->price, 2) }}
+                                        </h6>
                                     </div>
                                 @endif
                             </div>
@@ -318,6 +326,9 @@
                                             {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
                                             {{ $featured_car->bulk_ad->vehicle_detail->year }}
                                         </h6>
+                                        <h6>
+                                         Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                        </h6>
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                 @else
@@ -329,6 +340,9 @@
                                             <h6>
                                                 {{ $featured_car->vehicle_detail->car_model->name }}
                                                 {{ $featured_car->vehicle_detail->year }}
+                                            </h6>
+                                            <h6>
+                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
                                             </h6>
                                         </a>
                                         <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>

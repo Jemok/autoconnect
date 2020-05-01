@@ -10,6 +10,8 @@ use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\CarSeriesRepository;
 use App\Repositories\ColourTypeRepository;
+use App\Repositories\DriveSetUpRepository;
+use App\Repositories\DriveTypeRepository;
 use App\Repositories\DutyRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\InteriorRepository;
@@ -84,11 +86,11 @@ class EditVehicleController extends Controller
     }
 
     public function updateUserBothBulkImportVehicle(CarDetailsRequest $carDetailsRequest,
-                                                BulkImportRepository $bulkImportRepository,
-                                                VehicleDetailRepository $vehicleDetailRepository,
-                                                $vehicleDetailId,
-                                                $userBulkImportId,
-                                                $bulkImportId){
+                                                    BulkImportRepository $bulkImportRepository,
+                                                    VehicleDetailRepository $vehicleDetailRepository,
+                                                    $vehicleDetailId,
+                                                    $userBulkImportId,
+                                                    $bulkImportId){
 
         $user_bulk_import = $bulkImportRepository->show($userBulkImportId);
 
@@ -241,7 +243,9 @@ class EditVehicleController extends Controller
                                                 FuelTypeRepository $fuelTypeRepository,
                                                 InteriorRepository $interiorRepository,
                                                 ColourTypeRepository $colourTypeRepository,
-                                                VehicleFeaturesRepository $vehicleFeaturesRepository){
+                                                VehicleFeaturesRepository $vehicleFeaturesRepository,
+                                                DriveSetUpRepository $driveSetUpRepository,
+                                                DriveTypeRepository $driveTypeRepository){
 
         $vehicleDetail = $vehicleDetailRepository->show($vehicleDetailId);
 
@@ -271,6 +275,10 @@ class EditVehicleController extends Controller
 
         $selected_vehicle_features_array = json_decode($selected_vehicle_features_json, true);
 
+        $drive_setups = $driveSetUpRepository->index();
+
+        $drive_types = $driveTypeRepository->index();
+
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
@@ -286,6 +294,8 @@ class EditVehicleController extends Controller
             'interiors',
             'colour_types',
             'vehicle_features',
-            'selected_vehicle_features_array'));
+            'selected_vehicle_features_array',
+            'drive_types',
+            'drive_setups'));
     }
 }
