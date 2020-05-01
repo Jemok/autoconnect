@@ -167,7 +167,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['motorbikes']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
@@ -197,7 +197,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
