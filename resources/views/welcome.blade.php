@@ -282,7 +282,7 @@
                     @endforeach
                 </div>
 
-                <div class="row d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px; margin-top: 1%">
+                <div class="row" style="padding-left: 0px; margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 
@@ -295,7 +295,7 @@
                         }
                         ?>
                         {{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
-                        <div class="col-md-4 col-lg-4" style="height: 250px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
+                        <div class="col-md-4 col-lg-4 d-none d-md-block d-lg-block d-xl-block" style="height: 250px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
                             @if($featured_car->type == 'bulk')
                                 <div class="row">
                                     <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
@@ -326,7 +326,7 @@
                                             {{ $featured_car->bulk_ad->vehicle_detail->year }}
                                         </h6>
                                         <h6>
-                                         Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
                                         </h6>
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
