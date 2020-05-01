@@ -82,7 +82,7 @@
                                                     {{ $featured_car->vehicle_detail->year }}
                                                 </h6>
                                                 <h6>
-                                                    Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                                    Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
                                                 </h6>
                                             </a>
                                             <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
