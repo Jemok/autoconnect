@@ -30,7 +30,7 @@
             </div>
 
             <div class="col-md-6">
-                <div style="padding-top: 5%;" class="d-none d-md-block d-lg-block d-xl-block">
+                <div style="padding-top: 5%;">
                     <h5 class="text-left">
                         <span style="font-weight: bold;">
                           Featured Ads
