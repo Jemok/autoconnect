@@ -37,7 +37,7 @@
                         </span>
                     </h5>
 
-                    <div class="col-md-12 row d-md-none d-lg-none d-xl-none" style="padding-left: 0px;" >
+                    <div class="col-md-12 row" style="padding-left: 0px;" >
                         @foreach($featured_cars as $featured_car)
                             <?php
 
@@ -49,7 +49,7 @@
                                 $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                             }
                             ?>
-                            <div class="card col-md-4"  style="width: 12rem; border: none;">
+                            <div class="card col-md-4 d-md-none d-lg-none d-xl-none"  style="width: 12rem; border: none;">
                                 @if($featured_car->type == 'bulk')
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
                                         <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
@@ -68,6 +68,9 @@
                                             <h6 style="color: tomato;">
                                                 {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
                                             </h6>
+                                            <h6>
+                                                Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                            </h6>
                                         </a>
                                         <h6 style="color: tomato;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
                                     @else
@@ -77,6 +80,9 @@
                                                     {{ $featured_car->vehicle_detail->car_make->name }}
                                                     {{ $featured_car->vehicle_detail->car_model->name }}
                                                     {{ $featured_car->vehicle_detail->year }}
+                                                </h6>
+                                                <h6>
+                                                    Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
                                                 </h6>
                                             </a>
                                             <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
@@ -88,7 +94,7 @@
                         @endforeach
                     </div>
 
-                    <div class="col-md-12 row d-none d-md-block d-lg-block d-xl-block" style="padding-left: 0px;" >
+                    <div class="col-md-12 row" style="padding-left: 0px;" >
                         @foreach($featured_cars as $featured_car)
                             <?php
 
@@ -100,7 +106,7 @@
                                 $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                             }
                             ?>
-                            <div class="card col-md-4"  style="width: 12rem; border: none;">
+                            <div class="card col-md-4 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem; border: none;">
                                 @if($featured_car->type == 'bulk')
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
                                         <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
