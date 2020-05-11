@@ -172,11 +172,11 @@
                                         <h5 class="m-b-10">Online Ads</h5>
                                         <p class="text-muted m-b-10">Manage all online Ads here</p>
 
-                                        <div class="pull-right">
-                                            <a href="{{ route('exportOnlineAds') }}" class="btn btn-primary btn-sm">
-                                                Export Pdf
-                                            </a>
-                                        </div>
+{{--                                        <div class="pull-right">--}}
+{{--                                            <a href="{{ route('exportOnlineAds') }}" class="btn btn-primary btn-sm">--}}
+{{--                                                Export Pdf--}}
+{{--                                            </a>--}}
+{{--                                        </div>--}}
 
                                         <div class="pull-right">
                                             <a href="{{ route('exportOnlineAdsExcel') }}" class="btn btn-primary btn-sm">
