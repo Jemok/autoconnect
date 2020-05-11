@@ -2,14 +2,15 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromView;
-use Illuminate\Contracts\View\View;
+use App\User;
+use Maatwebsite\Excel\Concerns\FromCollection;
 
-class OnlineAdsExport implements FromView
+
+
+class OnlineAdsExport implements FromCollection
 {
-    public function view(): View
+    public function collection()
     {
-        return view('reports.online-ads-excel');
+        return User::all();
     }
-
 }
