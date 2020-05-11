@@ -15,7 +15,7 @@ class DeclinedAdsExport implements FromView
 
         $disapproval_reasons = $bulkImportRepository->getAllSubmittedCorrections();
 
-        return view('reports.online-ads-excel', [
+        return view('reports.declined-ads-excel', [
             'declined_ads' => $disapproval_reasons
         ]);
     }
