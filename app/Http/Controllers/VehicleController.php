@@ -152,7 +152,6 @@ class VehicleController extends Controller
 
         $premium_ads = AddPrice::where('type', 'premium')->get();
 
-
         return view('vehicles.create-ad', compact('vehicleId',
             'vehicle_detail',
             'standard_ads',

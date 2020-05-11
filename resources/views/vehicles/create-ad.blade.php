@@ -186,7 +186,7 @@
                                             <form method="POST" action="{{ route('makePayment', [$vehicleId, 'ultimate']) }}">
                                                 {{ csrf_field() }}
                                                 <h5 class="card-title" style="font-weight: bold;">Ultimate Package</h5>
-                                                <input class="form-control" type="text" name="priceUltimate"  readonly id="priceUltimate" value="KES 2500">
+                                                <input class="form-control" type="text" name="priceUltimate"  readonly id="priceUltimate" value="KES 5">
                                                 {{--<p class="card-text"  style="font-weight: bold;"></p>--}}
                                                 <p class="card-text" style="font-weight: bold;">Standard Ad</p>
                                                 {{--<p class="card-text" style="font-weight: bold;">Valid for 30 days</p>--}}

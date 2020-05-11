@@ -78,7 +78,7 @@ class PaymentController extends Controller
             $amount = (int) AddPrice::where('weeks', $request->period)->firstOrFail()->amount;
         }elseif ($paymentType == 'ultimate'){
 
-            $amount = 2500;
+            $amount = 5;
         }
 
         $mpesa_credentials = base64_encode(env('LIPA_ONLINE_KEY').':'.env('LIPA_ONLINE_SECRET'));
