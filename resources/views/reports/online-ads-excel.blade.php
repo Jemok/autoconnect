@@ -6,6 +6,7 @@
         <th>Id</th>
         <th>Car Type</th>
         <th>Model</th>
+        <th>Town</th>
         <th>Seller</th>
     </tr>
     </thead>
@@ -35,6 +36,12 @@
             <td>
                 @if(isset($online_ad->vehicle_detail->vehicle_contact->area_id))
                     {{ $online_ad->vehicle_detail->vehicle_contact->area->name }}
+                @endif
+            </td>
+
+            <td>
+                @if(isset($online_ad->vehicle_detail->vehicle_contact->name))
+                    {{ $online_ad->vehicle_detail->vehicle_contact->name }}
                 @endif
             </td>
     </tr>
