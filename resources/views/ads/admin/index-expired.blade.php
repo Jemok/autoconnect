@@ -174,6 +174,13 @@
                                 <div class="card-block">
                                     <h5 class="m-b-10">Expired Ads</h5>
                                     <p class="text-muted m-b-10">Manage all expired Ads here</p>
+
+                                    <div class="pull-right">
+                                        <a href="{{ route('exportExpiredAdsExcel') }}" class="btn btn-primary btn-sm">
+                                            Export Excel
+                                        </a>
+                                    </div>
+
                                     <ul class="breadcrumb-title b-t-default p-t-10">
                                         <li class="breadcrumb-item">
                                             <a href="{{ route('adminHome') }}"> <i class="fa fa-home"></i> </a>

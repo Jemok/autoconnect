@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\DeclinedAdsExport;
+use App\Exports\ExpiredAdsExport;
 use App\Exports\OnlineAdsExport;
 use App\Exports\PendingVerificationAdsExport;
 use Carbon\Carbon;
@@ -45,5 +46,10 @@ class ReportsController extends Controller
     public function exportDeclinedAdsExcel(){
 
         return Excel::download(new DeclinedAdsExport(), 'declined-ads'.Carbon::now()->toDateTimeString().'.xlsx');
+    }
+
+    public function exportExpiredAdsExcel(){
+
+        return Excel::download(new ExpiredAdsExport(), 'expired-ads'.Carbon::now()->toDateTimeString().'.xlsx');
     }
 }
