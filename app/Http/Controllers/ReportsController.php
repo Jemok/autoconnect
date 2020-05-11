@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DeclinedAdsExport;
 use App\Exports\OnlineAdsExport;
 use App\Exports\PendingVerificationAdsExport;
 use Carbon\Carbon;
@@ -39,5 +40,10 @@ class ReportsController extends Controller
     public function exportPendingVerificationAdsExcel(){
 
         return Excel::download(new PendingVerificationAdsExport(), 'pending-verification'.Carbon::now()->toDateTimeString().'.xlsx');
+    }
+
+    public function exportDeclinedAdsExcel(){
+
+        return Excel::download(new DeclinedAdsExport(), 'declined-ads'.Carbon::now()->toDateTimeString().'.xlsx');
     }
 }
