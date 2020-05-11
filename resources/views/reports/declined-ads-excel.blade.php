@@ -22,7 +22,7 @@
                     Resolved
                 @endif
 
-                @if($declined_ad->status == 'not_resolved'){
+                @if($declined_ad->status == 'not_resolved')
                     Not Resolved
                 @endif
             </td>
