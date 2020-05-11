@@ -6,8 +6,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        @foreach($users as $user)
+    @foreach($users as $user)
+        <tr>
             <td>
                 {{ $user->name }}
             </td>
@@ -15,8 +15,7 @@
             <td>
                 {{ $user->email }}
             </td>
-        @endforeach
     </tr>
-
+    @endforeach
     </tbody>
 </table>
