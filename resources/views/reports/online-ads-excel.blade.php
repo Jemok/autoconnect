@@ -7,8 +7,16 @@
     </thead>
     <tbody>
     <tr>
-        <td>James</td>
-        <td>Mwangi</td>
+        @foreach($users as $user)
+            <td>
+                {{ $user->name }}
+            </td>
+
+            <td>
+                {{ $user->email }}
+            </td>
+        @endforeach
     </tr>
+
     </tbody>
 </table>
