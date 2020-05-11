@@ -6,16 +6,29 @@
 @section('content')
     <div class="container-fluid">
         @include('flash::message')
-        <div class="col-md-6" style="margin-top: 2%; margin-left: 4.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
+        <div class="col-md-8" style="margin-top: 2%; margin-left: 4.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
             <span style="color: white;">
                 Car ID : {{  $vehicle_detail->unique_identifier }}
-              {{ $vehicle_detail->car_make->name }}
+                {{ $vehicle_detail->car_make->name }}
                 -
                 {{ $vehicle_detail->car_model->name }}
 
-                -Click on image to enlarge
                 {{ $vehicle_detail->year }}
             </span>
+
+            @if(isset($vehicle_detail->vehicle_contact->phone_number))
+                <span>
+                    {{ $vehicle_detail->vehicle_contact->phone_number }}
+                </span>
+            @endif
+
+            @if(isset($vehicle_detail->vehicle_contact->area_id))
+                <span>
+                    {{ $vehicle_detail->vehicle_contact->area->name }}
+                </span>
+            @endif
+
+            {{  $vehicle_detail->created_at }}
         </div>
 
         <div class="row">
@@ -498,13 +511,13 @@
         </div>
     </div>
     @push('scripts')
-    <script>
-        $('#flash-overlay-modal').modal();
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-    <script>
-        baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
-        $('#flash-overlay-modal').modal();
-    </script>
+        <script>
+            $('#flash-overlay-modal').modal();
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+        <script>
+            baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
+            $('#flash-overlay-modal').modal();
+        </script>
     @endpush
 @endsection

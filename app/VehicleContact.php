@@ -15,4 +15,13 @@ class VehicleContact extends Model
 
         return $this->belongsTo(VehicleDetail::class);
     }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function area(){
+
+        return $this->belongsTo(Area::class);
+    }
 }
