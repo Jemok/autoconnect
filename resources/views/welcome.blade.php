@@ -232,7 +232,7 @@
                             $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                         }
                         ?>
-                        <div class="col-12 item mx-auto" style="height: 250px; width: 100%; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
+                        <div class="col-12 item mx-auto" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
                             @if($featured_car->type == 'bulk')
                                 <div class="row">
                                     <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
@@ -267,6 +267,11 @@
                                         </h6>
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                    <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                        @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                            {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                        @endif
+                                    </p>
                                 @else
                                     <div>
                                         <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
@@ -284,6 +289,11 @@
                                         <h6 style="color: black; font-weight: bold;">
                                             KES {{ number_format($featured_car->vehicle_detail->price, 2) }}
                                         </h6>
+                                        <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                            @endif
+                                        </p>
                                     </div>
                                 @endif
                             </div>
@@ -304,7 +314,7 @@
                         }
                         ?>
                         {{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
-                        <div class="col-md-4 col-lg-4 d-none d-md-block d-lg-block d-xl-block" style="height: 250px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
+                        <div class="col-md-4 col-lg-4 d-none d-md-block d-lg-block d-xl-block" style="height: 270px; width: 210px; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
                             @if($featured_car->type == 'bulk')
                                 <div class="row">
                                     <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
@@ -339,6 +349,11 @@
                                         </h6>
                                     </a>
                                     <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                    <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                        @if(isset($featured_car->bulk_ad->vehicle_detail->vehicle_contact->area_id))
+                                            {{ $featured_car->bulk_ad->vehicle_detail->vehicle_contact->area->name }}
+                                        @endif
+                                    </p>
                                 @else
                                     <div>
                                         <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
@@ -353,7 +368,13 @@
                                                 Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
                                             </h6>
                                         </a>
-                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}
+                                        </h6>
+                                        <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                            @endif
+                                        </p>
                                     </div>
                                 @endif
                             </div>
