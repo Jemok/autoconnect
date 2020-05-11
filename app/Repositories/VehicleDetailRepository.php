@@ -12,6 +12,8 @@ namespace App\Repositories;
 use App\AdStatus;
 use App\DisapprovalReason;
 use App\VehicleDetail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class VehicleDetailRepository
 {
@@ -137,6 +139,8 @@ class VehicleDetailRepository
 
     public function saveDisapprovalReason($type, $vehicle_detail, $reason, $status){
 
+        Schema::disableForeignKeyConstraints();
+
         $disapproval_reason = new DisapprovalReason();
 
         $disapproval_reason->reason = $reason;
@@ -148,6 +152,8 @@ class VehicleDetailRepository
         $disapproval_reason->type = $type;
 
         $disapproval_reason->save();
+
+        Schema::enableForeignKeyConstraints();
 
         return $disapproval_reason;
     }
