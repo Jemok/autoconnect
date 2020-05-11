@@ -150,6 +150,9 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('export-online-ads', 'ReportsController@exportOnlineAds')->name('exportOnlineAds');
 
     Route::get('export-online-ads-excel', 'ReportsController@exportOnlineAdsExcel')->name('exportOnlineAdsExcel');
+
+    Route::get('export-pending-verification-ads-excel', 'ReportsController@exportPendingVerificationAdsExcel')->name('exportPendingVerificationAdsExcel');
+
 });
 
 Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');

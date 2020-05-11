@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\OnlineAdsExport;
+use App\Exports\PendingVerificationAdsExport;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\App;
 use Maatwebsite\Excel\Facades\Excel;
@@ -32,6 +33,11 @@ class ReportsController extends Controller
     public function exportOnlineAdsExcel(){
 
         return Excel::download(new OnlineAdsExport(), 'online-ads'.Carbon::now()->toDateTimeString().'.xlsx');
+    }
 
+
+    public function exportPendingVerificationAdsExcel(){
+
+        return Excel::download(new PendingVerificationAdsExport(), 'pending-verification'.Carbon::now()->toDateTimeString().'.xlsx');
     }
 }
