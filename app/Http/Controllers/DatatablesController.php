@@ -474,7 +474,7 @@ class DatatablesController extends Controller
                 if($disapproval_reason->type == 'single'){
 
 
-                    $url = route('indexSingleAdsImages', $disapproval_reason->user_bulk_import->id);
+                    $url = route('indexSingleAdsImages', $disapproval_reason->vehicle_detail->id);
 
                     return '<a href="'.$url.'" class="btn btn-primary btn-sm"><i class="fa fa-images"></i>View</a>';
                 }

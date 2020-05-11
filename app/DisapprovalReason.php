@@ -20,4 +20,12 @@ class DisapprovalReason extends Model
     }
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function vehicle_detail(){
+
+        return $this->belongsTo(VehicleDetail::class, 'user_bulk_import_id', 'id');
+    }
+
 }
