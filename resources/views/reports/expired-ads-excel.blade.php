@@ -1,7 +1,8 @@
 <table>
     <thead>
     <tr>
-        <th>Date</th>
+        <th>Posted Date</th>
+        <th>Expired At</th>
         <th>Batch No</th>
         <th>Id</th>
         <th>Car Type</th>
@@ -16,7 +17,9 @@
             <td>
                 {{ $expired_ad->created_at }}
             </td>
-
+            <td>
+                {{ $expired_ad->stop }}
+            </td>
             <td>
                 {{ $expired_ad->vehicle_detail->unique_identifier }}
             </td>

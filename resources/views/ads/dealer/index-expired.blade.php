@@ -187,6 +187,7 @@
                                             <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
+                                                <th scope="col">Expired At</th>
                                                 <th scope="col">Manage</th>
                                                 <th scope="col">Ad Type</th>
                                                 <th scope="col">Make</th>
@@ -288,6 +289,7 @@
                 ajax: '{!! route('indexExpiredAdsDataForDealer') !!}',
                 columns: [
                     { data: 'id', name: 'id' },
+                    { data: 'expired_at', name: 'expired_at' },
                     { data: 'manage_ad', name: 'manage_ad'},
                     { data: 'ad_type', name: 'ad_type'},
                     { data: 'car_make', name: 'car_make'},

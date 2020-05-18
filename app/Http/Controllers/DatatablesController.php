@@ -540,6 +540,10 @@ class DatatablesController extends Controller
 
                 return $expired_ad->vehicle_detail->id;
             })
+            ->addColumn('expired_at', function ($single_ad){
+
+                return $single_ad->stop;
+            })
             ->addColumn('manage_ad', function ($single_ad){
 
                 if($single_ad->type == 'bulk') {
@@ -616,6 +620,10 @@ class DatatablesController extends Controller
             ->addColumn('id', function ($expired_ad){
 
                 return $expired_ad->vehicle_detail->id;
+            })
+            ->addColumn('expired_at', function ($single_ad){
+
+                return $single_ad->stop;
             })
             ->addColumn('manage_ad', function ($single_ad){
 
