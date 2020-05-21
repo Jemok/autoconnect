@@ -120,7 +120,9 @@
             @if(Auth::guest())
                 <a class="navbar-brand" href="{{ url('/') }}" style="margin-top: -2%;">
                     {{--{{ config('app.name', 'Univas Auto Connect') }}--}}
-                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">
+{{--                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">--}}
+                    <img alt="Univas Auto Connect" src="{{ asset('images/lg3.png') }}">
+
                 </a>
             @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
