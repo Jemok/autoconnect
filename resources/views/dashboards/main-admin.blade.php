@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <a href="{{ url('/') }}">
-                        <img class="img-fluid" width="180" src="{{ asset('images/lg4.png') }}" alt="UNIVAS AUTO CONNECT" />
+                        <img class="img-fluid" width="100%" src="{{ asset('images/lg4.png') }}"  alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
                         <i class="ti-more"></i>
@@ -79,7 +79,7 @@
                         <li class="user-profile header-notification">
                             <a href="#!">
                                 {{--<img src="{{ asset('images/univas-real.png') }}" class="img-radius">--}}
-                                <span>Logged in as : Super Admin - Admin Account</span>
+                                <span>Logged in as : {{ \Illuminate\Support\Facades\Auth::user()->name }} - Admin Account</span>
                                 <i class="ti-angle-down"></i>
                             </a>
                             <ul class="show-notification profile-notification">
