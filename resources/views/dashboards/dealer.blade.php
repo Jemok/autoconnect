@@ -62,8 +62,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('home') }}">
-                        <img class="img-fluid" width="150" src="{{ asset('images/univas-real.png') }}" alt="UNIVAS AUTO CONNECT" />
+                    <a href="{{ url('/') }}">
+                        <img class="img-fluid" width="150" src="{{ asset('images/lg4.png') }}" alt="UNIVAS AUTO CONNECT" />
                     </a>
                     <a class="mobile-options">
                         <i class="ti-more"></i>
