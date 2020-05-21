@@ -255,7 +255,7 @@
                             <div class="card-footer" style="padding: 0; background-color: white;">
                                 @if($featured_car->type == 'bulk')
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                        <h6 style="color: tomato; font-weight: bold;">
+                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
                                             {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
                                         </h6>
                                         <h6>
@@ -266,7 +266,7 @@
                                             Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
                                         </h6>
                                     </a>
-                                    <h6 style="color: tomato; font-weight: bold;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+                                    <h6 style="color: tomato; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
                                     <p  style="color: black; font-weight: bold; font-size: 12px;">
                                         @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
                                             {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
