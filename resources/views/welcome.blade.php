@@ -266,7 +266,7 @@
                                             Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
                                         </h6>
                                     </a>
-                                    <h6 style="color: tomato; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
+                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
                                     <p  style="color: black; font-weight: bold; font-size: 12px;">
                                         @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
                                             {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
@@ -348,7 +348,7 @@
                                             Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
                                         </h6>
                                     </a>
-                                    <h6 style="color: tomato; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
+                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
                                     <p  style="color: black; font-weight: bold; font-size: 12px;">
                                         @if(isset($featured_car->bulk_ad->vehicle_detail->vehicle_contact->area_id))
                                             {{ $featured_car->bulk_ad->vehicle_detail->vehicle_contact->area->name }}
