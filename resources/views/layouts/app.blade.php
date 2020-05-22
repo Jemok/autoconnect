@@ -123,7 +123,7 @@
                     {{--                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">--}}
                     <img alt="Univas Auto Connect" src="{{ asset('images/lg4.png') }}">
 
-                    <p style="font-size: xx-small;">Your Ultimate Car Company</p>
+                    <p style="font-size: xx-small;">Your Ultimate Online Car Market</p>
                 </a>
             @else
                 <a class="navbar-brand" href="{{ url('/home') }}">
