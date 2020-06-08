@@ -193,117 +193,120 @@
                                             <h2>
                                                 Profile Details
                                             </h2>
-                                            <form method="post" action="{{ route('updateDealerProfile') }}">
 
-                                                {{ csrf_field() }}
+                                            @if(isset( \Illuminate\Support\Facades\Auth::user()->user_profile->business_name))
+                                                <form method="post" action="{{ route('updateDealerProfile') }}">
 
-                                                <div class="form-group">
-                                                    <label for="name">Name</label>
-                                                    <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="nameHelp" value="{{ old('name') != null ? old('name') : \Illuminate\Support\Facades\Auth::user()->name  }}">
-                                                    @if ($errors->has('name'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                    {{ csrf_field() }}
+
+                                                    <div class="form-group">
+                                                        <label for="name">Name</label>
+                                                        <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" aria-describedby="nameHelp" value="{{ old('name') != null ? old('name') : \Illuminate\Support\Facades\Auth::user()->name  }}">
+                                                        @if ($errors->has('name'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('name') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="phone_number">Phone Number</label>
-                                                    <input type="text" name="phone_number" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" id="phone_number" value="{{ old('phone_number') != null ? old('phone_number') : \Illuminate\Support\Facades\Auth::user()->user_profile->phone_number }}">
-                                                    @if ($errors->has('phone_number'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="phone_number">Phone Number</label>
+                                                        <input type="text" name="phone_number" class="form-control{{ $errors->has('phone_number') ? ' is-invalid' : '' }}" id="phone_number" value="{{ old('phone_number') != null ? old('phone_number') : \Illuminate\Support\Facades\Auth::user()->user_profile->phone_number }}">
+                                                        @if ($errors->has('phone_number'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('phone_number') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="address">Business Address</label>
-                                                    <input type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address" aria-describedby="addressHelp" value="{{ old('address') != null ? old('address') : \Illuminate\Support\Facades\Auth::user()->user_profile->address }}">
-                                                    @if ($errors->has('address'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="address">Business Address</label>
+                                                        <input type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" id="address" aria-describedby="addressHelp" value="{{ old('address') != null ? old('address') : \Illuminate\Support\Facades\Auth::user()->user_profile->address }}">
+                                                        @if ($errors->has('address'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('address') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="business_name">Business Name</label>
-                                                    <input type="text" name="business_name" class="form-control{{ $errors->has('business_name') ? ' is-invalid' : '' }}" id="business_name" aria-describedby="businessNameHelp" value="{{ old('business_name') != null ? old('business_name') : \Illuminate\Support\Facades\Auth::user()->user_profile->business_name }}">
-                                                    @if ($errors->has('business_name'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="business_name">Business Name</label>
+                                                        <input type="text" name="business_name" class="form-control{{ $errors->has('business_name') ? ' is-invalid' : '' }}" id="business_name" aria-describedby="businessNameHelp" value="{{ old('business_name') != null ? old('business_name') : \Illuminate\Support\Facades\Auth::user()->user_profile->business_name }}">
+                                                        @if ($errors->has('business_name'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('business_name') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="business_registration_number">Business Registration Number</label>
-                                                    <input type="text" name="business_registration_number" class="form-control{{ $errors->has('business_registration_number') ? ' is-invalid' : '' }}" id="business_registration_number" aria-describedby="businessRegistrationNumberHelp" value="{{ old('business_registration_number') != null ? old('business_registration_number') : \Illuminate\Support\Facades\Auth::user()->user_profile->business_registration_number }}">
-                                                    @if ($errors->has('business_registration_number'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="business_registration_number">Business Registration Number</label>
+                                                        <input type="text" name="business_registration_number" class="form-control{{ $errors->has('business_registration_number') ? ' is-invalid' : '' }}" id="business_registration_number" aria-describedby="businessRegistrationNumberHelp" value="{{ old('business_registration_number') != null ? old('business_registration_number') : \Illuminate\Support\Facades\Auth::user()->user_profile->business_registration_number }}">
+                                                        @if ($errors->has('business_registration_number'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('business_registration_number') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="kra_pin">KRA PIN</label>
-                                                    <input type="text" name="kra_pin" class="form-control{{ $errors->has('kra_pin') ? ' is-invalid' : '' }}" id="kra_pin" aria-describedby="kraPinHelp" value="{{ old('kra_pin') != null ? old('kra_pin') : \Illuminate\Support\Facades\Auth::user()->user_profile->kra_pin }}">
-                                                    @if ($errors->has('kra_pin'))
-                                                        <span class="invalid-feedback" role="alert">
+                                                        @endif
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="kra_pin">KRA PIN</label>
+                                                        <input type="text" name="kra_pin" class="form-control{{ $errors->has('kra_pin') ? ' is-invalid' : '' }}" id="kra_pin" aria-describedby="kraPinHelp" value="{{ old('kra_pin') != null ? old('kra_pin') : \Illuminate\Support\Facades\Auth::user()->user_profile->kra_pin }}">
+                                                        @if ($errors->has('kra_pin'))
+                                                            <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('kra_pin') }}</strong>
                                                         </span>
-                                                    @endif
-                                                </div>
+                                                        @endif
+                                                    </div>
 
-                                                <h5>
-                                                    ONLY IMAGES SUPPORTED
-                                                </h5>
+                                                    <h5>
+                                                        ONLY IMAGES SUPPORTED
+                                                    </h5>
 
-                                                <div class="col-sm-12">
-                                                    <div class="card" style="border: none;">
-                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
-                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="business_registration_certificate" alt="Card image cap">
-                                                        </div>
-                                                        <div class="card-body" style="background-color: lightgrey;">
-                                                            <h6 class="card-title">
+                                                    <div class="col-sm-12">
+                                                        <div class="card" style="border: none;">
+                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="business_registration_certificate" alt="Card image cap">
+                                                            </div>
+                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                <h6 class="card-title">
                                                     <span style="font-weight: bold;">
                                                         Business Registration Certificate
                                                     </span>
-                                                            </h6>
-                                                            <input type="file" name="business_registration_certificate"  onchange="readURL(this, 'business_registration_certificate', 'businessRegistrationCertificate', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');"  class="form-control-file" id="businessRegistrationCertificate">
+                                                                </h6>
+                                                                <input type="file" name="business_registration_certificate"  onchange="readURL(this, 'business_registration_certificate', 'businessRegistrationCertificate', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');"  class="form-control-file" id="businessRegistrationCertificate">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <div class="card" style="border: none;">
-                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
-                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="kra_pin" alt="Card image cap">
-                                                        </div>
-                                                        <div class="card-body" style="background-color: lightgrey;">
-                                                            <h6 class="card-title">
+                                                    <div class="col-sm-12">
+                                                        <div class="card" style="border: none;">
+                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="kra_pin" alt="Card image cap">
+                                                            </div>
+                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                <h6 class="card-title">
                                                     <span style="font-weight: bold;">
                                                     KRA PIN
                                                     </span>
-                                                            </h6>
-                                                            <input type="file" name="kra_pin" onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
+                                                                </h6>
+                                                                <input type="file" name="kra_pin" onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-12">
-                                                    <div class="card" style="border: none;">
-                                                        <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
-                                                            <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="cr_12" alt="Card image cap">
-                                                        </div>
-                                                        <div class="card-body" style="background-color: lightgrey;">
-                                                            <h6 class="card-title">
+                                                    <div class="col-sm-12">
+                                                        <div class="card" style="border: none;">
+                                                            <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
+                                                                <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="cr_12" alt="Card image cap">
+                                                            </div>
+                                                            <div class="card-body" style="background-color: lightgrey;">
+                                                                <h6 class="card-title">
                                                     <span style="font-weight: bold;">
                                                     CR 12
                                                     </span>
-                                                            </h6>
-                                                            <input type="file" name="left" onchange="readURL(this, 'cr_12', 'cr12', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="cr12">
+                                                                </h6>
+                                                                <input type="file" name="left" onchange="readURL(this, 'cr_12', 'cr12', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="cr12">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
 
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </form>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
