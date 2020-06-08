@@ -72,16 +72,16 @@ class AdminCommand extends Command
 
         foreach ($users as $user){
             if(User::where('email', $user['email'])->exists() == false){
-                $user = User::create([
+                $new_user = User::create([
                     'name' => $user['name'],
                     'email' => $user['email'],
                     'phone_number' => $user['phone_number'],
                     'password' => bcrypt($user['password']),
                 ]);
 
-                $user->markEmailAsVerified();
-                event(new Verified($user));
-                $user->assignRole($user['role']);
+                $new_user->markEmailAsVerified();
+                event(new Verified($new_user));
+                $new_user->assignRole($user['role']);
             }
         }
     }
