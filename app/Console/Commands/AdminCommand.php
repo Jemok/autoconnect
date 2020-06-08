@@ -45,6 +45,28 @@ class AdminCommand extends Command
                 'email' => 'admin@univasautoconnect.com',
                 'phone_number' => '0712675071',
                 'password' => '123456',
+                'role' => 'super-admin'
+            ],
+            [
+                'name' => 'Dealer One',
+                'email' => 'dealer1@univasautoconnect.com',
+                'phone_number' => '0712675071',
+                'password' => '123456',
+                'role' => 'dealer'
+            ],
+            [
+                'name' => 'Dealer Two',
+                'email' => 'dealer2@univasautoconnect.com',
+                'phone_number' => '0712675071',
+                'password' => '123456',
+                'role' => 'dealer'
+            ],
+            [
+                'name' => 'Dealer Three',
+                'email' => 'dealer3@univasautoconnect.com',
+                'phone_number' => '0712675071',
+                'password' => '123456',
+                'role' => 'dealer'
             ]
         ];
 
@@ -59,7 +81,7 @@ class AdminCommand extends Command
 
                 $user->markEmailAsVerified();
                 event(new Verified($user));
-                $user->assignRole('super-admin');
+                $user->assignRole($user['role']);
             }
         }
     }
