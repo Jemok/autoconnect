@@ -229,7 +229,8 @@ class EditVehicleController extends Controller
 
         flash()->overlay('Car details updated successfully', 'Success');
 
-        return redirect()->back();
+        return redirect()->route('indexSingleAdsImages', [$vehicleDetailId]);
+//        return redirect()->back();
     }
 
     public function editUserSingleImportVehicle($vehicleDetailId,
