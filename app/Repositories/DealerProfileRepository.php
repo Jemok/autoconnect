@@ -56,6 +56,8 @@ class DealerProfileRepository
 
         $dealer_profile = UserProfile::where('user_id', $user_id)->firstOrFail();
 
+        dd($dealer_profile);
+
         Auth::user()->name  = $data['name'];
         Auth::user()->save();
         $dealer_profile->phone_number = $data['phone_number'];

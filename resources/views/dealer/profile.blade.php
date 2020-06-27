@@ -396,7 +396,7 @@
                                                     KRA PIN
                                                     </span>
                                                                 </h6>
-                                                                <input type="file" name="kra_pin" onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
+                                                                <input type="file"  onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
                                                             </div>
                                                         </div>
                                                     </div>
