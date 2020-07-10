@@ -464,7 +464,7 @@
                                         {{--<p style="color: black;">--}}
                                         {{--{{ $vehicle_image->image_area }}--}}
                                         {{--</p>--}}
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">
                                     </a>
                                 </div>
                             @else
@@ -473,7 +473,7 @@
                                         {{--<p style="color: black;">--}}
                                         {{--{{ $vehicle_image->image_area }}--}}
                                         {{--</p>--}}
-                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">
                                     </a>
                                 </div>
                             @endif
