@@ -2,15 +2,13 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Terms and conditions for Tujenge Payments Solutions</h5>
+                <h5 class="modal-title">Univas Auto Connect (UAC) Privacy Policy</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 {{--<h5>Terms and Conditions for Tujenge Payments Solutions</h5>--}}
-
-                <h5>Univas Auto Connect (UAC) Privacy Policy</h5>
 
                 <p>
                     This Privacy Policy must be read in conjunction with our Terms and Conditions
