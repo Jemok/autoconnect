@@ -445,7 +445,7 @@
                         </span>
                 </h5>
 
-                <div class="col-md-12 row d-md-none d-lg-none d-xl-none" style="margin-top: 1%">
+                <div class="col-md-12 row d-md-none d-lg-none d-xl-none mx-auto text-center" style="margin-top: 1%">
                     @foreach($featured_standard_cars as $featured_car)
                         <?php
 
@@ -457,7 +457,7 @@
                             $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                         }
                         ?>
-                        <div class="col-12 item mx-auto" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%; border: solid lightgrey 1px;">
+                        <div class="col-12 item mx-auto" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">
                             @if($featured_car->type == 'bulk')
                                 <div class="row">
                                     <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
