@@ -268,7 +268,7 @@
                                 $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                             }
                             ?>
-                            <div class="card col-md-4"  style="width: 12rem; border: none;">
+                            <div class="card col-md-4 mx-auto text-center"  style="width: 12rem; border: none;">
                                 @if($featured_car->type == 'bulk')
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
                                         <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
