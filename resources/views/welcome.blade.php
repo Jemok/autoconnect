@@ -273,7 +273,7 @@
                                     }
                                     ?>
                                     <div class="carousel-item active">
-                                        <div class="card col-md-4 mx-auto text-center" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">
+{{--                                        <div class="card col-md-4 mx-auto text-center" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">--}}
                                             @if($featured_car->type == 'bulk')
                                                 <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
                                                     <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" style="max-width: 100%; height: auto;">
@@ -314,7 +314,7 @@
                                                 @endif
 
                                             </div>
-                                        </div>
+{{--                                        </div>--}}
                                     </div>
                                 @endforeach
                             </div>
