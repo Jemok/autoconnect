@@ -32,7 +32,7 @@
             <div class="col-md-6">
                 <div style="padding-top: 5%;">
 
-                    <div class="col-md-3 d-sm-none d-md-none d-lg-none d-xl-none">
+                    <div class="col-md-12 d-sm-none d-md-none d-lg-none d-xl-none">
                         <p>
                             <a class="btn btn-primary btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                     <i class="fa fa-search"></i>
