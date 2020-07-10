@@ -370,7 +370,7 @@
 
                 <div style="padding-top: 5%;">
 
-                    <div class="col-md-12 row">
+                    <div class="col-md-12 row d-none d-sm-block d-md-block d-lg-block d-xl-block">
                         <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['cars']) }}">
