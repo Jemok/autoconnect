@@ -256,7 +256,7 @@
                     </h5>
 
 
-                    <div class="col-md-12 text-center row d-md-none d-lg-none d-xl-none" style="padding-left: 0px;" >
+                    <div class="col-md-12 text-center row d-md-none d-lg-none d-xl-none mx-auto" style="padding-left: 0px;" >
                         @foreach($featured_cars as $featured_car)
                             <?php
 
