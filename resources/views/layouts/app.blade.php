@@ -82,13 +82,13 @@
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="https://fb.me/UnivasMedia">
                         <i class="fa fa-facebook"></i>
                         Facebook
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="https://twitter.com/UnivasM">
                         <i class="fa fa-twitter"></i>
                         Twitter
                     </a>
@@ -100,15 +100,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="https://www.instagram.com/univasmedia">
                         <i class="fa fa-instagram"></i>
                         Instagram
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="https://wa.me/+254723874598?text=Hi">
                         <i class="fa fa-whatsapp"></i>
-                        WhatsApp
+                        WhatsApp (+254723874598)
                     </a>
                 </li>
             </ul>
