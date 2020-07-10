@@ -272,7 +272,7 @@
                                         $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
                                     }
                                     ?>
-                                    <div class="carousel-item">
+                                    <div class="carousel-item {{ $featured_car->bulk_ad->vehicle_detail_id == 14 ? 'active' : '' }}">
                                         <div class="card col-md-4 mx-auto text-center" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">
                                             @if($featured_car->type == 'bulk')
                                                 <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
