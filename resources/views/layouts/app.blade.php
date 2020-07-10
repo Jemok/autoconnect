@@ -78,7 +78,7 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         <i class="fa fa-envelope-open"></i>
-                        Email : info@univasautoconnect.com
+                        Email : info@univasauto.com
                     </a>
                 </li>
                 <li class="nav-item active">
