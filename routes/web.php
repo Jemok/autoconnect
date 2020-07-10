@@ -361,3 +361,4 @@ Route::post('update-user-single-vehicle/{vehicleDetailId}', 'EditVehicleControll
 Route::post('update-user-both-bulk-vehicle/{vehicleDetailId}/{userBulkImport}/{bulkImportId}', 'EditVehicleController@updateUserBothBulkImportVehicle')
     ->name('updateUserBothBulkImportVehicle');
 
+

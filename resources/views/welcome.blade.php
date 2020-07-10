@@ -33,202 +33,214 @@
                 <div style="padding-top: 5%;">
 
                     <div class="col-md-3 d-sm-none d-md-none d-lg-none d-xl-none">
-                        <div class="col-md-12">
-                            <form method="get" action="{{ route('carSearchResults') }}">
-                                <div class="" style="height: 450px; margin-top: 0; padding-top: 11%;">
-                                    <div class="row col-md-12">
-                                        <div class="card card-signin col-md-12" style="height: 90%;">
-                                            <div class="card-body">
-                                                <h6 class="card-title">
-                                                    <i class="fa fa-search"></i>
-                                                    <span style="font-weight: bold;">
+                        <p>
+                            <a class="btn btn-primary btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    <i class="fa fa-search"></i>
+                                    <span style="font-weight: bold;">
                                             Find a car on sale
                                             </span>
-                                                </h6>
-                                                <div class="form-group">
-                                                    <label for="carMake">
+                            </a>
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <div class="col-md-12">
+                                    <form method="get" action="{{ route('carSearchResults') }}">
+                                        <div class="" style="height: 450px; margin-top: 0; padding-top: 11%;">
+                                            <div class="row col-md-12">
+                                                <div class="card card-signin col-md-12" style="height: 90%;">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title">
+                                                            <i class="fa fa-search"></i>
+                                                            <span style="font-weight: bold;">
+                                            Find a car on sale
+                                            </span>
+                                                        </h6>
+                                                        <div class="form-group">
+                                                            <label for="carMake">
                                                 <span style="font-weight: bold;">
                                                     Make
                                                 </span>
-                                                    </label>
-                                                    <select name="carMake" class="form-control" id="car_make">
-                                                        <option value="any_make" selected>Any Make</option>
-                                                        @foreach($car_makes as $car_make)
-                                                            <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="carModel">
+                                                            </label>
+                                                            <select name="carMake" class="form-control" id="car_make">
+                                                                <option value="any_make" selected>Any Make</option>
+                                                                @foreach($car_makes as $car_make)
+                                                                    <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="carModel">
                                                 <span style="font-weight: bold;">
                                                 Model
                                                 </span>
-                                                    </label>
-                                                    <select name="carModel" class="form-control" id="car_model">
-                                                        <option value="any_model" selected>Any Model</option>
-                                                        @foreach($car_models as $car_model)
-                                                            <option value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-6">
-                                                        <label for="yearFrom">
+                                                            </label>
+                                                            <select name="carModel" class="form-control" id="car_model">
+                                                                <option value="any_model" selected>Any Model</option>
+                                                                @foreach($car_models as $car_model)
+                                                                    <option value="{{ $car_model->slug }}">{{ $car_model->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                <label for="yearFrom">
                                                     <span style="font-weight: bold;">
                                                     Year
                                                     </span>
-                                                        </label>
-                                                        <select name="yearFrom" class="form-control" id="yearFrom">
-                                                            <option value="year_from">From</option>
-                                                            @for($next_year; $next_year >= $start_year; $next_year--)
-                                                                <option value="{{ $next_year }}">{{ $next_year }}</option>
-                                                            @endfor
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-md-6">
-                                                        <label for="yearTo">To</label>
-                                                        <?php
-                                                        $start_year = 2004;
-                                                        $next_year = 2019;
-                                                        ?>
-                                                        <select name="yearTo" class="form-control" id="yearTo">
-                                                            <option value="year_to">To</option>
-                                                            @for($next_year; $next_year >= $start_year; $next_year--)
-                                                                <option value="{{ $next_year }}">{{ $next_year }}</option>
-                                                            @endfor
-                                                        </select>
-                                                    </div>
+                                                                </label>
+                                                                <select name="yearFrom" class="form-control" id="yearFrom">
+                                                                    <option value="year_from">From</option>
+                                                                    @for($next_year; $next_year >= $start_year; $next_year--)
+                                                                        <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                <label for="yearTo">To</label>
+                                                                <?php
+                                                                $start_year = 2004;
+                                                                $next_year = 2019;
+                                                                ?>
+                                                                <select name="yearTo" class="form-control" id="yearTo">
+                                                                    <option value="year_to">To</option>
+                                                                    @for($next_year; $next_year >= $start_year; $next_year--)
+                                                                        <option value="{{ $next_year }}">{{ $next_year }}</option>
+                                                                    @endfor
+                                                                </select>
+                                                            </div>
 
-                                                    {{--<div>--}}
-                                                    {{--<p class="text-center">--}}
-                                                    {{--<a class="btn-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">--}}
-                                                    {{--Show more search options--}}
-                                                    {{--</a>--}}
-                                                    {{--</p>--}}
-                                                    {{--</div>--}}
+                                                            {{--<div>--}}
+                                                            {{--<p class="text-center">--}}
+                                                            {{--<a class="btn-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">--}}
+                                                            {{--Show more search options--}}
+                                                            {{--</a>--}}
+                                                            {{--</p>--}}
+                                                            {{--</div>--}}
 
-                                                    <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                                                            <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="collapse" id="collapseExample">
+                                                        <div class="card card-signin card-body">
+                                                            <h1 class="card-title">
+                                                                More Search Options
+                                                            </h1>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="minPrice">Min Price</label>
+                                                                    <select name="minPrice" class="form-control" id="minPrice">
+                                                                        <option value="min_price">Min Price</option>
+                                                                        <option value="100000">KES 100,000</option>
+                                                                        <option value="500000">KES 500,000</option>
+                                                                        <option value="700000">KES 700,000</option>
+                                                                        <option value="1000000">KES 1,000,000</option>
+                                                                        <option value="1500000">KES 1,500,000</option>
+                                                                        <option value="2000000">KES 2,000,000</option>
+                                                                        <option value="2500000">KES 2,500,000</option>
+                                                                        <option value="3000000">KES 3,000,000</option>
+                                                                        <option value="3500000">KES 3,500,000</option>
+                                                                        <option value="4000000">KES 4,000,000</option>
+                                                                        <option value="4500000">KES 4,500,000</option>
+                                                                        <option value="5000000">KES 5,000,000</option>
+                                                                        <option value="10000000">KES 10,000,000</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="maxPrice">Max Price</label>
+                                                                    <select name="maxPrice" class="form-control" id="maxPrice">
+                                                                        <option value="max_price" selected>Max Price</option>
+                                                                        <option value="100000">KES 100,000</option>
+                                                                        <option value="500000">KES 500,000</option>
+                                                                        <option value="700000">KES 700,000</option>
+                                                                        <option value="1000000">KES 1,000,000</option>
+                                                                        <option value="1500000">KES 1,500,000</option>
+                                                                        <option value="2000000">KES 2,000,000</option>
+                                                                        <option value="2500000">KES 2,500,000</option>
+                                                                        <option value="3000000">KES 3,000,000</option>
+                                                                        <option value="3500000">KES 3,500,000</option>
+                                                                        <option value="4000000">KES 4,000,000</option>
+                                                                        <option value="4500000">KES 4,500,000</option>
+                                                                        <option value="5000000">KES 5,000,000</option>
+                                                                        <option value="10000000">KES 10,000,000</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="keyword">Keyword</label>
+                                                                <input type="text" name="keyword" class="form-control" id="keyWord" aria-describedby="keyWordHelp" placeholder="Enter a key word">
+                                                            </div>
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="area">Locations</label>
+                                                                    <select name="location" class="form-control" id="location">
+                                                                        <option value="any_location">Any Location</option>
+                                                                        @foreach($areas as $area)
+                                                                            <option value="{{ $area->code }}">{{ $area->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="bodyType">Body Types</label>
+                                                                    <select name="bodyType" class="form-control" id="bodyType">
+                                                                        <option value="any_body_type">Any Body Type</option>
+                                                                        @foreach($body_types as $body_type)
+                                                                            <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="colourType">Colours</label>
+                                                                    <select name="colourType" class="form-control" id="colourType">
+                                                                        <option value="any_colour_type">Any Colour</option>
+                                                                        @foreach($colour_types as $colour_type)
+                                                                            <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="transmission_type">Transmission</label>
+                                                                    <select name="transmission_type" class="form-control" id="transmission_type">
+                                                                        <option value="any_transmission">Any Transmission</option>
+                                                                        @foreach($transmission_types as $transmission_type)
+                                                                            <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="carCondition">Conditions</label>
+                                                                    <select name="carCondition" class="form-control" id="carCondition">
+                                                                        <option value="any_condition">Any Condition</option>
+                                                                        @foreach($car_conditions as $car_condition)
+                                                                            <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group col-md-4">
+                                                                    <label for="fuelType">Fuel Types</label>
+                                                                    <select name="fuelType" class="form-control" id="fuelType">
+                                                                        <option value="any_fuel_type">Any Fuel Type</option>
+                                                                        @foreach($fuel_types as $fuel_type)
+                                                                            <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+
+                                                            <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="collapse" id="collapseExample">
-                                                <div class="card card-signin card-body">
-                                                    <h1 class="card-title">
-                                                        More Search Options
-                                                    </h1>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-6">
-                                                            <label for="minPrice">Min Price</label>
-                                                            <select name="minPrice" class="form-control" id="minPrice">
-                                                                <option value="min_price">Min Price</option>
-                                                                <option value="100000">KES 100,000</option>
-                                                                <option value="500000">KES 500,000</option>
-                                                                <option value="700000">KES 700,000</option>
-                                                                <option value="1000000">KES 1,000,000</option>
-                                                                <option value="1500000">KES 1,500,000</option>
-                                                                <option value="2000000">KES 2,000,000</option>
-                                                                <option value="2500000">KES 2,500,000</option>
-                                                                <option value="3000000">KES 3,000,000</option>
-                                                                <option value="3500000">KES 3,500,000</option>
-                                                                <option value="4000000">KES 4,000,000</option>
-                                                                <option value="4500000">KES 4,500,000</option>
-                                                                <option value="5000000">KES 5,000,000</option>
-                                                                <option value="10000000">KES 10,000,000</option>
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-6">
-                                                            <label for="maxPrice">Max Price</label>
-                                                            <select name="maxPrice" class="form-control" id="maxPrice">
-                                                                <option value="max_price" selected>Max Price</option>
-                                                                <option value="100000">KES 100,000</option>
-                                                                <option value="500000">KES 500,000</option>
-                                                                <option value="700000">KES 700,000</option>
-                                                                <option value="1000000">KES 1,000,000</option>
-                                                                <option value="1500000">KES 1,500,000</option>
-                                                                <option value="2000000">KES 2,000,000</option>
-                                                                <option value="2500000">KES 2,500,000</option>
-                                                                <option value="3000000">KES 3,000,000</option>
-                                                                <option value="3500000">KES 3,500,000</option>
-                                                                <option value="4000000">KES 4,000,000</option>
-                                                                <option value="4500000">KES 4,500,000</option>
-                                                                <option value="5000000">KES 5,000,000</option>
-                                                                <option value="10000000">KES 10,000,000</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="keyword">Keyword</label>
-                                                        <input type="text" name="keyword" class="form-control" id="keyWord" aria-describedby="keyWordHelp" placeholder="Enter a key word">
-                                                    </div>
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-4">
-                                                            <label for="area">Locations</label>
-                                                            <select name="location" class="form-control" id="location">
-                                                                <option value="any_location">Any Location</option>
-                                                                @foreach($areas as $area)
-                                                                    <option value="{{ $area->code }}">{{ $area->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="bodyType">Body Types</label>
-                                                            <select name="bodyType" class="form-control" id="bodyType">
-                                                                <option value="any_body_type">Any Body Type</option>
-                                                                @foreach($body_types as $body_type)
-                                                                    <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="colourType">Colours</label>
-                                                            <select name="colourType" class="form-control" id="colourType">
-                                                                <option value="any_colour_type">Any Colour</option>
-                                                                @foreach($colour_types as $colour_type)
-                                                                    <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-row">
-                                                        <div class="form-group col-md-4">
-                                                            <label for="transmission_type">Transmission</label>
-                                                            <select name="transmission_type" class="form-control" id="transmission_type">
-                                                                <option value="any_transmission">Any Transmission</option>
-                                                                @foreach($transmission_types as $transmission_type)
-                                                                    <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="carCondition">Conditions</label>
-                                                            <select name="carCondition" class="form-control" id="carCondition">
-                                                                <option value="any_condition">Any Condition</option>
-                                                                @foreach($car_conditions as $car_condition)
-                                                                    <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                        <div class="form-group col-md-4">
-                                                            <label for="fuelType">Fuel Types</label>
-                                                            <select name="fuelType" class="form-control" id="fuelType">
-                                                                <option value="any_fuel_type">Any Fuel Type</option>
-                                                                @foreach($fuel_types as $fuel_type)
-                                                                    <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>
-                                                                @endforeach
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
