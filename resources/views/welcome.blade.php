@@ -271,11 +271,11 @@
                             <div class="card col-md-4 mx-auto text-center"  style="width: 18rem; border: none;">
                                 @if($featured_car->type == 'bulk')
                                     <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
-                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" style="max-width: 100%; height: auto;">
                                     </a>
                                 @else
                                     <a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
-                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                        <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap" style="max-width: 100%; height: auto;">
                                     </a>
                                 @endif
 
