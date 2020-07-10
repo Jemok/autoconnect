@@ -41,9 +41,9 @@
                                             </span>
                             </a>
                         </p>
-                        <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <div class="col-md-12">
+                        <div class="collapse" id="collapseExample" style="padding-left: 0; padding-right: 0;">
+                            <div class="card card-body" style="padding-left: 0; padding-right: 0;">
+                                <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
                                     <form method="get" action="{{ route('carSearchResults') }}">
                                         <div class="" style="height: 450px; margin-top: 0; padding-top: 11%;">
                                             <div class="row col-md-12">
