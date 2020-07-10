@@ -439,7 +439,7 @@
                         </span>
                 </h5>
 
-                <h5 class="text-left" style="padding-top: 5%">
+                <h5 class="text-left d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding-top: 5%">
                         <span style="font-weight: bold;">
                          More Featured Ads
                         </span>
