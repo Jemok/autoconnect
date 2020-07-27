@@ -186,5 +186,9 @@ class VehicleDetailRepository
         return AdStatus::where('status', 'online')->where('ad_type', 'standard')->take(100)->latest()->get();
     }
 
+    public function getActiveSliderVehicle(){
+        return AdStatus::where('status', 'online')->where('ad_type', 'premium')->sharedLock()->orderBy('created_at', 'DESC')->latest()->first();
+    }
+
 
 }
