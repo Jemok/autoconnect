@@ -361,7 +361,7 @@
                                 <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
                                 </a>
-                                <h5 class="card-title">
+                                <h5 class="card-title text-center">
                                     <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
                                     <span style="font-weight: bold;">
                                     Trucks & Trailers
@@ -376,7 +376,7 @@
                                 <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
                                 </a>
-                                <h5 class="card-title">
+                                <h5 class="card-title text-center">
                                     <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <span style="font-weight: bold;">
                                     Vans & Buses
