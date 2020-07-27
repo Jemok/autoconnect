@@ -257,6 +257,8 @@
 
 
                     <div class="col-md-12 text-center row d-md-none d-lg-none d-xl-none mx-auto" style="padding-left: 0px;">
+
+
                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner">
                                 @foreach($featured_cars as $featured_car)
@@ -383,6 +385,7 @@
                 </div>
 
                 <div style="padding-top: 5%;">
+
                     <div class="col-md-12 row">
                         <div class="card col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
@@ -446,194 +449,194 @@
                     </div>
                 </div>
 
-{{--                <h5 class="text-center d-sm-none d-md-none d-lg-none d-xl-none" style="padding-top: 5%">--}}
-{{--                        <span style="font-weight: bold;">--}}
-{{--                         More Featured Ads--}}
-{{--                        </span>--}}
-{{--                </h5>--}}
+                <h5 class="text-center d-sm-none d-md-none d-lg-none d-xl-none" style="padding-top: 5%">
+                        <span style="font-weight: bold;">
+                         More Featured Ads
+                        </span>
+                </h5>
 
-{{--                <h5 class="text-left d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding-top: 5%">--}}
-{{--                        <span style="font-weight: bold;">--}}
-{{--                         More Featured Ads--}}
-{{--                        </span>--}}
-{{--                </h5>--}}
+                <h5 class="text-left d-none d-sm-block d-md-block d-lg-block d-xl-block" style="padding-top: 5%">
+                        <span style="font-weight: bold;">
+                         More Featured Ads
+                        </span>
+                </h5>
 
-{{--                <div class="col-md-12 row d-md-none d-lg-none d-xl-none mx-auto text-center" style="margin-top: 1%">--}}
-{{--                    @foreach($featured_standard_cars as $featured_car)--}}
-{{--                        <?php--}}
+                <div class="col-md-12 row d-md-none d-lg-none d-xl-none mx-auto text-center" style="margin-top: 1%">
+                    @foreach($featured_standard_cars as $featured_car)
+                        <?php
 
-{{--                        if($featured_car->type == 'bulk'){--}}
+                        if($featured_car->type == 'bulk'){
 
-{{--                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);--}}
+                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
 
-{{--                        }else{--}}
-{{--                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);--}}
-{{--                        }--}}
-{{--                        ?>--}}
-{{--                        <div class="col-12 item mx-auto" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">--}}
-{{--                            @if($featured_car->type == 'bulk')--}}
-{{--                                <div class="row">--}}
-{{--                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-{{--                                        --}}{{--<p style="color: black;">--}}
-{{--                                        --}}{{--{{ $vehicle_image->image_area }}--}}
-{{--                                        --}}{{--</p>--}}
-{{--                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                <div class="row">--}}
-{{--                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">--}}
-{{--                                        --}}{{--<p style="color: black;">--}}
-{{--                                        --}}{{--{{ $vehicle_image->image_area }}--}}
-{{--                                        --}}{{--</p>--}}
-{{--                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                            <div class="card-footer" style="padding: 0; background-color: white;">--}}
-{{--                                @if($featured_car->type == 'bulk')--}}
-{{--                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-{{--                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}--}}
-{{--                                        </h6>--}}
-{{--                                        <h6>--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->year }}--}}
-{{--                                        </h6>--}}
-{{--                                        <h6>--}}
-{{--                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                        </h6>--}}
-{{--                                    </a>--}}
-{{--                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>--}}
-{{--                                    <p  style="color: black; font-weight: bold; font-size: 12px;">--}}
-{{--                                        @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))--}}
-{{--                                            {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}--}}
-{{--                                        @endif--}}
-{{--                                    </p>--}}
-{{--                                @else--}}
-{{--                                    <div>--}}
-{{--                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">--}}
-{{--                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">--}}
-{{--                                                {{ $featured_car->vehicle_detail->car_make->name }}--}}
-{{--                                            </h6>--}}
-{{--                                            <h6>--}}
-{{--                                                {{ $featured_car->vehicle_detail->car_model->name }}--}}
-{{--                                                {{ $featured_car->vehicle_detail->year }}--}}
-{{--                                            </h6>--}}
-{{--                                            <h6>--}}
-{{--                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}--}}
-{{--                                            </h6>--}}
-{{--                                        </a>--}}
-{{--                                        <h6 style="color: black; font-weight: bold;">--}}
-{{--                                            KES {{ number_format($featured_car->vehicle_detail->price, 2) }}--}}
-{{--                                        </h6>--}}
-{{--                                        <p  style="color: black; font-weight: bold; font-size: 12px;">--}}
-{{--                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))--}}
-{{--                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}--}}
-{{--                                            @endif--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
+                        }else{
+                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
+                        }
+                        ?>
+                        <div class="col-12 item mx-auto" style="height: 270px; width: 100%; overflow: hidden; margin-bottom: 2%;">
+                            @if($featured_car->type == 'bulk')
+                                <div class="row">
+                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        {{--<p style="color: black;">--}}
+                                        {{--{{ $vehicle_image->image_area }}--}}
+                                        {{--</p>--}}
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                            @else
+                                <div class="row">
+                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
+                                        {{--<p style="color: black;">--}}
+                                        {{--{{ $vehicle_image->image_area }}--}}
+                                        {{--</p>--}}
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="max-width: 100%; height: auto;">
+                                    </a>
+                                </div>
+                            @endif
+                            <div class="card-footer" style="padding: 0; background-color: white;">
+                                @if($featured_car->type == 'bulk')
+                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                        </h6>
+                                        <h6>
+                                            {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
+                                            {{ $featured_car->bulk_ad->vehicle_detail->year }}
+                                        </h6>
+                                        <h6>
+                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                        </h6>
+                                    </a>
+                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
+                                    <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                        @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                            {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                        @endif
+                                    </p>
+                                @else
+                                    <div>
+                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
+                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                {{ $featured_car->vehicle_detail->car_make->name }}
+                                            </h6>
+                                            <h6>
+                                                {{ $featured_car->vehicle_detail->car_model->name }}
+                                                {{ $featured_car->vehicle_detail->year }}
+                                            </h6>
+                                            <h6>
+                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
+                                            </h6>
+                                        </a>
+                                        <h6 style="color: black; font-weight: bold;">
+                                            KES {{ number_format($featured_car->vehicle_detail->price, 2) }}
+                                        </h6>
+                                        <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
 
-{{--                <div class="row" style="padding-left: 0px; margin-top: 1%">--}}
-{{--                    @foreach($featured_standard_cars as $featured_car)--}}
-{{--                        <?php--}}
+                <div class="row" style="padding-left: 0px; margin-top: 1%">
+                    @foreach($featured_standard_cars as $featured_car)
+                        <?php
 
-{{--                        if($featured_car->type == 'bulk'){--}}
+                        if($featured_car->type == 'bulk'){
 
-{{--                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);--}}
+                            $vehicle_front_image = getBulkVehicleFrontImage($featured_car->bulk_ad->user_bulk_import_id);
 
-{{--                        }else{--}}
-{{--                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);--}}
-{{--                        }--}}
-{{--                        ?>--}}
-{{--                        --}}{{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
-{{--                        <div class="col-md-4 col-lg-4 d-none d-md-block d-lg-block d-xl-block" style="height: 270px; width: 210px; overflow: hidden; margin-bottom: 2%;">--}}
-{{--                            @if($featured_car->type == 'bulk')--}}
-{{--                                <div class="row">--}}
-{{--                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-{{--                                        --}}{{--<p style="color: black;">--}}
-{{--                                        --}}{{--{{ $vehicle_image->image_area }}--}}
-{{--                                        --}}{{--</p>--}}
-{{--                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @else--}}
-{{--                                <div class="row">--}}
-{{--                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">--}}
-{{--                                        --}}{{--<p style="color: black;">--}}
-{{--                                        --}}{{--{{ $vehicle_image->image_area }}--}}
-{{--                                        --}}{{--</p>--}}
-{{--                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-{{--                            <div class="card-footer" style="padding: 0; background-color: white;">--}}
-{{--                                @if($featured_car->type == 'bulk')--}}
-{{--                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-{{--                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}--}}
-{{--                                        </h6>--}}
-{{--                                        <h6>--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->year }}--}}
-{{--                                        </h6>--}}
-{{--                                        <h6>--}}
-{{--                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                        </h6>--}}
-{{--                                    </a>--}}
-{{--                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>--}}
-{{--                                    <p  style="color: black; font-weight: bold; font-size: 12px;">--}}
-{{--                                        @if(isset($featured_car->bulk_ad->vehicle_detail->vehicle_contact->area_id))--}}
-{{--                                            {{ $featured_car->bulk_ad->vehicle_detail->vehicle_contact->area->name }}--}}
-{{--                                        @endif--}}
-{{--                                    </p>--}}
-{{--                                @else--}}
-{{--                                    <div>--}}
-{{--                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">--}}
-{{--                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">--}}
-{{--                                                {{ $featured_car->vehicle_detail->car_make->name }}--}}
-{{--                                            </h6>--}}
-{{--                                            <h6>--}}
-{{--                                                {{ $featured_car->vehicle_detail->car_model->name }}--}}
-{{--                                                {{ $featured_car->vehicle_detail->year }}--}}
-{{--                                            </h6>--}}
-{{--                                            <h6>--}}
-{{--                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}--}}
-{{--                                            </h6>--}}
-{{--                                        </a>--}}
-{{--                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}--}}
-{{--                                        </h6>--}}
-{{--                                        <p  style="color: black; font-weight: bold; font-size: 12px;">--}}
-{{--                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))--}}
-{{--                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}--}}
-{{--                                            @endif--}}
-{{--                                        </p>--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        }else{
+                            $vehicle_front_image = getVehicleFrontImage($featured_car->vehicle_detail->id);
+                        }
+                        ?>
+                        {{--<div class="card col-md-4"  style="width: 12rem; border: none;">--}}
+                        <div class="col-md-4 col-lg-4 d-none d-md-block d-lg-block d-xl-block" style="height: 270px; width: 210px; overflow: hidden; margin-bottom: 2%;">
+                            @if($featured_car->type == 'bulk')
+                                <div class="row">
+                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        {{--<p style="color: black;">--}}
+                                        {{--{{ $vehicle_image->image_area }}--}}
+                                        {{--</p>--}}
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
+                                    </a>
+                                </div>
+                            @else
+                                <div class="row">
+                                    <a class="lightbox" href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">
+                                        {{--<p style="color: black;">--}}
+                                        {{--{{ $vehicle_image->image_area }}--}}
+                                        {{--</p>--}}
+                                        <img class="img-fluid image scale-on-hover" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" style="height: 150px;">
+                                    </a>
+                                </div>
+                            @endif
+                            <div class="card-footer" style="padding: 0; background-color: white;">
+                                @if($featured_car->type == 'bulk')
+                                    <a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">
+                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                            {{ $featured_car->bulk_ad->vehicle_detail->car_make->name }}
+                                        </h6>
+                                        <h6>
+                                            {{ $featured_car->bulk_ad->vehicle_detail->car_model->name }}
+                                            {{ $featured_car->bulk_ad->vehicle_detail->year }}
+                                        </h6>
+                                        <h6>
+                                            Car Id : {{ $featured_car->bulk_ad->vehicle_detail->unique_identifier }}
+                                        </h6>
+                                    </a>
+                                    <h6 style="color: black; font-weight: bold;">Price : {{ number_format($featured_car->bulk_ad->vehicle_detail->price, 2) }}</h6>
+                                    <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                        @if(isset($featured_car->bulk_ad->vehicle_detail->vehicle_contact->area_id))
+                                            {{ $featured_car->bulk_ad->vehicle_detail->vehicle_contact->area->name }}
+                                        @endif
+                                    </p>
+                                @else
+                                    <div>
+                                        <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
+                                            <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                {{ $featured_car->vehicle_detail->car_make->name }}
+                                            </h6>
+                                            <h6>
+                                                {{ $featured_car->vehicle_detail->car_model->name }}
+                                                {{ $featured_car->vehicle_detail->year }}
+                                            </h6>
+                                            <h6>
+                                                Car Id : {{ $featured_car->vehicle_detail->unique_identifier }}
+                                            </h6>
+                                        </a>
+                                        <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}
+                                        </h6>
+                                        <p  style="color: black; font-weight: bold; font-size: 12px;">
+                                            @if(isset($featured_car->vehicle_detail->vehicle_contact->area_id))
+                                                {{ $featured_car->vehicle_detail->vehicle_contact->area->name }}
+                                            @endif
+                                        </p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
 
-{{--                        --}}{{--<div style="height: 200px; width: 200px; overflow: hidden;">--}}
-{{--                        --}}{{--@if($featured_car->type == 'bulk')--}}
-{{--                        --}}{{--<a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
-{{--                        --}}{{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
-{{--                        --}}{{--</a>--}}
-{{--                        --}}{{--@else--}}
-{{--                        --}}{{--<a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">--}}
-{{--                        --}}{{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
-{{--                        --}}{{--</a>--}}
-{{--                        --}}{{--@endif--}}
-{{--                        --}}{{--</div>--}}
+                        {{--<div style="height: 200px; width: 200px; overflow: hidden;">--}}
+                        {{--@if($featured_car->type == 'bulk')--}}
+                        {{--<a href="{{ route('singleCarView', $featured_car->bulk_ad->vehicle_detail_id) }}">--}}
+                        {{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
+                        {{--</a>--}}
+                        {{--@else--}}
+                        {{--<a href="{{ route('singleCarView', $featured_car->vehicle_detail_id) }}">--}}
+                        {{--<img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">--}}
+                        {{--</a>--}}
+                        {{--@endif--}}
+                        {{--</div>--}}
 
 
-{{--                        --}}{{--</div>--}}
-{{--                    @endforeach--}}
-{{--                </div>--}}
+                        {{--</div>--}}
+                    @endforeach
+                </div>
             </div>
 
             <div class="col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block">
