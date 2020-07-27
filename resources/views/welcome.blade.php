@@ -264,7 +264,7 @@
                 <div style="padding-top: 5%;">
 
                     <div class="col-md-12 row">
-                        <div class="card col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['cars']) }}">
                                     <img class="card-img-top" src="{{ asset('images/car-uni.jpeg') }}" alt="Card image cap">
@@ -279,7 +279,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['motorbikes']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/bike-uni.jpeg') }}" alt="Card image cap">
@@ -294,7 +294,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['trucks_and_trailers']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/truck.jpeg') }}" alt="Card image cap">
@@ -309,7 +309,7 @@
                             </div>
                         </div>
 
-                        <div class="card col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
+                        <div class="card col-md-3"  style="width: 12rem;">
                             <div class="card-body">
                                 <a href="{{ route('filterByCategory', ['vans_and_buses']) }}">
                                     <img class="card-img-top img-fluid" src="{{ asset('images/van-uni1.jpeg') }}" alt="Card image cap">
