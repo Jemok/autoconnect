@@ -613,8 +613,8 @@
     <hr>
 
     <footer class="footer">
-        <div class="container">
-            <div class="col-md-12 row">
+        <div class="container mx-auto text-center">
+            <div class="col-md-12 row text-center">
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
                         <li class="">
@@ -644,7 +644,6 @@
                         </li>
                     </ul>
                 </div>
-
 
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
