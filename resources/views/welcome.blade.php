@@ -108,133 +108,11 @@
                                                             </select>
                                                         </div>
 
-                                                        {{--<div>--}}
-                                                        {{--<p class="text-center">--}}
-                                                        {{--<a class="btn-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">--}}
-                                                        {{--Show more search options--}}
-                                                        {{--</a>--}}
-                                                        {{--</p>--}}
-                                                        {{--</div>--}}
 
                                                         <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            {{--                                            <div class="col-md-4">--}}
-                                            {{--                                                <div class="collapse" id="collapseExample">--}}
-                                            {{--                                                    <div class="card card-signin card-body">--}}
-                                            {{--                                                        <h1 class="card-title">--}}
-                                            {{--                                                            More Search Options--}}
-                                            {{--                                                        </h1>--}}
-                                            {{--                                                        <div class="form-row">--}}
-                                            {{--                                                            <div class="form-group col-md-6">--}}
-                                            {{--                                                                <label for="minPrice">Min Price</label>--}}
-                                            {{--                                                                <select name="minPrice" class="form-control" id="minPrice">--}}
-                                            {{--                                                                    <option value="min_price">Min Price</option>--}}
-                                            {{--                                                                    <option value="100000">KES 100,000</option>--}}
-                                            {{--                                                                    <option value="500000">KES 500,000</option>--}}
-                                            {{--                                                                    <option value="700000">KES 700,000</option>--}}
-                                            {{--                                                                    <option value="1000000">KES 1,000,000</option>--}}
-                                            {{--                                                                    <option value="1500000">KES 1,500,000</option>--}}
-                                            {{--                                                                    <option value="2000000">KES 2,000,000</option>--}}
-                                            {{--                                                                    <option value="2500000">KES 2,500,000</option>--}}
-                                            {{--                                                                    <option value="3000000">KES 3,000,000</option>--}}
-                                            {{--                                                                    <option value="3500000">KES 3,500,000</option>--}}
-                                            {{--                                                                    <option value="4000000">KES 4,000,000</option>--}}
-                                            {{--                                                                    <option value="4500000">KES 4,500,000</option>--}}
-                                            {{--                                                                    <option value="5000000">KES 5,000,000</option>--}}
-                                            {{--                                                                    <option value="10000000">KES 10,000,000</option>--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                            <div class="form-group col-md-6">--}}
-                                            {{--                                                                <label for="maxPrice">Max Price</label>--}}
-                                            {{--                                                                <select name="maxPrice" class="form-control" id="maxPrice">--}}
-                                            {{--                                                                    <option value="max_price" selected>Max Price</option>--}}
-                                            {{--                                                                    <option value="100000">KES 100,000</option>--}}
-                                            {{--                                                                    <option value="500000">KES 500,000</option>--}}
-                                            {{--                                                                    <option value="700000">KES 700,000</option>--}}
-                                            {{--                                                                    <option value="1000000">KES 1,000,000</option>--}}
-                                            {{--                                                                    <option value="1500000">KES 1,500,000</option>--}}
-                                            {{--                                                                    <option value="2000000">KES 2,000,000</option>--}}
-                                            {{--                                                                    <option value="2500000">KES 2,500,000</option>--}}
-                                            {{--                                                                    <option value="3000000">KES 3,000,000</option>--}}
-                                            {{--                                                                    <option value="3500000">KES 3,500,000</option>--}}
-                                            {{--                                                                    <option value="4000000">KES 4,000,000</option>--}}
-                                            {{--                                                                    <option value="4500000">KES 4,500,000</option>--}}
-                                            {{--                                                                    <option value="5000000">KES 5,000,000</option>--}}
-                                            {{--                                                                    <option value="10000000">KES 10,000,000</option>--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                        </div>--}}
-
-                                            {{--                                                        <div class="form-group">--}}
-                                            {{--                                                            <label for="keyword">Keyword</label>--}}
-                                            {{--                                                            <input type="text" name="keyword" class="form-control" id="keyWord" aria-describedby="keyWordHelp" placeholder="Enter a key word">--}}
-                                            {{--                                                        </div>--}}
-                                            {{--                                                        <div class="form-row">--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="area">Locations</label>--}}
-                                            {{--                                                                <select name="location" class="form-control" id="location">--}}
-                                            {{--                                                                    <option value="any_location">Any Location</option>--}}
-                                            {{--                                                                    @foreach($areas as $area)--}}
-                                            {{--                                                                        <option value="{{ $area->code }}">{{ $area->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="bodyType">Body Types</label>--}}
-                                            {{--                                                                <select name="bodyType" class="form-control" id="bodyType">--}}
-                                            {{--                                                                    <option value="any_body_type">Any Body Type</option>--}}
-                                            {{--                                                                    @foreach($body_types as $body_type)--}}
-                                            {{--                                                                        <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="colourType">Colours</label>--}}
-                                            {{--                                                                <select name="colourType" class="form-control" id="colourType">--}}
-                                            {{--                                                                    <option value="any_colour_type">Any Colour</option>--}}
-                                            {{--                                                                    @foreach($colour_types as $colour_type)--}}
-                                            {{--                                                                        <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                        </div>--}}
-
-                                            {{--                                                        <div class="form-row">--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="transmission_type">Transmission</label>--}}
-                                            {{--                                                                <select name="transmission_type" class="form-control" id="transmission_type">--}}
-                                            {{--                                                                    <option value="any_transmission">Any Transmission</option>--}}
-                                            {{--                                                                    @foreach($transmission_types as $transmission_type)--}}
-                                            {{--                                                                        <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="carCondition">Conditions</label>--}}
-                                            {{--                                                                <select name="carCondition" class="form-control" id="carCondition">--}}
-                                            {{--                                                                    <option value="any_condition">Any Condition</option>--}}
-                                            {{--                                                                    @foreach($car_conditions as $car_condition)--}}
-                                            {{--                                                                        <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                            <div class="form-group col-md-4">--}}
-                                            {{--                                                                <label for="fuelType">Fuel Types</label>--}}
-                                            {{--                                                                <select name="fuelType" class="form-control" id="fuelType">--}}
-                                            {{--                                                                    <option value="any_fuel_type">Any Fuel Type</option>--}}
-                                            {{--                                                                    @foreach($fuel_types as $fuel_type)--}}
-                                            {{--                                                                        <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>--}}
-                                            {{--                                                                    @endforeach--}}
-                                            {{--                                                                </select>--}}
-                                            {{--                                                            </div>--}}
-                                            {{--                                                        </div>--}}
-
-                                            {{--                                                        <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>--}}
-                                            {{--                                                    </div>--}}
-                                            {{--                                                </div>--}}
-                                            {{--                                            </div>--}}
                                         </div>
                                     </div>
                                 </form>
@@ -318,11 +196,11 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="height: 50%;">
+                            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="height: 50%;  border-radius: 60px;">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
-                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="height: 50%;">
+                            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="height: 50%;  border-radius: 60px;">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                             </a>
@@ -517,133 +395,11 @@
                                                 </select>
                                             </div>
 
-                                            {{--<div>--}}
-                                            {{--<p class="text-center">--}}
-                                            {{--<a class="btn-link" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">--}}
-                                            {{--Show more search options--}}
-                                            {{--</a>--}}
-                                            {{--</p>--}}
-                                            {{--</div>--}}
-
                                             <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
                                         </div>
                                     </div>
                                 </div>
-                                {{--                                <div class="col-md-4">--}}
-                                {{--                                    <div class="collapse" id="collapseExample">--}}
-                                {{--                                        <div class="card card-signin card-body">--}}
-                                {{--                                            <h1 class="card-title">--}}
-                                {{--                                                More Search Options--}}
-                                {{--                                            </h1>--}}
-                                {{--                                            <div class="form-row">--}}
-                                {{--                                                <div class="form-group col-md-6">--}}
-                                {{--                                                    <label for="minPrice">Min Price</label>--}}
-                                {{--                                                    <select name="minPrice" class="form-control" id="minPrice">--}}
-                                {{--                                                        <option value="min_price">Min Price</option>--}}
-                                {{--                                                        <option value="100000">KES 100,000</option>--}}
-                                {{--                                                        <option value="500000">KES 500,000</option>--}}
-                                {{--                                                        <option value="700000">KES 700,000</option>--}}
-                                {{--                                                        <option value="1000000">KES 1,000,000</option>--}}
-                                {{--                                                        <option value="1500000">KES 1,500,000</option>--}}
-                                {{--                                                        <option value="2000000">KES 2,000,000</option>--}}
-                                {{--                                                        <option value="2500000">KES 2,500,000</option>--}}
-                                {{--                                                        <option value="3000000">KES 3,000,000</option>--}}
-                                {{--                                                        <option value="3500000">KES 3,500,000</option>--}}
-                                {{--                                                        <option value="4000000">KES 4,000,000</option>--}}
-                                {{--                                                        <option value="4500000">KES 4,500,000</option>--}}
-                                {{--                                                        <option value="5000000">KES 5,000,000</option>--}}
-                                {{--                                                        <option value="10000000">KES 10,000,000</option>--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                                <div class="form-group col-md-6">--}}
-                                {{--                                                    <label for="maxPrice">Max Price</label>--}}
-                                {{--                                                    <select name="maxPrice" class="form-control" id="maxPrice">--}}
-                                {{--                                                        <option value="max_price" selected>Max Price</option>--}}
-                                {{--                                                        <option value="100000">KES 100,000</option>--}}
-                                {{--                                                        <option value="500000">KES 500,000</option>--}}
-                                {{--                                                        <option value="700000">KES 700,000</option>--}}
-                                {{--                                                        <option value="1000000">KES 1,000,000</option>--}}
-                                {{--                                                        <option value="1500000">KES 1,500,000</option>--}}
-                                {{--                                                        <option value="2000000">KES 2,000,000</option>--}}
-                                {{--                                                        <option value="2500000">KES 2,500,000</option>--}}
-                                {{--                                                        <option value="3000000">KES 3,000,000</option>--}}
-                                {{--                                                        <option value="3500000">KES 3,500,000</option>--}}
-                                {{--                                                        <option value="4000000">KES 4,000,000</option>--}}
-                                {{--                                                        <option value="4500000">KES 4,500,000</option>--}}
-                                {{--                                                        <option value="5000000">KES 5,000,000</option>--}}
-                                {{--                                                        <option value="10000000">KES 10,000,000</option>--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
 
-                                {{--                                            <div class="form-group">--}}
-                                {{--                                                <label for="keyword">Keyword</label>--}}
-                                {{--                                                <input type="text" name="keyword" class="form-control" id="keyWord" aria-describedby="keyWordHelp" placeholder="Enter a key word">--}}
-                                {{--                                            </div>--}}
-                                {{--                                            <div class="form-row">--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="area">Locations</label>--}}
-                                {{--                                                    <select name="location" class="form-control" id="location">--}}
-                                {{--                                                        <option value="any_location">Any Location</option>--}}
-                                {{--                                                        @foreach($areas as $area)--}}
-                                {{--                                                            <option value="{{ $area->code }}">{{ $area->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="bodyType">Body Types</label>--}}
-                                {{--                                                    <select name="bodyType" class="form-control" id="bodyType">--}}
-                                {{--                                                        <option value="any_body_type">Any Body Type</option>--}}
-                                {{--                                                        @foreach($body_types as $body_type)--}}
-                                {{--                                                            <option value="{{ $body_type->slug }}">{{ $body_type->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="colourType">Colours</label>--}}
-                                {{--                                                    <select name="colourType" class="form-control" id="colourType">--}}
-                                {{--                                                        <option value="any_colour_type">Any Colour</option>--}}
-                                {{--                                                        @foreach($colour_types as $colour_type)--}}
-                                {{--                                                            <option value="{{ $colour_type->slug }}">{{ $colour_type->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-
-                                {{--                                            <div class="form-row">--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="transmission_type">Transmission</label>--}}
-                                {{--                                                    <select name="transmission_type" class="form-control" id="transmission_type">--}}
-                                {{--                                                        <option value="any_transmission">Any Transmission</option>--}}
-                                {{--                                                        @foreach($transmission_types as $transmission_type)--}}
-                                {{--                                                            <option value="{{ $transmission_type->slug }}">{{ $transmission_type->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="carCondition">Conditions</label>--}}
-                                {{--                                                    <select name="carCondition" class="form-control" id="carCondition">--}}
-                                {{--                                                        <option value="any_condition">Any Condition</option>--}}
-                                {{--                                                        @foreach($car_conditions as $car_condition)--}}
-                                {{--                                                            <option value="{{ $car_condition->slug }}">{{ $car_condition->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                                <div class="form-group col-md-4">--}}
-                                {{--                                                    <label for="fuelType">Fuel Types</label>--}}
-                                {{--                                                    <select name="fuelType" class="form-control" id="fuelType">--}}
-                                {{--                                                        <option value="any_fuel_type">Any Fuel Type</option>--}}
-                                {{--                                                        @foreach($fuel_types as $fuel_type)--}}
-                                {{--                                                            <option value="{{ $fuel_type->slug }}">{{ $fuel_type->name }}</option>--}}
-                                {{--                                                        @endforeach--}}
-                                {{--                                                    </select>--}}
-                                {{--                                                </div>--}}
-                                {{--                                            </div>--}}
-
-                                {{--                                            <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>--}}
-                                {{--                                        </div>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
                             </div>
                         </div>
                     </form>
