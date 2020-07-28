@@ -250,7 +250,7 @@
                                                             @else
                                                                 <div style="padding-top: 3%;">
                                                                     <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
-                                                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                                        <h6>
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->year }}
@@ -259,7 +259,7 @@
                                                                             Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}
                                                                         </h6>
                                                                     </a>
-                                                                    <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+                                                                    <h6>KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
                                                                 </div>
                                                             @endif
 
@@ -317,7 +317,7 @@
                                                             @else
                                                                 <div style="padding-top: 3%;">
                                                                     <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
-                                                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                                        <h6>
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->year }}
@@ -326,7 +326,7 @@
                                                                             Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}
                                                                         </h6>
                                                                     </a>
-                                                                    <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+                                                                    <h6>KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
                                                                 </div>
                                                             @endif
 
@@ -384,7 +384,7 @@
                                                             @else
                                                                 <div style="padding-top: 3%;">
                                                                     <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
-                                                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                                        <h6>
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->year }}
@@ -393,7 +393,7 @@
                                                                             Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}
                                                                         </h6>
                                                                     </a>
-                                                                    <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+                                                                    <h6>KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
                                                                 </div>
                                                             @endif
 
