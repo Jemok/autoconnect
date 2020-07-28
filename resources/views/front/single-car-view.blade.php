@@ -6,15 +6,21 @@
 @section('content')
     <div class="container-fluid">
         @include('flash::message')
-        <div class="col-md-8" style="margin-top: 2%; margin-left: 4.5%; padding-top: 0.5%; padding-bottom: 0.5%; background-color: tomato;">
-            <span style="color: white;">
-                Car ID : {{  $vehicle_detail->unique_identifier }}
-                {{ $vehicle_detail->car_make->name }}
-                -
+        <div class="col-md-8" style="margin-top: 2%; margin-left: 4.5%; padding-top: 0.5%; padding-bottom: 0.5%;">
+            <h1>
+                <span style="color: black;">
+                            {{ $vehicle_detail->car_make->name }}
+                     -
                 {{ $vehicle_detail->car_model->name }}
 
-                {{ $vehicle_detail->year }}
-            </span>
+                    {{ $vehicle_detail->year }}
+
+
+                ID : {{  $vehicle_detail->unique_identifier }}
+                </span>
+            </h1>
+
+            Posted : {{  $vehicle_detail->created_at->diffForHumans() }}
 
             @if(isset($vehicle_detail->vehicle_contact->phone_number))
                 <span>
@@ -28,7 +34,6 @@
                 </span>
             @endif
 
-            {{  $vehicle_detail->created_at }}
         </div>
 
         <div class="row">
@@ -45,7 +50,7 @@
                         {{ $vehicle_detail->year }}
 
                         <div class="float-right">
-                            Ksh {{ $vehicle_detail->price }}
+                            Price :  Ksh {{ $vehicle_detail->price }}
                         </div>
 
                     </div>
@@ -313,7 +318,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4" style="margin-top: 2%;">
+            <div class="col-md-4" style="margin-top: 2%; padding-top: 0.5%;">
                 <div class="card">
                     <div class="card-header">
                         Contact Seller
@@ -327,9 +332,6 @@
                             +2547 *** ***
                         </p>
 
-                        {{--<button class="btn btn-block">--}}
-                        {{--Call this seller--}}
-                        {{--</button>--}}
                         <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModal" style="background-color: tomato;">
                             Get seller phone numbers
                         </button>
@@ -421,7 +423,7 @@
                 </div>
             </div>
 
-            <div class="col-md-2" style="margin-top: 2%;">
+            <div class="col-md-2" style="margin-top: 2%; padding-top: 0.5%;">
                 <?php
                 $similar_ads = showSimilarAdsForAd($vehicle_detail->car_make->slug,
                     $vehicle_detail->car_model->slug,
