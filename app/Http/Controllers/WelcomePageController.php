@@ -43,7 +43,7 @@ class WelcomePageController extends Controller
         $start_year = 2004;
         $next_year = 2019;
 
-        $featured_cars = $vehicleDetailRepository->getEightLatestOnline();
+        $featured_cars = $vehicleDetailRepository->getTwentyFourOnline();
 
         $featured_standard_cars = $vehicleDetailRepository->getEightLatestOnlineStandard();
 

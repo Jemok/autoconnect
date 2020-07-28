@@ -101,6 +101,7 @@ class BulkImportRepository
         $package_type = array_key_exists('package_type', $data) ? $data['package_type'] : 'standard';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = array_key_exists('description', $data) ? $data['description'] : null;
+        $area_id = array_key_exists('area', $data) ? $data['area'] : 'n/a';
 
         $other_features = json_encode([
             'Air Conditioning' => array_key_exists('air_conditioning', $data) ? $data['air_conditioning'] : null,
@@ -165,6 +166,8 @@ class BulkImportRepository
         $vehicle_detail->other_features = $other_features;
         $vehicle_detail->bulk_import_id = $bulk_import_id;
         $vehicle_detail->user_id  = $user_id;
+        $vehicle_detail->area_id = $area_id;
+
         if(UserBulkImport::where('id', $user_bulk_import_id)->exists()){
 
         }else{

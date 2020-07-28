@@ -176,9 +176,9 @@ class VehicleDetailRepository
         $vehicle_detail->save();
     }
 
-    public function getEightLatestOnline(){
+    public function getTwentyFourOnline(){
 
-        return AdStatus::where('status', 'online')->where('ad_type', 'premium')->take(6)->latest()->get();
+        return AdStatus::where('status', 'online')->where('ad_type', 'premium')->take(24)->latest()->get();
     }
 
     public function getEightLatestOnlineStandard(){

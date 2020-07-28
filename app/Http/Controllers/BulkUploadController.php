@@ -11,6 +11,7 @@ use App\Imports\VehicleDetailsImport;
 use App\Notifications\AdDisapprovedNotification;
 use App\Notifications\BulkPaymentNotification;
 use App\Repositories\AdStatusRepository;
+use App\Repositories\AreasRepository;
 use App\Repositories\BodyTypeRepository;
 use App\Repositories\BulkAdsRepository;
 use App\Repositories\BulkImportApprovalRepository;
@@ -525,7 +526,8 @@ class BulkUploadController extends Controller
                                         BulkImportRepository $bulkImportRepository,
                                         DriveSetUpRepository $driveSetUpRepository,
                                         DriveTypeRepository $driveTypeRepository,
-                                        RolesRepository $rolesRepository){
+                                        RolesRepository $rolesRepository,
+                                        AreasRepository $areasRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -551,6 +553,7 @@ class BulkUploadController extends Controller
 
         $drive_types = $driveTypeRepository->index();
 
+        $areas = $areasRepository->index();
 
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
@@ -574,7 +577,8 @@ class BulkUploadController extends Controller
             'colour_types',
             'vehicle_features',
             'drive_setups',
-            'drive_types'));
+            'drive_types',
+            'areas'));
 
     }
 
