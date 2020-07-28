@@ -30,7 +30,6 @@
 
             <div class="col-md-6">
                 <div style="padding-top: 5%;">
-
                     <div class="col-md-12 d-sm-none d-md-none d-lg-none d-xl-none">
                         <p>
                             <a class="btn btn-primary btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -452,7 +451,7 @@
                                                             @else
                                                                 <div style="padding-top: 3%;">
                                                                     <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
-                                                                        <h6 style="color: black; font-size: 12px; font-weight: bold;">
+                                                                        <h6 style="font-size: 12px;">
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                             {{ $featured_cars[$i]->vehicle_detail->year }}
@@ -461,10 +460,11 @@
                                                                             Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}
                                                                         </h6>
                                                                     </a>
-                                                                    <h6 style="color: black; font-weight: bold;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+                                                                    <h6>
+                                                                        KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}
+                                                                    </h6>
                                                                 </div>
                                                             @endif
-
                                                         </div>
                                                     </div>
                                                 @endif
@@ -482,13 +482,10 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-
-
                     </div>
                 </div>
 
                 <div style="padding-top: 5%;">
-
                     <div class="col-md-12 row">
                         <div class="card col-md-3 d-none d-sm-block d-md-block d-lg-block d-xl-block"  style="width: 12rem;">
                             <div class="card-body">
@@ -910,7 +907,6 @@
     </footer>
 
     @push('scripts')
-        {{--        <script src="{{ asset('js/carousel.js') }}"></script>--}}
         <script>
             jQuery(document).ready(function($){
                 $('#car_make').change(function(){
