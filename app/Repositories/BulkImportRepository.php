@@ -404,9 +404,9 @@ class BulkImportRepository
 
             $data_array = [
                 'name' => $single_ad->user->name,
-                'phone_number' => $single_ad->phone_number != null ? $single_ad->phone_number : 'n/a',
+                'phone_number' => $single_ad->user->phone_number != null ? $single_ad->user->phone_number : 'n/a',
                 'country_code' => '+254',
-                'email' => $single_ad->email,
+                'email' => $single_ad->user->email,
                 'area' => $single_ad->area_id
             ];
 
