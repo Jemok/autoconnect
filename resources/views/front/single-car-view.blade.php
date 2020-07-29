@@ -15,7 +15,7 @@
 
                     {{ $vehicle_detail->year }}
 
-
+                    :  Ksh {{ $vehicle_detail->price }}
                 </span>
             </h1>
 
