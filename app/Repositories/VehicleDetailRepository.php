@@ -59,6 +59,7 @@ class VehicleDetailRepository
         $colour_type = array_key_exists('colour_type', $data) ? $data['colour_type'] : 'other';
         $drive_setup = array_key_exists('drive_setup', $data) ? $data['drive_setup'] : 'other';
         $drive_type = array_key_exists('drive_type', $data) ? $data['drive_type'] : 'other';
+        $door_count = array_key_exists('door_count', $data) ? $data['door_count'] : null;
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = $data['description'];
 
@@ -131,6 +132,7 @@ class VehicleDetailRepository
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;
         $vehicle_detail->unique_identifier = 'UNI-'.rand(10000, 90000);
+        $vehicle_detail->door_count = $door_count;
 
         $vehicle_detail->save();
 

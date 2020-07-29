@@ -59,7 +59,7 @@
                     </div>
                     <section class="gallery-block grid-gallery">
                         <div class="card-body">
-                            <p>
+                            <p class="text-center">
                                 Click on image to enlarge
                             </p>
                             <div class="card-group">
@@ -148,7 +148,15 @@
                                         Drive Type
                                     </h5>
                                     <p style="margin-top: 0; padding-top: 0;">
-                                        4 Wheel Drive
+                                        @if($vehicle_detail->drive_type != null)
+                                            @if($vehicle_detail->drive_type == 'right_hand_drive')
+                                                Right Hand Drive
+                                            @endif
+
+                                            @if($vehicle_detail->drive_type == 'left_hand_drive')
+                                                Left Hand Drive
+                                            @endif
+                                        @endif
                                     </p>
                                 </div>
                                 <div class="col-md-3">
@@ -165,7 +173,15 @@
                                         Drive Setup
                                     </h5>
                                     <p style="margin-top: 0; padding-top: 0;">
-                                        Righthand Drive
+                                        @if($vehicle_detail->drive_type != null)
+                                            @if($vehicle_detail->drive_type == '4_wheel_drive')
+                                                4 Wheel Drive
+                                            @endif
+
+                                            @if($vehicle_detail->drive_type == '2_wheel_drive')
+                                                2 Wheel Drive
+                                            @endif
+                                        @endif
                                     </p>
                                 </div>
 
@@ -193,7 +209,17 @@
                                         Interior Type
                                     </h5>
                                     <p style="margin-top: 0; padding-top: 0;">
-                                        Leather
+                                        @if($vehicle_detail->interior == 'leather')
+                                            Leather
+                                        @endif
+
+                                        @if($vehicle_detail->interior == 'cloth')
+                                            Cloth
+                                        @endif
+
+                                        @if($vehicle_detail->interior == 'other')
+                                            Other
+                                        @endif
                                     </p>
                                 </div>
 
@@ -202,7 +228,9 @@
                                         Door Count
                                     </h5>
                                     <p style="margin-top: 0; padding-top: 0;">
-                                        5
+                                        @if($vehicle_detail->door_count != null)
+                                            {{ $vehicle_detail->door_count  }}
+                                        @endif
                                     </p>
                                 </div>
 

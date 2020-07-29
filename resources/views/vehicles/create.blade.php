@@ -382,6 +382,29 @@
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+                                    <div class="col">
+                                        <label for="door_count" style="font-weight: bold;">Door Count</label>
+                                        <select name="door_count" id="door_count" class="form-control {{ $errors->has('door_count') ? 'is-invalid' : '' }}">
+                                            <option selected disabled>Choose...</option>
+                                            @foreach($door_counts as $door_count)
+                                                @if(old('door_count') == $door_count['slug'])
+                                                    <option selected value="{{ $door_count['slug'] }}">{{ $door_count['description'] }}</option>
+                                                @else
+                                                    <option value="{{ $door_count['slug'] }}">{{ $door_count['description'] }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
+                                        @if($errors->has('door_count'))
+                                            <small id="doorCountHelp" class="form-text text-danger">
+                                                {{ $errors->first('door_count') }}
+                                            </small>
+                                        @endif
+                                    </div>
+                                </div>
+
+
+
 
                                 <div class="form-row">
                                     <div class="col">

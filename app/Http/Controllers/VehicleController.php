@@ -75,7 +75,48 @@ class VehicleController extends Controller
 
         $drive_types = $driveTypeRepository->index();
 
-
+        $door_counts = [
+            [
+                'slug' => 1,
+                'description' => 1
+            ],
+            [
+                'slug' => 2,
+                'description' => 2
+            ],
+            [
+                'slug' => 3,
+                'description' => 3
+            ],
+            [
+                'slug' => 4,
+                'description' => 4
+            ],
+            [
+                'slug' => 5,
+                'description' => 5
+            ],
+            [
+                'slug' => 6,
+                'description' => 6
+            ],
+            [
+                'slug' => 7,
+                'description' => 7
+            ],
+            [
+                'slug' => 8,
+                'description' => 8
+            ],
+            [
+                'slug' => 9,
+                'description' => 9
+            ],
+            [
+                'slug' => 10,
+                'description' => 10
+            ]
+        ];
 
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
@@ -93,7 +134,8 @@ class VehicleController extends Controller
             'colour_types',
             'vehicle_features',
             'drive_types',
-            'drive_setups'));
+            'drive_setups',
+        'door_counts'));
     }
 
     public function store(CarDetailsRequest $carDetailsRequest,
@@ -159,7 +201,7 @@ class VehicleController extends Controller
     }
 
     public function renewSingleAd($vehicleId,
-                             VehicleDetailRepository $vehicleDetailRepository){
+                                  VehicleDetailRepository $vehicleDetailRepository){
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleId);
 
@@ -179,8 +221,8 @@ class VehicleController extends Controller
 
 
         if(VehiclePayment::where('vehicle_detail_id', $vehicleId)
-                           ->where('status', 'not_paid')
-                           ->exists()){
+            ->where('status', 'not_paid')
+            ->exists()){
 
             flash()->overlay('Please Complete Payment to Continue', 'Payment not Completed');
 

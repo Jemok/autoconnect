@@ -101,6 +101,7 @@ class BulkImportRepository
         $package_type = array_key_exists('package_type', $data) ? $data['package_type'] : 'standard';
         $colour_type_model = $colourTypeRepository->showFromSlug($colour_type);
         $description = array_key_exists('description', $data) ? $data['description'] : null;
+        $door_count = array_key_exists('door_count', $data) ? $data['door_count'] : null;
         $area_id = array_key_exists('area', $data) ? $data['area'] : 'n/a';
 
         $other_features = json_encode([
@@ -165,6 +166,7 @@ class BulkImportRepository
         $vehicle_detail->description = $description;
         $vehicle_detail->other_features = $other_features;
         $vehicle_detail->bulk_import_id = $bulk_import_id;
+        $vehicle_detail->door_count = $door_count;
         $vehicle_detail->user_id  = $user_id;
         $vehicle_detail->area_id = $area_id;
 
@@ -365,6 +367,7 @@ class BulkImportRepository
             $vehicle_detail->description = $single_ad->description;
             $vehicle_detail->unique_identifier = $single_ad->unique_identifier;
             $vehicle_detail->other_features = $single_ad->other_features;
+            $vehicle_detail->door_count = $single_ad->door_count;
             $vehicle_detail->status = 'active';
 
             $vehicle_detail->save();
@@ -397,6 +400,18 @@ class BulkImportRepository
                 $single_ad->type
             );
 
+            $vehicleContactRepository = new VehicleContactRepository();
+
+            $data_array = [
+                'name' => $single_ad->user->name,
+                'phone_number' => $single_ad->phone_number != null ? $single_ad->phone_number : 'n/a',
+                'country_code' => '+254',
+                'email' => $single_ad->email,
+                'area' => $single_ad->area_id
+            ];
+
+            $vehicleContactRepository->store($data_array, $vehicle_detail, $vehicle_detail->id);
+
             $vehicleImagesRepository = new  VehicleImagesRepository();
 
             $images = $this->getBulkImages($single_ad->id);
@@ -413,6 +428,7 @@ class BulkImportRepository
             $vehicleVerificationsRepository = new VehicleVerificationsRepository();
 
             $vehicleVerificationsRepository->store($vehicle_detail, 'pending_verification');
+
 
         }
     }

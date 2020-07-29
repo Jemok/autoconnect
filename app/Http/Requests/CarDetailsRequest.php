@@ -42,7 +42,8 @@ class CarDetailsRequest extends FormRequest
             'description' => 'nullable',
 //            'package_type' => 'required',
             'drive_type' => 'required',
-            'drive_setup' => 'required'
+            'drive_setup' => 'required',
+            'door_count' => 'required'
         ];
     }
 }
