@@ -379,7 +379,7 @@ class BulkImportRepository
             $stop = Carbon::now()->addDays(30);
 
             $adStatus = $adStatusRepository->storeAdStatus($vehicle_detail,
-                'pending_verification',
+                'online',
                 $start,
                 $stop,
                 $single_ad->user_id,
