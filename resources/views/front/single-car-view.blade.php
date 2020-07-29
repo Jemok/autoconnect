@@ -16,10 +16,13 @@
                     {{ $vehicle_detail->year }}
 
 
-                ID : {{  $vehicle_detail->unique_identifier }}
                 </span>
             </h1>
 
+            <h6>
+                Vehicle ID : {{  $vehicle_detail->unique_identifier }}
+
+            </h6>
             Posted : {{  $vehicle_detail->created_at->diffForHumans() }}
 
             @if(isset($vehicle_detail->vehicle_contact->phone_number))
