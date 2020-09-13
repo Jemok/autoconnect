@@ -20,9 +20,9 @@ class VehicleImagesController extends Controller
 
         $img = Image::make($image);
 
-        $canvas = Image::canvas(250, 70, '#FFFFFF');
+        $canvas = Image::canvas(250, 70, null);
 
-        $watermark = Image::make(public_path( '/images/back.png'));
+        $watermark = Image::make(public_path( '/images/lg4.png'));
 
         $watermark = $canvas->insert($watermark);
 
