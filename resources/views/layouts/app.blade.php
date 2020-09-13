@@ -169,7 +169,7 @@
 
                 <li class="nav-item d-lg-none inline-display">
                     <a href="{{ url('login') }}" class="nav-phone-small">
-                        | Sign In |
+                         Sign In |
                     </a>
                 </li>
 
