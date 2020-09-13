@@ -20,6 +20,6 @@ class CarMakeRepository
 
     public function index(){
 
-        return CarMake::all();
+        return CarMake::paginate(25);
     }
 }

@@ -15,6 +15,11 @@ class AreasRepository
 {
     public function index(){
 
-        return Area::all();
+        return Area::where('name', 'NAIROBI CITY')
+                     ->orWhere('name', 'KISUMU')
+            ->orWhere('name', 'MOMBASA')
+            ->orWhere('name', 'NAKURU')
+            ->orWhere('name', 'ELDORET')
+            ->get();
     }
 }
