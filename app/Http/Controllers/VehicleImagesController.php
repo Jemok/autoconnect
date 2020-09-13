@@ -52,13 +52,27 @@ class VehicleImagesController extends Controller
 
         $vehicleDetail = $vehicleDetailRepository->show($request->vehicleId);
 
+        $image = $request->file('file');
+
+        $img = Image::make($image);
+
+        $canvas = Image::canvas(250, 70, null);
+
+        $watermark = Image::make(public_path( '/images/lg4.png'));
+
+        $watermark = $canvas->insert($watermark);
+
+        $img = $img->insert($watermark, 'center');
+
         $extension = $request->file('file')->extension();
 
         $imageRealName = $request->file('file')->getClientOriginalName();
 
         $imageName = 'other'.time().rand(10, 100).'-'.$request->vehicleId.'.'.$extension;
 
-        $request->file('file')->storeAs('images/cars', $imageName, 'public');
+//        $request->file('file')->storeAs('images/cars', $imageName, 'public');
+
+        $img->save(storage_path('app/public/images/cars/'.$imageName));
 
         $vehicleImagesRepository->store($vehicleDetail, $imageName, $imageRealName, 'other', $vehicleId);
 
