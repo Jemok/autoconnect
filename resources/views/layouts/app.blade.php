@@ -64,19 +64,19 @@
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-expand-lg navbar-light background-nav" style="height: 20px;">
+    <nav class="navbar navbar-expand-lg navbar-light background-nav" style="height: 20px; padding-top: 25px;">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
             </ul>
             <ul class="navbar-nav  ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="tel:+25472174479">
                         <i class="fa fa-phone"></i>
                         Call : +25472174479
                     </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="mailto:info@univasauto.com">
                         <i class="fa fa-envelope-open"></i>
                         Email : info@univasauto.com
                     </a>
@@ -131,15 +131,22 @@
                 </a>
             @endif
 
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item d-none d-lg-block d-xl-block nav-phone-li" style="margin-left: 60px;">
-                    <a href="{{ url('vehicles/create') }}" class="nav-link nav-phone-text color-black">
-                        Sell Your Car Now
-                    </a>
-                </li>
+            <ul class="navbar-nav">
+{{--                <li class="nav-item d-none d-lg-block d-xl-block nav-phone-li" style="margin-left: 60px;">--}}
+{{--                    <a href="{{ url('vehicles/create') }}" class="nav-link nav-phone-text color-black btn" style="background-color: black;">--}}
+{{--                        Sell Your Car Now--}}
+{{--                    </a>--}}
+{{--                </li>--}}
             </ul>
 
             <ul class="navbar-nav yellow_line">
+
+                <li class="nav-item d-none d-lg-block d-xl-block nav-phone-li" style="margin-left: 60px;">
+                    <a href="{{ url('vehicles/create') }}" class="nav-link nav-phone-text color-black btn" style="background-color: black; color: white!important;">
+                        Sell Your Car Now
+                    </a>
+                </li>
+
                 <li class="nav-item d-none d-lg-block d-xl-block nav-phone-li" style="margin-left: 60px;">
                     <a href="{{ url('login') }}" class="nav-link nav-phone-text color-black">
                         Sign in
@@ -155,14 +162,14 @@
 
             <ul class="navbar-nav d-lg-none d-xl-none yellow_line ul-inline-landing">
                 <li class="nav-item d-lg-none inline-display">
-                    <a  href="{{ url('vehicles/create') }}" class="nav-phone-small">
-                        Sell Your Car Now |
+                    <a  href="{{ url('vehicles/create') }}" class="nav-phone-small btn" style="background-color: black; color: white!important;">
+                        Sell Your Car Now
                     </a>
                 </li>
 
                 <li class="nav-item d-lg-none inline-display">
                     <a href="{{ url('login') }}" class="nav-phone-small">
-                        Sign In |
+                        | Sign In |
                     </a>
                 </li>
 

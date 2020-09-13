@@ -30,16 +30,16 @@
 
             <div class="col-md-6">
                 <div style="padding-top: 5%;">
-                    <div class="col-md-12 d-sm-none d-md-none d-lg-none d-xl-none">
-                        <p>
-                            <a class="btn btn-primary btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                <i class="fa fa-search"></i>
-                                <span style="font-weight: bold;">
-                                            Find a car on sale
-                                            </span>
-                            </a>
-                        </p>
-                        <div class="collapse" id="collapseExample" style="padding-left: 0; padding-right: 0;">
+{{--                    <div class="col-md-12 d-sm-none d-md-none d-lg-none d-xl-none">--}}
+{{--                        <p>--}}
+{{--                            <a class="btn btn-primary btn-sm" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="background-color: black; color: white!important;">--}}
+{{--                                <i class="fa fa-search"></i>--}}
+{{--                                <span style="font-weight: bold;">--}}
+{{--                                            Search for a vehicle--}}
+{{--                                            </span>--}}
+{{--                            </a>--}}
+{{--                        </p>--}}
+                        <div  id="collapseExample" style="padding-left: 0; padding-right: 0;">
                             <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
                                 <form method="get" action="{{ route('carSearchResults') }}">
                                     <div class="" style="height: 450px; margin-top: 0; padding-left: 6%; padding-right: 0;">
@@ -49,7 +49,7 @@
                                                     <h6 class="card-title">
                                                         <i class="fa fa-search"></i>
                                                         <span style="font-weight: bold;">
-                                            Find a car on sale
+                                            Find cars on sale
                                             </span>
                                                     </h6>
                                                     <div class="form-group">
@@ -107,7 +107,7 @@
                                                         </div>
 
 
-                                                        <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                                                        <button class="btn btn-block" style="background-color: black; color: white!important;" type="submit">Search Now</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -679,7 +679,7 @@
                                                 </select>
                                             </div>
 
-                                            <button class="btn btn-block" style="background-color: tomato; color: white; font-weight: bold;" type="submit">Search Now</button>
+                                            <button class="btn btn-block" style="background-color: black; color: white!important;" type="submit">Search Cars</button>
                                         </div>
                                     </div>
                                 </div>
