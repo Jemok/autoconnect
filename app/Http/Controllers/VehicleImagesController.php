@@ -6,6 +6,7 @@ use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleImagesRepository;
 use App\VehicleImage;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class VehicleImagesController extends Controller
 {
@@ -15,13 +16,30 @@ class VehicleImagesController extends Controller
 
         $vehicleDetail = $vehicleDetailRepository->show($request->vehicleId);
 
+        $image = $request->file((string) $request->keyIdentifier);
+
+        $img = Image::make($image);
+
+        $canvas = Image::canvas(250, 70, '#FFFFFF');
+
+        $watermark = Image::make(public_path( '/images/back.png'));
+
+        $watermark = $canvas->insert($watermark);
+
+        $img = $img->insert($watermark, 'center');
+
+//        $img = $img->fit(200, 200);
+
+
         $extension = $request->file((string) $request->keyIdentifier)->extension();
 
         $imageRealName = $request->file((string) $request->keyIdentifier)->getClientOriginalName();
 
         $imageName = $request->imageArea.time().'-'.$request->vehicleId.'.'.$extension;
 
-        $request->file((string) $request->keyIdentifier)->storeAs('images/cars', $imageName, 'public');
+//        $request->file((string) $request->keyIdentifier)->storeAs('images/cars', $imageName, 'public');
+
+        $img->save(storage_path('app/public/images/cars/'.$imageName));
 
         $vehicleImagesRepository->store($vehicleDetail, $imageName, $imageRealName, $request->imageArea, $request->vehicleId);
     }
