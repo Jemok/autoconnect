@@ -10,6 +10,7 @@ use App\Repositories\CarModelRepository;
 use App\Repositories\ColourTypeRepository;
 use App\Repositories\FuelTypeRepository;
 use App\Repositories\TransmissionTypeRepository;
+use App\Repositories\UserVerificationRepository;
 use App\Repositories\VehicleDetailRepository;
 
 class WelcomePageController extends Controller
@@ -22,7 +23,8 @@ class WelcomePageController extends Controller
                                     TransmissionTypeRepository $transmissionTypeRepository,
                                     CarConditionRepository $carConditionRepository,
                                     FuelTypeRepository $fuelTypeRepository,
-                                    VehicleDetailRepository $vehicleDetailRepository){
+                                    VehicleDetailRepository $vehicleDetailRepository,
+                                    UserVerificationRepository $userVerificationRepository){
 
         $car_makes = $carMakeRepository->index();
 
@@ -62,7 +64,8 @@ class WelcomePageController extends Controller
             'fuel_types',
             'featured_cars',
             'featured_standard_cars',
-            'active_car_id'));
+            'active_car_id',
+        'userVerificationRepository'));
     }
 
     public function demoDonation(){

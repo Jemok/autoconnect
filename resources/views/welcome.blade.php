@@ -171,6 +171,20 @@
                                                     </h6>
                                                 </a>
                                                 <h6 style="color: black;">Price : {{ $featured_car->bulk_ad->vehicle_detail->price }}</h6>
+
+                                                <?php
+                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_car->bulk_ad->vehicle_detail)
+                                                ?>
+
+                                                <h6>
+                                                    @if($user_verification != false)
+                                                        <i class="fa fa-check alert-success"></i>
+                                                        <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                        <i class="fa fa-certificate alert-success"></i>
+                                                    @endif
+                                                </h6>
                                             @else
                                                 <div style="padding-top: 3%;">
                                                     <a href="{{ route('singleCarView', $featured_car->vehicle_detail->id) }}">
@@ -184,6 +198,20 @@
                                                         </h6>
                                                     </a>
                                                     <h6 style="color: black;">KES {{ number_format($featured_car->vehicle_detail->price, 2) }}</h6>
+
+                                                    <?php
+                                                    $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_car->vehicle_detail)
+                                                    ?>
+
+                                                    <h6>
+                                                        @if($user_verification != false)
+                                                            <i class="fa fa-check alert-success"></i>
+                                                            <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                            <i class="fa fa-certificate alert-success"></i>
+                                                        @endif
+                                                    </h6>
                                                 </div>
                                             @endif
                                         </div>
@@ -247,6 +275,20 @@
                                                                 </h6>
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ number_format($featured_cars[$i]->bulk_ad->vehicle_detail->price, 0) }}</h6>
+
+                                                            <?php
+                                                            $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->bulk_ad->vehicle_detail)
+                                                            ?>
+
+                                                            <h6>
+                                                                @if($user_verification != false)
+                                                                    <i class="fa fa-check alert-success"></i>
+                                                                    <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                    <i class="fa fa-certificate alert-success"></i>
+                                                                @endif
+                                                            </h6>
                                                         @else
                                                             <div style="padding-top: 3%;">
                                                                 <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
@@ -260,6 +302,20 @@
                                                                     </h6>
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+
+                                                                <?php
+                                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->vehicle_detail)
+                                                                ?>
+
+                                                                <h6>
+                                                                    @if($user_verification != false)
+                                                                        <i class="fa fa-check alert-success"></i>
+                                                                        <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                        <i class="fa fa-certificate alert-success"></i>
+                                                                    @endif
+                                                                </h6>
                                                             </div>
                                                         @endif
 
@@ -314,6 +370,20 @@
                                                                 </h6>
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->price }}</h6>
+
+                                                            <?php
+                                                            $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->bulk_ad->vehicle_detail)
+                                                            ?>
+
+                                                            <h6>
+                                                                @if($user_verification != false)
+                                                                    <i class="fa fa-check alert-success"></i>
+                                                                    <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                    <i class="fa fa-certificate alert-success"></i>
+                                                                @endif
+                                                            </h6>
                                                         @else
                                                             <div style="padding-top: 3%;">
                                                                 <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
@@ -327,6 +397,20 @@
                                                                     </h6>
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+
+                                                                <?php
+                                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->vehicle_detail)
+                                                                ?>
+
+                                                                <h6>
+                                                                    @if($user_verification != false)
+                                                                        <i class="fa fa-check alert-success"></i>
+                                                                        <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                        <i class="fa fa-certificate alert-success"></i>
+                                                                    @endif
+                                                                </h6>
                                                             </div>
                                                         @endif
 
@@ -394,6 +478,20 @@
                                                                     </h6>
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
+
+                                                                <?php
+                                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->vehicle_detail)
+                                                                ?>
+
+                                                                <h6>
+                                                                    @if($user_verification != false)
+                                                                        <i class="fa fa-check alert-success"></i>
+                                                                        <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                        <i class="fa fa-certificate alert-success"></i>
+                                                                    @endif
+                                                                </h6>
                                                             </div>
                                                         @endif
 
@@ -448,6 +546,20 @@
                                                                 </h6>
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->price }}</h6>
+
+                                                            <?php
+                                                            $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->bulk_ad->vehicle_detail)
+                                                            ?>
+
+                                                            <h6>
+                                                                @if($user_verification != false)
+                                                                    <i class="fa fa-check alert-success"></i>
+                                                                    <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                    <i class="fa fa-certificate alert-success"></i>
+                                                                @endif
+                                                            </h6>
                                                         @else
                                                             <div style="padding-top: 3%;">
                                                                 <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail->id) }}">
@@ -462,6 +574,20 @@
                                                                 </a>
                                                                 <h6 style="color: black;">
                                                                     KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}
+                                                                </h6>
+
+                                                                <?php
+                                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($featured_cars[$i]->vehicle_detail)
+                                                                ?>
+
+                                                                <h6>
+                                                                    @if($user_verification != false)
+                                                                        <i class="fa fa-check alert-success"></i>
+                                                                        <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                                        <i class="fa fa-certificate alert-success"></i>
+                                                                    @endif
                                                                 </h6>
                                                             </div>
                                                         @endif

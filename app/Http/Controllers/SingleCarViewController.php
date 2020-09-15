@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\BulkAd;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkAdsRepository;
+use App\Repositories\CarSearchRepository;
+use App\Repositories\UserVerificationRepository;
 use App\Repositories\VehicleDetailRepository;
 use App\Repositories\VehicleImagesRepository;
 use Illuminate\Http\Request;
@@ -15,7 +17,9 @@ class SingleCarViewController extends Controller
                          VehicleDetailRepository $vehicleDetailRepository,
                          VehicleImagesRepository $vehicleImagesRepository,
                          AdStatusRepository $adStatusRepository,
-                         BulkAdsRepository $bulkAdsRepository){
+                         BulkAdsRepository $bulkAdsRepository,
+                         UserVerificationRepository $userVerificationRepository,
+                         CarSearchRepository $carSearchRepository){
 
         $vehicle_detail = $vehicleDetailRepository->show($vehicleDetailId);
 
@@ -41,6 +45,8 @@ class SingleCarViewController extends Controller
             'is_bulk',
             'adStatusRepository',
             'bulkAdsRepository',
+            'userVerificationRepository',
+            'carSearchRepository',
             'ad_status'));
     }
 }

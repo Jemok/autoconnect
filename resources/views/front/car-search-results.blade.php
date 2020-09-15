@@ -44,9 +44,7 @@
                                         <div class="col-md-4">
                                             <a href="{{ route('singleCarView', $vehicle->id) }}" style="text-decoration: none;">
 
-                                                <?php
-                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($vehicle)
-                                                ?>
+
 
                                                 <h4 style="color: black;">
                                                     {{ $vehicle->car_make->name }} - {{ $vehicle->car_model->name }} {{ $vehicle->year }}
@@ -55,6 +53,10 @@
                                                 <h6 style="color: black;">
                                                     Posted :  {{ $vehicle->created_at->diffForHumans() }}
                                                 </h6>
+
+                                                <?php
+                                                $user_verification = $userVerificationRepository->checkIfUserIsVerified($vehicle)
+                                                ?>
 
                                                 <h6>
                                                     @if($user_verification != false)
@@ -65,11 +67,12 @@
                                                         <i class="fa fa-certificate alert-success"></i>
                                                     @endif
                                                 </h6>
+
                                                 <p style="margin-top: 0; padding-top: 0;">
                                                     {{ $vehicle->fuel_type }} - {{ $vehicle->transmission_type->name }}
                                                 </p>
 
-                                                <div >
+                                                <div>
                                                     <?php
                                                     $user_profile = $carSearchRepository->returnAdProfile($vehicle)
                                                     ?>

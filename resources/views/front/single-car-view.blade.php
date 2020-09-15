@@ -23,6 +23,38 @@
                 Vehicle ID : {{  $vehicle_detail->unique_identifier }}
 
             </h6>
+
+            <div>
+                <?php
+                $user_profile = $carSearchRepository->returnAdProfile($vehicle_detail)
+                ?>
+
+                @if($user_profile != false)
+                    <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
+                        @if($user_profile->user_picture != 'null')
+                            <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                        @endif
+                        <h6 style="margin-top: 2%; font-weight: bold;">
+                          Seller : {{ $user_profile->business_name }}
+                        </h6>
+                    </a>
+                @endif
+            </div>
+
+            <?php
+            $user_verification = $userVerificationRepository->checkIfUserIsVerified($vehicle_detail)
+            ?>
+
+            <h6>
+                @if($user_verification != false)
+                    <i class="fa fa-check alert-success"></i>
+                    <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                    <i class="fa fa-certificate alert-success"></i>
+                @endif
+            </h6>
+
             Posted : {{  $vehicle_detail->created_at->diffForHumans() }}
 
             @if(isset($vehicle_detail->vehicle_contact->phone_number))
@@ -70,28 +102,7 @@
                                         </a>
                                     </div>
                                 @endforeach
-                                {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                                {{--</div>--}}
-                                {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                                {{--</div>--}}
-                                {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                                {{--</div>--}}
-                                {{--<div class="card">--}}
-                                {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                                {{--</div>--}}
                             </div>
-
-                            {{--<div class="card-group" style="margin-top: 1%;">--}}
-                            {{--<div class="card">--}}
-                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                            {{--</div>--}}
-                            {{--<div class="card">--}}
-                            {{--<img class="card-img-top" src="{{ asset('images/car-4.jpeg') }}" alt="Card image cap">--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
 
                             <h4 style="margin-top: 2%; font-weight: bold;">
                                 Description
@@ -363,8 +374,10 @@
                             +2547 *** ***
                         </p>
 
-                        <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModal" style="background-color: tomato;">
-                            Get seller phone numbers
+                        <button type="button" class="btn btn-block" data-toggle="modal" data-target="#exampleModal" style="background-color: black;">
+                            <span style="color: white;">
+                                                            Get seller phone number
+                            </span>
                         </button>
 
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
