@@ -93,12 +93,12 @@
                         Twitter
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fa fa-youtube-square"></i>
-                        Youtube
-                    </a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#">--}}
+{{--                        <i class="fa fa-youtube-square"></i>--}}
+{{--                        Youtube--}}
+{{--                    </a>--}}
+{{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link" href="https://www.instagram.com/univasmedia">
                         <i class="fa fa-instagram"></i>

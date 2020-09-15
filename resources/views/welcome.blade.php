@@ -902,12 +902,12 @@
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">
                                 About Us
                             </a>
                         </li>
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="{{ route('showContactUsPage') }}" style="color: black;">
                                 Contact Us
                             </a>
                         </li>
@@ -917,7 +917,7 @@
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="{{ route('termsAndConditionsPage') }}" style="color: black;">
                                 Terms and Conditions
                             </a>
                         </li>
@@ -951,11 +951,11 @@
                                 Instagram
                             </a>
                         </li>
-                        <li class="">
-                            <a href="" style="color: black;">
-                                Youtube
-                            </a>
-                        </li>
+{{--                        <li class="">--}}
+{{--                            <a href="" style="color: black;">--}}
+{{--                                Youtube--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
             </div>

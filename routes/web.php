@@ -340,6 +340,15 @@ Route::get('index-dealer-profile/{userId}', 'DealerProfileController@indexDealer
 Route::post('update-dealer-profile', 'DealerProfileController@updateDealerProfile')
     ->name('updateDealerProfile');
 
+Route::get('ubout-us', 'AboutUsController@showAboutUsPage')
+    ->name('showAboutUsPage');
+
+Route::get('contact-us', 'AboutUsController@showContactUsPage')
+    ->name('showContactUsPage');
+
+Route::get('terms-and-conditions', 'AboutUsController@termsAndConditionsPage')
+    ->name('termsAndConditionsPage');
+
 Route::post('upload-dealer-profile', 'DealerProfileController@uploadDealerProfile')
     ->name('uploadDealerProfile');
 
