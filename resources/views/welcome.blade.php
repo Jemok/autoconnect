@@ -901,14 +901,20 @@
             <div class="col-md-12 row text-center">
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
+{{--                        <li class="">--}}
+{{--                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">--}}
+{{--                                About Us--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li class="">--}}
+{{--                            <a href="{{ route('showContactUsPage') }}" style="color: black;">--}}
+{{--                                Contact Us--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+
                         <li class="">
-                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">
-                                About Us
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="{{ route('showContactUsPage') }}" style="color: black;">
-                                Contact Us
+                            <a href="https://www.instagram.com/univasmedia" style="color: black;">
+                                Instagram
                             </a>
                         </li>
                     </ul>
@@ -932,12 +938,12 @@
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="https://fb.me/UnivasMedia" style="color: black;">
                                 Facebook
                             </a>
                         </li>
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="https://twitter.com/UnivasM" style="color: black;">
                                 Twitter
                             </a>
                         </li>
@@ -947,7 +953,7 @@
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
                         <li class="">
-                            <a href="" style="color: black;">
+                            <a href="https://www.instagram.com/univasmedia" style="color: black;">
                                 Instagram
                             </a>
                         </li>

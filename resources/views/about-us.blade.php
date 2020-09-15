@@ -7,78 +7,85 @@
 
     </div>
 
-{{--    <hr>--}}
+    {{--    <hr>--}}
 
-{{--    <footer class="footer">--}}
-{{--        <div class="container mx-auto text-center">--}}
-{{--            <div class="col-md-12 row text-center">--}}
-{{--                <div class="col-md-3">--}}
-{{--                    <ul style="color: black; list-style: none;">--}}
+    <footer class="footer">
+        <div class="container mx-auto text-center">
+            <div class="col-md-12 row text-center">
+                <div class="col-md-3">
+                    <ul style="color: black; list-style: none;">
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">--}}
+                        {{--                                About Us--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
 {{--                        <li class="">--}}
-{{--                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">--}}
-{{--                                About Us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
+{{--                            <a href="{{ route('showContactUsPage') }}" style="color: black;">--}}
 {{--                                Contact Us--}}
 {{--                            </a>--}}
 {{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
 
-{{--                <div class="col-md-3">--}}
-{{--                    <ul style="color: black; list-style: none;">--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Terms and Conditions--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="">--}}
-{{--                            <a href="{{ env('APP_URL').'sitemap.xml' }}" style="color: black;">--}}
-{{--                                Site Map--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
+                        <li class="">
+                            <a href="https://www.instagram.com/univasmedia" style="color: black;">
+                                Instagram
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-{{--                <div class="col-md-3">--}}
-{{--                    <ul style="color: black; list-style: none;">--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Facebook--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Twitter--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
+                <div class="col-md-3">
+                    <ul style="color: black; list-style: none;">
+                        <li class="">
+                            <a href="{{ route('termsAndConditionsPage') }}" style="color: black;">
+                                Terms and Conditions
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="{{ env('APP_URL').'sitemap.xml' }}" style="color: black;">
+                                Site Map
+                            </a>
+                        </li>
+                    </ul>
+                </div>
 
-{{--                <div class="col-md-3">--}}
-{{--                    <ul style="color: black; list-style: none;">--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Instagram--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Youtube--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+                <div class="col-md-3">
+                    <ul style="color: black; list-style: none;">
+                        <li class="">
+                            <a href="https://fb.me/UnivasMedia" style="color: black;">
+                                Facebook
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="https://twitter.com/UnivasM" style="color: black;">
+                                Twitter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <ul style="color: black; list-style: none;">
+                        <li class="">
+                            <a href="https://www.instagram.com/univasmedia" style="color: black;">
+                                Instagram
+                            </a>
+                        </li>
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="" style="color: black;">--}}
+                        {{--                                Youtube--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                    </ul>
+                </div>
+            </div>
+        </div>
 
 
-{{--        <p class="text-center">--}}
-{{--            &copy; {{ \Carbon\Carbon::now()->year }} Univas Auto Connect--}}
-{{--        </p>--}}
-{{--    </footer>--}}
+        <p class="text-center">
+            &copy; {{ \Carbon\Carbon::now()->year }} Univas Auto Connect
+        </p>
+    </footer>
+
 
     @push('scripts')
         <script>
