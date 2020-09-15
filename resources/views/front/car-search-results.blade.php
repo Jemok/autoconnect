@@ -10,13 +10,17 @@
             @if($car_make != 'any_make')
                 <h4>
                  <span style="color: black;">
-              {{ strtoupper($car_make) }} {{ strtoupper($car_model) }} for Sale in Kenya
+             We found  {{ $vehicles->count() }} results for
+                     {{ strtoupper($car_make) }}
+                     {{ strtoupper($car_model) }} for Sale in Kenya
             </span>
                 </h4>
             @else
                 <h4>
                  <span style="color: black;">
              We found  {{ $vehicles->count() }} results
+                       {{ strtoupper($car_make) }}
+                     {{ strtoupper($car_model) }} for Sale in Kenya
             </span>
                 </h4>
             @endif
@@ -83,7 +87,7 @@
                                                             <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
                                                             @endif
                                                             <h6 style="margin-top: 2%; font-weight: bold;">
-                                                                {{ $user_profile->business_name }}
+                                                              Seller : {{ $user_profile->business_name }}
                                                             </h6>
                                                         </a>
                                                     @endif

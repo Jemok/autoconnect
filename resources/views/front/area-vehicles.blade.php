@@ -10,7 +10,7 @@
 
             <h4>
                  <span style="color: black;">
-              You are viewing Vehicles in : {{ $area->name }}
+              We found {{ $vehicles->count() }} vehicles in : {{ $area->name }}
             </span>
             </h4>
 
@@ -40,6 +40,11 @@
                                                 <h6 style="color: black;">
                                                     {{ $vehicle->vehicle_detail->car_make->name }} - {{ $vehicle->vehicle_detail->car_model->name }} {{ $vehicle->vehicle_detail->year }}
                                                 </h6>
+
+                                                <h6 style="color: black;">
+                                                    Posted :  {{ $vehicle->created_at->diffForHumans() }}
+                                                </h6>
+
                                                 <h6>
                                                     @if($user_verification != false)
                                                         <i class="fa fa-check"></i> Verified Seller <i class="fa fa-certificate"></i>
@@ -55,7 +60,12 @@
                                                     ?>
 
                                                     @if($user_profile != false)
-                                                        <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                                                        @if($user_profile->user_picture != 'null')
+                                                            <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                                                        @endif
+                                                        <h6 style="margin-top: 2%; font-weight: bold;">
+                                                           Seller : {{ $user_profile->business_name }}
+                                                        </h6>
                                                     @endif
                                                 </div>
                                             </div>
@@ -68,21 +78,12 @@
                                                     Negotiation : {{ strtoupper($vehicle->vehicle_detail->negotiable_price) }}
                                                 </p>
 
-                                                <div class="row col-md-12" style="margin-top: 10%;">
-                                                    <div class="col-md-4">
-                                                        <i class="fa fa-phone"></i>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <i class="fa fa-comment"></i>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <i class="fa fa-whatsapp"></i>
-                                                    </div>
-                                                </div>
-
                                                 <div>
-                                                    <button class="btn background-nav btn-block">
-                                                        Show Contacts
+                                                    <button class="btn btn-block" style="background-color: black;">
+                                                        <span style="color: white">
+                                                                                                                   <i class="fa fa-phone"></i>
+                                                     Show Contact
+                                                        </span>
                                                     </button>
                                                 </div>
                                             </div>

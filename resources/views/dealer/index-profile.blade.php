@@ -9,24 +9,26 @@
 
 
             <div class="col-md-8">
+                <h1 style="margin-top: 2%; font-weight: bold;">
+                   You are viewing cars from : {{ $user_profile->business_name }}
+                </h1>
+
                 <div class="col-md-4">
                     @if($user_profile != false)
-                        <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
-                            <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
-
-                        </a>
+                        @if($user_profile->user_picture != 'null')
+                            <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
+                                <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                            </a>
+                        @endif
                     @endif
                 </div>
                 <h6>
                     @if($user_verification != false)
                         @if($user_verification->verification_status == 'verified')
-                        <i class="fa fa-check"></i> Verified Seller <i class="fa fa-certificate"></i>
+                            <i class="fa fa-check alert-success"></i> <span class="alert-success">Verified Seller </span><i class="fa fa-certificate alert-success"></i>
                         @endif
                     @endif
                 </h6>
-                <h1 style="margin-top: 2%; font-weight: bold;">
-                   You are viewing cars from : {{ $user_profile->business_name }}
-                </h1>
             </div>
         </div>
 
