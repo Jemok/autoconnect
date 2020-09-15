@@ -5,7 +5,7 @@
 @section('content')
     <div class="container-fluid">
 
-        <div class="col-md-10" style="margin-top: 1%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%;">
+        <div class="col-md-10 mx-auto" style="margin-top: 1%; margin-left: 6.5%; padding-top: 0.5%; padding-bottom: 0.5%;">
 
 
             <h4>
@@ -16,47 +16,8 @@
 
             <hr>
 
-            <div>
-                {{ $vehicles->count() }} Results
-                <div class="dropdown float-right">
-                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Filter By
-                    </a>
-
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="#">Date Posted</a>
-                        <a class="dropdown-item" href="#">Price (Low to High)</a>
-                        <a class="dropdown-item" href="#">Price (High to Low)</a>
-                        <a class="dropdown-item" href="#">Mileage</a>
-                        <a class="dropdown-item" href="#">Year (New to Old)</a>
-                        <a class="dropdown-item" href="#">Year (Old to New)</a>
-                    </div>
-                </div>
-            </div>
-
-            <hr>
-
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <i class="fa fa-filter"></i>  Filter
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">BODY TYPE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">YEAR <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">PRICE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">LOCATION <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">FUEL TYPE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="col-md-9">
+                <div class="col-md-12">
                     @foreach($vehicles as $vehicle)
                         @if($carSearchRepository->checkIfAdIsOnline($vehicle->vehicle_detail))
                             <a href="{{ route('singleCarView', $vehicle->vehicle_detail->id) }}" style="text-decoration: none;">
