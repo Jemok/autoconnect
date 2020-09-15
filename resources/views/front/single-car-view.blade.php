@@ -57,11 +57,11 @@
 
             Posted : {{  $vehicle_detail->created_at->diffForHumans() }}
 
-            @if(isset($vehicle_detail->vehicle_contact->phone_number))
-                <span>
-                    {{ $vehicle_detail->vehicle_contact->phone_number }}
-                </span>
-            @endif
+{{--            @if(isset($vehicle_detail->vehicle_contact->phone_number))--}}
+{{--                <span>--}}
+{{--                    {{ $vehicle_detail->vehicle_contact->phone_number }}--}}
+{{--                </span>--}}
+{{--            @endif--}}
 
             @if(isset($vehicle_detail->vehicle_contact->area_id))
                 <span>
