@@ -30,14 +30,16 @@
                 ?>
 
                 @if($user_profile != false)
-                    <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
-                        @if($user_profile->user_picture != 'null')
-                            <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
-                        @endif
-                        <h6 style="margin-top: 2%; font-weight: bold;">
-                          Seller : {{ $user_profile->business_name }}
-                        </h6>
-                    </a>
+                    <div class="col-md-4">
+                        <a href="{{ route('indexDealerProfile', [$user_profile->user_id]) }}">
+                            @if($user_profile->user_picture != 'null')
+                                <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+                            @endif
+                            <h6 style="margin-top: 2%; font-weight: bold;">
+                                Seller : {{ $user_profile->business_name }}
+                            </h6>
+                        </a>
+                    </div>
                 @endif
             </div>
 
@@ -436,7 +438,7 @@
                                                 <label for="inputEmail">Email</label>
                                                 <input type="email" class="form-control" name="email" id="inputEmail" placeholder="E.g example@gmail.com">
                                             </div>
-                                            <button type="submit" class="btn btn-block" style="background-color: tomato;">
+                                            <button type="submit" class="btn btn-block" style="background-color: black;">
                                                 Call Me Back
                                             </button>
                                         </form>
