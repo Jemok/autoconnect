@@ -15,7 +15,7 @@
 
                     {{ $vehicle_detail->year }}
 
-                    :  Ksh {{ $vehicle_detail->price }}
+                    :  Ksh {{ number_format($vehicle_detail->price, 0) }}
                 </span>
             </h1>
 
@@ -85,7 +85,7 @@
                         {{ $vehicle_detail->year }}
 
                         <div class="float-right">
-                            Price :  Ksh {{ $vehicle_detail->price }}
+                            Price :  Ksh {{ number_format($vehicle_detail->price, 0) }}
                         </div>
 
                     </div>
@@ -272,88 +272,106 @@
                                 Features
                             </h4>
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i>  Air Conditioning
-                                    </p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Air Bags
-                                    </p>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i>  Alloy Wheels
-                                    </p>
-                                </div>
-
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> AM/FM Radio
-                                    </p>
-                                </div>
+                            <div class="row col-md-12">
+                                @foreach($other_features as $key => $value)
+                                    <div class="card col-md-4">
+                                        <div class="card-body">
+                                         <span class="" style="font-size: 12px;">
+                                             {{ $key }}
+                                             @if($value != null)
+                                                 <i class="fa fa-check text-success"></i>
+                                             @else
+                                                 <i class="fa fa-times text-danger"></i>
+                                             @endif
+                                         </span>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Anti-Lock Brakes
-                                    </p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Armrests
-                                    </p>
-                                </div>
 
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> CD Player
-                                    </p>
-                                </div>
+                            {{--                            <div class="row">--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i>  Air Conditioning--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Air Bags--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Electric Windows
-                                    </p>
-                                </div>
-                            </div>
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i>  Alloy Wheels--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Fog Lights
-                                    </p>
-                                </div>
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Power Steering
-                                    </p>
-                                </div>
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> AM/FM Radio--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Tinted Windows
-                                    </p>
-                                </div>
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Anti-Lock Brakes--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Armrests--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
 
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Traction Control
-                                    </p>
-                                </div>
-                            </div>
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> CD Player--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
 
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <p style="margin-top: 0; padding-top: 0;">
-                                        <i class="fa fa-check text-success"></i> Wheel Locks
-                                    </p>
-                                </div>
-                            </div>
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Electric Windows--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Fog Lights--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Power Steering--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Tinted Windows--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Traction Control--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-3">--}}
+{{--                                    <p style="margin-top: 0; padding-top: 0;">--}}
+{{--                                        <i class="fa fa-check text-success"></i> Wheel Locks--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
 
                         </div>
                     </section>

@@ -39,6 +39,8 @@ class SingleCarViewController extends Controller
             $vehicle_images = $vehicleImagesRepository->indexForVehicle($vehicleDetailId);
         }
 
+        $other_features = json_decode($vehicle_detail->other_features, true);
+
         return view('front.single-car-view', compact('vehicle_detail',
             'vehicle_images',
             'vehicleDetailId',
@@ -47,6 +49,7 @@ class SingleCarViewController extends Controller
             'bulkAdsRepository',
             'userVerificationRepository',
             'carSearchRepository',
-            'ad_status'));
+            'ad_status',
+            'other_features'));
     }
 }
