@@ -65,7 +65,7 @@
 
             @if(isset($vehicle_detail->vehicle_contact->area_id))
                 <span>
-                    {{ $vehicle_detail->vehicle_contact->area->name }}
+                   in {{ $vehicle_detail->vehicle_contact->area->name }}
                 </span>
             @endif
 
