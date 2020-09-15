@@ -58,7 +58,11 @@
 
                                                 <h6>
                                                     @if($user_verification != false)
-                                                        <i class="fa fa-check"></i> Verified Seller <i class="fa fa-certificate"></i>
+                                                        <i class="fa fa-check alert-success"></i>
+                                                    <span class="alert-success">
+                                                                                                              Verified Seller
+                                                    </span>
+                                                        <i class="fa fa-certificate alert-success"></i>
                                                     @endif
                                                 </h6>
                                                 <p style="margin-top: 0; padding-top: 0;">
