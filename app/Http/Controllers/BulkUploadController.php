@@ -21,6 +21,7 @@ use App\Repositories\CarConditionRepository;
 use App\Repositories\CarMakeRepository;
 use App\Repositories\CarModelRepository;
 use App\Repositories\ColourTypeRepository;
+use App\Repositories\DealerProfileRepository;
 use App\Repositories\DriveSetUpRepository;
 use App\Repositories\DriveTypeRepository;
 use App\Repositories\DutyRepository;
@@ -54,13 +55,17 @@ class BulkUploadController extends Controller
     }
 
 
-    public function startBulkUpload(RolesRepository $rolesRepository){
+    public function startBulkUpload(RolesRepository $rolesRepository, DealerProfileRepository $dealerProfileRepository){
 
 //        return view('bulk-uploads.start-uploading');
 
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+
         if (Auth::user()->hasRole('dealer')){
 
-            return view('bulk-uploads.dealer.start');
+
+            return view('bulk-uploads.dealer.start', compact('check_if_profile_exists'));
 
         }
 

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Notifications\AdExpiredNotification;
 use App\Repositories\AdStatusRepository;
 use App\Repositories\BulkAdsRepository;
+use App\Repositories\DealerProfileRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\VehicleDetailRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdsManagementController extends Controller
 {
@@ -28,44 +30,61 @@ class AdsManagementController extends Controller
             'ads'));
     }
 
-    public function indexOnlineAds(){
+    public function indexOnlineAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.admin.index-online');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+
+        return view('ads.admin.index-online', compact('check_if_profile_exists'));
     }
 
-    public function indexDealerOnlineAds(){
+    public function indexDealerOnlineAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.dealer.index-online');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.dealer.index-online', compact('check_if_profile_exists'));
     }
 
-    public function indexPendingVerificationAds(){
+    public function indexPendingVerificationAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.admin.index-pending-verification');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.admin.index-pending-verification', compact('dealerProfileRepository'));
     }
 
-    public function indexDealerPendingVerificationAds(){
+    public function indexDealerPendingVerificationAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.dealer.index-pending-verification');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.dealer.index-pending-verification', compact('check_if_profile_exists'));
     }
 
-    public function indexDeclinedAds(){
+    public function indexDeclinedAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.admin.index-declined');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.admin.index-declined', compact('check_if_profile_exists'));
     }
 
-    public function indexDealerDeclinedAds(){
+    public function indexDealerDeclinedAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.dealer.index-declined');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.dealer.index-declined', compact('check_if_profile_exists'));
     }
 
-    public function indexExpiredAds(){
+    public function indexExpiredAds(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.admin.index-expired');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.admin.index-expired', compact('check_if_profile_exists'));
     }
 
-    public function indexExpiredAdsForDealer(){
+    public function indexExpiredAdsForDealer(DealerProfileRepository $dealerProfileRepository){
 
-        return view('ads.dealer.index-expired');
+        $check_if_profile_exists  = $dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id);
+
+        return view('ads.dealer.index-expired', compact('check_if_profile_exists'));
     }
 
     public function expireAd($vehicleDetailId,
