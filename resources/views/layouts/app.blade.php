@@ -114,11 +114,19 @@
             </ul>
         </div>
     </nav>
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel background-nav">
+    <nav class="navbar navbar-expand-md navbar-light navbar-laravel background-nav" style="padding-bottom: 0; margin-bottom: 0;">
         <div class="container">
 
             @if(Auth::guest())
-                <a class="navbar-brand" href="{{ url('/') }}" style="margin-top: -2%;">
+                <a class="navbar-brand d-md-none d-lg-none d-xl-none" href="{{ url('/') }}" style="margin-top: -10%;">
+                    {{--{{ config('app.name', 'Univas Auto Connect') }}--}}
+                    {{--                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">--}}
+                    <img alt="Univas Auto Connect" style="width: 50%;" src="{{ asset('images/lg4.png') }}">
+
+                    <p style="font-size: xx-small;">Your Ultimate Online Car Market</p>
+                </a>
+
+                <a class="navbar-brand d-sm-block d-none" href="{{ url('/') }}" style="margin-top: -5%;">
                     {{--{{ config('app.name', 'Univas Auto Connect') }}--}}
                     {{--                    <img alt="Univas Auto Connect" src="{{ asset('images/univas-real.png') }}">--}}
                     <img alt="Univas Auto Connect" src="{{ asset('images/lg4.png') }}">

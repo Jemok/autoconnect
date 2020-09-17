@@ -52,7 +52,7 @@
                     {{--                                            </span>--}}
                     {{--                            </a>--}}
                     {{--                        </p>--}}
-                    <div  id="collapseExample" style="padding-left: 0; padding-right: 0;">
+                    <div style="padding-left: 0; padding-right: 0;">
                         <div class="col-md-12" style="padding-left: 0; padding-right: 0;">
                             <form method="get" action="{{ route('carSearchResults') }}">
                                 <div class="" style="margin-top: 0; padding-left: 6%; padding-right: 0;">
