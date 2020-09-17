@@ -91,6 +91,7 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+
                                                 <div class="form-row">
                                                     <div class="form-group col-md-6">
                                                         <label for="yearFrom">
@@ -106,7 +107,11 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="yearTo">To</label>
+                                                        <label for="yearTo">
+                                                            <span style="font-weight: bold;">
+                                                                To
+                                                            </span>
+                                                        </label>
                                                         <?php
                                                         $start_year = 2004;
                                                         $next_year = 2019;
@@ -118,10 +123,59 @@
                                                             @endfor
                                                         </select>
                                                     </div>
-
-
-                                                    <button class="btn btn-block" style="background-color: black; color: white!important;" type="submit">Search Now</button>
                                                 </div>
+
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="minPrice">
+                                                                                                                <span style="font-weight: bold;">
+                                                                                                                                                                                Min Price
+                                                                                                                </span>
+                                                        </label>
+                                                        <select name="minPrice" class="form-control" id="minPrice">
+                                                            <option value="min_price">Min Price</option>
+                                                            <option value="100000">KES 100,000</option>
+                                                            <option value="500000">KES 500,000</option>
+                                                            <option value="700000">KES 700,000</option>
+                                                            <option value="1000000">KES 1,000,000</option>
+                                                            <option value="1500000">KES 1,500,000</option>
+                                                            <option value="2000000">KES 2,000,000</option>
+                                                            <option value="2500000">KES 2,500,000</option>
+                                                            <option value="3000000">KES 3,000,000</option>
+                                                            <option value="3500000">KES 3,500,000</option>
+                                                            <option value="4000000">KES 4,000,000</option>
+                                                            <option value="4500000">KES 4,500,000</option>
+                                                            <option value="5000000">KES 5,000,000</option>
+                                                            <option value="10000000">KES 10,000,000</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="maxPrice">
+                                                                                                                                                                            <span style="font-weight: bold;">
+                                                            Max Price
+                                                                                                                                                                            </span>
+                                                        </label>
+                                                        <select name="maxPrice" class="form-control" id="maxPrice">
+                                                            <option value="max_price" selected>Max Price</option>
+                                                            <option value="100000">KES 100,000</option>
+                                                            <option value="500000">KES 500,000</option>
+                                                            <option value="700000">KES 700,000</option>
+                                                            <option value="1000000">KES 1,000,000</option>
+                                                            <option value="1500000">KES 1,500,000</option>
+                                                            <option value="2000000">KES 2,000,000</option>
+                                                            <option value="2500000">KES 2,500,000</option>
+                                                            <option value="3000000">KES 3,000,000</option>
+                                                            <option value="3500000">KES 3,500,000</option>
+                                                            <option value="4000000">KES 4,000,000</option>
+                                                            <option value="4500000">KES 4,500,000</option>
+                                                            <option value="5000000">KES 5,000,000</option>
+                                                            <option value="10000000">KES 10,000,000</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <button class="btn btn-block" style="background-color: black; color: white!important;" type="submit">Search Now</button>
+
                                             </div>
                                         </div>
                                     </div>
@@ -288,9 +342,9 @@
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_make->name }}
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_model->name }}
                                                                 </h6>
-{{--                                                                <h6 style="color: black;">--}}
-{{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                                                </h6>--}}
+                                                                {{--                                                                <h6 style="color: black;">--}}
+                                                                {{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
+                                                                {{--                                                                </h6>--}}
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ number_format($featured_cars[$i]->bulk_ad->vehicle_detail->price, 0) }}</h6>
 
@@ -314,9 +368,9 @@
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                     </h6>
-{{--                                                                    <h6 style="color: black;">--}}
-{{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
-{{--                                                                    </h6>--}}
+                                                                    {{--                                                                    <h6 style="color: black;">--}}
+                                                                    {{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
+                                                                    {{--                                                                    </h6>--}}
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
 
@@ -386,9 +440,9 @@
                                                                 <h6 style="color: black;">
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_make->name }}
                                                                 </h6>
-{{--                                                                <h6 style="color: black;">--}}
-{{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                                                </h6>--}}
+                                                                {{--                                                                <h6 style="color: black;">--}}
+                                                                {{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
+                                                                {{--                                                                </h6>--}}
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->price }}</h6>
 
@@ -412,9 +466,9 @@
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                     </h6>
-{{--                                                                    <h6 style="color: black;">--}}
-{{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
-{{--                                                                    </h6>--}}
+                                                                    {{--                                                                    <h6 style="color: black;">--}}
+                                                                    {{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
+                                                                    {{--                                                                    </h6>--}}
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
 
@@ -484,9 +538,9 @@
                                                                 <h6 style="color: black;">
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_make->name }}
                                                                 </h6>
-{{--                                                                <h6 style="color: black;">--}}
-{{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                                                </h6>--}}
+                                                                {{--                                                                <h6 style="color: black;">--}}
+                                                                {{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
+                                                                {{--                                                                </h6>--}}
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->price }}</h6>
                                                         @else
@@ -496,9 +550,9 @@
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                     </h6>
-{{--                                                                    <h6 style="color: black;">--}}
-{{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
-{{--                                                                    </h6>--}}
+                                                                    {{--                                                                    <h6 style="color: black;">--}}
+                                                                    {{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
+                                                                    {{--                                                                    </h6>--}}
                                                                 </a>
                                                                 <h6 style="color: black;">KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}</h6>
 
@@ -569,9 +623,9 @@
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_make->name }}
                                                                     {{ $featured_cars[$i]->bulk_ad->vehicle_detail->car_model->name }}
                                                                 </h6>
-{{--                                                                <h6 style="color: black;">--}}
-{{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
-{{--                                                                </h6>--}}
+                                                                {{--                                                                <h6 style="color: black;">--}}
+                                                                {{--                                                                    Car Id : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->unique_identifier }}--}}
+                                                                {{--                                                                </h6>--}}
                                                             </a>
                                                             <h6 style="color: black;" class="text-left">Price : {{ $featured_cars[$i]->bulk_ad->vehicle_detail->price }}</h6>
 
@@ -595,9 +649,9 @@
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_make->name }}
                                                                         {{ $featured_cars[$i]->vehicle_detail->car_model->name }}
                                                                     </h6>
-{{--                                                                    <h6 style="color: black;">--}}
-{{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
-{{--                                                                    </h6>--}}
+                                                                    {{--                                                                    <h6 style="color: black;">--}}
+                                                                    {{--                                                                        Car Id : {{ $featured_cars[$i]->vehicle_detail->unique_identifier }}--}}
+                                                                    {{--                                                                    </h6>--}}
                                                                 </a>
                                                                 <h6 style="color: black;">
                                                                     KES {{ number_format($featured_cars[$i]->vehicle_detail->price, 2) }}
