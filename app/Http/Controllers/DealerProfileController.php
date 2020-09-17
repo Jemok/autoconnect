@@ -45,7 +45,7 @@ class DealerProfileController extends Controller
     public function updateDealerProfile(UpdateDealerProfile $updateDealerProfile,
                                         DealerProfileRepository $dealerProfileRepository){
 
-        if($dealerProfileRepository->checkIfUserProfileExists() == false){
+        if($dealerProfileRepository->checkIfUserProfileExists(Auth::user()->id) == false){
 
             $dealerProfileRepository->storeUserProfile(Auth::user()->id, 'null');
 

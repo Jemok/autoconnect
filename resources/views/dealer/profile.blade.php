@@ -124,7 +124,7 @@
                                         <div class="col-sm-12">
                                             <div class="card" style="border: none;">
                                                 <div style="height: 120px; width: 210px; overflow: hidden;" class="mx-auto">
-                                                    <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="kra_pin" alt="Card image cap">
+                                                    <img class="card-img-top" src="{{ asset('images/word.jpeg') }}" id="kra_pin_doc" alt="Card image cap">
                                                 </div>
                                                 <div class="card-body" style="background-color: lightgrey;">
                                                     <h6 class="card-title">
@@ -132,7 +132,7 @@
                                                     KRA PIN
                                                     </span>
                                                     </h6>
-                                                    <input type="file" name="kra_pin" onchange="readURL(this, 'kra_pin', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPin">
+                                                    <input type="file" name="kra_pin_doc" onchange="readURL(this, 'kra_pin_doc', 'kraPin', '{{ \Illuminate\Support\Facades\Auth::user()->id }}');" class="form-control-file" id="kraPinDoc">
                                                 </div>
                                             </div>
                                         </div>
