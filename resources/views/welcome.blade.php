@@ -1,6 +1,18 @@
 @extends('layouts.app')
 @section('assets')
     <link rel="stylesheet" href="{{ asset('css/carousel.css') }}" xmlns="http://www.w3.org/1999/html">
+    <style>
+        .container{
+            height: 100px;
+        }
+
+
+        .container img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    </style>
 @endsection
 @section('content')
     <div class="container-fluid">
@@ -254,11 +266,15 @@
                                                 <div class="card col-md-4 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem; border: none;">
                                                     @if($featured_cars[$i]->type == 'bulk')
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->bulk_ad->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @else
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @endif
 
@@ -349,11 +365,15 @@
                                                 <div class="card col-md-4 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem; border: none;">
                                                     @if($featured_cars[$i]->type == 'bulk')
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->bulk_ad->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @else
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @endif
 
@@ -444,11 +464,15 @@
                                                 <div class="card col-md-4 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem; border: none;">
                                                     @if($featured_cars[$i]->type == 'bulk')
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->bulk_ad->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @else
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @endif
 
@@ -525,11 +549,15 @@
                                                 <div class="card col-md-4 d-none d-md-block d-lg-block d-xl-block"  style="width: 12rem; border: none;">
                                                     @if($featured_cars[$i]->type == 'bulk')
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->bulk_ad->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @else
                                                         <a href="{{ route('singleCarView', $featured_cars[$i]->vehicle_detail_id) }}">
-                                                            <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            <div class="container">
+                                                                <img class="img-fluid" src="{{ asset('storage/images/cars/'.$vehicle_front_image) }}" alt="Card image cap">
+                                                            </div>
                                                         </a>
                                                     @endif
 
@@ -771,7 +799,7 @@
                         </ul>
                     </div>
 
-                        <span style="font-weight: bold;">
+                    <span style="font-weight: bold;">
                         Popular Brands
                         </span>
 
@@ -878,11 +906,11 @@
                         </ul>
                     </div>
 
-{{--                    <div class="col-md-12 text-center" style="padding-left: 0; padding-right: 0;">--}}
-{{--                        <ul class="list-group">--}}
+                    {{--                    <div class="col-md-12 text-center" style="padding-left: 0; padding-right: 0;">--}}
+                    {{--                        <ul class="list-group">--}}
 
-{{--                        </ul>--}}
-{{--                    </div>--}}
+                    {{--                        </ul>--}}
+                    {{--                    </div>--}}
                 </div>
 
 
@@ -901,16 +929,16 @@
             <div class="col-md-12 row text-center">
                 <div class="col-md-3">
                     <ul style="color: black; list-style: none;">
-{{--                        <li class="">--}}
-{{--                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">--}}
-{{--                                About Us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                        <li class="">--}}
-{{--                            <a href="{{ route('showContactUsPage') }}" style="color: black;">--}}
-{{--                                Contact Us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="{{ route('showAboutUsPage') }}" style="color: black;">--}}
+                        {{--                                About Us--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="{{ route('showContactUsPage') }}" style="color: black;">--}}
+                        {{--                                Contact Us--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
 
                         <li class="">
                             <a href="https://www.instagram.com/univasmedia" style="color: black;">
@@ -957,11 +985,11 @@
                                 Instagram
                             </a>
                         </li>
-{{--                        <li class="">--}}
-{{--                            <a href="" style="color: black;">--}}
-{{--                                Youtube--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        {{--                        <li class="">--}}
+                        {{--                            <a href="" style="color: black;">--}}
+                        {{--                                Youtube--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
                     </ul>
                 </div>
             </div>
