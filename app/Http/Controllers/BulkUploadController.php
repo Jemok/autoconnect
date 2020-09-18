@@ -173,7 +173,8 @@ class BulkUploadController extends Controller
                                        ColourTypeRepository  $colourTypeRepository,
                                        VehicleFeaturesRepository $vehicleFeaturesRepository,
                                        DriveSetUpRepository $driveSetUpRepository,
-                                       DriveTypeRepository $driveTypeRepository){
+                                       DriveTypeRepository $driveTypeRepository,
+                                       AreasRepository $areasRepository){
 
         $single_ads = $bulkImportRepository->indexFroBulkImport($bulkImportId);
 
@@ -201,6 +202,7 @@ class BulkUploadController extends Controller
 
         $vehicle_features = $vehicleFeaturesRepository->index();
 
+        $areas = $areasRepository->index();
 
         $drive_setups = $driveSetUpRepository->index();
 
@@ -229,7 +231,8 @@ class BulkUploadController extends Controller
             'bulk_import',
             'drive_setups',
             'drive_types',
-            'car_makes_for_search'));
+            'car_makes_for_search',
+        'areas'));
     }
 
     public function createBulkImages(

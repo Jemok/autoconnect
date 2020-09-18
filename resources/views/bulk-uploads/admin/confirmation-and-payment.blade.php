@@ -565,6 +565,36 @@
                                                 </td>
 
                                                 <td>
+                                                    <div class="form-row">
+                                                        <div class="col">
+                                                            <label for="inputState" style="font-weight: bold;">Area/City*</label>
+                                                            <select name="area" id="inputState" class="form-control {{ $errors->has('area') ? 'is-invalid' : '' }}">
+                                                                <option selected disabled>Choose...</option>
+                                                                @foreach($areas as $area)
+                                                                    @if(old('area') == $area->id)
+                                                                        <option selected="selected" value="{{ $area->id }}">{{ $area->name }}</option>
+                                                                    @elseif(!empty($vehicle_detail->vehicle_contact->area_id))
+                                                                        @if($vehicle_detail->vehicle_contact->area_id == $area->id)
+                                                                            <option selected value="{{ $vehicle_detail->vehicle_contact->area_id }}">{{ $area->name  }}</option>
+                                                                        @else
+                                                                            <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                                                        @endif
+                                                                    @else
+                                                                        <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                            @if($errors->has('area'))
+                                                                <small id="areHelp" class="form-text text-danger">
+                                                                    {{ $errors->first('area') }}
+                                                                </small>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+
+
+                                                <td>
                                                     <div class="col">
                                                         <label for="package_type" style="font-weight: bold;">Ad Package Type*</label>
                                                         <select style="width: 150px;"  name="package_type" id="package_type" class="form-control {{ $errors->has('package_type') ? 'is-invalid' : '' }}">
