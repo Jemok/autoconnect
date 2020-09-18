@@ -211,6 +211,50 @@ class BulkUploadController extends Controller
         $start_year = 1900;
         $next_year = Carbon::now()->year + 1;
 
+        $door_counts = [
+            [
+                'slug' => 1,
+                'description' => 1
+            ],
+            [
+                'slug' => 2,
+                'description' => 2
+            ],
+            [
+                'slug' => 3,
+                'description' => 3
+            ],
+            [
+                'slug' => 4,
+                'description' => 4
+            ],
+            [
+                'slug' => 5,
+                'description' => 5
+            ],
+            [
+                'slug' => 6,
+                'description' => 6
+            ],
+            [
+                'slug' => 7,
+                'description' => 7
+            ],
+            [
+                'slug' => 8,
+                'description' => 8
+            ],
+            [
+                'slug' => 9,
+                'description' => 9
+            ],
+            [
+                'slug' => 10,
+                'description' => 10
+            ]
+        ];
+
+
 //        return view('bulk-uploads.confirm-imports', compact('bulkImportId',
 //            'single_ads',
 //            'vehicleImagesRepository'));
@@ -232,7 +276,8 @@ class BulkUploadController extends Controller
             'drive_setups',
             'drive_types',
             'car_makes_for_search',
-        'areas'));
+        'areas',
+        'door_counts'));
     }
 
     public function createBulkImages(
