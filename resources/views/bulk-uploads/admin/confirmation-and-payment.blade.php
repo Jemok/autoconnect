@@ -179,6 +179,13 @@
                 </nav>
                 <div class="pcoded-content">
                     @include('flash::message')
+
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div>{{$error}}</div>
+                        @endforeach
+                    @endif
+
                     <div class="pcoded-inner-content">
                         <div class="main-body">
                             <div class="page-wrapper">
