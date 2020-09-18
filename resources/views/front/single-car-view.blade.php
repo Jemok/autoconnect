@@ -489,8 +489,8 @@
 
             <div class="col-md-2" style="margin-top: 2%; padding-top: 0.5%;">
                 <?php
-                $similar_ads = showSimilarAdsForAd($vehicle_detail->car_make->slug,
-                    $vehicle_detail->car_model->slug,
+                $similar_ads = showSimilarAdsForAd($vehicle_detail->car_make->id,
+                    $vehicle_detail->car_model->id,
                     null,
                     null,
                     null,
