@@ -536,6 +536,8 @@ class BulkUploadController extends Controller
 
         $car_makes = $carMakeRepository->index();
 
+        $car_makes_for_search = $carMakeRepository->indexAll();
+
         $car_models = $carModelRepository->index();
 
         $body_types = $bodyTypeRepository->index();
@@ -626,7 +628,8 @@ class BulkUploadController extends Controller
             'drive_setups',
             'drive_types',
             'areas',
-        'door_counts'));
+        'door_counts',
+        'car_makes_for_search'));
 
     }
 
