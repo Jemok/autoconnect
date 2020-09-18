@@ -118,7 +118,7 @@ function showSimilarAdsForAd($car_make,
                 ->where('status', 'active');
         }
 
-        $vehicles = $raw_vehicles;
+        $vehicles = $raw_vehicles->get();
 //            $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
 //            ->orWhereBetween('price', [$min_price, $max_price])
 //            ->orWhere('body_type_id', $body_type_id)
