@@ -69,10 +69,10 @@ function showSimilarAdsForAd($car_make,
 
     if($car_make != 'any_make' && $car_model != null){
 
-        $car_make_id = \App\CarMake::where('slug', $car_make)->firstOrFail()->id;
+        $car_make_id = \App\CarMake::where('id', $car_make)->firstOrFail()->id;
 
         if ($car_model != 'any_model'){
-            $car_model_id = \App\CarModel::where('slug', $car_model)->firstOrFail()->id;
+            $car_model_id = \App\CarModel::where('id', $car_model)->firstOrFail()->id;
         }
 
 
