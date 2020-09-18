@@ -69,10 +69,10 @@ function showSimilarAdsForAd($car_make,
 
     if($car_make != 'any_make' && $car_model != null){
 
-        $car_make_id = \App\CarMake::where('id', $car_make)->firstOrFail()->id;
+        $car_make_id = \App\CarMake::where('slug', $car_make)->firstOrFail()->id;
 
         if ($car_model != 'any_model'){
-            $car_model_id = \App\CarModel::where('id', $car_model)->firstOrFail()->id;
+            $car_model_id = \App\CarModel::where('slug', $car_model)->firstOrFail()->id;
         }
 
 
@@ -118,14 +118,15 @@ function showSimilarAdsForAd($car_make,
                 ->where('status', 'active');
         }
 
-        $vehicles = $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
-            ->orWhereBetween('price', [$min_price, $max_price])
-            ->orWhere('body_type_id', $body_type_id)
-            ->orWhere('transmission_type_id', $transmission_type_id)
-            ->orWhere('colour_type_id', $colour_type_id)
-            ->orWhere('car_condition_id', $car_condition_id)
-            ->orWhere('fuel_type', $fuel_type_id)
-            ->get();
+        $vehicles = $raw_vehicles;
+//            $raw_vehicles->orWhereBetween('year', [$year_from, $year_to])
+//            ->orWhereBetween('price', [$min_price, $max_price])
+//            ->orWhere('body_type_id', $body_type_id)
+//            ->orWhere('transmission_type_id', $transmission_type_id)
+//            ->orWhere('colour_type_id', $colour_type_id)
+//            ->orWhere('car_condition_id', $car_condition_id)
+//            ->orWhere('fuel_type', $fuel_type_id)
+//            ->get();
 
         $filtered_online_vehicles = $vehicles->filter(function ($value, $key) {
 
