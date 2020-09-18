@@ -37,24 +37,24 @@
             <hr>
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header">
-                            <i class="fa fa-filter"></i>  Filter
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">BODY TYPE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">YEAR <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">PRICE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">LOCATION <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">FUEL TYPE <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>
-                            <li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>
-                        </ul>
-                    </div>
-                </div>
+{{--                <div class="col-md-3">--}}
+{{--                    <div class="card">--}}
+{{--                        <div class="card-header">--}}
+{{--                            <i class="fa fa-filter"></i>  Filter--}}
+{{--                        </div>--}}
+{{--                        <ul class="list-group list-group-flush">--}}
+{{--                            <li class="list-group-item">MAKE <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">MODEL <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">BODY TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">YEAR <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">PRICE <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">LOCATION <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">FUEL TYPE <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">TRANSMISSION <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                            <li class="list-group-item">COLOUR <i class="fa fa-caret-down float-right"></i></li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
 
                 <div class="col-md-9">
                     @foreach($vehicles as $vehicle)
@@ -94,7 +94,7 @@
                                                     ?>
 
                                                     @if($user_profile != false)
-                                                        <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">
+{{--                                                        <img  src="{{ asset('storage/images/dealers/'.$user_profile->user_picture) }}" class="img-thumbnail" width="20%" alt="...">--}}
                                                     @endif
                                                 </div>
                                             </div>
