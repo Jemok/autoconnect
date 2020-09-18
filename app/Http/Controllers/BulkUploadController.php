@@ -181,6 +181,8 @@ class BulkUploadController extends Controller
 
         $car_makes = $carMakeRepository->index();
 
+        $car_makes_for_search = $carMakeRepository->indexAll();
+
         $car_models = $carModelRepository->index();
 
         $body_types = $bodyTypeRepository->index();
@@ -226,7 +228,8 @@ class BulkUploadController extends Controller
             'vehicle_features',
             'bulk_import',
             'drive_setups',
-            'drive_types'));
+            'drive_types',
+            'car_makes_for_search'));
     }
 
     public function createBulkImages(
@@ -628,8 +631,8 @@ class BulkUploadController extends Controller
             'drive_setups',
             'drive_types',
             'areas',
-        'door_counts',
-        'car_makes_for_search'));
+            'door_counts',
+            'car_makes_for_search'));
 
     }
 

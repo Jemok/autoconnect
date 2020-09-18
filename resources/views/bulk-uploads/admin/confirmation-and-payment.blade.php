@@ -257,7 +257,7 @@
                                                         <label for="car_make" style="font-weight: bold;">Make*</label>
                                                         <select style="width: 150px;" name="car_make" id="car_make" class="form-control {{ $errors->has('car_make') ? 'is-invalid' : '' }}" >
                                                             <option selected disabled>Choose a Make</option>
-                                                            @foreach($car_makes as $car_make)
+                                                            @foreach($car_makes_for_search as $car_make)
                                                                 @if(old('car_make') == $car_make->slug)
                                                                     <option selected value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
                                                                 @else
