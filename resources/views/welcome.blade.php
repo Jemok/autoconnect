@@ -73,7 +73,7 @@
                                                     </label>
                                                     <select name="carMake" class="form-control" id="car_make">
                                                         <option value="any_make" selected>Any Make</option>
-                                                        @foreach($car_makes as $car_make)
+                                                        @foreach($car_makes_for_search as $car_make)
                                                             <option value="{{ $car_make->slug }}">{{ $car_make->name }}</option>
                                                         @endforeach
                                                     </select>

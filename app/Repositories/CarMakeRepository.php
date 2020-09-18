@@ -22,4 +22,9 @@ class CarMakeRepository
 
         return CarMake::paginate(25);
     }
+
+    public function indexAll(){
+
+        return CarMake::all();
+    }
 }

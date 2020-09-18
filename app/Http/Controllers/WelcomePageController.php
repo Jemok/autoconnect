@@ -28,6 +28,8 @@ class WelcomePageController extends Controller
 
         $car_makes = $carMakeRepository->index();
 
+        $car_makes_for_search = $carMakeRepository->indexAll();
+
         $car_models = $carModelRepository->index();
 
         $areas = $areasRepository->index();
@@ -65,7 +67,8 @@ class WelcomePageController extends Controller
             'featured_cars',
             'featured_standard_cars',
             'active_car_id',
-        'userVerificationRepository'));
+        'userVerificationRepository',
+        'car_makes_for_search'));
     }
 
     public function demoDonation(){
