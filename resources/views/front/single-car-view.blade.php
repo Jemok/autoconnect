@@ -504,9 +504,9 @@
                     null);
                 ?>
                 @if($similar_ads->count() >= 1)
-                    <div class="card-header">
-                        Similar vehicles
-                    </div>
+{{--                    <div class="card-header">--}}
+{{--                        Similar vehicles--}}
+{{--                    </div>--}}
                     <div class="card">
                         @foreach($similar_ads as $similar_ad)
                             @if($similar_ad->id != $vehicle_detail->id)
