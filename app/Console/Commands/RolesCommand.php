@@ -52,7 +52,15 @@ class RolesCommand extends Command
                 'guard' => 'web'
             ],
             [
-                'name' => 'administrator',
+                'name' => 'data-entry-admin',
+                'guard' => 'web'
+            ],
+            [
+                'name' => 'supervisor-admin',
+                'guard' => 'web'
+            ],
+            [
+                'name' => 'supervisor-admin',
                 'guard' => 'web'
             ]
         ];
