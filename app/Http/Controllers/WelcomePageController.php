@@ -51,7 +51,17 @@ class WelcomePageController extends Controller
 
         $featured_standard_cars = $vehicleDetailRepository->getEightLatestOnlineStandard();
 
-        $active_car_id = $vehicleDetailRepository->getActiveSliderVehicle()->vehicle_detail_id;
+        $vehicle_detail = $vehicleDetailRepository->getActiveSliderVehicle();
+
+        if(isset($vehicle_detail)){
+
+            $active_car_id = $vehicle_detail->vehicle_detail_id;
+
+        }else{
+
+            $active_car_id = null;
+        }
+
 
         return view('welcome', compact(
             'car_makes',
@@ -67,8 +77,8 @@ class WelcomePageController extends Controller
             'featured_cars',
             'featured_standard_cars',
             'active_car_id',
-        'userVerificationRepository',
-        'car_makes_for_search'));
+            'userVerificationRepository',
+            'car_makes_for_search'));
     }
 
     public function demoDonation(){

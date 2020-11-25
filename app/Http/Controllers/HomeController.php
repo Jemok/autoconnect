@@ -65,10 +65,11 @@ class HomeController extends Controller
             return view('buyer.home', compact( 'count_invitations'));
         }
 
-        if(Auth::user()->hasRole('administrator')){
+        if(Auth::user()->hasRole('administrator') || Auth::user()->hasRole('data-entry-admin' ) || Auth::user()->hasRole('supervisor-admin' )){
 
             return redirect()->route('adminHome');
         }
+
 
 //        return view('home', compact( 'count_invitations'));
 

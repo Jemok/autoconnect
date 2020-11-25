@@ -23,7 +23,7 @@ Route::post('register-buyer', 'Auth\RegisterController@register')->name('registe
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-Route::group(['middleware' => ['role:super-admin']], function () {
+//Route::group( function () {
     Route::get('/admin-home', 'AdminController@index')
         ->name('adminHome')
         ->middleware('verified');
@@ -157,7 +157,7 @@ Route::group(['middleware' => ['role:super-admin']], function () {
 
     Route::get('export-expired-ads-excel', 'ReportsController@exportExpiredAdsExcel')->name('exportExpiredAdsExcel');
 
-});
+//});
 
 Route::get('/vehicles/admin-mange-bulk-pictures/{bulkImportId}/{singleBulkUploadId}', 'BulkUploadController@adminManageBulkImages')->name('adminManageBulkImages');
 

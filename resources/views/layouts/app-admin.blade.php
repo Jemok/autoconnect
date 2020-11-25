@@ -125,6 +125,7 @@
                                 </a>
                             </li>
 
+                            @hasanyrole('super-admin|supervisor-admin')
                             <li class="{{ url()->current() == env('APP_URL').'reports' ? 'active' : ''}}">
                                 <a href="{{ route('indexAllReports') }}">
                                     <span class="pcoded-micon"><i class="ti-clipboard"></i><b>R</b></span>
@@ -132,7 +133,9 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
+                            @endhasanyrole
 
+                            @role('super-admin|supervisor-admin')
                             <li class="{{ url()->current() == env('APP_URL').'mpesa-payments' ? 'active' : ''}}">
                                 <a href="{{ route('indexMpesaPayments') }}">
                                     <span class="pcoded-micon"><i class="fa fa-money"></i><b>P</b></span>
@@ -140,8 +143,9 @@
                                     <span class="pcoded-mcaret"></span>
                                 </a>
                             </li>
+                            @endrole
 
-{{--                            <li class="">--}}
+                            {{--                            <li class="">--}}
 {{--                                <a href="{{ route('indexAccountSettings') }}">--}}
 {{--                                    <span class="pcoded-micon"><i class="ti-settings"></i><b>S</b></span>--}}
 {{--                                    <span class="pcoded-mtext" data-i18n="nav.dash.main">Account Settings</span>--}}

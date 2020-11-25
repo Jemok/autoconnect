@@ -67,6 +67,20 @@ class AdminCommand extends Command
                 'phone_number' => '0712675071',
                 'password' => '123456',
                 'role' => 'dealer'
+            ],
+            [
+                'name' => 'Data Entry Admin One',
+                'email' => 'karokijames41@gmail.com',
+                'phone_number' => '0712675071',
+                'password' => '123456',
+                'role' => 'data-entry-admin'
+            ],
+            [
+                'name' => 'Supervisor',
+                'email' => 'karokijames42@gmail.com',
+                'phone_number' => '0712675071',
+                'password' => '123456',
+                'role' => 'supervisor-admin'
             ]
         ];
 
